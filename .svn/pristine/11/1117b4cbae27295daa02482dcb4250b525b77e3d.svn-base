@@ -1,0 +1,42 @@
+<?php 
+namespace Home\Controller;
+
+	class CenterController extends CommonController{
+		public function index(){
+			// var_dump($_SESSION['user']);
+			$users = $_SESSION['user'];
+			$this -> assign('user',$users);
+			$this -> display();
+		}
+		public function myBonus(){
+			$this -> display();
+		}
+		public function order(){
+			$this -> display();
+		}
+		// public function like(){
+		// 	$this -> display();
+		// }
+		public function myCoin(){
+			$this -> display();
+		}
+		public function safe(){
+			$user = $_SESSION['user'];
+			$this -> assign('user',$user);
+			$this -> display();
+		}
+		public function address(){
+			$this -> display();
+		}
+		public function complain(){
+			$this -> display();
+		}
+
+
+
+
+
+
+
+	}
+ ?>

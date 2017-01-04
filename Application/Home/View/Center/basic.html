@@ -1,0 +1,251 @@
+<extend name="Public:center" />
+<block name="rightmain">
+	    <div class="content">
+	        <div class="pn-top-nav">
+	            <h1 class="clearfix"><span>个人资料设置</span></h1>
+	            <div class="pn-top-btn clearfix">
+					<div class="pn-top-btnbox lf-fl">
+	                <a href="http://passport.lefeng.com/user/userInfo.jsp">基本资料</a><a href="http://passport.lefeng.com/user/userInfo1.jsp" class="on">详细资料</a>
+					</div>
+	            </div>       
+	        </div>
+	        <div class="pn-article" id="pnArticle">
+	            <form action="userInfo1.jsp" method="post" name="user" id="user">
+	            <dl class="clearfix">
+	                <dt>身高：</dt>
+	                <dd><input class="pn-input pn-inputwd" name="height" maxlength="6" type="text"><code class="after">CM</code><span class="lf-showerr" style="opacity: 1;display : none;"></span></dd>
+	            </dl>
+	            <dl class="clearfix">
+	                <dt>体重：</dt>
+	                <dd><input class="pn-input pn-inputwd" name="weight" maxlength="6" type="text"><code class="after">KG</code><span class="lf-showerr" style="opacity: 1;display : none;"></span></dd>
+	            </dl>
+	            <dl class="clearfix">
+	                <dt>结婚纪念日：</dt>
+	                <dd>
+					<input name="weddingAnniversary" value="" id="marry" type="hidden">
+					<div style="position: static; z-index: 0;" class="lf-select">
+	                    <select name="jhjyr_month" id="mmonth"><option selected="selected" value="0">请选择</option><option value="1">01月</option><option value="2">02月</option><option value="3">03月</option><option value="4">04月</option><option value="5">05月</option><option value="6">06月</option><option value="7">07月</option><option value="8">08月</option><option value="9">09月</option><option value="10">10月</option><option value="11">11月</option><option value="12">12月</option></select>
+	                    <input value="请选择" define="请选择" autocomplete="off" type="input">
+	                    <ul style="display: none; z-index: 0;">
+	                    </ul>
+	                </div>
+	                    <div style="position: static; z-index: 0;" class="lf-select">
+	                        <select name="jhjyr_day" id="mday">
+	                        </select>
+	                        <input value="请选择" define="请选择" autocomplete="off" type="input">
+	                        <ul style="display: none; z-index: 0;">
+	                        </ul>
+	                    </div>
+	                </dd>
+	            </dl>
+	            <dl class="clearfix">
+	                <dt>宝宝的生日：</dt>
+	                <dd>
+					<input name="babyBirthAnniversary" value="" id="bady" type="hidden">
+	                    <div style="position: static; z-index: 0;" class="lf-select">
+	                        <select name="bbcsjyr_month" id="bmonth"><option selected="selected" value="0">请选择</option><option value="1">01月</option><option value="2">02月</option><option value="3">03月</option><option value="4">04月</option><option value="5">05月</option><option value="6">06月</option><option value="7">07月</option><option value="8">08月</option><option value="9">09月</option><option value="10">10月</option><option value="11">11月</option><option value="12">12月</option></select>
+	                        <input value="请选择" define="请选择" autocomplete="off" type="text">
+	                        <ul style="display: none; z-index: 0;">
+	                        </ul>
+	                    </div>
+	                    <div style="position: static; z-index: 0;" class="lf-select">
+	                        <select name="bbcsjyr_day" id="bday">
+	                        </select>
+	                        <input value="请选择" define="请选择" autocomplete="off" type="text">
+	                        <ul style="display: none; z-index: 0;">
+	                        </ul>
+	                    </div>
+	                </dd>
+	            </dl>
+	            <dl class="clearfix">
+	                <dt class="itemwd">&nbsp;您经常购买什么类型的化妆品：</dt>
+	                <dt>&nbsp;</dt>
+	                <dd>
+	                    <label class="lf-checkbox"><input name="kind" value="底妆类" type="checkbox"><dfn></dfn>底妆类</label>
+	                    <label class="lf-checkbox"><input name="kind" value="清洁类" type="checkbox"><dfn></dfn>清洁类</label>
+	                    <label class="lf-checkbox"><input name="kind" value="护肤类" type="checkbox"><dfn></dfn>护肤类</label>
+	                    <label class="lf-checkbox"><input name="kind" value="彩妆类" type="checkbox"><dfn></dfn>彩妆类</label>
+	                    <label class="lf-checkbox"><input name="kind" value="面膜类" type="checkbox"><dfn></dfn>面膜类</label>
+	                    <label class="lf-checkbox"><input name="kind" value="其他" type="checkbox"><dfn></dfn>其他</label>
+	                </dd>
+	            </dl>
+	            <dl class="clearfix">
+	                <dt class="itemwd">&nbsp;您购买的化妆品考虑的最主要因素：</dt>
+	                <dt>&nbsp;</dt>
+	                <dd>
+	                    <label class="lf-checkbox"><input name="reason" value="功效" type="checkbox"><dfn></dfn>功效</label>
+	                    <label class="lf-checkbox"><input name="reason" value="价格" type="checkbox"><dfn></dfn>价格</label>
+	                    <label class="lf-checkbox"><input name="reason" value="品牌" type="checkbox"><dfn></dfn>品牌</label>
+	                    <label class="lf-checkbox"><input name="reason" value="包装" type="checkbox"><dfn></dfn>包装</label>
+	                    <label class="lf-checkbox"><input name="reason" value="口碑" type="checkbox"><dfn></dfn>口碑</label>
+	                    <label class="lf-checkbox"><input name="reason" value="其他" type="checkbox"><dfn></dfn>其他</label>
+	                </dd>
+	            </dl>
+	            <dl class="clearfix">
+	                <dt class="itemwd">&nbsp;您经常购买的化妆品渠道：</dt>
+	                <dt>&nbsp;</dt>
+	                <dd>
+	                    <label class="lf-checkbox"><input name="buyway" value="商场" type="checkbox"><dfn></dfn>商场</label>
+	                    <label class="lf-checkbox"><input name="buyway" value="专卖店" type="checkbox"><dfn></dfn>专卖店</label>
+	                    <label class="lf-checkbox"><input name="buyway" value="网购" type="checkbox"><dfn></dfn>网购</label>
+	                    <label class="lf-checkbox"><input name="buyway" value="代购" type="checkbox"><dfn></dfn>代购</label>
+	                    <label class="lf-checkbox"><input name="buyway" value="超市" type="checkbox"><dfn></dfn>超市</label>
+	                    <label class="lf-checkbox"><input name="buyway" value="其他" type="checkbox"><dfn></dfn>其他</label>
+	                </dd>
+	            </dl>
+	            <dl class="clearfix">
+	                <dt class="itemwd">&nbsp;您一般购买化妆品的价位：</dt>
+	                <dt>&nbsp;</dt>
+	                <dd>
+	                    <label class="lf-radio"><input name="price" value="100元以下" type="radio"><dfn></dfn>100元以下</label>
+	                    <label class="lf-radio"><input name="price" value="100-200元" type="radio"><dfn></dfn>100-200元</label>
+	                    <label class="lf-radio"><input name="price" value="200-500元" type="radio"><dfn></dfn>200-500元</label>
+	                    <label class="lf-radio"><input name="price" value="500-800元" type="radio"><dfn></dfn>500-800元</label>
+	                    <label class="lf-radio"><input name="price" value="800元以上" type="radio"><dfn></dfn>800元以上</label>
+	                </dd>
+	            </dl>
+	            <dl class="clearfix">
+	                <dt class="itemwd">&nbsp;您使用彩妆品的频率：</dt>
+	                <dt>&nbsp;</dt>
+	                <dd>
+	                    <label class="lf-radio"><input name="fm" value="每天" type="radio"><dfn></dfn>每天</label>
+	                    <label class="lf-radio"><input name="fm" value="偶尔" type="radio"><dfn></dfn>偶尔</label>
+	                    <label class="lf-radio"><input name="fm" value="从不使用" type="radio"><dfn></dfn>从不使用</label>
+	                </dd>
+	            </dl>
+	            <dl class="clearfix">
+	                <dt class="itemwd">&nbsp;您的品牌喜好：</dt>
+	                <dt>&nbsp;</dt>
+	                <dd>
+	                    <label class="lf-checkbox"><input name="brandLove" value="日韩品牌" type="checkbox"><dfn></dfn>日韩品牌</label>
+	                    <label class="lf-checkbox"><input name="brandLove" value="欧美品牌" type="checkbox"><dfn></dfn>欧美品牌</label>
+	                    <label class="lf-checkbox"><input name="brandLove" value="国产品牌" type="checkbox"><dfn></dfn>国产品牌</label>
+	                    <label class="lf-checkbox"><input name="brandLove" value="药妆品牌" type="checkbox"><dfn></dfn>药妆品牌</label>
+	                    <label class="lf-checkbox"><input name="brandLove" value="有机品牌" type="checkbox"><dfn></dfn>有机品牌</label>
+	                    <label class="lf-checkbox"><input name="brandLove" value="其他" type="checkbox"><dfn></dfn>其他</label>
+	                </dd>
+	            </dl>
+	            <dl class="clearfix">
+	                <dt class="itemwd">&nbsp;您最想解决的肌肤问题：</dt>
+	                <dt>&nbsp;</dt>
+	                <dd><label class="lf-checkbox"><input name="skinpro" value="干燥缺水" type="checkbox"><dfn></dfn>干燥缺水</label>
+	                    <label class="lf-checkbox"><input name="skinpro" value="肤色暗哑" type="checkbox"><dfn></dfn>肤色暗黄</label>
+	                    <label class="lf-checkbox"><input name="skinpro" value="眼袋" type="checkbox"><dfn></dfn>眼袋</label>
+	                    <label class="lf-checkbox"><input name="skinpro" value="黑眼圈" type="checkbox"><dfn></dfn>黑眼圈</label>
+	                    <label class="lf-checkbox"><input name="skinpro" value="有痘痘" type="checkbox"><dfn></dfn>有痘痘</label>
+	                    <label class="lf-checkbox"><input name="skinpro" value="皮肤松弛" type="checkbox"><dfn></dfn>皮肤松弛</label>
+	                    <label class="lf-checkbox"><input name="skinpro" value="细纹及皱纹" type="checkbox"><dfn></dfn>细纹及皱纹</label>
+	                    <label class="lf-checkbox"><input name="skinpro" value="有斑及痘痕" type="checkbox"><dfn></dfn>有斑及痘痕</label>
+	                </dd>
+	            </dl>
+	            <dl class="clearfix">
+	                <dt>&nbsp;</dt>
+	                <dd><input value="保存" class="pn-submit" type="button"></dd>
+	            </dl>
+	            </form>
+	        </div>
+	    </div>
+</block>
+<!-- foot -->
+
+<!-- <script>
+    function topCcountDown(t,c,_self,fn){
+        function nd(d){return isNaN(d) ? (d ? new Date(d).getTime() : new Date().getTime()) : d * 1000;}
+        var e = [nd(t[0]),nd(t[1]),nd(t[2])],_s = _self,b;
+        if(!$(_s).length){return false;}
+        if(t[0] && e[0] > e[1]){
+            $(_s).html(c[1]);
+            return false;
+        }else if(e[1] > e[2]){
+            fn && fn($(_s));
+            $(_s).html(c[2]);
+            return false;
+        }
+        (b=function(l){
+            var l=l||(e[2]-e[1])/100,k={
+                D:l/36000/24,H:l/36000%24,M:l/600%60,S:l/10%60,s:l%10
+            };
+            $(_s).html(c[0].replace(/D|H|M|S|s/g,function(m){
+                var n = parseInt(k[m]) + ''
+                if (n.length == 1 && m != 'D' && m != 's'){
+                    n = 0 + n;
+                }
+                return n
+            }));
+            setTimeout(function(){b(l-1)},100);
+        })()
+    }
+
+//topCcountDown([,,'2014/04/18 00:00:00'],['<b>D</b><b>H</b><b>M</b><b>S</b><b>s</b>','',''],'#top_countdown',function(){$('#advTop').remove()});
+
+</script>
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "http://hm.baidu.com/hm.js?69200f796b23f8fe027c39886c7298db";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<script type="text/javascript">
+    lafaso.ready(function () {
+        var $ = lafaso;
+        var name = {
+            'box': $.getId('pnArticle'),
+            'raEl': $.getElements('label.lf-radio', this.box),
+            'seEl': $.getElements('div.lf-select', this.box),
+            'chEl': $.getElements('label.lf-checkbox', this.box),
+            'suEl': $.getElements('input.pn-submit', this.box)[0],
+            'fmEl': $.getElements('form', this.box)[0],
+            'monthm': $.getId('mmonth'),
+            'daym': $.getId('mday'),
+            'monthb': $.getId('bmonth'),
+            'dayb': $.getId('bday'),
+            'marry' : $.getId('marry'),
+            'bady' : $.getId('bady'),
+            'msg' : ""
+        };
+        var ra = $.fn.likeRadio({ 'els': name.raEl }).init();
+        ra = null;
+        var ch = $.fn.likeCheckbox({ 'els': name.chEl }).init();
+        ch = null;
+        var fm = $.fn.checkForm(name.fmEl,
+            { 'regels': {
+                'height': {
+                    'maxLength': '6',
+                    'minLength': '1',
+                    'test': /^\d{1,6}\.?\d{1,2}$/,
+                    'sigin': '请您填写正确的身高'
+                },
+                'weight': {
+                    'maxLength': '6',
+                    'minLength': '1',
+                    'test': /^\d{1,6}\.?\d{1,2}$/,
+                    'sigin': '请您填写正确的体重'
+                }
+            },
+                'other': {
+                    'ok': 'border:1px solid #ccc',
+                    'sorry': 'border:1px solid #f52648'
+                },
+                'regbtn': name.suEl,
+                'fn': function () {
+                    (name.marry.value = name.monthm.value + '/' + name.daym.value, name.bady.value = name.monthb.value + '/' + name.dayb.value);
+                    name.fmEl.submit();
+                }
+            }).init().checkForm();
+        fm = null;
+        var marry = name.marry.value.split('/');
+        var canl1 = $.fn.calendar({'month': (name.monthm.dfn = marry[0], name.monthm), 'day': (name.daym.dfn = marry[1], name.daym), 'def': new Date() }).init();
+        canl1 = null;
+        var bady = name.bady.value.split('/');
+        var canl2 = $.fn.calendar({'month': (name.monthb.dfn = bady[0], name.monthb), 'day': (name.dayb.dfn = bady[1], name.dayb), 'def': new Date() }).init();
+        canl2 = null;
+        var se = $.fn.likeSelect({ 'els': name.seEl, 'readOnly': 1 }).init();
+        se = null;
+        name.msg != '' && $.sign.signBox(name.msg ,1);
+    });
+</script> -->

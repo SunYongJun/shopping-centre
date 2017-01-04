@@ -1,0 +1,48 @@
+<?php
+
+namespace Admin\Controller;
+use Think\Controller;
+
+class LoginController extends Controller{
+	public function index(){
+		$this -> display();
+	}
+	public function checklogin(){
+		if(IS_POST){
+			$admin_name=$_POST['admin_name'];
+			$admin_pwd=$_POST['admin_pwd'];
+			// $admin_level=I('post.admin_level');
+			$where = array(
+				'admin_name' => $admin_name,
+				'admin_pwd' => md5($admin_pwd),
+			);
+			// print_r($where);exit();
+			$admin = M('admin_user');
+			$r = $admin -> where($where) -> find();
+			// echo $admin -> getlastsql();
+			// print_r($r);exit();
+			if(!empty($r)){
+
+				$user = array(
+					'id' => $r['id'],
+					'admin_name' => $r['admin_name'],
+					'admin_level' => $r['admin_level'],
+				);
+				// session('admin',$admin_user);//把用户信息存到session
+				$_SESSION['admin']=$user;
+				//加入用户登录的时间
+				$_SESSION['admin']['logtime'] = time();
+				$this -> success('输入成功，正在跳转...',U('Index/index'));
+			}else{
+				$this->error('账户密码不正确！');
+			}
+
+
+		}
+
+	}
+	public function logout(){
+		session('admin',null);
+		$this -> redirect('Login/index');
+	}
+}

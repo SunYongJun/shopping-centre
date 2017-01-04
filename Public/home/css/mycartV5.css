@@ -1,0 +1,1165 @@
+﻿@charset "utf-8";
+html,body,div,span,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,address,big,cite,code,del,em,font,img,ins,small,strong,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend{margin:0;padding:0;}ol,ul{list-style:none;}:focus{outline:0;}a img{border:0;}img{vertical-align:middle;}table{empty-cells:show;}ins{text-decoration:none;}del{text-decoration:line-through;}em{font-style:normal;}.fl{float:left;}.fr{float:right;}.fn{float:none;}.al{text-align:left;}.ac{text-align:center;}.ar{text-align:right;}.clr{display:block;overflow:hidden;clear:both;height:0;line-height:0;font-size:0;}.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden;}.clearfix{display:inline-table;}/* Hides from IE-mac \*/*html .clearfix{height:1%;}.clearfix{display:block;}/* End hide from IE-mac */*+html .clearfix{min-height:1%;}.overflow{overflow:hidden;}.form label,.form input,.form select,.form textarea,.form button,.form .label{float:left;font-size:12px;}.block{display:block;overflow:hidden;cursor:pointer;}.hide{display:none;}.invisible{visibility:hidden;}.tab{overflow:hidden;zoom:1;}.tab li,.tab a,.tab-item{float:left;cursor:pointer;text-align:center;}.m,.mt,.mc,.mb{overflow:hidden;zoom:1;}.mt .extra{float:right;}.m{margin-bottom:10px;}.btn-img{cursor:pointer;margin:0;padding:0;border:0;text-align:center;}.btn-text{cursor:pointer;margin:0;padding:0;text-align:center;}body{font-family:"宋体",Arial,Lucida,Verdana,Helvetica,sans-serif;font-size:12px;color:#333;line-height:150%;background:#fff;}h1{font-size:20px;font-family:Arial,Lucida,Verdana,"宋体",Helvetica,sans-serif;}h2{font-size:14px;}h3{font-size:14px;}h4{font-size:12px;}h5{font-size:12px;}h6{font-size:12px;}a:link,a:visited{color:#333;text-decoration:none;}a:hover{color:#c00;text-decoration:underline;}a:active{color:#900;}.w{width:1000px; clear:both;margin:0 auto;zoom:1;}.mr5{ margin-right:5px; display:inline}.mr15{ margin-right:15px; display:inline}.pos01{ position:relative;}.pt10{ padding-top:10px;}.pt7{ padding-top:7px;}.pt5{ padding-top:5px;}.clear{ clear:both;}.mr10{ margin-right:10px; display:inline}.pa01{ padding:40px 0px 20px 0px}.pt30{ padding-top:30px;}.fs14{ font-size:14px}
+/*公用头*/
+#site_nav{height:27px; clear:both; background:url(http://images.lefeng.com/images/mycart/bg_01.jpg) repeat-x left top;}
+#site_nav_bd{margin:0px auto; height:27px; position:relative; z-index:5;}
+#site_nav_bd ul{ position:absolute; right:0px; top:0px; z-index:4}
+#site_nav_bd ul li{ float:left; height:21px; padding:3px 10px; background:url(http://images.lefeng.com/images/head/site_02.jpg) no-repeat right 9px; position:relative; line-height:21px;}
+#site_nav_bd ul li.nobg{ background:none; color:#ff5050; padding-right:0px;}
+#site_nav_bd ul li.nobg strong{ color:#ff5050; font-family:Arial,'Tahoma','simsun'}
+#site_nav_bd ul li a.item:link,#site_nav_bd ul li a.item:visited,#site_nav_bd ul li a.item:hover{ color:#9b9b9b; font-family:"宋体";}
+#site_nav_bd ul li.menu_item{ padding:0px 0px;}
+#site_nav_bd ul li em{ float:left;}
+#site_nav_bd ul li strong{ color:#b60671;}
+.site_nav_menu{ float:left; position:relative;}
+.site_nav_menu_hd:link,.site_nav_menu_hd:visited{ float:left; height:22px; line-height:20px; padding:0px 25px 0px 10px; font-family:'Tahoma','simsun';}
+.site_nav_menu_hd:hover{ float:left; line-height:20px; color:#ff5050; font-family:'Tahoma','simsun';}
+.site_nav_menu_hd b{ position:absolute; right:10px; top:10px; *top:9px; _top:10px; display:block;width:5px;height:3px; background:url(http://images.lefeng.com/images/head/head.gif) 0 -39px;overflow:hidden; -webkit-transition:-webkit-transform .2s ease-in;-moz-transition:-webkit-transform .2s ease-in;-o-transition:-webkit-transform .2s ease-in;transition:-webkit-transform .2s ease-in;}
+.site_nav_menu_hd b.on{position:absolute; right:10px; top:10px; *top:9px; _top:10px; display:block;width:5px;height:3px; background:url(http://images.lefeng.com/images/head/head.gif) 0 -39px;overflow:hidden;-moz-transform:rotate(180deg);-moz-transform-origin:50% 30%;-webkit-transform:rotate(180deg);-webkit-transform-origin:50% 30%;-o-transform:rotate(180deg);-o-transform-origin:50% 30%;transform:rotate(180deg);transform-origin:50% 30%;filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=2);}
+.site_nav_menu_bd{ margin:1px;}
+.site_nav_menu_bd p{ clear:both; display:none;}
+.site_nav_menu_bds{border:1px solid #b6458a; background:#fff2fa url(http://images.lefeng.com/images/head/site_03.jpg) repeat-x left 48px;;z-index:10001;}
+.site_nav_menu p a.nobg:link.site_nav_menu p a.nobg:visited.site_nav_menu p a.nobg:hover{ background:none;}
+.site_nav_menu_bds p{ clear:both; display:block;}
+.site_nav_menu p a:link,.site_nav_menu p a:visited{display:block; margin:0px 10px; line-height:27px; overflow:hidden; color:#5d5d5d; font-family:"宋体";}
+.site_nav_menu p a:hover{display:block; margin:0px 10px; line-height:27px; overflow:hidden; color:#ff5050; font-family:"宋体";}
+.site_nav_list a:link,.site_nav_list a:visited,.site_nav_list a:hover{color:#9b9b9b; font-family:"宋体"; line-height:24px; *line-height:23px; _line-height:24px;}
+.site_nav_lists a:link,.site_nav_lists a:visited,.site_nav_lists a:hover{color:#9b9b9b; font-family:"宋体"; line-height:24px; *line-height:23px; _line-height:24px;}
+#site_nav_menu_bd_list{ float:left; width:83px; position:absolute; right:0px; _right:-1px; top:24px; background-position:left 25px; white-space:nowrap}
+#site_nav_bd #site_nav_menu_bd_list{ top:25px;}
+#site_nav_menu_bd_list p a:link,#site_nav_menu_bd_list p a:visited{ display:block; clear:both; line-height:27px; overflow:hidden; color:#5d5d5d; font-family:"宋体"; padding:0px 10px;background:url(http://images.lefeng.com/images/head/site_03.jpg) repeat-x left bottom;}
+#site_nav_menu_bd_list p a:hover{ display:block; clear:both; line-height:27px; overflow:hidden; color:#ff5050; font-family:"宋体"; padding-right:10px;background:url(http://images.lefeng.com/images/head/site_03.jpg) repeat-x left bottom;}
+.site_nav_list{ float:left; position:relative; margin:1px; display:inline; margin-bottom:0px; z-index:102; height:24px; overflow:hidden;}
+.site_nav_lists{ float:left; position:relative; border:1px solid #b6458a; border-bottom:none; background:#fff2fa; height:25px; overflow:hidden; z-index:10002}
+#masthead{ clear:both; height:122px; position:relative;}
+#masthead ul{ position:absolute; right:0; top:61px; width:485px; height:29px;}
+#masthead ul li{ float:left; height:29px; line-height:29px; color:#333; font-size:14px; text-align:left; padding-left:20px;}
+#masthead ul li.step1{ width:142px; padding-left:30px;}
+#masthead ul li.step2{ width:138px;}
+#masthead ul li.step3{ width:135px;}
+#masthead ul#Order_cart_S1{ background:url(http://images.lefeng.com/images/mycart/n_mycart_01.jpg);}
+#masthead ul#Order_cart_S1 .step1,#masthead ul#Order_cart_S2 .step2,#masthead ul#Order_cart_S4 .step2,#masthead ul#Order_cart_S3 .step3{ color:#FFF;}
+#masthead ul#Order_cart_S2{ background:url(http://images.lefeng.com/images/mycart/mycart_39.jpg);}
+#masthead ul#Order_cart_S3{ background:url(http://images.lefeng.com/images/mycart/sub_01.jpg);}
+#masthead ul#Order_cart_S4{width:643px; background:url(http://images.lefeng.com/images/mycart/n_cart_05.jpg);}
+.lafaso_logo{ position:absolute; left:10px; top:21px; width:174px; height:88px; font-size:14px;}
+.lafaso_logo a{ display:block; position:absolute; left:0px; top:0px;}
+.mycart_tip{ height:40px; clear:both; position:relative;}
+.mycart_tip span{ float:left; width:163px; height:36px; background:url(http://images.lefeng.com/images/mycart/mycart_02.jpg);}
+.mycart_tip b{float:left;padding:15px 0 0 25px;color:#666;background:url(http://images.lefeng.com/images/mycart/cart_f.jpg) no-repeat 4px bottom;}
+.mycart_tip b a{margin:0 0 0 10px;font-weight:normal;color:#0086cc;}
+.mycart_d{padding:10px 0 0;}
+.mycart_d b{background:url(http://images.lefeng.com/images/mycart/cart_d.jpg) no-repeat 4px bottom;}
+/*   20121024add shop Tipmsg begin   */
+.mycart_d b em.inventoryTipMsg{ font-weight:normal;}
+/*   20121024add shop Tipmsg end   */
+.mycart_tip p{ float:left; padding-top:12px; padding-left:12px;}
+.mycart_tip p i{ float:left; font-style:normal;}
+.mycart_tip p em{ color:#ec0089;}
+.mycart_tip p a:link,.mycart_tip p a:visited{ float:left; display:block; padding:0px 10px 0px 0px; position:relative;}
+.mycart_tip p a:hover{ float:left; display:block; padding:0px 10px 0px 0px; position:relative;}
+.mycart_tip p a:link b,.mycart_tip p a:visited b,.mycart_tip p a:hover b{ position:absolute; width:5px; height:4px; overflow:hidden; right:0px; top:7px; background:url(http://images.lefeng.com/images/images/mycart_05.jpg); -webkit-transition:-webkit-transform .2s ease-in;-moz-transition:all .2s ease-in;-o-transition:-webkit-transform .2s ease-in;transition:-webkit-transform .2s ease-in;}
+.mycart_tip p a:hover b{ position:absolute; width:5px; height:4px; overflow:hidden; right:0px; top:7px; background:url(http://images.lefeng.com/images/images/mycart_05.jpg);-moz-transform:rotate(180deg);-webkit-transform:rotate(180deg); -o-transform:rotate(180deg);transform:rotate(180deg);filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=2);}
+.mycart_tip ul{ position:absolute; right:0px; top:5px; height:23px;}
+.mycart_tip ul li{ float:left; height:23px; margin-left:3px; display:inline; overflow:hidden;}
+.mycart_tip ul li.continueBuyBtn{ width:77px; background:url(http://images.lefeng.com/images/mycart/mycart_03.jpg);}
+.mycart_tip ul li.gotoOrderInfo{ width:64px; background:url(http://images.lefeng.com/images/mycart/mycart_04.jpg);}
+.mycart_tip ul li a:link,.mycart_tip ul li a:visited,.mycart_tip ul li a:hover{ display:block; width:77px; height:23px; text-decoration:none;}
+.mycart_tipLaywarp{display:none;margin:0px auto; width:412px; clear:both;}
+.mycart_tipLay{ float:left; width:412px; padding-bottom:10px;}
+.mycart_tipLayT{ float:left; width:412px; height:3px; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/mycart_06.png) !important;
+_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=noscale, src="http://images.lefeng.com/images/mycart/mycart_06.png"); _background:none;}
+.mycart_tipLayB{ float:left; width:412px; height:6px; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/mycart_07.png) !important;
+_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=noscale, src="http://images.lefeng.com/images/mycart/mycart_07.png"); _background:none;}
+.mycart_tipLayC{float:left; width:368px; background:#fffddd; text-align:center; border-left:1px solid #919191; border-right:1px solid #919191; color:#666; padding:0px 30px 0px 10px; position:relative;}
+.closeBtn{ position:absolute; right:10px; top:1px; width:17px; height:17px; overflow:hidden;}
+.closeBtn a:link,.closeBtn a:visited,.exchange .close span{ display:block; width:17px; height:17px; background:url(http://images.lefeng.com/images/mycart/mycart_08.jpg);}
+.closeBtn a:hover{ display:block; width:17px; height:17px; background:url(http://images.lefeng.com/images/mycart/mycart_17.jpg);}
+.mycart_tipLayC a:link,.mycart_tipLayC a:visited,.mycart_tipLayC a:hover{ color:#006699;}
+.mycart_tipLayC em{ color:#ff5050;}
+.mycart_tipLayCright{ position:absolute; right:0px; top:3px; background:#000; filter:alpha(opacity=20); opacity:0.2; width:2px; overflow:hidden;}
+.goodsQuan{ width:157px; position:absolute; left:-27px; bottom:30px; z-index:3; display:none;}
+.goodsQuanT{ width:157px; height:3px; overflow:hidden;background:url(http://images.lefeng.com/images/shopcart/cart_32.png) !important;
+_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=noscale, src="http://images.lefeng.com/images/shopcart/cart_32.png"); _background:none;}
+.goodsQuanB{ width:157px; height:10px; overflow:hidden;background:url(http://images.lefeng.com/images/shopcart/cart_33.png) !important;
+_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=noscale, src="http://images.lefeng.com/images/shopcart/cart_33.png"); _background:none;}
+.goodsQuancont{ padding:5px 10px; border-left:1px solid #919191; border-right:1px solid #919191; background:#fffddd; text-align:center}
+.goodsQuancont em.co2{ color:#CC3399}
+.mycart_listhead{ clear:both; height:30px; background:#b49682;}
+.mycart_listhead li{ float:left; height:30px; text-align:center; line-height:30px; color:#fff; border-right:1px solid #ffebeb;font-size:14px;}
+.mycart_listhead li.proName{ width:435px;}
+.mycart_listhead li.price{ width:102px;}
+.mycart_listhead li.jifen{ width:101px;}
+.mycart_listhead li.proNum{ width:102px;}
+.mycart_listhead li.total{ width:101px;}
+.mycart_listhead li.oper{ width:104px; border-right:none;}
+#procont{ float:left; width:950px; border-bottom:1px solid #B39880;}
+#procontUn{ float:left; width:950px; border-bottom:1px solid #B39880; padding:65px 0px; text-align:center; font-size:14px;}
+.mycart_listbody{position:relative;float:left; width:950px;padding:10px 0; background:#fff url(http://images.lefeng.com/images/mycart/mycart_09.jpg) repeat-x left bottom;}
+.exception{background:#fffdf1;}
+.mycart_listbodylast{ background:none;}
+.mycart_listbodylast ul{clear:both;}
+.mycart_listbody li{ float:left; text-align:center; color:#666; padding:5px; padding-top:25px;}
+.mycart_listbody li.proName{ width:426px; text-align:left; padding-top:5px;}
+.mycart_listbody li.proName a img{ width:50px; height:50px; border:1px solid #e8e7e7;}
+.mycart_listbody li.proName table{ float:left; width:335px; padding-left:18px; color:#999; height:54px;}
+.mycart_listbody li.proName table a.zeng:link,.mycart_listbody li.proName table a.zeng:visited,.mycart_listbody li.proName table a.zeng:hover{ color:#999}
+.mycart_listbody li.proName table em{ color:#963c00}
+.mycart_listbody li.proName table .t{display:inline-block;position:relative;top:3px;width:49px;height:17px;margin:0 0 0 7px;background:url(http://images.lefeng.com/images/mycart/n_ico_01.jpg) no-repeat;}
+.mycart_listbody li.proName table p{height:34px;clear:both;width:316px;margin:7px 0 0;line-height:34px;overflow:hidden;}
+.mycart_listbody li.proName table p a{float:left;}
+.mycart_listbody li.proName table p .txt{width:275px;color:#999;}
+.mycart_listbody li.proName table p img{width:29px;height:29px;margin:0 10px 10px 0;border:1px solid #e8e7e7;}
+.mycart_listbody li.proName .zp{padding:0;}
+.mycart_listbody li.proName .zp a{color:#ec0089;}
+.mycart_listbody li.proName s{ width:70px; height:70px; position:absolute; left:5px; top:5px; z-index:-1}
+.mycart_listbody li.proName s img{ width:68px; height:68px;border:1px solid #e8e7e7;}
+.mycart_listbody li.price{ width:93px;}
+.mycart_listbody li.jifen{ width:92px;}
+.mycart_listbody li.proNum{ width:93px;}
+.mycart_listbody li.proNum input{position:relative; top:2px; width:30px; height:17px; border:1px solid #919191; text-align:center; color:#666}
+.mycart_listbody li.proNum img{ cursor:pointer;}
+.mycart_listbody li.total{ width:92px; color:#963c00;font-weight:bold;font-family:\5FAE\8F6F\96C5\9ED1;}
+.mycart_listbody li.total b{font-family:Tahoma;}
+.mycart_listbody li.oper{ width:89px; padding-left:10px;}
+.total_info{ height:80px;clear:both; position:relative;}
+.total_infoCart{ position:absolute; left:0px; top:10px;}
+
+/*20111214 modify*/
+.total_infoCart li{ float:left; /*width:79px;*/ width:100px; height:23px; overflow:hidden; margin-left:5px; display:inline;}
+
+
+/*20111214 modify*/
+.total_infoCart li{ float:left;/* width:79px;*/ width:100px; height:23px; overflow:hidden; margin-left:5px; display:inline;}
+
+.total_infoCart li.rec{ width:94px; background:url(http://images.lefeng.com/images/mycart/mycart_12.jpg); position:relative;}
+.total_infoCart li.cart1{ background:url(http://images.lefeng.com/images/mycart/mycart_13.jpg);}
+.total_infoCart li.cart2{ background:url(http://images.lefeng.com/images/mycart/mycart_14.jpg);}
+.total_infoCart a:link,.total_infoCart a:visited,.total_infoCart a:hover{ display:block; width:94px; height:23px; text-decoration:none}
+.total_infoSettlement{ position:absolute; right:0px; top:10px; font-size:14px;}
+.total_infoSettlement em{ color:#ff5050;}
+.total_infoSettlement strong{ font-size:18px; color:#ff5050;}
+.total_infoSetBtn{ position:absolute; right:0px; top:30px; clear:both;}
+.total_infoSetBtn a:link,.total_infoSetBtn a:visited,.total_infoSetBtn a:hover{ display:block; height:32px;}
+
+/*20111214 modify bg none width:112px;*/
+.total_infoSetBtn span{ float:left; width:112px; height:32px; /*background:url(http://images.lefeng.com/images/mycart/mycart_15.jpg) no-repeat;*/ background:none; margin-right:10px;}
+.total_infoSetBtn span.right{ width:98px; margin-right:0px; background:url(http://images.lefeng.com/images/mycart/mycart_16.jpg) no-repeat; cursor:pointer;}
+
+/*20111214 modify bg none width:112px;*/
+.total_infoSetBtn span{ float:left; width:112px; height:32px;/* background:url(http://images.lefeng.com/images/mycart/mycart_15.jpg) no-repeat;*/ background:none; margin-right:10px;}
+.total_infoSetBtn span.right{ width:98px; margin-right:0px; background:url(http://images.lefeng.com/images/mycart/mycart_16.jpg) no-repeat; cursor:pointer;}
+.xj-tip{position:absolute;top:34px;right:240px;padding:5px 10px;background:#FFFDF1;border:1px solid #FFD8BE;font-size:12px;color:#666;}
+.xj-tip em{display:block;position:absolute;top:-6px;right:30px;width:12px;height:7px;background:url(http://images.lefeng.com/images/mycart/ico_2.png) no-repeat;font-size:1px;}
+.jjghead{ float:left; width:950px; overflow:hidden; clear:both; background:#ddd; height:24px; padding-top:6px; position:relative; margin-top:60px;}
+.jjghead li{ float:left; height:24px; padding:0px 6px; color:#333; background:url(http://images.lefeng.com/images/mycart/mycart_43.jpg) no-repeat right top;}
+.jjghead li span{float:left; height:24px;}
+.jjghead li span a:link,.jjghead li span a:visited{ float:left; height:24px; display:block; padding:0px 15px; line-height:24px; text-decoration:none;}
+.jjghead li span a:hover{ float:left; height:24px; display:block; padding:0px 15px; line-height:24px; text-decoration:none; color:#00669D}
+.jjghead li.on{}
+.jjghead li.on span{ background:#fff url(http://images.lefeng.com/images/mycart/mycart_41.jpg) no-repeat left top;}
+.jjghead li.on a:link,.jjghead li.on a:visited,.jjghead li.on a:hover{ background:url(http://images.lefeng.com/images/mycart/mycart_42.jpg) no-repeat right top; color:#cc3399;}
+
+.bg{background:#666; filter:alpha(opacity=60);opacity:0.6;width:100%;position:absolute;left:0px;top:0px; z-index:10;display:none;}
+#bgs{ z-index:14;}
+.Layer{position:absolute; width:694px; left:55px; top:55px; z-index:11;}
+.Layer .mycart_login{ display:block;}
+.Layer .mycart_logistics{ display:none;}
+.Layer .mycart_tempRec{ display:none;}
+.Layers1{position:absolute; width:694px; left:55px; top:55px; z-index:11;}
+.Layers1 #Login_iframe{ display:none;}
+.Layers1 .mycart_logistics{ display:block;}
+.Layers1 .mycart_tempRec{ display:none;}
+.Layers2{position:absolute; width:694px; left:55px; top:55px; z-index:11;}
+.Layers2 #Login_iframe{ display:none;}
+.Layers2 .mycart_logistics{ display:none;}
+.Layers2 .mycart_tempRec{ display:block;}
+#selectItem{ display:none;}
+.layerT{ float:left; width:694px; height:5px; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/mycart_19.png) !important;
+_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=noscale, src="http://images.lefeng.com/images/mycart/mycart_19.png"); _background:none;}
+.layerB{ float:left; width:694px; height:7px; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/mycart_20.png) !important;
+_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=noscale, src="http://images.lefeng.com/images/mycart/mycart_20.png"); _background:none;}
+.layerCside{ position:absolute; width:2px; right:1px; top:5px; background:#000; filter:alpha(opacity=20); opacity:0.2; overflow:hidden;}
+.layerC{ float:left; width:689px; border-left:1px solid #d557ab; border-right:1px solid #d557ab; background:#FFF}
+.layerC b{ top:5px}
+.mycart_login{ width:626px; padding-top:20px; clear:both; margin:0px auto; padding-bottom:20px;}
+.mycart_loginInfo{ height:210px; background:url(http://images.lefeng.com/images/images/mycart_21.jpg) repeat-x left bottom;}
+.mycart_loginbox{ float:left; width:331px; background:url(http://images.lefeng.com/images/images/mycart_22.jpg) repeat-y right top; height:185px;}
+.mycart_loginbox h2{ padding-bottom:15px;}
+.mycart_loginbox p{ clear:both; height:28px; padding-top:15px;}
+.mycart_loginbox p.btn{padding-top:25px;}
+.mycart_loginbox p span{ float:left; width:50px; height:28px; line-height:28px;}
+.mycart_input{ float:left; width:180px; height:26px; border:1px solid #ccc; color:#ccc;}
+.mycart_inputbtn{ float:left; width:69px; height:24px; border:none; background:url(http://images.lefeng.com/images/mycart/mycart_23.jpg); cursor:pointer;}
+.mycart_inputbtnlink:link,.mycart_inputbtnlink:visited,.mycart_inputbtnlink:hover{ color:#00669d; margin-top:5px; margin-left:10px; display:inline}
+.mycart_regbox{ float:left; width:265px; padding-left:30px;}
+.mycart_regbox p{ color:#999; line-height:25px; padding:20px 0px 60px 0px;}
+.mycart_regbox a:link,.mycart_regbox a:visited,.mycart_regbox a:hover{ width:101px; height:24px; display:block; background:url(http://images.lefeng.com/images/mycart/mycart_24.jpg);}
+.mycart_hz{ clear:both; /*padding-top:15px; */color:#999;}
+.mycart_hz a:link,.mycart_hz a:visited,.mycart_hz a:hover{ float:left; margin-top:4px; height:15px; line-height:15px; color:#005aa0; border-right:1px solid #dbdbdb; padding-right:10px;}
+.mycart_hz span{ float:left; height:23px; position:relative; padding-left:25px; padding-right:5px;}
+.mycart_hz span s{ position:absolute; left:0px; top:0px; width:23px; height:23px;}
+.mycart_hz span.sina s{ background:url(http://images.lefeng.com/images/mycart/icon_cooperation.jpg) no-repeat -115px 0px}
+.mycart_hz span.kaixin s{ background:url(http://images.lefeng.com/images/mycart/icon_cooperation.jpg) no-repeat -92px 0px}
+.mycart_hz span.alipay s{ background:url(http://images.lefeng.com/images/mycart/icon_cooperation.jpg) no-repeat -23px 0px}
+.mycart_hz span.qq s{ background:url(http://images.lefeng.com/images/mycart/icon_cooperation.jpg) no-repeat 0px 0px}
+.mycart_logistics{ width:648px; padding-top:20px; clear:both; margin:0px auto; padding-bottom:20px;}
+.mycart_logistics .mycart_listhead li.proName{ width:374px;}
+.mycart_logistics .mycart_listhead li.price{ width:134px;}
+.mycart_logistics .mycart_listhead li.jifen{ width:137px;}
+.mycart_logisticsTobox{ clear:both; height:20px; color:#666; line-height:20px; padding-top:25px; padding-bottom:15px;}
+.mycart_logisticsTobox select{ float:left; width:93px; margin-left:5px; display:inline}
+.mycart_logistics tbody tr{background:url(http://images.lefeng.com/images/mycart/mycart_21.jpg) repeat-x left bottom;}
+.mycart_logistics td{ height:41px; background:url(http://images.lefeng.com/images/mycart/mycart_22.jpg) repeat-y right top; text-align:center}
+.mycart_logistics td em{ color:#ff5050}
+.mycart_logistics td.nobg{ background:none;}
+.mycart_logisticsSign{ clear:both; padding:10px; padding-bottom:0px;}
+.mycart_tempRec{ width:648px; padding-top:20px; clear:both; margin:0px auto; padding-bottom:20px;}
+.mycart_tempRec a.modify{ position:absolute; right:26px; top:0px; font-size:12px; font-weight:normal;}
+.mycart_tempRec h2{ clear:both; height:45px; padding-bottom:20px; padding-left:55px; position:relative;background:url(http://images.lefeng.com/images/mycart/mycart_21.jpg) repeat-x left bottom;}
+.mycart_tempRec h2 span{ display:block; width:45px; height:45px; position:absolute; left:0px; top:0px; background:url(http://images.lefeng.com/images/mycart/mycart_25.jpg);}
+.mycart_tempRec h2 em{ font-size:12px; font-weight:normal; padding-top:5px; display:block}
+.mycart_tempRec table{background:url(http://images.lefeng.com/images/mycart/mycart_21.jpg) repeat-x left bottom;}
+.mycart_tempRec td{ text-align:center; padding:5px 0px;}
+.mycart_tempRec td a:link,.mycart_tempRec td a:visited,.mycart_tempRec td a:hover{ color:#00669d}
+.favorites{width:29px; position:fixed; bottom:0px; z-index:9;}
+#floatin{ float:left; width:0px; overflow:hidden; position:absolute; right:29px; _right:38px;}
+.favorites .layerT{ float:left; width:950px; height:4px; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/mycart_26.png) !important;
+_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=noscale, src="http://images.lefeng.com/images/mycart/mycart_26.png"); _background:none;}
+.favorites .layerB{ float:left; width:950px; height:4px; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/mycart_27.png) !important;
+_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=noscale, src="http://images.lefeng.com/images/mycart/mycart_27.png"); _background:none;}
+.favorites .layerC{ width:948px;}
+.favorites .layerC b{ display:none;}
+.favorites .layerC h2{ padding-left:25px; padding-top:25px;}
+.favoritesbox{ float:left; width:878px; clear:both; padding:35px; padding-bottom:0px; overflow:hidden;}
+.favoritesbox span.lefts{ float:left; width:16px; height:73px; margin-top:35px; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/mycart_29.jpg); cursor:pointer;}
+.favoritesbox span.rights{ float:left; width:16px; height:73px; margin-top:35px; overflow:hidden; cursor:pointer; background:url(http://images.lefeng.com/images/mycart/mycart_28.jpg);}
+.favoritesboxin{ float:left; width:840px; overflow:hidden; position:relative}
+.favoritesboxins{ float:left; width:84000px;}
+.favoritesboxins li{ float:left; width:210px; height:234px; text-align:center}
+.favoritesboxins li a img{ width:128px; height:128px; border:1px solid #ebeaeb;}
+.favoritesboxins li p.nr{ height:30px; padding-top:15px; line-height:15px; color:#999; width:130px; overflow:hidden; margin:0px auto;}
+.favoritesboxins li em{ color:#cc3399;}
+.favoritesboxins li a.btn:link,.favoritesboxins li a.btn:visited,.favoritesboxins li a.btn:hover{ display:block; width:94px; height:23px; background:url(http://images.lefeng.com/images/mycart/mycart_18.jpg); margin:0px auto;}
+.favSignbox{ position:relative; clear:both; height:23px;}
+.favSignboxs1{ position:relative; clear:both; height:23px;}
+.favSignboxs1 .favSignlayer{ display:block;}
+.favSignboxs1 .favSignlayerchoose{ display:none;}
+.favSignboxs2{ position:relative; clear:both; height:23px;}
+.favSignboxs2 .favSignlayer{ display:none;}
+.favSignboxs2 .favSignlayerchoose{ display:block;}
+.favSignlayer{ width:165px; position:absolute; bottom:23px; left:20px; display:none;}
+.favSignlayerT{ float:left; width:165px; height:3px; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/mycart_30.jpg);}
+.favSignlayerB{ float:left; width:165px; height:8px; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/mycart_31.jpg);}
+.favSignlayerC{ float:left; width:163px; padding-top:20px; padding-bottom:7px; border-left:1px solid #cc3399; border-right:1px solid #cc3399; background:#fff2fb;}
+.favSignlayerC s{ float:left; width:24px; height:26px; background:url(http://images.lefeng.com/images/mycart/mycart_32.jpg); margin-left:17px; display:inline}
+.favSignlayerC span{ float:left; margin-left:7px; display:inline}
+.favSignlayerC span a:link,.favSignlayerC span a:visited,.favSignlayerC span a:hover{ color:#999}
+.favSignlayerchoose{ width:225px; position:absolute; bottom:23px; left:0px; display:none;}
+.favSignlayerchooseT{ float:left; width:225px; height:3px; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/mycart_33.jpg);}
+.favSignlayerchooseB{ float:left; width:225px; height:3px; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/mycart_34.jpg);}
+.favSignlayerchooseC{ float:left; width:223px; padding-top:20px; padding-bottom:7px; border-left:1px solid #cc3399; border-right:1px solid #cc3399; background:#fff2fb;}
+.favSignlayerchooseC h3{ text-align:left; padding-left:20px; font-size:12px; padding-bottom:10px;}
+.favSignlayerchooseC select{ width:186px;}
+.favSignlayerchooseC p{ clear:both; padding-top:10px; padding-left:62px;}
+.favSignlayerchooseC p span.left{ float:left; width:50px; margin-right:10px; height:23px; background:url(http://images.lefeng.com/images/mycart/mycart_44.jpg); margin-top:0px;}
+.favSignlayerchooseC p span.right{ float:left; width:50px; height:23px; background:url(http://images.lefeng.com/images/mycart/mycart_45.jpg); margin-top:0px;}
+.favSignlayerchooseC p span a:link,.favSignlayerchooseC p span a:visited,.favSignlayerchooseC p span a:hover{ display:block; width:50px; height:23px;}
+.favNumbox{ clear:both; height:19px; margin:0px auto; width:120px; padding:15px 0px;}
+.favNumbox li{ float:left; width:19px; height:19px; text-align:center; line-height:19px; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/mycart_35.jpg); color:#999; margin-left:5px; display:inline; cursor:pointer}
+.favNumbox li.on{ background:url(http://images.lefeng.com/images/mycart/mycart_36.jpg); color:#FFF;}
+.favoritebtn{ position:absolute; left:0px; _left:-10px; top:130px; width:29px; height:92px; cursor:pointer; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/mycart_38.png) !important;
+_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=noscale, src="http://images.lefeng.com/images/mycart/mycart_38.png"); _background:none;}
+.favoritebtns{ display:none; position:absolute; left:0px; _left:-10px; top:130px; width:29px; height:92px; cursor:pointer; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/mycart_37.png) !important;
+_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=noscale, src="http://images.lefeng.com/images/mycart/mycart_37.png"); _background:none;}
+a.modify:link,a.modify:visited,a.modify:hover{ color:#0086cc;}
+.radio{ float:left; display:block; margin-top:0px; *margin-top:0px; _margin-top:0px;}
+.radioletter{ float:left; margin-top:0px; *margin-top:1px; _margin-top:2px;}
+
+.jjgbox{ float:left; width:948px; border:1px solid #ddd; border-top:none;}
+.jjgbox div.favoritesboxins{ width:948px;}
+.jjgbox div.favSignbox{ float:left; padding-left:10px; padding-top:10px; width:165px; clear:none; text-align:left}
+.jjgbox div.favSignboxs1{ float:left; padding-left:10px; padding-top:10px; width:165px; clear:none; text-align:left}
+.jjgbox div.favSignboxs2{ float:left; padding-left:10px; padding-top:10px; width:165px; clear:none; text-align:left}
+.jjgbox div.favSignlayerchooseC{ text-align:center}
+.jjgbox div.favSignlayerchooseC p{ padding-left:62px; padding-top:10px;}
+.jjgbox div.favSignlayer{ left:0px;}
+.jjgbox ul{ display:none;}
+.jjgbox li{ float:left; text-align:left; width:306px; height:110px; padding:20px 0px 20px 10px;}
+.jjgbox li a:link img,.jjgbox li a:visited img{ width:108px; height:108px; border:1px solid #e3e3e3;}
+.jjgbox li a:hover img{ width:108px; height:108px; border:1px solid #cc3399;}
+.jjgbox li p{ float:left; width:175px; padding-left:10px; padding-top:5px;}
+.jjgbox li p span{ float:left; width:175px; line-height:18px; overflow:hidden; color:#999}
+.jjgbox li p span em{ color:#cc3399; display:inline}
+.jjgbox li p span.top{ height:35px;}
+.jjgbox li p span.btn{ width:94px; height:23px; padding-top:10px;}
+.jjgbox li p span.btn a:link,.jjgbox li p span.btn a:visited,.jjgbox li p span.btn a:hover{ display:block; width:94px; height:23px; background:url(http://images.lefeng.com/images/mycart/mycart_18.jpg);}
+/*订单确认*/
+.order_tip{ width:227px; clear:both; height:39px; background:url(http://images.lefeng.com/images/mycart/mycart_40.jpg);}
+.order_warp{ width:1000px; clear:both; padding-top:10px;overflow:hidden;}
+.order_warpRoundT{ height:3px; clear:both; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/order_02.jpg);}
+.order_warpRoundT span{ float:left; width:3px; height:3px; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/order_01.jpg);}
+.order_warpRoundT span.right{ float:right; background:url(http://images.lefeng.com/images/mycart/order_03.jpg);}
+.order_warpRoundB{ height:3px; clear:both; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/order_04.jpg);}
+.order_warpRoundB span{ float:left; width:3px; height:3px; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/order_05.jpg);}
+.order_warpRoundB span.right{ float:right; background:url(http://images.lefeng.com/images/mycart/order_06.jpg);}
+.order_address{ width:945px; position:absolute; left:-124px; top:-12px; z-index:15; display:none;overflow:hidden;}
+#shouhuo{left:-93px;}
+.order_addressT{ float:left; width:947px; height:3px; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/order_15.png) !important;
+_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=noscale, src="http://images.lefeng.com/images/mycart/order_15.png"); _background:none;}
+.order_addressB{ float:left; width:947px; height:6px; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/order_16.png) !important;
+_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=noscale, src="http://images.lefeng.com/images/mycart/order_16.png"); _background:none;}
+.order_addressC{ float:left; width:943px; border-left:1px solid #b49682; border-right:1px solid #b49682; background:#FFF; padding-bottom:30px;}
+.order_addressC .favNumbox{ padding:0px; padding-bottom:10px;}
+.order_addressC b{ top:5px;}
+.order_addressC h2{ padding:9px 0 0 20px; clear:both; color:#333;}
+.order_addressCside{ position:absolute; right:0px; top:3px; background:#000; filter:alpha(opacity=20); opacity:0.2; width:2px; overflow:hidden;}
+.order_addresslistbox{ float:left; width:908px; padding:0px 16px 20px 16px; clear:both; height:145px; overflow:hidden;}
+.order_addresslistbox span.lefts{ float:left; width:16px; height:73px; margin-top:35px; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/mycart_29.jpg); cursor:pointer;}
+.order_addresslistbox span.rights{float:left; width:16px; height:73px; margin-top:35px; overflow:hidden;  background:url(http://images.lefeng.com/images/mycart/mycart_28.jpg); cursor:pointer;}
+.order_addresslistwarp{ float:left; width:876px; height:145px; overflow:hidden;}
+.order_addresslistwarpin{ float:left; width:876000px; height:145px;}
+.order_addresslistwarpin li{ float:left; padding:0px 17px; width:258px; height:145px;}
+.order_addresslistwarpin li p.top{ float:left; width:258px; height:3px; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/order_17.jpg);}
+.order_addresslistwarpin li p.bottom{ float:left; width:258px; height:3px; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/order_18.jpg);}
+.order_addresslistwarpin li p.center{ float:left; width:228px; background:#efeeee; height:129px; padding:5px 15px;}
+.order_addresslistwarpin li p.center strong{display:block;}
+.order_addresslistwarpin li p.center b{display:block; height:36px; line-height:18px; overflow:hidden; font-weight:normal;}
+.order_addresslistwarpin li span{ float:left; clear:both; width:228px; height:23px; background:none; margin-top:0px; padding-top:5px;}
+.order_addresslistwarpin li span em{ float:left; width:50px; height:23px; margin-right:5px; overflow:hidden;}
+.order_addresslistwarpin li span em.peisong{ width:100px; background:url(http://images.lefeng.com/images/mycart/order_19.jpg);}
+.order_addresslistwarpin li span em.xiugai{background:url(http://images.lefeng.com/images/mycart/order_20.jpg);}
+.order_addresslistwarpin li span em.del{background:url(http://images.lefeng.com/images/mycart/order_21.jpg);}
+.order_addresslistwarpin li span em a:link,.order_addresslistwarpin li span em a:visited,.order_addresslistwarpin li span em a:hover{ display:block; width:100px; height:23px;}
+/*.order_check{ float:left; clear:both; width:780px; padding-left:100px; overflow:hidden;} w2.7*/
+.order_check{ float:left; clear:both; width:780px; padding-left:30px; overflow:hidden;}
+.order_checkin{ float:left; clear:both; width:780px}
+.order_check p{ float:left; clear:both; width:780px; padding-top:10px; _margin-right:-3px;}
+.order_check p span.left{ float:left; width:85px; padding-top:5px; text-align:right}
+.order_check p span.left em{ color:#cc3399}
+.order_check p span.right{ float:left; width:685px; padding-left:10px;}
+.order_check p span.right s{ float:left; padding:5px; padding-bottom:0px; text-decoration:none; color:#333;}
+.order_check p span.right em{float:left; color:#999; padding-left:10px; padding-top:5px;}
+.order_check p span.right select{ float:left; margin-top:3px; height:20px; margin-right:5px; width:98px; display:inline}
+.order_check p span.right textarea{ float:left; width:303px; height:40px; border:1px solid #ccc; font-size:12px; color:#999}
+.order_check p span.right i{ float:left; width:64px; height:23px; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/order_22.jpg); margin-right:5px; display:inline;}
+.order_check p span.right input.peisong{ float:left; height:23px; border:none; margin-right:5px; cursor:pointer; width:100px; background:url(http://images.lefeng.com/images/mycart/order_19.jpg);}
+.order_check p span.right i a:link,.order_check p span.right i a:visited,.order_check p span.right i a:hover{ display:block; width:100px; height:23px;}
+p.error {
+    clear: both;
+    color: #ff5050;
+    line-height: 20px;
+    overflow: hidden;
+    padding-top: 5px;
+}
+
+.order_check p.error{display:none; padding-left:95px; width:685px;color:#ff0000}
+.order_checktext1{ float:left; width:201px; height:20px; padding-top:4px; font-size:12px; border:1px solid #ccc;}
+.payment{ float:left; width:908px; margin-left:18px; display:inline;}
+.paymentbox{ float:left; width:866px; clear:both; padding:10px 0px; padding-left:38px; background:url(http://images.lefeng.com/images/mycart/mycart_09.jpg) repeat-x left bottom; border:2px solid #fff;}
+.paymentboxnobg{ background:none;}
+.paymentboxs{ border:2px solid #cf0000;}
+.paymentbox .mycart_tip{ clear:none; height:auto;}
+.paymentbox span.left{ float:left; width:80px; color:#999; text-align:right}
+.paymentboxRight{ float:left; width:740px; padding-left:10px; position:relative;}
+.paymentboxRight em{ color:#cc3399;}
+.paymentboxRight p{ position:absolute; left:-20px; top:0px; height:21px; padding-left:30px; border:1px solid #B69A85; background:#E3DAD5; padding-top:8px; width:110px; _z-index:-1; border-left:none; margin-left:4px; display:inline; display:none;}
+.paymentboxRight p span{ width:4px; height:31px; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/order_23.jpg); position:absolute; left:0px; top:-1px;}
+.paymentboxRight p.paymentside0{ top:0px; display:block;}
+.paymentboxRight p.paymentside1{ top:32px; *top:38px;display:block;}
+.paymentboxRight p.paymentside2{ top:64px; *top:70px; display:block;}
+.paymentboxRight P.paymentside3 { top: 100px; *top: 105px;display:block;}
+
+.paymentboxRight label{ float:left; clear:both; padding:7px 0px;}
+.paymentboxRight label.inst{ position:relative; z-index:1; width:120px;}
+.paymentboxRight em.inst{ float:left; color:#999; white-space:nowrap; width:470px; margin-left:10px; margin-top:7px; display:inline}
+.paymentLayer{ position:absolute; left:112px; top:0px; width:686px; z-index:101; display:none;}
+.paymentLayer0{ position:absolute; left:112px; top:0px; width:686px; z-index:11;}
+.paymentLayer0 #bankbox{ display:block;}
+.paymentLayer0 #paybox{ display:none}
+.paymentLayer0 #tipbox{ display:none;}
+.paymentLayer0 #namebox{ display:none;}
+.paymentLayer1{ position:absolute; left:120px; top:32px; *top:38px; width:686px; z-index:11;}
+.paymentLayer1 .paymentLayerwarp{line-height:22px; color:#999;}
+.paymentLayer1 .paymentLayerwarp h2{ padding:10px 0px; color:#333}
+.paymentLayer1 #bankbox{ display:none;}
+.paymentLayer1 #paybox{ display:block}
+.paymentLayer1 #tipbox{ display:none;}
+.paymentLayer1 #namebox{ display:none;}
+.paymentLayer2{ position:absolute; left:112px; top:64px; *top:70px;  width:686px; z-index:11;}
+.paymentLayer2 .paymentLayerwarp{line-height:22px;}
+.paymentLayer2 .paymentLayerwarp em{ color:#707070;}
+.paymentLayer2 .paymentLayerwarp b{ color:#cc0000; font-weight:normal;}
+.paymentLayer2 #bankbox{ display:none;}
+.paymentLayer2 #paybox{ display:none}
+.paymentLayer2 #tipbox{ display:block;}
+.paymentLayer2 #namebox{ display:none;}
+.paymentLayer3 {position:absolute;left:112px;top:100px;*top: 105px;width:686px;z-index:11;}
+.paymentLayer3 .paymentLayerwarp {LINE-HEIGHT: 22px}
+.paymentLayer3 .paymentLayerwarp EM {COLOR: #707070}
+.paymentLayer3 .paymentLayerwarp B {COLOR: #cc0000; FONT-WEIGHT: normal}
+.paymentLayer3 #bankbox{ display:none;}
+.paymentLayer3 #paybox{ display:none;}
+.paymentLayer3 #tipbox{ display:none;}
+.paymentLayer3 #namebox{ display:block;}
+.cashWarp{height: 25px}
+.cashWarp label {clear: none}
+.paymentLayerround{ clear:both; height:4px; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/order_27.jpg);}
+.paymentLayerround span{ float:left; width:4px; height:4px; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/order_26.jpg);}
+.paymentLayerround span.right{ float:right; background:url(http://images.lefeng.com/images/mycart/order_28.jpg);}
+.paymentLayerin{ float:left; width:646px; clear:both;}
+.paymentLayerin img{ float:left;border:1px solid #c0bcbc; margin-left:5px;}
+.paymentLayertext{ float:left; width:311px; height:20px; padding-top:4px; border:1px solid #cecece;}
+.paymentbtn{ float:left; width:137px; height:23px; display:block; background:url(http://images.lefeng.com/images/mycart/order_29.jpg); border:none; cursor:pointer}
+.paymentcanelbtn{ float:left; width:50px; height:23px; display:block; background:url(http://images.lefeng.com/images/mycart/mycart_45.jpg); margin-left:5px; display:inline}
+.paymentbank{ float:left; width:646px; padding-top:7px; clear:both;}
+.paymentbank a:link,.paymentbank a:visited,.paymentbank a:hover{ float:left; border-right:1px solid #333; white-space:nowrap; height:15px; overflow:hidden; line-height:15px; color:#333; padding:0px 5px; margin-top:5px;}
+.order_box{float:left; width:998px; clear:both;  padding:0 0 20px;border-left:1px solid #dfdfdf; border-right:1px solid #dfdfdf;_overflow:hidden;}
+.order_info{display:inline;float:left; width:908px;margin:0 20px; padding:20px 0px; clear:both; background:url(http://images.lefeng.com/images/mycart/mycart_09.jpg) repeat-x left bottom;}
+.order_title{padding:10px 0;}
+.order_info h3{ float:left; width:auto; text-align:right}
+.order_title h3{text-align:left;}
+.order_title h3 span{font-size:12px;color:#666;font-weight:normal;}
+.order_title h3 span a{color:#0086cc;}
+.order_title .order_infoRight{width:197px;}
+.order_infoRight{ float:left; width:793px; padding-left:10px; position:relative; color:#707070}
+.order_infoRight p.info{ clear:both; color:#707070; line-height:22px; padding-top:10px;}
+.order_infoRightem{ padding-left:24px; color:#cc3399;}
+.order_infoRight p.SplitOrder{ clear:both; color:#ff5050;padding:10px 0;}
+.order_infoRight p.needfp{ height:55px;}
+.order_infoRight p.needfp span{ display:block; padding-top:5px;}
+.order_infoRight p.needfp input{ width:80px; height:20px; padding-top:4px; border:1px solid #ccc;}
+.alt{position:relative;top:-1px;left:-1px;width:908px;margin:0;padding:20px;background:#fffdf1;border:1px solid #ffd8bf;z-index:10;}
+.prolist{ clear:both; color:#666; border-bottom:1px solid #ccc; margin:0 20px 25px;}
+.prolist td{ text-align:center; padding:8px 0px;}
+.prolist thead{ background:#ECDAD1;color:#000;}
+.prolist tbody tr{ background:url(http://images.lefeng.com/images/mycart/mycart_21.jpg) repeat-x left bottom;}
+.prolist tbody tr.last{ background:none;}
+.prolist tbody td.name{ text-align:left; padding-left:20px;}
+.prolist tbody td.name em{margin:0 3px 0 0;padding:1px;color:#fff;background:#f98904;font-weight:normal;line-height:14px;}
+.prolist tbody td.name a.person:link,.prolist tbody td.name a.person:visited,.prolist tbody td.name a.person:hover{ color:#999}
+.prolist tbody td.name a,.prolist tbody td.name a:hover{color:#0086cc;}
+.confirmBtnwarp{position:relative;clear:both;text-align:right;margin:0 20px;}
+.confirmBtnbox{ height:23px; padding-left:510px; clear:both; position:relative; z-index:15}
+.confirmBtnbox span{line-height:23px;}
+.cart_submit{margin:20px 0;padding:10px 0 0;border-top:1px solid #666;}
+.cart_submit span{line-height:30px;margin:0 30px 0 0;color:#666;}
+.cart_submit span b{color:#963C00;}
+.confirmBtnbox .modify{ position:absolute; left:0px; top:15px;}
+.confirmBtnbox ul{ position:absolute; right:0px; top:0px;}
+.confirmBtnbox li{ float:left; width:79px; margin-left:5px; display:inline; height:23px; overflow:hidden;}
+.confirmBtnbox li.edm{ width:125px; background:url(http://images.lefeng.com/images/mycart/order_07.jpg);}
+.confirmBtnbox li.ty{ background:url(http://images.lefeng.com/images/mycart/order_08.jpg);}
+.confirmBtnbox li.dj{ background:url(http://images.lefeng.com/images/mycart/order_09.jpg);}
+/*.confirmBtnbox li.dh{ width:116px; background:url(http://images.lefeng.com/images/mycart/n_cart_06.jpg);}*/
+.confirmBtnbox li.dh{ width:102px; background:url(http://images.lefeng.com/images/mycart/order_10.jpg);}
+
+.confirmBtnbox li a:link,.confirmBtnbox li a:visited,.confirmBtnbox li a:hover{ display:block; width:125px; height:23px;}
+a.confirmBtn:link,a.confirmBtn:visited,a.confirmBtn:hover{ display:block; width:138px; height:39px; background:url(http://images.lefeng.com/images/mycart/order_11.jpg) no-repeat; margin-top:5px;}
+a.cart-next:link,a.cart-next:hover,a.cart-next:visited{background:url(http://images.lefeng.com/images/mycart/cart_next.jpg) no-repeat;}
+.confirmBtnwarp p.confirminfo{ padding-top:10px; line-height:25px;}
+.confirmBtnwarp p.confirminfo em{ color:#963c00;}
+.confirmBtnwarp p.confirminfo strong{ font-size:16px;}
+#confirmLayer{ width:454px; position:absolute; right:0px; bottom:20px; z-index:22; display:none;}
+.confirmLayers1 div#confirmEDM{ display:block;}
+.confirmLayers1 div#confirmTY{ display:none;}
+.confirmLayers1 div#confirmDJ{ display:none;}
+.confirmLayers1 div#confirmDH{ display:none;}
+.confirmLayers2 div#confirmEDM{ display:none;}
+.confirmLayers2 div#confirmTY{ display:block;}
+.confirmLayers2 div#confirmDJ{ display:none;}
+.confirmLayers2 div#confirmDH{ display:none;}
+.confirmLayers3 div#confirmEDM{ display:none;}
+.confirmLayers3 div#confirmTY{ display:none;}
+.confirmLayers3 div#confirmDJ{ display:block;}
+.confirmLayers3 div#confirmDH{ display:none;}
+.confirmLayers4 div#confirmEDM{ display:none;}
+.confirmLayers4 div#confirmTY{ display:none;}
+.confirmLayers4 div#confirmDJ{ display:none;}
+.confirmLayers4 div#confirmDH{ display:block;}
+.confirmLayerT{ float:left; width:292px; height:5px; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/order_12.png) !important;
+_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=noscale, src="http://images.lefeng.com/images/mycart/order_12.png"); _background:none;}
+.confirmLayerB{ float:left; width:292px; height:14px; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/order_13.png) !important;
+_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=noscale, src="http://images.lefeng.com/images/mycart/order_13.png"); _background:none;}
+.confirmLayerBs{ float:left; width:292px; height:14px; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/order_46.png) !important;
+_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=noscale, src="http://images.lefeng.com/images/mycart/order_46.png"); _background:none;}
+#usevoucher{overflow-y:auto;width:260px;max-height:200px;_height:expression(this.offsetHeight > 200 ? 200 : this.offsetHeight);}
+.confirmLayerC{ float:left; width:288px; border-left:1px solid #b49682; border-right:1px solid #b49682; background:#FFF; text-align:left;}
+.confirmLayerC b{top:5px;}
+/*.confirmLayeredm{ float:left; padding:10px 0px 10px 35px; display:none; _margin-right:-3px;}*/
+.confirmLayeredm{ float:left; padding:20px 15px 10px; _margin-right:-3px;}
+.confirmLayeredm p{ clear:both;}
+.confirmLayeredm p.use{ height:23px; display:block; padding-top:10px;}
+.confirmLayeredm p.use span{ float:left;width:150px; /*width:125px;*/ height:21px; line-height:21px; color:#333; padding-left:10px; background:#E3DAD5; padding-top:0px; margin-right:5px;overflow:hidden;}
+.confirmLayeredm p.use a:link,.confirmLayeredm p.use a:visited,.confirmLayeredm p.use a:hover{ float:left; display:block; width:74px; height:23px; background:url(http://images.lefeng.com/images/mycart/mycart_47.jpg);}
+.confirmLayeredm p.usebottom{ padding-bottom:10px; background:url(http://images.lefeng.com/images/mycart/mycart_21.jpg) repeat-x left bottom; margin-bottom:10px;}
+.confirmLayeredm p span{ width:40px; padding-top:8px; color:#999}
+.confirmLayeredmtext{ width:148px; height:22px; border:1px solid #cdcdcd; margin-top:5px; margin-right:5px;}
+.confirmLayeredmbtn{ width:50px; height:23px; background:url(http://images.lefeng.com/images/mycart/order_14.jpg); border:none; cursor:pointer; margin-top:7px; display:inline}
+.invoicebox{ position:absolute; width:465px; left:-106px; top:-12px; display:none;}
+.invoiceboxT{ float:left; width:465px; height:5px; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/order_29.png) !important;
+_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=noscale, src="http://images.lefeng.com/images/mycart/order_29.png"); _background:none;}
+.invoiceboxB{ float:left; width:465px; height:6px; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/order_30.png) !important;
+_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=noscale, src="http://images.lefeng.com/images/mycart/order_30.png"); _background:none;}
+.invoiceboxCside{ position:absolute; right:0px; top:5px; width:2px; overflow:hidden; background:#000; filter:alpha(opacity=20); opacity:0.2;}
+.invoiceboxC{ float:left; width:461px; border-left:1px solid #b69987; border-right:1px solid #b69987; background:#FFF; padding-bottom:10px; text-align:left;}
+.invoiceboxC b{ top:5px;}
+.invoiceboxC h2{ padding-left:33px; padding-top:7px;}
+.invoiceboxC label{ font-weight:normal; font-size:12px}
+.invoicecont{ float:left; width:446px; clear:both; padding-top:10px; padding-left:15px;}
+.invoicecont span.left{ float:left; width:113px; text-align:right; padding-right:10px;}
+.invoicecont span.error{ color:#cf0000; display:none;}
+.invoicetext{ float:left; width:294px; padding-top:4px; height:20px; border:1px solid #cdcdcd;}
+.invoicelink{ float:left; display:block; width:99px; height:23px; background:url(http://images.lefeng.com/images/mycart/order_31.jpg); border:none; cursor:pointer;}
+
+.splittabbox{ float:left; margin-right:20px; position:relative; margin-left:-2px;}
+.splittabbox .splittabboxlay{ display:none;}
+.splittabbox p{ float:left; height:26px; position:relative; clear:both;}
+.splittabbox label{ float:left; height:26px; padding-left:2px; position:relative;}
+.splittabbox label span{ float:left; height:24px; padding-top:5px; padding-right:10px;}
+.splittabbox label .radio{ margin-top:7px;}
+.splittabboxs{ float:left; margin-right:20px; position:relative; margin-left:-2px;}
+.splittabboxs .splittabboxlay{ display:block;}
+.splittabboxs p{ float:left; height:26px; position:relative; z-index:100; background:url(http://images.lefeng.com/images/mycart/order_36.jpg) repeat-x left top;}
+.splittabboxs label{ float:left; height:26px; padding-left:2px; background:url(http://images.lefeng.com/images/mycart/order_34.jpg) no-repeat left top; position:relative;}
+.splittabboxs label span{ float:left; height:21px; background:url(http://images.lefeng.com/images/mycart/order_35.jpg) no-repeat right top; padding-top:5px; padding-right:10px; position:relative; margin-top:0px;}
+.splittabboxs label .radio{ margin-top:7px;}
+.splittabboxlay{ position:absolute; left:0px; top:25px;}
+.splittabboxlayT{ height:3px; width:457px; clear:both; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/order_38.jpg);}
+.splittabboxlayT span{ float:left; width:3px; height:3px; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/order_42.jpg);}
+.splittabboxlayT span.right{ float:right; background:url(http://images.lefeng.com/images/mycart/order_37.jpg);}
+.splittabboxlayB{ height:3px; width:457px; clear:both; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/order_41.jpg);}
+.splittabboxlayB span{ float:left; width:3px; height:3px; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/order_40.jpg);}
+.splittabboxlayB span.right{ float:right; background:url(http://images.lefeng.com/images/mycart/order_39.jpg);}
+.splittabboxlayC{ float:left; width:430px; border-left:1px solid #919191; border-right:1px solid #919191; clear:both; overflow:hidden; background:#ffffe1; line-height:20px; padding-left:25px;}
+
+.splitbox{ width:494px; position:absolute; left:-110px; top:-30px; display:none;}
+.splitboxT{ float:left; width:494px; height:5px; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/order_32.png) !important;
+_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=noscale, src="http://images.lefeng.com/images/mycart/order_32.png"); _background:none;}
+.splitboxB{ float:left; width:494px; height:14px; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/order_33.png) !important;
+_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=noscale, src="http://images.lefeng.com/images/mycart/order_33.png"); _background:none;}
+.splitboxCside{ position:absolute; right:0px; top:5px; width:2px; overflow:hidden; background:#000; filter:alpha(opacity=20); opacity:0.2;}
+.splitboxC{ float:left; width:490px; border-left:1px solid #cc3399; border-right:1px solid #cc3399; background:#FFF; text-align:left; text-align:center; color:#cf0000}
+.splitboxC b{ top:5px;}
+/*提交订单*/
+.sub_tip{ float:left; width:890px; clear:both; padding-bottom:20px; padding-left:60px; position:relative; padding-top:15px;}
+.sub_tip s{ position:absolute; left:7px; top:15px; width:34px; height:35px; background:url(http://images.lefeng.com/images/mycart/sub_02.jpg);}
+.sub_tip em{ color:#cf0000}
+.letterH3{ font-size:18px;}
+/*.sub_box{ float:left; width:948px; clear:both; border:1px solid #cc3399; border-bottom:none; _padding-bottom:20px;}
+.sub_box a:link img,.sub_box a:visited img{ width:138px; height:38px; border:1px solid #c0bcbc;}
+.sub_box a:hover img{ width:138px; height:38px; border:1px solid #cc3399;}*/
+.sub_box{ float:left; width:948px; clear:both; border:1px solid #cc3399; border-bottom:none; _padding-bottom:20px;}
+.sub_box a:link,.sub_box a:visited,.sub_box a:hover{ float:left; width:140px; height:40px; position:relative;}
+.sub_box a:link img,.sub_box a:visited img{ width:138px; height:38px; border:1px solid #c0bcbc;}
+.sub_box a:hover img{ width:138px; height:38px; border:1px solid #cc3399;}
+.sub_box a:link img.quick,.sub_box a:visited img.quick,.sub_box a:hover img.quick{ width:21px; height:21px; position:absolute; right:-10px; top:-10px; border:none;}
+
+.allBank{ padding-right:20px; padding-left:10px; position:relative; color:#999; zoom:1; cursor:pointer;}
+/*#allbank{ height:0px;}*/
+.allBank b{position:absolute; width:13px; height:13px; overflow:hidden; right:0px; top:0px; _top:2px; background:url(http://images.lefeng.com/images/mycart/sub_12.jpg);}
+.sub_box p em{ display:block; color:#999; clear:both; padding-bottom:5px;}
+.sub_box p.recently{ padding-left:30px; padding-top:30px; padding-bottom:20px;}
+.sub_box p.all{ float:left; width:948px; clear:both; overflow:hidden;}
+.sub_box p.thr em{ _padding-top:20px;}
+.sub_box p.all em{ padding-left:30px;}
+.sub_box p.all a:link,.sub_box p.all a:visited,.sub_box p.all a:hover{ float:left; padding:0 0 20px 30px; margin-bottom:20px; display:inline}
+
+/*20120315begin*/
+ .oneSub_box div em{display:block; color:#333; clear:both;margin:10px 20px;font-size:12px; border-bottom:1px dotted #d7cfd4; padding:0 0 5px 0;font-weight:bold;}
+.oneSub_box div.recently{ padding-left:30px; padding-top:30px; padding-bottom:20px;}
+.oneSub_box div.all{ float:left; width:998px; clear:both; overflow:hidden;}
+.oneSub_box div.all ul{ clear:both; overflow:hidden; zoom:1;padding:0 20px;}
+.oneSub_box div.all li{ display:inline; float:left; position:relative;padding:10px 0 0 43px;min-height:70px;_height:70px;}
+.oneSub_box div.thr em{ _padding-top:20px;}
+.oneSub_box div.all a:link,.oneSub_box div.all a:visited,.oneSub_box div.all a:hover{ float:left; display:inline}
+.bankTip{ border:1px solid #ffd7bb; color:#ff0000; line-height:16px; padding:5px 10px; background:#fffdf1; width:118px; clear:both; display:block;position:relative; top:4px;}
+.oneSub_box .bankTip b{ width:8px; height:4px; display:block; background:url(http://images.lefeng.com/images/uinfo/bankTipsIcon.gif) no-repeat;position:absolute; top:-4px; left:20px;}
+/*20120315end*/
+/*.sub_box p.all a.first:link,.sub_box p.all a.first:visited,.sub_box p.all a.first:hover{ margin-left:30px;}*/
+.sub_Navbox{ float:left; width:950px; clear:both; height:32px; position:relative; margin-bottom:-1px;}
+.sub_Navbox li{ float:left; height:32px; background:url(http://images.lefeng.com/images/mycart/sub_11.jpg) repeat-x left top; margin-right:7px;}
+.sub_Navbox li span{ float:left; height:32px; background:url(http://images.lefeng.com/images/mycart/sub_08.jpg) no-repeat left top;}
+.sub_Navbox li span a:link,.sub_Navbox li span a:visited,.sub_Navbox li span a:hover{ float:left; display:block; height:32px; background:url(http://images.lefeng.com/images/mycart/sub_09.jpg) no-repeat right top; color:#333; font-size:14px; font-weight:bold; line-height:32px; padding:0px 15px; text-decoration:none;}
+.sub_Navbox li.on{ background:url(http://images.lefeng.com/images/mycart/sub_10.jpg) repeat-x left top;}
+.sub_Navbox li.on span{ background:url(http://images.lefeng.com/images/mycart/sub_06.jpg) no-repeat left top;}
+.sub_Navbox li.on span a:link,.sub_Navbox li.on span a:visited,.sub_Navbox li.on span a:hover{background:url(http://images.lefeng.com/images/mycart/sub_07.jpg) no-repeat right top; text-decoration:none;}
+.sub_warpRoundB{ height:4px; clear:both; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/sub_04.jpg);}
+.sub_warpRoundB span{ float:left; width:4px; height:4px; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/sub_03.jpg);}
+.sub_warpRoundB span.right{ float:right; background:url(http://images.lefeng.com/images/mycart/sub_05.jpg);}
+.sub_help{ float:left; width:950px; clear:both; padding-top:50px; padding-bottom:20px; color:#999}
+.sub_help a:link,.sub_help a:visited,.sub_help a:hover{ color:#00669d; text-decoration:underline}
+.sub_help hr{ color:#e8e7e7; display:block;}
+.sub_help span.fl s{ float:left; margin-top:4px; width:274px; height:12px; background:url(http://images.lefeng.com/images/mycart/sub_13.jpg);}
+.sub_help span.fr{ color:#999;}
+.sub_help span strong{ color:#cf0000; font-size:14px}
+.sub_vip{ width:845px; clear:both; margin:0px auto; padding:20px 0px; display:none;}
+.sub_vipcont{ clear:both; height:200px; padding-top:10px; background:#fff2fb}
+.sub_vipinfo{ float:left; width:305px; padding-left:28px;}
+.sub_vipinfo p{ float:left; clear:both; width:305px; padding-top:10px;}
+.sub_vipinfo span.fl{ width:70px; text-align:right; padding-top:5px; color:#666}
+.sub_vipinfo span.fl i{ color:#cc3399; padding-right:5px;}
+.sub_vipinfo span.fr{ width:225px;}
+.sub_vipinfo span.fr input{ width:141px;}
+.sub_vipinfo span.fr a{ float:left; padding-left:5px; padding-top:5px;}
+.sub_vipinfo span.fr a:link img,.sub_vipinfo span.fr a:visited img,.sub_vipinfo span.fr a:hover img{ float:left; width:46px; height:17px;}
+.sub_vipinfo span.fr a.sure{ display:block; padding:0px; width:73px; height:23px; background:url(http://images.lefeng.com/images/mycart/sub_15.jpg);}
+.sub_cardbox{ width:389px; padding-top:25px; padding-right:25px;}
+.sub_cardbox a:link img,.sub_cardbox a:visited img,.sub_cardbox a:hover img{ width:182px; height:150px; border:none;}
+.cashbox{ float:left; margin-left:190px;_margin-left:95px; width:450px; clear:both; padding:20px 0px; text-align:center; line-height:50px; color:#666; display:none;}
+/*20111214add*/
+.sub_box .cashbox a:link,.sub_box .cashbox a:visited,.sub_box .cashbox a:hover{ height:auto; width:216px; margin-left:117px; overflow:hidden;}
+/*20111214add*/
+.sub_box .cashbox a:link,.sub_box .cashbox a:visited,.sub_box .cashbox a:hover{ height:auto; width:216px; margin-left:117px; overflow:hidden;}
+.cashbox a:link img,.cashbox a:visited img,.cashbox a:hover img{ margin:0px auto; border:none; display:block; width:216px; height:32px;}
+.subLayerbox{ width:465px; position:absolute; left:50%!important; top:0px; display:none; z-index:21;margin:0 0 0 -232px;}
+.subLayerbox #payfor{ display:block;}
+.subLayerbox #status{ display:none;}
+.subLayerbox #status2{ display:none;}
+.subLayerbox #status3{ display:none;}
+.subLayerbox1{ width:465px; position:absolute; left:0px; top:0px; display:none; z-index:21}
+.subLayerbox1 #payfor{ display:none;}
+.subLayerbox1 #status{ display:block;}
+.subLayerbox1 #status2{ display:none;}
+.subLayerbox1 #status3{ display:none;}
+.subLayerbox2{ width:465px; position:absolute; left:0px; top:0px; display:none; z-index:21}
+.subLayerbox2 #payfor{ display:none;}
+.subLayerbox2 #status{ display:none;}
+.subLayerbox2 #status2{ display:block;}
+.subLayerbox2 #status3{ display:none;}
+.subLayerbox3{ width:465px; position:absolute; left:0px; top:0px; display:none; z-index:21}
+.subLayerbox3 #payfor{ display:none;}
+.subLayerbox3 #status{ display:none;}
+.subLayerbox3 #status2{ display:none;}
+.subLayerbox3 #status3{ display:block;}
+.subLayerboxT{ float:left; width:465px; height:5px; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/sub_19.png) !important;
+_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=noscale, src="http://images.lefeng.com/images/mycart/sub_19.png"); _background:none;}
+.subLayerboxB{ float:left; width:465px; height:6px; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/sub_20.png) !important;
+_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=noscale, src="http://images.lefeng.com/images/mycart/sub_20.png"); _background:none;}
+.subLayerboxCside{ position:absolute; right:0px; top:5px; width:2px; overflow:hidden; background:#000; filter:alpha(opacity=20); opacity:0.2;}
+.subLayerboxC{ float:left; width:426px; border-left:1px solid #cc3399; border-right:1px solid #cc3399; background:#FFF; text-align:left; padding:15px 0px 15px 35px; min-height:190px; _height:190px;}
+.subLayerboxC b{ top:5px;}
+.subLayerboxC p.payfor{ clear:both; padding-top:15px;}
+.subLayerboxC p.payfor span{ float:left; height:23px; width:109px; margin-right:10px; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/sub_21.jpg);}
+.subLayerboxC p.payfor span.right{ width:123px; background:url(http://images.lefeng.com/images/mycart/sub_22.jpg);}
+.subLayerboxC p.payfor span a:link,.subLayerboxC p.payfor span a:visited,.subLayerboxC p.payfor span a:hover{ display:block; width:123px; height:23px;}
+.status{ clear:both;}
+.status p.top{ clear:both; height:25px; position:relative; color:#cc0000}
+.status p.bottom{ clear:both; padding-top:50px;}
+.status p.payed{ clear:both; padding-top:30px; font-size:14px}
+.status p.payed em{ color:#cc0000;}
+.status p.lost{ clear:both; height:23px; padding-top:30px;}
+.status p.lost span{ float:left; width:109px; height:23px; margin-right:10px; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/sub_23.jpg);}
+.status p.lost span.right{ width:123px; background:url(http://images.lefeng.com/images/mycart/sub_24.jpg);}
+.status p.lost span a:link,.status p.lost span a:visited,.status p.lost span a:hover{ display:block; width:123px; height:23px;}
+.survey{ position:absolute; left:0px; top:0px; width:379px; display:none; z-index:30}
+.surveyT{ clear:both; height:3px; overflow:hidden; background:#e9ebd5;}
+.surveyT span{ float:left; width:3px; height:3px; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/sub_25.jpg);}
+.surveyT span.right{ float:right; background:url(http://images.lefeng.com/images/mycart/sub_26.jpg);}
+.surveyB{ clear:both; height:3px; overflow:hidden; background:#f3f8f1;}
+.surveyB span{ float:left; width:3px; height:3px; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/sub_27.jpg);}
+.surveyB span.right{ float:right; background:url(http://images.lefeng.com/images/mycart/sub_28.jpg);}
+.surveyC{ float:left; width:379px; clear:both;}
+.surveyChead{ clear:both; height:56px; position:relative; background:#fff2fb url(http://images.lefeng.com/images/mycart/sub_30.jpg) repeat-x left bottom; padding-left:35px; line-height:56px;}
+.surveyChead b{ margin-top:5px;}
+.surveyChead s{ position:absolute; width:58px; height:56px; background:url(http://images.lefeng.com/images/mycart/sub_29.jpg); right:15px; top:0px;}
+.surveyCbody{ float:left; width:344px; clear:both; background:#FFF; line-height:23px; padding-left:35px; padding-bottom:30px;}
+.surveyCbody p{clear:both; height:23px; overflow:hidden; padding-left:17px;}
+.surveyCbody p.top1{padding-top:23px; padding-left:0px;}
+.surveyCbody p.speed label{ margin-right:45px;}
+.surveyCbody p label{ color:#707070}
+.surveyCbody p label input{ margin-top:4px; *margin-top:0px; _margin-top:2px;}
+.surveyCbody textarea{ float:left; margin-left:17px; display:inline; width:220px; height:66px;}
+.surveysub:link,.surveysub:visited,.surveysub:hover{ float:left; display:block; height:23px; width:69px; background:url(http://images.lefeng.com/images/mycart/sub_32.jpg); margin-top:10px; margin-left:17px; display:inline}
+.surveyCancle{flost:left;width:64px;height:23px;display:block;background:url(http://images.lefeng.com/images/mycart/order_22.jpg);margin-left:96px;margin-top:10px;cursor:pointer;}
+.loadingbox{ position:relative; clear:both; height:33px;}
+.loading{ position:absolute; left:80px; top:0px; overflow:hidden; padding-right:4px;}
+.loading span{ float:left; width:4px; height:23px; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/order_43.jpg);}
+.loading span.right{ background:url(http://images.lefeng.com/images/mycart/order_44.jpg);}
+.loading span.center{width:130px; line-height:21px; height:21px; border-bottom:1px solid #919191; border-top:1px solid #919191; color:#666; background:#ffffe1; padding-right:5px;}
+.loading span.center s,.exchange s{ float:left; margin:0px 5px; width:16px; height:16px; background:url(http://images.lefeng.com/images/mycart/loading.gif); margin-top:2px;}
+.loadingClose{ clear:both; padding:10px 20px; display:none;}
+
+
+.paymentLayerwarp{ float:left; width:646px; padding:5px 20px; background:url(http://images.lefeng.com/images/mycart/order_24.jpg) no-repeat left top; display:none;}
+.paymentLayercontent{ float:left; width:686px; background:url(http://images.lefeng.com/images/mycart/order_25.jpg) repeat-y left 31px;}
+.paymentLayerwarp h4{ font-weight:normal; color:#999; clear:both; padding:7px 0px;}
+
+/*20111214 add*/
+#giftbox{float:left; width:950px; overflow:hidden; position:absolute; left:0px; top:0px; bottom:auto; display:none; z-index:120}
+#giftbox h2{ line-height:25px; color:#000;}
+#giftbox h2 span{ display:block; font-size:12px; font-weight:normal}
+#giftbox h2 em{ color:#999}
+#giftbox h2 i{ color:#cf0000; font-style:normal;}
+#giftbox li p.nr{ height:22px;}
+#giftbox li p.nr label{ display:block}
+#giftbox li{ width:168px; height:195px;}
+#giftbox .layerC b{ display:block}
+#giftbox div.favoritesbox{ padding-top:10px;}
+.giftboxbtnbox{ clear:both; height:60px; padding-top:20px; text-align:center}
+p.gifts{ clear:both; display:none;}
+p.gifts a:link,p.gifts a:visited,p.gifts a:hover{ color:#006699;}
+.signbox{ clear:both; color:#CF0000; text-align:center; display:none;}
+.losebox{ float:left; width:393px; padding-top:8px; position:absolute; left:0px; top:50px; background:url(http://images.lefeng.com/images/mycart/lose_01.png) no-repeat left top; display:none; z-index:100;}
+.losebox span{ float:left; width:393px; height:8px; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/lose_03.png);}
+.losecont{ float:left; width:393px; background:url(http://images.lefeng.com/images/mycart/lose_04.png);}
+.losecont p.close{ clear:both; height:17px; text-align:right; padding-right:11px;}
+.losecont p.info{ clear:both; color:#999; padding-top:30px; background:url(http://images.lefeng.com/images/mycart/lose_06.jpg) no-repeat 14px 0px; padding-left:123px; padding-bottom:30px;}
+.losecont p.info strong{ display:block; color:#cc3399; font-size:14px}
+
+
+/*成功提交订单 wyw*/
+.paybankbox{ display:none;}
+.paybankbox ul{ width:948px; overflow:hidden; clear:both;}
+.paybankbox em{ display:block; padding:20px 0 0 30px;}
+.paybankbox ul li{position:relative; width:150px;margin:20px 0 10px 0px; padding-left:30px; float:left; display:inline;}
+.paybankbox ul li span.kicon{ background:url(http://images.lefeng.com/images/mycart/kuai.png) no-repeat; width:21px; height:21px; display:inline-block; position:absolute; right:0px; top:-10px;}
+
+.paymentLayerwarp b.morebank{ font-size:12px; color:#000;}
+em.lwicon{ color:#333; background:url(http://images.lefeng.com/images/mycart/lwicon.jpg) no-repeat left center; padding:15px 0 15px 30px;}
+em.lwicon i{ color:#cc0000; font-style:normal;}
+
+/*积分wyw*/
+.confirmBtnwarp p.confirminfo{ clear:both;height:90px;}
+.confirminfodh{border: 1px solid #f6d6a9;float:right;margin-top: 10px; height:30px; line-height:30px; padding: 0 8px 0 8px;background:#faf7eb;}
+.confirminfodh span.dh01,.confirminfodh span.price01{height:30px; line-height:30px;}
+.confirminfodh span.dh01{ background:url(http://images.lefeng.com/images/mycart/icon_01.jpg) no-repeat; width:19px; height:22px; padding:0 0 8px 30px; color:#333;}
+.confirminfodh span.price01{ margin-left:10px;}
+.confirminfodh span.proname{dtext-align:left; height:20px; overflow:hidden; }
+.confirminfodh span.proname em{ text-align:left; vertical-align:middle; padding-left:5px; color:#ff5050;}
+.price01 a,.price01 a:hover{ color:#006699 ! important;}
+.price01 a{ margin-left:5px;}
+.confirminfodh span.price01 em{color:#ff5050;}
+
+
+.paymentboxRight01{ margin:5px 0 5px; padding-left:0px;}
+.confirmjfdyf{border: 1px solid #f6d6a9;float:right;margin-top: 10px; height:30px; line-height:30px; padding: 0 8px 0 8px;background:#faf7eb;}
+
+.paymentboxRight em.inst b{ color:#000}
+
+
+
+
+
+
+.confirmwbox{ width:292px; overflow:hidden;float:right;display:none; position:relative;}
+.confirmwbox02{ width:456px; overflow:hidden;float:right; position:relative; display:none;}
+.confirmLayerT02{ float:left; width:456px; height:5px; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/bgT.png) !important;
+_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=noscale, src="http://images.lefeng.com/images/mycart/bgT.png"); _background:none;}
+.confirmLayerB02{ float:left; width:456px; height:11px; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/bgB.png) !important;
+_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=noscale, src="http://images.lefeng.com/images/mycart/bgB.png"); _background:none;}
+.confirmLayerC02{ width:454px; overflow:hidden;}
+.confirmLayeredm01{ width:454px; overflow:hidden; padding:10px 0 20px 15px; /**padding:0px 0 15px 15px*/}
+.confirmLayeredm01 span,.confirmLayeredm01 em{ float:left;}
+.confirmLayeredm01 em{line-height:35px; display:inline-block;}
+p.error05{color: #333333;height: 22px;padding-left: 30px;
+ background:url(http://images.lefeng.com/images/mycart/icon_01.jpg) no-repeat; clear:both; margin-top:40px; *margin-top:5px;}
+p.error05 i{ color:#b70275; font-style:normal;}
+.cred{ color:#FF5050;}
+/*收货人信息 wyw*/
+.selectaddress{ width:880px; overflow:hidden; padding-left:30px;}
+/*.selectaddress input{ float:left; width:20px;*position:relative; 
+  *top:-50%; }*/
+.selectaddress span{ width:706px; overflow:hidden; float:left;display:inline-block; margin-left:27px;}
+/*.selectaddress em{ float:right;*position:relative; 
+  *top:-50%; margin-right:10px;}*/
+.selectaddress em{ float:right;margin:8px 10px 0 0;}
+.selectaddress em a:link,.selectaddress em a:visited{ color:#963c00; text-decoration:none; margin-left:13px;}
+.selectaddress em a:hover{color:#963c00; text-decoration:underline;}
+.borbtm{border-bottom:1px dashed #d5d5d5; }
+p{margin:0;} 
+/*.addr_wrap{ width:880px;font-size:12px; vertical-align:middle; display:table-cell; position:relative; border-bottom:1px dashed #c1c1c1;} */
+.addr_wrap{ width:880px;font-size:12px; vertical-align:middle; display:table-cell; border-bottom:1px dashed #c1c1c1;} 
+/*.addr_wrap .addr_N { *position:absolute; *top:50%; width:880px; } 
+.addr_wrap .addr_N p { *position:relative; *top:-50%; width:706px;  margin-left:27px;color:#333; padding:5px 0 5px 0; overflow:hidden;} */
+.addr_wrap .addr_N { width:880px; } 
+.addr_wrap .addr_N li{ float:left;}
+.addr_wrap .addr_N p { width:706px;  margin-left:27px;color:#333; padding:7px 0 7px 0; overflow:hidden;} 
+.addr_wrap .addr_N input{ float:left; width:20px; margin-top:8px; *margin-top:5px;}
+.space0{CLEAR: both; DISPLAY: block; font-size: 1px; overflow:hidden; height:0px;}
+.space15{CLEAR: both; DISPLAY: block; font-size: 1px; overflow:hidden; height:15px;}
+strong.adr_tit{ font-size:14px;color:#333; border-bottom:1px solid #d5d5d5; padding: 0 0 3px 8px; width:880px; display:block;}
+.adr_tita{  padding-left:30px;  margin-top:10px; font-size:14px;}
+.adr_tita em{font-weight:bold; color:#333; margin-left:8px; display:inline;}
+em.bmcol b{ color:#cc0000; font-weight:normal; margin-right:5px;}
+em.bmcol a:link,em.bmcol a:visited{ color:#cc3298;}
+.adr_bjtit{ background:url(http://img1.imglefeng.com/images/mycart/bjdot.jpg) no-repeat left center; padding-left:25px; margin-left:5px;font-weight:bold; color:#333; font-size:14px;margin-top:10px;}
+.tips_w{ color:#cc0000; padding:10px 0 30px 35px;}
+/*#box1{ background:#f3f3f3;}*/
+
+
+
+
+
+/*wq201202-22增加*/
+.oneWriteInfo{ color:#ff0000; background:url(http://images.lefeng.com/images/uinfo/msgico02.gif) no-repeat left center; padding-left:20px;}
+
+
+.onelogin{margin:0 auto;background:#fff;}
+.onelogin .loadTab{ border-bottom:1px solid #b9006b;height:22px; margin:10px 15px; padding-left:5px; width:448px;overflow:hidden;}
+.onelogin .loadTab li{background:url(http://images.lefeng.com/images/uinfo/onedl04.jpg) no-repeat -58px 0; width:55px;height:20px; padding-top:2px; line-height:20px;text-align:center;margin-left:3px; float:left;display:inline-block;}
+.onelogin .loadTab li.cur{background:url(http://images.lefeng.com/images/uinfo/onedl04.jpg) no-repeat 0 0;}
+.onelogin .loadTab li a:link,
+.onelogin .loadTab li a:hover,
+.onelogin .loadTab li a:visited{ color:#666; text-decoration:none;display:inline-block; width:55px;}
+.onelogin .loadTab li.cur a:link,
+.onelogin .loadTab li.cur a:hover,
+.onelogin .loadTab li.cur a:visited{ color:#fff;text-decoration:none;}
+.onelogin h2{ font-weight:normal;}
+.onelogin h2 span{ font-weight:bold; font-size:14px; color:#333333; margin:18px 0 0 24px;}
+.onelogin dl{ width:488px;}
+.onelogin #tipLay{font-size:14px; color:#666; padding:10px 18px 10px 13px; font-weight:bold; background:#f2f2f2; position:relative;}
+.onelogin dl dd{ padding-left:35px; height:26px; color:#666;}
+
+.loginbox{width:488px; overflow:hidden}
+.loginbox dl dd.error{ width:425px; height:24px; padding-left:28px; padding-bottom:10px;}
+/*.clearfix:after { clear: both; content: " "; display: block; height: 0;}*/
+.loginbox dl dd.error p.clear_fix {height:24px; line-height: 24px; padding: 0 5px; position:relative;font-weight:bold;}
+.loginbox dl dd.error p.clear_fix i{ width:14px; height:14px; display:inline; float:left; position:absolute; left:5px; top:5px;}
+.loginbox dl dd.error p.clear_fix i img{ width:14px; height:14px; display:block;}
+.loginbox dl dd.error p.clear_fix span{ padding-left:20px; color:#ff0000; display:inline; float:left; height:24px;line-height:24px;line-height:26px\0;*line-height:26px; _line-height:24px;}
+
+.loginbox dl dd em{line-height:26px; overflow:hidden; display:inline;}
+.loginbox dl dd span input{ width:168px; height:20px; border:1px solid #CCCCCC; padding:2px 5px; line-height:20px; overflow:hidden; color:#999;}
+.loginbox dl dd.username,.loginbox dl dd.pw,.loginbox dl dd.yzm{ margin-bottom:8px;}
+.yzm em,.yzm span,.yzm img{ display:inline; float:left; height:26px;}
+#yzmcode{ margin-left:0px;}
+.yzm a.veriRefresh{ display:inline; float:left; margin-left:5px; text-decoration:underline;}
+.yzm a:link,.yzm a.visited{ color:#666;}
+.yzm a:hover{ color:#c10846;}
+.loginbox dl dd.pw span.wjmm,.loginbox dl dd.yzm span.kbqhyz,.loginbox dl dd.btnlogin span{ color:#666666; padding-left:5px;}
+.loginbox dl dd.pw span.wjmm a,.loginbox dl dd.yzm span.kbqhyz a,.loginbox dl dd.btnlogin span a{ color:#0099cc; text-decoration:underline;}
+.loginbox dl dd.btnlogin a:hover,.lfw dl dd.pw span.wjmm a:hover{color:#c10846;}
+.loginbox dl dd.yzm span input{ width:88px; height:20px; border:1px solid #CCCCCC; padding:2px 5px; line-height:20px; overflow:hidden;}
+.loginbox dl dd.yzm img{margin-left:5px;}
+.loginbox dl dd.jzyhm{height:20px; line-height:20px; position:relative; top:-5px;margin-bottom:5px;}
+.loginbox dl dd.jzyhm em{}
+.loginbox dl dd.jzyhm em input{ display:inline; float:left; margin-left:53px; margin-top:7px; padding:0px; width:12px; height:12px;}
+.loginbox dl dd.jzyhm span{ height:16px; position:absolute; left:105px; top:3px; color:#666666}
+.loginbox dl dd.btnlogin{ margin-bottom:20px; overflow:hidden;}
+.loginbox dl dd.btnlogin input{ margin-left:53px; border:none; cursor:pointer; margin-right:5px;}
+.btnsubmit{ width:80px; height:26px; background:url(http://images.lefeng.com/images/uinfo/loginbtn.jpg) no-repeat; text-align:center; color:#FFFFFF; font-weight:bold;}
+.loginbox dl dd.hx{margin:0 15px 10px; height:0; overflow:hidden; border-top:1px dotted #cecece;}
+.onePartners{ width:460px; margin-left:18px; height:50px;}
+.onePartners p{ color:#999;}
+.onePartners li{ float:left; height:22px; display:inline; margin-right:18px; margin-bottom:5px; position:relative;}
+.onePartners li.sinabg{width:73px; height:22px; color:#666;}
+.onePartners li.sinabg a{ color:#666;}
+.onePartners li.sinabg img{ width:16px; height:16px; padding-left:3px; padding-top:2px;}
+.onePartners li.sinabg span.xlwb{ padding-left:2px; position:absolute; left:20px; top:4px !important; top:5px; _top:4px; cursor:pointer;}
+*+html .onePartners li.sinabg span.xlwb{ position:absolute; left:20px; top:5px;cursor:pointer;}
+
+.onePartners li.kaixinbg{width:61px; height:22px; color:#666;}
+.onePartners li.kaixinbg a{ color:#666;}
+.onePartners li.kaixinbg img{ width:16px; height:16px; padding-left:3px; padding-top:2px;}
+.onePartners li.kaixinbg span.kxw{ padding-left:2px; position:absolute; left:20px; top:4px !important; top:5px; _top:4px;cursor:pointer;}
+*+html .onePartners li.kaixinbg span.kxw{ position:absolute; left:20px; top:5px;cursor:pointer;}
+
+.onePartners li.zfbbg{width:62px; height:22px; color:#666;}
+.onePartners li.zfbbg a{ color:#666;}
+.onePartners li.zfbbg img{ width:14px; height:16px; padding-left:3px; padding-top:4px;}
+.onePartners li.zfbbg span.zfb{ padding-left:2px; position:absolute; left:20px; top:4px !important; top:5px; _top:4px;cursor:pointer;}
+*+html .onePartners li.zfbbg span.zfb{ position:absolute; left:50px; top:5px;cursor:pointer;}
+
+.onePartners li.qqbg{width:80px; height:22px; color:#666; margin-right:0px;}
+.onePartners li.qqbg a{ color:#333333;}
+.onePartners li.qqbg img{ width:15px; height:17px; padding-left:3px; padding-top:2px;}
+.onePartners li.qqbg span.txqq{ padding-left:2px; position:absolute; left:20px; top:4px !important; top:5px; _top:4px;cursor:pointer;}
+*+html .onePartners li.qqbg span.txqq{ position:absolute; left:20px; top:5px;cursor:pointer;}
+
+.onePartners li.email139{width:119px; height:22px; color:#333333;}
+.onePartners li.email139 a{ color:#333333;}
+.onePartners li.email139 img{ width:114px; height:20px; padding-left:3px; padding-top:2px;}
+.onePartners li.email139 span.mail139{ padding-left:2px; position:absolute; left:70px; top:4px !important; top:5px; _top:4px;cursor:pointer;}
+*+html .onePartners li.email139 span.mail139{ position:absolute; left:70px; top:5px;cursor:pointer;}
+
+.onePartners li.email163{width:49px; height:22px; color:#666;}
+.onePartners li.email163 a{ color:#666;}
+.onePartners li.email163 img{ width:16px; height:16px; padding-left:3px; padding-top:3px;}
+.onePartners li.email163 span.mail163{ padding-left:2px; position:absolute; left:20px; top:4px; *top:5px; _top:4px;cursor:pointer;}
+
+.oneCloseBtn{ position:absolute; right:10px; top:8px; width:17px; height:17px; overflow:hidden;}
+.oneCloseBtn a:link,.oneCloseBtn a:visited{ display:block; width:17px; height:17px; background:url(http://images.lefeng.com/images/mycart/mycart_08.jpg);}
+.oneCloseBtn a:hover{ display:block; width:17px; height:17px; background:url(http://images.lefeng.com/images/mycart/mycart_17.jpg);}
+
+/*wq注册*/
+.color333{color:#333;}   .color999{color: #999999;}
+.reg_contboxs{height:26px; padding-top:0px; width:678px; border:0px; margin:0px; background:none;}
+.oneRegBox{width:488px;overflow:hidden}
+.oneRegBox li{zoom:1; height:26px; line-height:26px;}
+.oneRegBox li em{ width:80px; text-align:right; display:inline; float:left; height:26px; color:#666; line-height:26px;}
+.oneRegBox li input{ width:168px; height:20px; border:1px solid #ccc; line-height:20px; display:inline; float:left; padding:2px 5px;}
+.oneRegBox li span{padding:6px 8px 6px 25px; margin-left:75px; background:url(http://images.lefeng.com/images/uinfo/msgico01.gif) no-repeat 5px 5px; color:#ff0000; overflow:hidden; zoom:1;}
+.Regli em{ font-size:12px;}
+.oneRegBox li span.inner01{ background:url(http://images.lefeng.com/images/uinfo/msgico01.gif) no-repeat 5px 5px; color:#999}
+.oneRegBox li span.inner02{ background:url(http://images.lefeng.com/images/uinfo/msgico02.gif) no-repeat 5px 5px;}
+.oneRegBox li span.inner03{ background:url(http://images.lefeng.com/images/uinfo/valOK.gif) no-repeat 5px 5px; margin-left:2px;}
+.oneRegBox li input.dealBtn{ background:url(http://images.lefeng.com/images/uinfo/onedl06.jpg) no-repeat;width:157px; height:26px;color:#fff; font-weight:bold; border:0px; display:block; margin-bottom:15px; padding-top:0;cursor:pointer; text-align:center;}
+.oneRegBox li input.Veri_input{ width:98px;}
+.VeriImg{ width:70px; height:26px;display:inline; float:left; margin-left:10px;}
+.oneRegBox a:link,.oneRegBox a:visited{color:#666;text-decoration:underline;}
+.oneRegBox a:hover{color:#666;text-decoration:underline;}
+.veriRefresh{background:none; border:1px solid #f5f5f5; color:#666; padding:0px; cursor:pointer; display:inline; float:left; height:24px; line-height:24px; margin-left:10px; text-decoration:underline;}
+.oneRegBox a:hover{color:#c10846;}
+.oneRegBox .dealMsg{height:24px; line-height:24px; text-align:left; padding-left:70px;}
+.oneRegBox .dealMsg a:link,.oneRegBox .dealMsg a:visited,.oneRegBox .dealMsg a:hover{ color:#0099cc; text-decoration:underline;}
+.dealList{ padding-left:70px; display:none; margin-top:15px;}
+.yzword { margin-bottom:12px;}
+.yzword a:link,.yzword a:visited,.yzword a:hover{color:#0099cc; text-decoration:underline; line-height:24px; margin-left:5px;}
+
+.mycar_xgNum{width:90px;background:#fffdf1;border:1px solid #ffd8be; height:18px;position:relative; color:#ff8a00; top:3px;}
+.total_infoChe{ position:absolute; left:0px; top:10px;}
+.total_infoChe li{float:left;width:100px; height:23px; overflow:hidden;display:inline;}
+.total_infoChefo{ position:absolute; right:0px; top:10px; font-size:14px; font-family:Tahoma, Geneva, sans-serif}
+.total_infoChefo em{ color:#000; font-size:12px;}
+.total_infoChefo strong{ font-size:16px; color:#963c00; font-family:Tahoma}
+.total_infoChefo strong b{font-family:\5FAE\8F6F\96C5\9ED1;font-size:14px;}
+.sanj{background:url(http://images.lefeng.com/images/uinfo/onedl10.jpg) no-repeat; width:9px; height:6px; position:relative; top:-16px; right:50px;}
+.mycar_cuXiao{background:#fffdf1;border:1px solid #ffd8be;position:relative;overflow:hidden;color:#000;top:15px; width:928px; padding:10px; min-height:45px;}
+.mycar_cuXiao dt{float:left;width:52px; overflow:hidden;}
+.mycar_cuXiao dt img{ position:absolute; top:50%; left:15px; margin-top:-22px;}
+.mycar_cuXiao dd{line-height:21px; width:866px; float:left; padding-left:67px;_padding-left:15px; position:relative;}
+.mycar_cuXiao dd table{height:50px;}
+.mycar_cuXiao dd strong{ color:#ff6600}
+.mycar_cuXiao dd em{ color:#666}
+
+.cuxhead{width:950px;clear:both; height:32px;position:relative;top:31px;}
+.cuxhead li{float:left; height:32px;line-height:32px; text-align:center; font-weight:bold; font-size:14px; cursor:pointer; position:relative;}
+.cuxhead li.hover span{float:left; height:32px; width:3px}
+.cuxhead li.hover span.tabL{background:#b49682;}
+.cuxhead li.hover span.tabR{background:#b49682;}
+.cuxhead li.hover span.tabC{background:#b49682; padding:0 14px; width:auto;color:#fff;}
+.cuxhead li.hover i{ position:absolute;background:url(http://images.lefeng.com/images/uinfo/onedl19.jpg) no-repeat -36px -28px; width:7px; height:4px; left:45px; bottom:-6px;_bottom:-34px; z-index:100; display:block;}
+.cuxhead li.hover i.tjyqTrigon{ left:92px;}
+.cuxhead li i{display:none;}
+.cuxhead li span{float:left; height:32px; width:4px}
+.cuxhead li span.tabL{background:#E3DBD4;}
+.cuxhead li span.tabR{background:#E3DBD4;}
+.cuxhead li span.tabC{background:#E3DBD4;padding:0 14px; width:auto;color:#3A3C34; height:32px;}
+
+
+
+
+.PeisRmenu li{display:inline-block;cursor:pointer;width:70px;color:#fff; float:left;text-align:center;height:21px;line-height:21px;background:url(http://img1.imglefeng.com/images/zt/peis/peis18.gif) no-repeat right top; }
+.PeisRmenu li i{ display:none;}
+.PeisRmenu li.hover{color:#fff;background:url(http://img1.imglefeng.com/images/zt/peis/peis18h.gif) no-repeat right top;position:relative;}
+.PeisRmenu li.hover i{ position:absolute;background:url(http://img1.imglefeng.com/images/zt/peis/peis21.gif) no-repeat; width:7px; height:4px; left:31px; bottom:-4px; z-index:100; display:block;}
+
+
+
+.cuxBox{ width:946px; border:2px solid #b49682;overflow:hidden; margin-top:31px;}
+.cuxBox div.favSignbox{ float:left; padding-left:10px; padding-top:10px; width:165px; clear:none; text-align:left}
+.cuxBox div.favSignboxs1{ float:left; padding-left:10px; padding-top:10px; width:165px; clear:none; text-align:left}
+.cuxBox div.favSignboxs2{ float:left; padding-left:10px; padding-top:10px; width:165px; clear:none; text-align:left}
+.cuxBox div.favSignlayerchooseC{ text-align:center}
+.cuxBox div.favSignlayerchooseC p{ padding-left:62px; padding-top:10px;}
+.cuxBox div.favSignlayer{ left:0px;}
+.cuxBox h2{ height:23px;background:#f5f5f5; border-top:1px solid #eaeaea; color:#963c00; font:bold 14px "宋体"; padding:7px 0 0 10px; margin-top:10px; clear:both;}
+
+.addShopCon{width:390px;overflow:hidden;border:6px solid #8e8e8e;-moz-border-radius:5px;-webkit-border-radius:5px; background:#fff;position:fixed !important;left:50%; top:15%;_position:absolute;_top: expression(documentElement.scrollTop+120); z-index:5002;width:500px;margin:0 0 0 -250px;
+ height:180px;display:none}
+
+.addShopCon h2{ background:#f2f2f2; height:24px; padding:8px 0 0 10px; color:#666;}
+.addShopCon p{ color:#cc0000; padding:15px 20px; font-size:14px; line-height:22px;}
+.addShopCon p.tip{ background:url(http://img1.imglefeng.com/images/uinfo/onedl14.jpg) no-repeat 0 17px; margin-left:18px;}
+.deletShop{ width:160px;border:1px solid #ffd8bf; background:#fffdf1;color:#000; text-align:center; position:absolute;z-index:100; top:-46px;left:-56px;padding-bottom:5px;display:none;}
+.deletShop2{ width:160px;border:1px solid #ffd8bf; background:#fffdf1;color:#000; text-align:center; position:absolute;z-index:100;bottom:28px;left:-35px;padding-bottom:5px;display:none;}
+.deletShop p,.deletShop2 p{ height:30px; line-height:30px; clear:both; width:160px;}
+.sure{ background:url(http://img1.imglefeng.com/images/uinfo/onedl16.gif) no-repeat 0 0; width:39px; height:21px; display:inline-block; margin-right:11px;}
+.cancel{ background:url(http://img1.imglefeng.com/images/uinfo/onedl16.gif) no-repeat -50px 0; width:39px; height:21px; display:inline-block;}
+.deletsan{background:url(http://img1.imglefeng.com/images/uinfo/onedl17.png) no-repeat; width:9px;height:6px; position:absolute; left:35px; bottom:-6px;_bottom:-18px;display:block;}
+.deletShop .deletsan{left:80px;}
+#deletShop2 .deletsan{left:48%;}
+.shouCang .deletsan{left:55px;}
+.ts .deletsan{left:40px;}
+.shouCang{ width:90px;border:1px solid #ffd8bf; background:#fffdf1;color:#000; text-align:center; position:absolute;z-index:100;top:-9px;right:0;}
+.shouCang p{ height:28px; line-height:30px; clear:both; width:90px;}
+.ts{top:0;left:650px;right:auto;width:auto;height:30px;padding:0 10px;}
+.ts p{width:auto;}
+.ts p a{color:#0386cf;}
+.ts .deletsan{_bottom:-12px;}
+#newalert{ display:none; position:fixed;left:50%; top:15%;_position:absolute;_top:expression(documentElement.scrollTop+120);z-index:5002;width:500px;margin:0 0 0 -250px;}
+
+#Login_iframe{overflow:hidden;border:6px solid #8e8e8e;-moz-border-radius:5px;-webkit-border-radius:5px; width:488px;}
+
+/*wq在线支付*/
+.oneSub_tip{width:900px; clear:both; padding:13px 0 21px 60px;position:relative;background:#fffdf1; border:1px solid #ffd8bd; color:#000; font-size:12px; line-height:26px;}
+.oneSub_tip b{font-size:14px;line-height:30px;}
+.oneSub_tip s{ position:absolute; left:14px; top:17px; width:34px; height:35px; background:url(http://images.lefeng.com/images/uinfo/onedl23.png); _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://images.lefeng.com/images/uinfo/onedl23.png');_background:none;}
+.oneSub_tip em{color:#963c00}
+.oneSub_tip b em{margin:0 3px; color:#000}
+.oneSub_tip a{color:#0086CC;font-size:14px;padding:0 20px 0 0;}
+b.wr05{color:#963C00;}
+em.wr06{position:absolute;bottom:25px;left:400px;padding:0 34px 0;background:url(http://img4.imglefeng.com/images/uinfo/friend_ico.png) no-repeat;}
+em.wr04{display:block;width:390px;height:34px;line-height:34px;text-indent:2em;margin:20px 0 0;background:url(http://images.lefeng.com/images/uinfo/phone_ico.png) no-repeat 0 0;color:#000;}
+em.wr04 a,em.wr06 a{font-size:12px;padding:0;}
+em.wr03{color:#8d8d8d;}
+em.wr02{color:red;}
+b.wr01{ font-family:Tahoma;color:#963c00; font-size:12px;padding:0 20px 0 0;}
+.oneletterH3{font-size:14px;color:#333; padding-top:20px;}
+.oneletterH3 span{float:right;font-size:12px;color:red;font-weight:normal;}
+.kjzf_ico{position:absolute;width:51px;height:17px;top:-8px;left:189px;background:url(http://images.lefeng.com/images/uinfo/kjzf.png) no-repeat;}
+.oneSub_Nav{width:1000px;height:32px; position:relative; background:#f1e0dc; position:relative;border-bottom:3px solid #963C00;}
+.oneSub_Nav em.dhl{background:url(http://images.lefeng.com/images/uinfo/onedl19.jpg) no-repeat -60px 0;}
+.oneSub_Nav em.dhr{background:url(http://images.lefeng.com/images/uinfo/onedl19.jpg) no-repeat -80px 0;}
+.oneSub_Nav li{float:left; height:32px; position:relative;}
+.oneSub_Nav li i{display:none;}
+.oneSub_Nav li.on i{display:none; position:absolute;background:url(http://images.lefeng.com/images/uinfo/onedl19.jpg) no-repeat -36px -28px; width:7px; height:4px; left:48%; bottom:-6px;_bottom:-22px; z-index:100;}
+.oneSub_Nav li.on span{float:left; height:32px; width:3PX}
+.oneSub_Nav li.on span.tabC{ background:#963c00;padding:0px 15px;width:auto; color:#fff;}
+.oneSub_Nav li.on span.tabL{background:#963c00;}
+.oneSub_Nav li.on span.tabR{background:#963c00; text-decoration:none;}
+.oneSub_Nav li span.tabC{padding:0px 15px;width:auto;font-size:14px; font-weight:bold; line-height:32px; cursor:pointer; color:#403e3f;}
+
+.h20{ height:20px; clear:both; overflow:hidden; display:block}
+.oneSub_box{float:left; width:994px; clear:both; border:3px solid #f1e0dc;border-top:none;_padding-bottom:20px; margin-bottom:10px;overflow:hidden;}
+.oneSub_box a:link,.oneSub_box a:visited,.oneSub_box a:hover{ float:left; width:140px;height:40px;_height:41px; position:relative;}
+.oneSub_box a:link img,.oneSub_box a:visited img{width:138px;height:38px; border:1px solid #c0bcbc;overflow:hidden;}
+.oneSub_box a:hover img{ width:138px; height:38px; border:1px solid #B49682;}
+.oneSub_box a:link img.quick,.oneSub_box a:visited img.quick,.oneSub_box a:hover img.quick{ width:21px; height:21px; position:absolute; right:-10px; top:-10px; border:none;}
+.oneSub_box p em{display:block; color:#333; clear:both;margin:10px 20px;font-size:14px; border-bottom:1px dotted #d7cfd4; padding:0 0 5px 0;}
+.oneSub_box p.recently{ padding-left:30px; padding-top:30px; padding-bottom:20px;}
+.oneSub_box p.all{ float:left; width:948px; clear:both; overflow:hidden;}
+.oneSub_box p.thr em{ _padding-top:20px;}
+.oneSub_box p.all a:link,.oneSub_box p.all a:visited,.oneSub_box p.all a:hover{ float:left; padding:5px 0 15px 30px;display:inline}
+
+.onepayboxRight{width:740px; padding-left:10px; position:relative;}
+.onepayboxRight em{color:#333;}
+.onepayboxRight p{ position:absolute; left:-20px; top:0px; height:21px; padding-left:30px; border:1px solid #cc3399; background:#fff2fb; padding-top:8px; width:110px; _z-index:-1; border-left:none; margin-left:4px; display:inline; display:none;}
+.onepayboxRight p span{ width:4px; height:31px; overflow:hidden; background:url(http://images.lefeng.com/images/mycart/order_23.jpg); position:absolute; left:0px; top:-1px;}
+.onepayboxRight p.paymentside0{ top:0px; display:block;}
+.onepayboxRight p.paymentside1{ top:32px; *top:38px;display:block;}
+.onepayboxRight p.paymentside2{ top:64px; *top:70px; display:block;}
+.onepayboxRight P.paymentside3 { top: 100px; *top: 105px;display:block;}
+
+.onepayboxRight label{ float:left; clear:both; padding:7px 0px;}
+.onepayboxRight label.inst{ position:relative; z-index:1; width:120px;}
+.onepayboxRight em.inst{ float:left; color:#999; white-space:nowrap; width:470px; margin-left:10px; margin-top:7px; display:inline}
+.onepayboxRight01{ margin:5px 0 5px; padding-left:0px;}
+.onepayboxRight em.inst b{ color:#000}
+em.gwlw{ color:#963c00; background:url(http://images.lefeng.com/images/uinfo/onedl18.jpg) no-repeat left center; padding:15px 0 15px 20px;}
+em.gwlw i{color:#cc0000; font-style:normal;}
+.confirmjfdyf{border: 1px solid #f6d6a9;float:right;margin-top: 10px; height:30px; line-height:30px; padding: 0 8px 0 8px;background:#faf7eb;}
+
+.oneSub_help{float:left; width:980px; clear:both;margin:40px 0; height:23px;background:#f1f1f1; padding:7px 10px 0 10px;color:#999;font-family:tahoma;}
+.oneSub_help a:link,.oneSub_help a:visited,.oneSub_help a:hover{ color:#00669d; text-decoration:underline}
+.oneSub_help span.fl s{ float:left; margin-top:4px; width:274px; height:12px; background:url(http://images.lefeng.com/images/mycart/sub_13.jpg);}
+.oneSub_help span.fr{ color:#999;}
+.oneSub_help span strong{ color:#963C00; font-size:14px}
+.oneCashbox{ float:left; margin-left:190px;_margin-left:95px; width:450px; clear:both; padding:20px 0px 35px; text-align:center; line-height:50px; color:#666; display:none;}
+.oneCashbox a:link,.oneCashbox a:visited,.oneCashbox a:hover,
+.oneCashbox a:link img,.oneCashbox a:visited img{ margin:0 auto; width:216px; height:32px; border:none; float:none;}
+
+/*wq付款成功页面*/
+.toma{ font-family:Tahoma; font-size:16px; font-weight:bold;}
+a.oneBlue:link,a.oneBlue:visited,a.oneBlue:hover{color:#02659c;}
+.oneBank{ border:1px solid #ededed; background:#f8f8f8; padding:15px; line-height:24px; font-size:14px; color:#000; position:relative;margin-top:10px;}
+.oneBank b{ color:#666}
+.oneBank i{ position:absolute; top:-6px; left:110px; background:url(http://images.lefeng.com/images/uinfo/onedl22.jpg) no-repeat; width:12px; height:7px; display:block}
+.onePara{ padding:8px 0 15px;font-size:12px; line-height:20px;}
+.onePara em{ color:#cc0000}
+.onePay_tip{width:890px; clear:both;margin:0 0 10px; padding:13px 0 8px 60px;position:relative;background:#fffdf1; border:1px solid #f6dec9; color:#000; font-size:14px; line-height:22px;}
+.onePay_tip s{ position:absolute; left:14px; top:17px; width:34px; height:35px; background:url(http://images.lefeng.com/images/uinfo/onedl23.png); _filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://images.lefeng.com/images/uinfo/onedl23.png');_background:none;}
+.onePay_tip_t{margin:15px 0 0;font-size:12px;color:red;}
+.onePay_tip_t s{top:7px;background:url(http://img1.imglefeng.com/images/mycart/n_ico_04.jpg) no-repeat 0 0;}
+.onePay_tip_t a{color:#0288cf;}
+.onePay_tip em{color:#cf0000}
+.onePay_tip b em{margin:0 3px; color:#000}
+.oneWxn_tip{ padding:15px 0; color:#666;border-bottom:1px dashed #666;}
+.oneXin_shop{ border:1px solid #ddd; width:948px; overflow:hidden;margin-top:30px;}
+.oneXin_shop h3{ background:#f1f1f1; height:23px; padding:7px 0 0 15px; color:#333; }
+.oneXin_shop li{float:left;text-align:center; width:189px;height:225px;padding:12px 0;}
+.oneXin_shop li a img{width:158px; height:158px; border:1px solid #eaeaea;}
+.oneXin_shop li a:hover img{ width:158px; height:158px; border:1px solid #cc3399;}
+.oneXin_shop li p{line-height:18px; overflow:hidden; display:block; padding:5px 12px 0;} 
+.oneXin_shop li p.tit a{height:36px;color:#333}
+.oneXin_shop li p.tit a:hover{color:#cc3399; text-decoration:none}
+.oneXin_shop li p.tjia{color:#ec0089}
+/*wq 购物车滚动 20120308修改*/
+.dapeiContboxL1,.lltjContboxL1{clear:both;width:946px;overflow:hidden; height:165px;}
+.dapeiContlist1{ width:884px; overflow:hidden;float:left; position:absolute; left:31px;top:10px;}
+.dapeiContlistin1,.lltjContlistin1{ float:left; width:58000px; overflow:hidden; position:relative; left:0;}
+
+.dapeiContwarp1{ clear:both; position:relative;}
+.dapeiContwarp1 span{ float:left; position:absolute; left:11px; top:45px; width:20px; height:47px;  background:url(http://images.lefeng.com/images/uinfo/onedl11.jpg) no-repeat left 0px; cursor:pointer;}
+.dapeiContwarp1 span.left{background:url(http://images.lefeng.com/images/uinfo/onedl11.jpg) no-repeat left 0px;}
+.dapeiContwarp1 span.lefts{ background:url(http://images.lefeng.com/images/uinfo/onedl11.jpg) no-repeat left -68px;}
+.dapeiContwarp1 span.right{ left:915px; background:url(http://images.lefeng.com/images/uinfo/onedl11.jpg) no-repeat right -68px;}
+.dapeiContwarp1 span.rights{ left:915px; background:url(http://images.lefeng.com/images/uinfo/onedl11.jpg) no-repeat right 0px;}
+
+.dapeiContwarp1 li{ float:left; text-align:left; width:210px; height:130px; padding:10px 6px 15px 5px;}
+.dapeiContwarp1 li a:link img,.cuxBox li a:visited img{ width:88px; height:88px; border:1px solid #e3e3e3; display:block;}
+.dapeiContwarp1 li a:hover img{ width:88px; height:88px; border:1px solid #b49682;}
+.dapeiContwarp1 li p{ float:left; width:115px; padding-left:5px;}
+.dapeiContwarp1 li p em{ width:115px; line-height:18px; overflow:hidden; display:block;}
+.dapeiContwarp1 li p em.tit{height:54px;color:#333}
+.dapeiContwarp1 li p em.sjia{color:#999;}
+.dapeiContwarp1 li p em.tjia{color:#963c00;}
+.dapeiContwarp1 li div.btn{ width:94px; height:23px;clear:both; padding-top:10px; margin:0 auto }
+.dapeiContwarp1 li div.btn a{display:block; width:94px; height:23px; background:url(http://images.lefeng.com/images/uinfo/onedl12.jpg);}
+
+
+.addShopC {background: none repeat scroll 0 0 #000000;
+    height: 100%;
+    _height:expression(document.body.scrollHeight+50);
+    left: 0;
+    filter:alpha(opacity=60);
+    opacity: 0.6;
+    -moz-opacity: 0.6;
+    position: fixed !important;
+    _position:absolute;
+    top: 0;
+    width: 100%;
+    z-index: 5001;
+	display:none;
+}
+
+
+/**/
+	.exchange{position:absolute;top:-410px;_top:-430px;right:0;z-index:14;width:344px;height:380px;padding:10px;background:#fff;border:1px solid #c39;border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px;box-shadow:-3px 3px 3px #ccc;-moz-box-shadow:-3px 3px 3px #ccc;-webkit-box-shadow:-3px 3px 3px #ccc;text-align:left;}
+	.exchange p{clear:both;}
+	.exchange .close span{float:right;cursor:pointer;}
+	.exchange .t{padding:5px;margin:10px 0;background:#fffdf1;border:1px solid #ffd8bf;color:#666;}
+	.exchange b{font-weight:bold;}
+	.exchange .enter{margin:0 0 3px;}
+	.djj .enter b{display:inline-block;width:80px;text-align:right;}
+	.djj .enter input{width:181px;height:22px;border:1px solid #cdcdcd;}
+	.exchange .submit{padding:7px 0 17px 80px;height:28px;line-height:28px;}
+	.exchange .confirmLayeredmbtn{margin:0;}
+	.exchange .sy{height:21px;margin:10px 0 0;line-height:21px;color:#666;}
+	.exchange .sy a{float:right;width:70px;height:21px;background:url(http://images.lefeng.com/images/mycart/btn_1.jpg) no-repeat;}
+	.exchange .sy a:hover{background-position:0 -21px;}
+	.exchange .ex_page{text-align:right;margin:10px 0 0;}
+	.exchange .ex_page a{display:inline-block;margin:0 3px;padding:0 2px;border:1px solid #ccc;}
+	.exchange .ex_page .down{background:#acacac;color:#fff;}
+	.exchange em{position:absolute;bottom:-8px;_bottom:-9px;right:85px;width:14px;height:8px;background:url(http://images.lefeng.com/images/mycart/ico_1.png) no-repeat;font-size:1px;overflow:hidden;}
+	
+	.notstock{position:relative;clear:both;width:890px;height:51px;margin:22px 0 0;padding:10px 8px;background:#fffdf1;border:1px solid #ffd8bf;text-align:left;line-height:26px;}
+	.notstock img{float:left;width:50px;height:50px;margin:0 14px 0 0;}
+	.notstock a{color:#0086cd;}
+	.notstock .f0{color:#f00;}
+	.notstock em{display:block;position:absolute;top:-6px;right:50px;width:12px;height:7px;background:url(http://images.lefeng.com/images/mycart/ico_2.png) no-repeat;font-size:1px;}
+	.tipcd{width:320px;height:90px;float:right;margin:20px 0;}
+	.tipcd a{display:inline-block;width:79px;height:29px;margin:5px 0 0 70px;background:url(http://img1.imglefeng.com/images/mycart/cart_tipcd.png) no-repeat;color:#fff!important;text-align:center;line-height:29px;font-weight:bold;}
+	.tipcd .tipcd-cancel{margin:5px 0 0 20px;background-position:0 -29px;color:#000!important;}
+	
+	.mycart_mz{padding:0;}
+	.mycart_mz li{padding:5px;}
+	.mycart_mz li.proName table{height:18px;}
+	.mycart_mz li.proName{padding-top:20px;}
+	.mycart_zp li.proName{padding:0 5px;}
+	.mycart_zp li.proName table p img{margin-bottom:3px;}
+	.cart_alert{float:left;margin:10px 20px;padding:5px;border:1px solid #fdb381;color:#333;text-indent:20px;width:490px;background:#fffcd6 url(http://images.lefeng.com/images/mycart/n_ico_02.jpg) no-repeat 5px;}
+
+
+/*iphone下载*/
+.iphone	{ display:inline-block; font-size:14px; height:28px; line-height:28px; color:#656565; margin-top:8px; background:url(http://images.lefeng.com/images/uinfo/iphone_ico.gif) left center no-repeat; padding-left:30px; text-align:left;color:#006699;}
+.mg24	{ margin-top:20px;}
+
+
+
+
+
+
+
+

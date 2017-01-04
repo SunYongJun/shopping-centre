@@ -1,0 +1,83 @@
+<?php
+namespace Admin\Controller;
+
+class CommentController extends CommonController{
+	
+	public function _initialize() {
+		$this->assign('menuList',CONTROLLER_NAME.'-'.ACTION_NAME);
+		$this->assign('menu','Goods');
+	}
+
+	public function index(){
+		$goods =  M('goods');
+		$comments = M('comment');
+		$users = M('user');
+
+		$count =  $comments -> count();
+		$mypage = $this -> mypage($count,8);
+		$comment = $comments -> limit($mypage->firstRow,$mypage->listRows) -> select();
+
+		
+		$user = $users->select();
+
+		foreach($comment as $k=>$v) {
+
+			//所属商品
+			$goodsname = $goods->find($v['goods_id'])['goods_name'];
+			$comment[$k]['goods_name'] = $goodsname;
+
+			//评论人
+			$useremail = $users->find($comment[$k]['user_id'])['user_email'];
+			$comment[$k]['user_email'] = $useremail;
+		}
+
+		//分页分配
+		$page = $mypage -> show();
+		$this->assign('page',$page);
+
+		$this->assign('comment',$comment);
+		$this -> display();
+	}
+
+	public function delete() {
+		if(IS_GET) {
+			$map['id'] = array('eq',$_GET['id']);
+			$user = M('comment');
+			if($user-> where($map) -> delete()){
+				$this->success('删除成功');
+			}else{
+				$this->error('删除失败');
+			}
+		}
+	}
+
+	public function save() {
+		if(IS_POST){
+			$data = M(CONTROLLER_NAME);
+			if($_POST['show']){
+				$show = $data -> find($_POST['id'])['is_show'];
+				if($show == 1) {
+					$comment['is_show'] = 0;
+				}else{
+					$comment['is_show'] = 1;
+				}
+				$comment['id'] = $_POST['id'];
+				$data->create($comment);
+				$data->save();	
+				$this->ajaxReturn($comment);
+			}
+		}
+	}
+
+	//批量删除
+	public function delall() {
+		$ids = implode(',',$_POST['id']);
+		$goods = M(CONTROLLER_NAME);
+		if($goods -> delete($ids)){
+			$this -> ajaxReturn($ids);
+		}else{
+			$this -> ajaxReturn(false);
+		}
+	}
+
+}

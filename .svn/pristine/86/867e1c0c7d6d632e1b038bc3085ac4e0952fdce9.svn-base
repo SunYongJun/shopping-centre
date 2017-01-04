@@ -1,0 +1,395 @@
+<extend name="Public:layout" />
+<block name="cssjs">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/personal.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/home_v2.css">
+</block>
+<!--头部结束-->
+<block name="main">
+<div class="mainBg">
+<div class="main clearfix">
+<!--[if IE]>
+<noscript>
+    <div class="fl mylafasoV2L"></noscript>
+    <![endif]-->
+    <!-- partial_1299568417898 -->
+    <div class="side_bar">
+        <h1>
+            <a title="我的蜂巢" href="#">我的蜂巢</a>
+        </h1>
+        <dl>
+            <dt>订单中心</dt>
+            <dd>
+                <a href="__CONTROLLER__/order">我的订单</a>
+                <a href="#">我的收藏</a>
+                <a href="__CONTROLLER__/myBonus">我的红包</a>
+                <a href="__CONTROLLER__/myCoin">我的花粉</a>
+                <a href="__CONTROLLER__/order">我的评价</a>
+            </dd>
+        </dl>
+        <dl>
+            <dt>账户管理</dt>
+            <dd>
+                <a href="#">个人资料设置</a>
+                <a href="__CONTROLLER__/safe">账户安全设置</a>
+                <a href="__CONTROLLER__/address">收货地址管理</a>
+                <a href="#">邮件/短信订阅</a>
+                <a href="#">站外分享绑定</a>
+            </dd>
+        </dl>
+        <dl>
+            <dt>服务中心</dt>
+            <dd>
+                <a href="#">申请退换货/投诉</a>
+                <a href="#">退货管理</a>
+                <a href="#">换货管理</a>
+                <a href="#">店铺取消订单管理</a>
+                <a href="#">商品咨询/回复</a>
+                <a href="#">我的投诉</a>
+            </dd>
+        </dl>
+    </div>
+    <!-- // <script type="text/javascript" src="__PUBLIC__/dist/js/W960.js"></script> -->
+    <!-- 左侧 -->
+    <!--[if IE]>
+    <noscript></div>
+</noscript>
+<![endif]-->
+<!--    <a href="http://order.lefeng.com/user_address.jsp?cur=3f">测试</a>
+-->
+<div class="content">
+<div class="shouhuo">
+    <h1>收货地址管理</h1>
+    <div class="dzgl">
+        <h2 id="h2_displayNum">
+            最多可保存10个地址，您还可以增加
+            <span>9</span>
+            个
+        </h2>
+        <h2 id="h2_disFull" style="color: red; display: none;">收货地址薄已满</h2>
+        <ul id="path_list">
+            <!-- 为什么要在这样用java代码循环？是因为之前是直接在js中通过异步方式结合模板动态添加的元素 -->
+            <!-- ，每次点击左侧的【收货地址管理】菜单，其实就是转向本页面的链接（刷新整个页面）：
+                            问题在于这样动态添加需要等页面加载完成之后执行：
+                                对于ie9及以上版本，firefox,chrome等浏览器由于对渲染做了优化， 肉眼看不出有刷新
+                                但对于ie8及以下版本，每次都可以看到右侧收货地址有刷新，所有改成初始是这样加载。
+                        -->
+            <!---->
+
+            <li id="ship_info_li_8195149061" class="">
+                <div>
+                    <span class="tit">王雪</span>
+                    <span class="mL20">13241291060</span>
+                </div>
+                <p>
+                    北京市-市辖区-昌平区
+                    <br>回龙观文化西路兄弟连楼</p>
+                <i style="display: none;"><a href="javascript:void(0);" name="aa" class="fr" onclick="ShipInfo.del(this,&#39;8195149061&#39;)">删除</a>
+                    <a href="javascript:void(0);" class="new_dizhi" onclick="ShipInfo.openModWindow(&#39;8195149061&#39;)">修改</a>
+                    <a href="javascript:void(0);" onclick="ShipInfo.setOrCancelDefault(this,&#39;8195149061&#39;)" class="moren">设为默认地址</a></i> 
+                <span style="display:none" name="ship_info" id="ship_info_span_8195149061" shipid="8195149061" receiver="王雪" idcard="" province="北京市" city="市辖区" county="昌平区" address="回龙观文化西路兄弟连楼" zipcode="102200" mobile="13241291060" phone="" email="" countyid="010113" defaultaddrstate="0"></span>
+            </li>
+
+            <li id="ship_info_li_add"> <em><a href="javascript:void(0);" class="new_dizhi" onclick="ShipInfo.openAddWindow()">使用新地址</a></em> 
+            </li>
+            <!----> </ul>
+    </div>
+</div>
+</div>
+<!--弹框开始-->
+<div class="publicAlertbox g68" id="bjshdz">
+<h1 id="formTitle">编辑收货地址</h1>
+<form>
+    <div class="edit_shdz">
+        <ul>
+            <li id="li_receiver">
+                <em><i>*</i>
+                    收货人姓名：</em> 
+                <input id="shipwindow_receiver" type="text" class="g29" name="name">
+                <span>请输入收货人姓名</span>
+            </li>
+            <li id="li_diqu">
+                <em class="fL lineH">
+                    <i>*</i>
+                    所在地区：
+                </em>
+                <select id="shipwindow_province" onchange="ShipInfo.reloadCity();" style="width:100px;margin-left: 5px;"></select>
+                <select id="shipwindow_city" onchange="ShipInfo.reloadCounty();" style="width:100px;"></select>
+                <select id="shipwindow_county" onchange="ShipInfo.getReferPostcode();" style="width:100px;"></select>
+                <span class="lineH">请选择地区</span>
+                <p>注：标"*"的为支持货到付款的地区</p>
+            </li>
+            <li id="li_idcard" style="display:none">
+                <em>身份证号：</em>
+                <input id="shipwindow_idcard" type="text" class="g29" name="idcard">
+                <span></span>
+            </li>
+            <li id="li_address">
+                <em>
+                    <i>*</i>
+                    详细地址：
+                </em>
+                <input id="shipwindow_address" type="text" class="g29" name="adress">
+                <span>请输入街道地址</span>
+            </li>
+            <li id="li_postcode">
+                <em>
+                    <i>*</i>
+                    邮政编码：
+                </em>
+                <input id="shipwindow_postcode" type="text" name="youbian" value="">
+                参考邮编：
+                <b id="refer_postcode">052200</b>
+                <a href="javascript:void(0);" class="yellow pd41" id="clone" onclick="ShipInfo.userReferPostCode();">使用此邮编</a>
+                <span>邮箱输入有误</span>
+            </li>
+            <li id="li_mobileAndPhone">
+                <em>
+                    <i>*</i>
+                    手机号码：
+                </em>
+                <input id="shipwindow_mobile" type="text" class="g9">
+                或&nbsp;&nbsp;固定电话：
+                <input id="shipwindow_areacode" type="text" class="g9">
+                -
+                <input id="shipwindow_telinfo" type="text" class="g9">
+                -
+                <input id="shipwindow_extention" type="text" class="g9">
+                <p>
+                    用于接受订单短信或送货前确认
+                    <span>请输入手机号码或固定电话</span>
+                </p>
+            </li>
+            <li id="li_email">
+                <em>电子邮箱：</em>
+                <input id="shipwindow_email" type="text" class="g29" name="email">
+                <span>邮箱输入有误</span>
+                <p>用于接收订单状态提醒邮件,便于您及时了解订单状态</p>
+            </li>
+            <li>
+                <p>
+                    <a href="javascript:void(0)" id="shipwindow_optbutton" opt="add" onclick="ShipInfo.addOrUpdate(this)">
+                        <img src="__PUBLIC__/home/images/bt3.jpg"></a>
+                </p>
+            </li>
+        </ul>
+    </div>
+    <a href="javascript:void(0);" class="close"></a>
+    <input id="shipwindow_shipId" value="" type="hidden" style="width:298px;">
+    <input id="shipwindow_defaultAddrState" value="false" type="hidden" style="width:298px;"></form>
+</div>
+</div>
+<!--弹框结束-->
+</div>
+</block>
+<!-- Group.1
+<script id="province-option-template" type="text/x-handlebars-template">
+  <option value="0">请选择</option>
+  <option value="01">北京市</option>
+  <option value="02">天津市</option>
+  <option value="03">河北省</option>
+  <option value="04">山西省</option>
+  <option value="05">内蒙古自治区</option>
+  <option value="06">辽宁省</option>
+  <option value="07">吉林省</option>
+  <option value="08">黑龙江省</option>
+  <option value="09">上海市</option>
+  <option value="10">江苏省</option>
+  <option value="11">浙江省</option>
+  <option value="12">安徽省</option>
+  <option value="13">福建省</option>
+  <option value="14">江西省</option>
+  <option value="15">山东省</option>
+  <option value="16">河南省</option>
+  <option value="17">湖北省</option>
+  <option value="18">湖南省</option>
+  <option value="19">广东省</option>
+  <option value="20">广西壮族自治区</option>
+  <option value="21">海南省</option>
+  <option value="22">重庆市</option>
+  <option value="23">四川省</option>
+  <option value="24">贵州省</option>
+  <option value="25">云南省</option>
+  <option value="26">西藏自治区</option>
+  <option value="27">陕西省</option>
+  <option value="28">甘肃省</option>
+  <option value="29">青海省</option>
+  <option value="30">宁夏回族自治区</option>
+  <option value="31">新疆维吾尔自治区</option>
+  <option value="32">台湾省</option>
+  <option value="33">香港特别行政区</option>
+  <option value="34">澳门特别行政区</option>
+</script>
+
+<script id="city-option-template" type="text/x-handlebars-template">
+  <option value="0">请选择</option>
+  {{#each this}}
+  <option value="{{value}}" title="{{title}}" {{#if isSelected}}selected="{{isSelected}}"{{/if}}>{{title}}</option>
+  {{/each}}
+</script>
+
+<script id="county-option-template" type="text/x-handlebars-template">
+  <option value="0">请选择</option>
+  {{#each this}}
+  <option value="{{value}}" title="{{title}}" {{#if isSelected}}selected="{{isSelected}}"{{/if}}>{{title}}</option>
+  {{/each}}
+</script>
+
+Group.2
+<script id="user-ship-template" type="text/x-handlebars-template">
+    <li id="{{e_li_id}}">
+        <div><span class="tit">{{displayReceiver}}</span><span class="mL20">{{mobileOrPhone}}</span></div>
+        <p>{{displayRegion}}<br />{{displayAddress}}</p>
+        <i><a href="javascript:void(0);" class="fr" onclick="ShipInfo.del(this,'{{shipId}}')">删除</a><a href="javascript:void(0);" class="new_dizhi" onclick="ShipInfo.openModWindow('{{shipId}}')">修改</a>  <a href="javascript:void(0);" onclick="ShipInfo.setOrCancelDefault(this,'{{shipId}}')" class="moren">设为默认地址</a></i>
+        <span style="display:none" name="ship_info" 
+          id="{{e_span_id}}" shipId="{{shipId}}" 
+          receiver="{{receiver}}" idCard="{{idCard}}" province="{{province}}" city="{{city}}" 
+          county="{{county}}" address="{{address}}" zipcode="{{zipcode}}" 
+          mobile="{{mobile}}" phone="{{phone}}" email="{{email}}" 
+          countyId="{{countyId}}" defaultAddrState="{{defaultAddrState}}"></span>
+    </li>   
+</script>
+
+<script id="add-ship-template" type="text/x-handlebars-template">
+    <li id="ship_info_li_add">
+        <em><a href="javascript:void(0);" class="new_dizhi" onclick="ShipInfo.openAddWindow()">使用新地址</a></em>
+    </li>   
+</script> -->
+
+
+<!-- 
+<script type="text/javascript" src="__PUBLIC__/dist/js/lafaso.class.js"></script>
+<script type="text/javascript" src="__PUBLIC__/dist/js/home_v3.js"></script>
+
+<div style="display: none">
+<script type="text/javascript">
+setTimeout(function () {
+    //baidu
+    //document
+    (function (d) {
+        window.bd_cpro_rtid = "PWTYrjn";
+        var s = d.createElement("script");
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = location.protocol + "//cpro.baidu.com/cpro/ui/rt.js";
+        var s0 = d.getElementsByTagName("script")[0];
+        s0.parentNode.insertBefore(s, s0);
+
+        //ga
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-34801627-1']);
+        _gaq.push(['_setDomainName', 'lefeng.com']);
+        _gaq.push(['_setCampNameKey', 'utm_campaign']);
+        _gaq.push(['_trackPageview']);
+        (function () {
+            var ga = document.createElement('script')
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    })(document);
+}, 100)
+</script>
+
+<script type="text/javascript" src="__PUBLIC__/dist/js/lafaso_wt.js"></script>
+
+</div>
+<script>
+
+    function topCcountDown(t,c,_self,fn){
+        function nd(d){return isNaN(d) ? (d ? new Date(d).getTime() : new Date().getTime()) : d * 1000;}
+        var e = [nd(t[0]),nd(t[1]),nd(t[2])],_s = _self,b;
+        if(!$(_s).length){return false;}
+        if(t[0] && e[0] > e[1]){
+            $(_s).html(c[1]);
+            return false;
+        }else if(e[1] > e[2]){
+            fn && fn($(_s));
+            $(_s).html(c[2]);
+            return false;
+        }
+        (b=function(l){
+            var l=l||(e[2]-e[1])/100,k={
+                D:l/36000/24,H:l/36000%24,M:l/600%60,S:l/10%60,s:l%10
+            };
+            $(_s).html(c[0].replace(/D|H|M|S|s/g,function(m){
+                var n = parseInt(k[m]) + ''
+                if (n.length == 1 && m != 'D' && m != 's'){
+                    n = 0 + n;
+                }
+                return n
+            }));
+            setTimeout(function(){b(l-1)},100);
+        })()
+    }
+
+//topCcountDown([,,'2014/04/18 00:00:00'],['<b>D</b><b>H</b><b>M</b><b>S</b><b>s</b>','',''],'#top_countdown',function(){$('#advTop').remove()});
+
+</script>
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?69200f796b23f8fe027c39886c7298db";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<script type="text/javascript">
+var google_tag_params = {
+ 
+ecomm_pagetype : 'REPLACE_WITH_VALUE',
+ecomm_prodid : 'REPLACE_WITH_VALUE',
+ecomm_pcat : 'REPLACE_WITH_VALUE',
+ecomm_totalvalue : 'REPLACE_WITH_VALUE',
+ecomm_login : 'REPLACE_WITH_VALUE'
+ 
+};
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1049985484;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]>*/</script>
+<script type="text/javascript" src="__PUBLIC__/dist/js/conversion.js"></script>
+<iframe name="google_conversion_frame" title="Google conversion frame" width="300" height="13" src="./收货地址薄_乐蜂网_files/saved_resource.htm" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no">
+&lt;img height="1" width="1" border="0" alt="" src="http://googleads.g.doubleclick.net/pagead/viewthroughconversion/1049985484/?frame=0&amp;random=1417521812197&amp;cv=7&amp;fst=1417521812197&amp;num=1&amp;fmt=1&amp;guid=ON&amp;u_h=768&amp;u_w=1024&amp;u_ah=738&amp;u_aw=1024&amp;u_cd=24&amp;u_his=50&amp;u_tz=480&amp;u_java=true&amp;u_nplug=16&amp;u_nmime=30&amp;data=ecomm_pagetype%3DREPLACE_WITH_VALUE%3Becomm_prodid%3DREPLACE_WITH_VALUE%3Becomm_pcat%3DREPLACE_WITH_VALUE%3Becomm_totalvalue%3DREPLACE_WITH_VALUE%3Becomm_login%3DREPLACE_WITH_VALUE&amp;frm=0&amp;url=http%3A//order.lefeng.com/user_address.jsp%3Fcur%3D3f&amp;ref=http%3A//passport.lefeng.com/user/security_center.jsp%3Fcur%3D18f&amp;vis=1" /&gt;
+</iframe>
+<noscript>
+&lt;div style="display:inline;"&gt;
+&lt;img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1049985484/?value=0&amp;guid=ON&amp;script=0"/&gt;
+&lt;/div&gt;
+</noscript>
+
+jquery在头部中已经引用了，上线时注释掉jquery
+<script type="text/javascript" src="__PUBLIC__/dist/js/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/dist/js/handlebars-v1.3.0.js"></script>
+<script type="text/javascript">
+var userShipTmplScript = $("#user-ship-template").html();
+var userShipTmpl = Handlebars.compile(userShipTmplScript);
+var addShipTmplScript = $("#add-ship-template").html();
+var addShipTmpl = Handlebars.compile(addShipTmplScript);
+$(document).ready(function() {
+    //如果是用js中load初始化的收货地址，就用这个
+    //ShipInfo.init();
+
+    //如果是在本页面加载的收货地址，就需要下面的代码，用于初始化一些信息
+    var shipInfoCnt = '1';
+    if(shipInfoCnt>=10){//大于10个收货地址已满
+        ShipInfo.setClassWhenCntFull(true);
+    }else{
+        ShipInfo.setClassWhenCntFull(false);
+    }
+    //显示默认地址
+    var defaultAddrId = '';
+    FormTool.setDefaultClass(defaultAddrId);
+});
+</script>
+<script type="text/javascript" src="__PUBLIC__/dist/js/validator.js"></script>
+<script type="text/javascript" src="__PUBLIC__/dist/js/user_address.js"></script>
+<script type="text/javascript" src="__PUBLIC__/dist/js/wdfc.js"></script> -->

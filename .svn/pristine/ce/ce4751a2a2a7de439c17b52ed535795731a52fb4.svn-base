@@ -1,0 +1,361 @@
+<extend name="Public:cartlayout" />
+<block name="main">
+<link rel="stylesheet" href="__PUBLIC__/home/css/cart_confirm.css">
+
+<div class="main">
+  <!-- 收货地址 -->
+  <div class="path" id="path">
+    <h3><i>1</i>收货地址<span id="path_msg"></span></h3>
+    <div id="path_list">
+<div id="path_list">
+<foreach name="addr" item="vo">
+    <dl class="cli">
+          <dt>
+                <span class="tit">{$vo.true_name}</span>
+                <span class="tel">{$vo.address_phone}</span>
+                <span class="def">设为默认</span>
+          </dt>
+          <dd>{$vo.address_province}-{$vo.address_city}-{$vo.address_county}<br>{$vo.address_info}</dd>
+          <dd class="ubtn">
+              <b class="update" edit="{$vo.id}">修改</b>
+              <b class="del" del="{$vo.id}">删除</b>
+          </dd>
+          <span style="display:none" name="ship_info" id="{$vo.id}" receiver="{$vo.true_name}" province="{$vo.address_province}" city="{$vo.address_city}" county="{$vo.address_county}" address="{$vo.address_info}" zipcode="{$vo.address_zip}" phone="{$vo.address_phone}" email="{$vo.address_email}" pcc="{$vo.pcc}"></span>
+  </dl>
+</foreach>
+<dl class="add">
+    <dd><b></b>使用新地址</dd>
+</dl>
+  <p>
+    <b style="display: none;" class="more-path" id="adshow">查看更多地址 <i></i></b>
+    <b style="display:none ;" class="more-path" id="hid">收起 <i class="up"></i></b>
+    <b style="display:none ;" class="addBtn" id="allshow">使用新地址<i>+</i></b>
+  </p>
+</div>
+  <p>
+    
+  </p>
+</div>
+  </div>
+  <!-- 支付方式 -->
+  <div class="pay" id="pay">
+    <h3><i>2</i>支付方式<b style="display: none;" class="update" >修改</b><span id="pay_msg"></span></h3>
+    <div style="display: none;" id="pay_closed">
+      <p>default</p>
+    </div>
+    <div id="pay_opened">
+      <ul>
+        <li><span style="cursor:pointer;"><input checked="checked" name="pay_opened_pm_radio" value="1" type="radio">在线余额支付</span>支持绝大数银行卡在线支付</li>
+        <li><span  style="cursor:pointer;"><input name="pay_opened_pm_radio" value="2" ispos="0" type="radio">货到付款（现金） </span>快递人员将在送货上门时收款，请您准备好现金。</li>
+        <li><span  style="cursor:pointer;"><input name="pay_opened_pm_radio" value="3" type="radio">银行汇款</span>收款时间一般为汇款出后的3-5个工作日内</li>
+      </ul>
+    </div>
+  </div>
+  <!-- 配送时间 -->
+  <div class="time" id="time">
+    <h3><i>3</i>快递配送时间</h3>
+    <div style="display: none;" id="time_closed">
+      <p>default</p>
+    </div>
+    <div id="time_opened">
+      <dl class="on"  value="1">
+        <dt>不限时间</dt>
+      </dl>
+      <dl  value="2">
+        <dt>周一至周五</dt>
+      </dl>
+      <dl  value="3">
+        <dt>周六日/节假日</dt>
+      </dl>
+    </div>
+    <div style="display: none;" id="time_mandi">
+      <p class="showpirce"><input type="checkbox"><b class="checkbox" ></b><span id="time_mandi_msg" style="margin:0"></span></p>
+    </div>
+  </div>
+  <!-- 商品清单 -->
+<div class="pro-list">
+<h3><i>4</i>商品清单</h3>
+      <div id="shoppinglistDiv">
+              <h2><a href="__MODULE__/Cart/index">返回购物车 <b></b></a>以下商品由<span>乐蜂网</span>发出</h2>
+              <table name="productList" border="0" cellpadding="0" cellspacing="0">
+                      <tbody>
+                            
+                            <tr>
+                                    <th class="t1">商品名称</th><th style="width:140px;">单价</th>
+                                    <th style="width:110px;">数量</th><th style="width:124px;">赠送花粉</th>
+                                    <th style="width:110px;">库存情况</th>
+                            </tr>
+                            <foreach name="Think.session.cart" item="vo">
+                            <tr class="noshop">
+                                    <td class="t1">
+                                           <a target="_blank" href="__MODULE__/">        
+                                                    {$vo.goods_name}
+                                           </a>
+                                    </td>
+                                    <td class="t2"><b>￥</b><span pri="{$vo.goods_price}">{$vo.goods_price}</span></td>
+                                    <td>{$vo.num}</td><td>{$vo.goods_coin}</td>
+                                    <td>有货</td>
+                            </tr>
+                          </foreach>
+                      </tbody>
+              </table>
+              <div class="price">
+                      <p>总价：<span><b>￥</b><b class="moneys">0.00</b></span></p>
+                      <p>运费：<span><b>￥</b><b>10.00</b></span></p>
+                      <p>运费优惠：<span><b>-￥</b><b>10.00</b></span></p>
+                      <p>需支付总额：<span class="red"><b>￥</b><strong class="moneys"></strong></span></p>
+              </div>
+        </div>
+    <!-- 红包 -->
+    <div class="hb" id="redbag">
+      <h4 onclick="Redbags.expand();">使用乐蜂网红包<b style="display: none;" class="update" >修改</b></h4>
+      <div style="display: none;" id="redbag_not">您没有红包</div>
+      <div style="display: none;" id="redbag_have">
+        <!-- 未使用红包 -->
+        <div id="redbag_have_notused">此单可用的红包：<select id="redbag_have_select"></select><b class="jbtn" >使用</b></div>
+        <!-- 使用红包 -->
+        <div id="redbag_have_used">
+          已使用乐蜂网红包【<span id="redbag_have_used_redbaginfo"></span>】从订单金额中可抵扣<span id="redbag_have_used_redbagpay"></span> 
+          <a onclick="Redbags.cancleUse();">取消使用</a>
+        </div>
+      </div>
+    </div>
+    <!-- 代金券和兑换券、dm期刊VoucherCouponDMs,简写reel_vcd -->
+    <div class="reel" id="reel_vcd">
+
+  
+      <!-- 代金券区域 -->
+
+
+    </div>
+
+    <!-- 积分显示区域 -->
+    <div id="point">
+      <p>● 您有<span id="point_display"></span>花粉，可以花粉抵运费
+        <select onchange="SalePointDeliver.select(this);">
+          <option selected="selected" value="0">暂不使用花粉</option>
+          <option value="1000">1000花粉可抵消10元运费</option>
+          <option value="800">800花粉可抵消8元运费</option>
+          <option value="500">500花粉可抵消5元运费</option>
+          <option value="300">300花粉可抵消3元运费</option>
+          <option value="100">100花粉可抵消1元运费</option>
+        </select>
+      </p>
+    </div>
+  </div>
+  <!-- 确认订单按钮 -->
+  <div id="confirm" class="confirm">
+
+    <span id="confirm_totalPrice"></span>
+    <strong class="on">确认订单</strong>
+  <!--  <strong disabled="disabled"  class="">确认订单</strong>
+   <p style="display: block;" id="confirm_bottom_notice" class="notice"><a href="#path">请先选择收货地址<b></b></a></p> -->
+  </div>
+</div>
+
+
+
+<!-- 收货地址弹出框(创建和编辑公用) -->
+<div style="display:<empty name='addr'> block <else /> none</empty>; top: 200px; height: 531px;" id="path_window" class="pathadd">
+  <h3>创建收货地址</h3><i class="close"></i>
+  
+  <p>
+    <span><i>*</i>收货人姓名 ：</span><input id="shipwindow_receiver" style="width:298px;" name="true_name"><b></b><em></em>
+  </p>
+  
+  <p id="pcc"><span><i>*</i>所在地区 ：</span>{$address}
+    <b>注：标“*”的为支持货到付款的地区</b><em></em>
+  </p>
+  <p>
+    <span><i>*</i>详细地址 ：</span><input id="shipwindow_address" style="width:418px;" name="address_info"><b>请直接填写街道等详细地址，省/市/区不用填写</b><em></em>
+  </p>
+  <p>
+    <span><i>*</i>邮政编码 ：</span><input id="shipwindow_postcode" style="width:93px;" name="address_zip">　　
+    <span id="refer_postcode_span" style="width: 180px; margin: 0px; display:;" align="left">邮编格式：<strong id="refer_postcode" style="margin:0">100000</strong>
+    </span><b></b><em></em>
+  </p>
+  <p>
+    <span><i>*</i>手机号码 ：</span><input id="shipwindow_mobile" style="width:200px;" name="address_phone">　　
+  
+    <b>用于接受订单短信或送货前确认</b><em></em>
+  </p>
+<p>
+    <span><i></i>邮箱 ：</span><input id="shipwindow_email" style="width:298px;" name="address_email"><b>用于接收订单状态提醒邮件,便于您及时了解订单状态</b><em></em>
+    </p>
+    <input id="shipwindow_shipId" value="" style="width:298px;" type="hidden">
+    <input id="shipwindow_defaultAddrState" value="false" style="width:298px;" type="hidden">
+    <span id="shipwindow_optbutton" opt="add" class="save">保存并使用</span>
+</div>
+<!-- 收货地址弹出框的遮罩 -->
+<div style="display: <empty name='addr'> block <else /> none</empty>;" id="lock"></div>
+
+<script>
+       $(function() {
+              //计算总价
+              var money = 0;
+              $.each($('span[pri]'),function(i,v) {
+                var num = parseInt($(v).parent().next().html());
+                  money += parseFloat($(v).html()) * num;
+              })
+          money = money.toFixed(2);
+        $('.moneys').html(money);
+
+
+            $('.close').bind('click',function() {
+                  $(this).parent().attr('style','display:none');
+                  $('#lock').attr('style','display:none');
+             })
+
+            $('.add,.addBtn').bind('click',function() {
+                  $('#path_window :input').val('');
+                 $('#path_window').attr('style','display: block; top: 200px; height: 531px;');
+                 $('#lock').attr('style','display:block');
+          })
+
+            $('span[opt="add"]').bind('click',function() {
+                  var info = $('#path_window :input').serialize();
+
+                  $.post('__CONTROLLER__/address',info,function(data){
+                      if(data){ 
+                          location.reload(true);
+                          // console.log(data);
+                      }
+                    
+                  })
+            })
+
+            $('.cli').hover(
+                    function() {
+                        $(this).children().show();
+                        $(this).children().children().show();
+                    },
+                    function() {
+                      $(this).children('.ubtn').hide();
+                      $(this).children().children('.def').hide();
+                    }
+              )
+
+            //地址框选择
+              $('.cli').eq(0).addClass('default cli');
+
+              $('.cli').bind('click',function() {
+                    $('.cli').removeClass('default');
+                    $(this).addClass('default');
+              })
+
+            //修改地址
+            $('b[edit]').bind('click',function() {
+                    var va = $(this).attr('edit');
+                    $('#path_window').attr('style','display: block; top: 200px; height: 531px;');
+                    $('#path_window').append('<input type="hidden" name="id" value="'+va+'">');
+                    $('#lock').attr('style','display:block');
+
+                    var inf = $('span[id="'+va+'"]');
+                    $('#shipwindow_receiver').val(inf.attr('receiver'));
+
+                    //省市区
+                    $.post('__CONTROLLER__/addredit',{id:va},function(data) {
+                      if(data) {
+                          $('#pcc').html('<span><i>*</i>所在地区 ：</span>'+data+'<b>注：标“*”的为支持货到付款的地区</b><em></em>');
+                      }
+                  });
+                     
+                     //详细地址
+                     $('#shipwindow_address').val(inf.attr('address'));
+
+                     //邮编
+                     $('#shipwindow_postcode').val(inf.attr('zipcode'));
+
+                     //手机
+                     $('#shipwindow_mobile').val(inf.attr('phone'))                          
+
+                    //邮箱
+                    $('#shipwindow_email').val(inf.attr('email'))
+
+            })
+
+            //删除地址
+            $('b[del]').bind('click',function() {
+                  if(confirm('确定删除么')) {
+                          var id = $(this).attr('del');
+                        $.post('__CONTROLLER__/delete',{id:id},function(data) {
+                          if(data) {
+                                location.reload(true);
+                            }
+                        })
+                  }
+            })
+
+         //地址收起展示
+        if({$num}>3){
+            for(var i=2; i<{$num};i++){
+              $('dl[class="cli"]').eq(i).attr('style','display:none')
+            }
+            $('.add').attr('style','display:none');
+              $('#adshow').attr('style','display:block-line');
+              $('#allshow').attr('style','display:block-line')
+        }
+
+        $('#adshow').bind('click',function() {
+          $('dl[class="cli"]').attr('style','display:block-line');
+          $('.add').attr('style','display:block-line');
+          $(this).hide();
+          $('#hid').attr('style','display:block-line');
+        })
+        $('#hid').click(function() {
+              for(var i=2; i<{$num};i++){
+              $('dl[class="cli"]').eq(i).attr('style','display:none')
+            }
+            $('.add').attr('style','display:none');
+            $(this).hide();
+            $('#adshow').attr('style','display:block-line');
+            $('#allshow').attr('style','display:block-line')
+        })
+        })
+
+        //花粉
+    function coins() {
+      var coun = 0;
+      $.each($('.coin'), function(i, v) {
+        coun += parseInt(v.innerHTML);
+      })
+      $('#coins').html(coun);
+    }
+
+    //价格总计
+    function prices() {
+      var money = 0;
+      $.each($('.gprice'),function(i,v) {
+        var num = $(this).parent().next().children().children('input').val();       
+        money += parseFloat(v.innerHTML) * num;
+      })
+
+        money = money.toFixed(2);
+      $('#moneys').html(money);
+    }
+
+    //配送时间选定
+    $('#time_opened>dl').bind('click',function() {
+      $('#time_opened>dl').removeClass('on');
+      $(this).addClass('on');
+    })
+
+    //提交本页信息
+    $('strong[class="on"]').bind('click',function() {
+        var addrid = $('.default').children('span').attr('id');//地址
+        var addtime = $('dl[class="on"]').attr('value');//配送时间段
+        var count = $('.moneys').html();//总金额
+        var pay = $('input[name="pay_opened_pm_radio"]').val();//支付方式
+
+        $.post('__CONTROLLER__/info',{address_id:addrid,delivery:addtime,action_count:count,pay_id:pay},function(data) {
+                if(data){
+                  // console.log(data);
+                       location.href='__ROOT__/Home/Order/confirm/id/'+data;
+                }
+        })
+
+        
+    })
+</script>
+
+</block>

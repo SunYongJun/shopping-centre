@@ -1,0 +1,22 @@
+<?php
+/*
+*	后台首页顶部的展示栏
+*/
+namespace Admin\Widget;
+use Think\Controller;
+
+class TopWidget extends Controller{
+	/*
+	*	显示顶部的待收货
+	*/
+	public function order(){
+		//查询代发货订单
+		$o = M('order_action');
+		$count = $o -> where('action_status=1') -> count();
+		//查询付款未发货的订单
+		$order = $o -> where('action_status=1') -> field('acti,action_count') -> limit(4) -> select();
+		$this -> assign('list',$order);
+		$this -> assign('count',$count);
+		$this -> display('Public:order');
+	}
+}

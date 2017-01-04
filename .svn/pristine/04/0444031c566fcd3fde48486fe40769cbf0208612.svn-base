@@ -1,0 +1,239 @@
+<extend name="Public:layout" />
+<block name="toptitle">
+<li class="active"><a href="__MODULE__/ShopConfig/index">系统设置</a></li>
+<li class="active"><a href="__MODULE__/ShopConfig/index">商城设置</a></li>
+</block>
+<block name="main">
+<!-- 添加文章分类 -->
+<div class="page-content">
+	<div class="page-header">
+		<h1>
+			系统设置
+			<small>
+				<i class="icon-double-angle-right"></i>
+				商城设置
+			</small>
+		</h1>
+	</div><!-- /.page-header -->
+	<div class="row">
+		<div class="col-xs-12">
+			<!-- PAGE CONTENT BEGINS -->
+			<form class="form-horizontal" action="__CONTROLLER__/insert" enctype="multipart/form-data" role="form" method="post" id="addform">
+				<div class="form-group">
+					<label class="col-sm-3 control-label no-padding-right" for="form-field-1" > 商城名称 </label>
+
+					<div class="col-sm-9">
+						<input type="text" id="form-field-1" placeholder="请输入商城名称名字。" class="col-xs-10 col-sm-5" name="shop_name" required value="{$shopset.shop_name}" />
+					</div>
+					<span class="col-xs-10 col-sm-5">
+						<i class="icon-angle-right bigger-110"></i>
+						<span class="text-warning">商城名称</span>
+					</span>
+				</div>
+				<div class="form-group" id="logo">
+					<label class="col-sm-3 control-label no-padding-right"> 商城LOGO </label>
+					<div class="col-sm-9">
+						<!-- uploadify上传插件 -->
+						<div id="imgs">
+						<notempty name="shopset.shop_logo"><img src="__PUBLIC__/{$shopset.shop_logo}" alt="" height="30"></notempty>
+						</div>
+						<input id="file_upload" name="file_upload" type="file" multiple="true" value="" />
+						<!-- uploadify上传插件 -->
+						<input type="hidden" value="{$shopset.shop_logo}" id="uplogo" name="shop_logo" value="shop_logo">
+						<!-- 上传的图片地址放到这里面 -->
+						<span class="col-xs-10 col-sm-8">
+						<i class="icon-angle-right bigger-110"></i>
+						<span class="text-warning">商城头部显示的LOGO，大小200*200像素。不想更改请忽略</span>
+					</span>
+					</div>
+					
+				</div>
+				<div class="form-group">
+					<label class="col-sm-3 control-label no-padding-right" for="form-field-2" > 商城关键字 </label>
+
+					<div class="col-sm-9">
+						<input type="text" id="form-field-2" placeholder="请输入商城关键字。" class="col-xs-10 col-sm-5" name="shop_key" value="{$shopset.shop_key}"/>
+					</div>
+					<span class="col-xs-10 col-sm-8">
+						<i class="icon-angle-right bigger-110"></i>
+						<span class="text-warning">便于搜索引擎查找，输入多个请逗号分开。</span>
+					</span>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-3 control-label no-padding-right" for="form-field-3" > 商城描述 </label>
+
+					<div class="col-sm-9">
+						<input type="text" id="form-field-3" placeholder="请输入商城关键字。" class="col-xs-10 col-sm-5" name="shop_desc" value="{$shopset.shop_desc}"/>
+					</div>
+					<span class="col-xs-10 col-sm-5">
+						<i class="icon-angle-right bigger-110"></i>
+						<span class="text-warning">请输入商城的简单描述。</span>
+					</span>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-3 control-label no-padding-right" for="form-field-4" > 商城所在地区 </label>
+
+					<div class="col-sm-9">
+						<input type="text" id="form-field-4" placeholder="请输入商城关键字。" class="col-xs-10 col-sm-5" name="shop_area" value="{$shopset.shop_area}"/>
+					</div>
+					<span class="col-xs-10 col-sm-5">
+						<i class="icon-angle-right bigger-110"></i>
+						<span class="text-warning">请输入您所在的区域，如：中国 北京。</span>
+					</span>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-3 control-label no-padding-right" for="form-field-5" > 商城详细地址 </label>
+
+					<div class="col-sm-9">
+						<input type="text" id="form-field-5" placeholder="请输入商城关键字。" class="col-xs-10 col-sm-5" name="shop_address" value="{$shopset.shop_address}"/>
+					</div>
+					<span class="col-xs-10 col-sm-5">
+						<i class="icon-angle-right bigger-110"></i>
+						<span class="text-warning">请输入所在的详细地址</span>
+					</span>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-3 control-label no-padding-right" for="form-field-6" > 商城Email </label>
+
+					<div class="col-sm-9">
+						<input type="text" id="form-field-6" placeholder="请输入商城Email地址。" class="col-xs-10 col-sm-5" name="shop_mail" value="{$shopset.shop_mail}"/>
+					</div>
+					<span class="col-xs-10 col-sm-5">
+						<i class="icon-angle-right bigger-110"></i>
+						<span class="text-warning">请输入商城便于联系的Email地址。</span>
+					</span>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-3 control-label no-padding-right" for="form-field-7" > 商城电话 </label>
+
+					<div class="col-sm-9">
+						<input type="text" id="form-field-7" placeholder="请输入商城关键字。" class="col-xs-10 col-sm-5" name="shop_phone" value="{$shopset.shop_phone}"/>
+					</div>
+					<span class="col-xs-10 col-sm-5">
+						<i class="icon-angle-right bigger-110"></i>
+						<span class="text-warning">请输入商城对外的联系电话。</span>
+					</span>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-3 control-label no-padding-right" for="form-field-8"> 网站状态 </label>
+					<div class="col-xs-9">
+						<div class="radio">
+							<label>
+							<input id="form-field-8" name="is_status" type="radio" class="ace" value="1" <if condition="$shopset.is_status eq 1">checked</if>>
+							<span class="lbl">开启</span>
+							</label>
+							<label>
+							<input name="is_status" type="radio" class="ace" value="0" <if condition="$shopset.is_status eq 0">checked</if>>
+							<span class="lbl">关闭</span>
+							</label>
+						</div>
+						<span class="col-xs-10 col-sm-5">
+							<i class="icon-angle-right bigger-110"></i>
+						<span class="text-warning">关闭以后网站前台不能使用，需要在后台开启。</span>
+					</span>
+					</div>
+					
+				</div>
+				<div class="form-group">
+					<label class="col-sm-3 control-label no-padding-right" for="form-field-9"> 网站是否可以注册 </label>
+					<div class="col-xs-8">
+						<div class="radio">
+							<label>
+							<input id="form-field-9" name="is_reg" type="radio" class="ace" value="1" <if condition="$shopset.is_reg eq 1">checked</if>>
+							<span class="lbl">可以</span>
+							</label>
+							<label>
+							<input name="is_reg" type="radio" class="ace" value="0" <if condition="$shopset.is_reg eq 0">checked</if>>
+							<span class="lbl">不可以</span>
+							</label>
+						</div>
+						<span class="col-xs-10 col-sm-5">
+							<i class="icon-angle-right bigger-110"></i>
+						<span class="text-warning">禁用以后网站将不能注册，需注意。</span>
+						</span>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-3 control-label no-padding-right" for="form-field-10" > 商城的备案信息 </label>
+					<div class="col-sm-9">
+						<input type="text" id="form-field-10" placeholder="请输入简单描述。" class="col-xs-10 col-sm-5" name="shop_icp" value="{$shopset.shop_icp}" />
+					</div>
+					<span class="col-xs-10 col-sm-5">
+							<i class="icon-angle-right bigger-110"></i>
+						<span class="text-warning">请输入网站的备案信息。</span>
+						</span>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-3 control-label no-padding-right" for="form-field-11"> 注册是否发送邮件 </label>
+					<div class="col-xs-3">
+						<div class="radio">
+							<label>
+							<input id="form-field-11" name="is_email" type="radio" class="ace" value="1" <if condition="$shopset.is_email eq 1">checked</if>>
+							<span class="lbl">是</span>
+							</label>
+							<label>
+							<input name="is_email" type="radio" class="ace" value="0" <if condition="$shopset.is_email eq 0">checked</if>>
+							<span class="lbl">否</span>
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-3 control-label no-padding-right" for="form-field-12"> 评价是否需要审核 </label>
+					<div class="col-xs-3">
+						<div class="radio">
+							<label>
+							<input name="is_message" type="radio" class="ace" value="1" <if condition="$shopset.is_message eq 1">checked</if>>
+							<span class="lbl">是</span>
+							</label>
+							<label>
+							<input name="is_message" type="radio" class="ace" value="0" <if condition="$shopset.is_message eq 0">checked</if>>
+							<span class="lbl">否</span>
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="clearfix form-actions">
+					<div class="col-md-offset-3 col-md-9">
+						<button class="btn btn-info" type="button" id="addtype" >
+							<i class="icon-ok bigger-110"></i>
+							修&nbsp;改
+						</button>
+					</div>
+				</div>
+			</form>
+		</div><!-- /.col -->
+	</div><!-- /.row -->
+	</div><!-- /.page-content -->
+	<script>
+	$(function(){
+		var img = '';
+		// alert('{:U("Flink/myupload")}');
+		$('#file_upload').uploadify({
+	        'swf' : '__PUBLIC__/uploadify/uploadify.swf',
+	        'uploader' : '__CONTROLLER__/myupload',
+	        'buttonText' : '上传LOGO',
+	        'onUploadSuccess' : function(file, data, response) {
+	        	img = "<img height='30px' src='__PUBLIC__/"+data+"'>";
+	        	$('#imgs').html(img);
+	        	$('#uplogo').val(data);
+        	}
+    	});
+		$('#addtype').click(function(){
+
+			var data = $('#addform').serialize();
+			$.post('__CONTROLLER__/insert',data,function(data){
+				if(data == 1){
+					// alert('success');
+					layer.msg('修改成功！',2,function(){
+						location.reload();
+					});
+				}else{
+					layer.msg('修改失败！',2,3);
+					// alert('error');
+				}
+			})
+		})
+	})
+</script>
+</block>

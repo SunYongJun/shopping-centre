@@ -1,0 +1,252 @@
+<?php
+/**
+	*   商品管理
+	*   Goods/_initialize  		分配控制器及方法名以动态该方法执行时的导航样式
+	*   Goods/index			商品列表
+	*   Goods/add				商品添加
+	*   Goods/insert			添加执行
+	*   Goods/edit				修改页面
+	*   Goods/save				修改执行
+	*   Goods/giftadd			赠品添加页面
+	*   Goods/giftinsert			执行赠品添加
+	*   Goods/recycle			删除商品值回收站
+	*   Goods/Recycleall		批量删除
+	*   @author		孙永军
+**/
+namespace Admin\Controller;
+
+class GoodsController extends CommonController{
+
+	// 分配控制器及方法名以动态该方法执行时的导航样式
+	public function _initialize() {
+		parent::_initialize();
+		$this->assign('menuList',CONTROLLER_NAME.'-'.ACTION_NAME);
+		$this->assign('menu','Goods');
+	}
+
+	// 商品列表
+	public function index(){
+		$type =  M('goods');
+		
+		$maps['is_delete'] = array('eq',0);
+		 if($_GET['keywords']){
+	            $maps['goods_name'] = array('like','%'.$_GET['keywords'].'%');
+	        }
+	        $count =  $type -> where($maps) -> count();
+		$mypage = $this -> mypage($count,8);
+		$data = $type -> where($maps)->limit($mypage->firstRow,$mypage->listRows) -> select();
+
+		$ptype = M('shop_type');
+		$brands = M('brand');
+
+		//查询所属分类并赋予变量
+		//查询所属品牌并赋予变量
+		foreach($data as $k=>$v) {
+			//分类
+			$map['id'] = array('eq',$v['type_id']);
+			$result = $ptype ->where($map) -> find();
+			$data[$k]['pname'] = $result['type_name'];
+
+			//品牌
+			$map['id'] = array('eq',$v['brand_id']);
+			$brand = $brands->where($map)->find();
+			$data[$k]['bname'] = $brand['brand_name'];
+
+		}
+
+		$page = $mypage -> show();
+		$this->assign('page',$page);
+		$this->assign('type',$data);
+		$this -> display();
+	}
+
+	// 商品添加页面
+	public function add() {
+
+		//查询分类
+		$gtype =  M('shop_type');
+		$type = $gtype->query("select * from le_shop_type order by concat(shop_pid,'-',id) asc,type_order asc");
+
+		//分类分层
+		foreach($type as $k=>$v) {
+			$type[$k]['num'] = count(explode('-',$v['shop_pid']));
+			$type[$k]['before'] = '';
+			for($i = 0; $i< $type[$k]['num']-1; $i++) {
+				$type[$k]['before'] .= '&nbsp;&nbsp;　&nbsp;';
+			}
+		}
+		$this->assign('type',$type);
+
+		//查询品牌
+		$gbrand =  M('brand');
+		$brand = $gbrand->select();
+		$this->assign('brand',$brand);
+
+
+		$this -> display();
+	}
+	public function myupload(){
+        $upload = new \Think\Upload();// 实例化上传类
+        $upload->maxSize   =     3145728 ;// 设置附件上传大小 
+        $upload->exts      =     array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型    
+        // $upload -> rootpath = './Public/';
+        $upload->savePath  =      './Uploads/'; // 设置附件上传目录,upload类里面的rootpath改为了 ./Public/    
+
+        // 上传文件     
+        $info   =   $upload->upload();  
+        if(!$info) {// 上传错误提示错误信息        
+            $this->error($upload->getError());    
+        }else{
+            // 上传成功  
+            foreach($info as $file){
+                $filename = $file['savepath'].$file['savename'];
+            }      
+            echo $filename;    
+        }
+    }
+	// 执行修改
+	public function edit() {
+
+		if(!empty($_GET['id'])) {
+
+			//查询该ID信息
+			$shop = M('goods');
+			$gtype =  M('shop_type');
+			$gbrand =  M('brand');
+
+			$iddata = $shop->find($_GET['id']);
+			$iddata['type_name'] = $gtype->find($iddata['type_id'])['type_name'];
+			$iddata['brand_name'] = $gbrand->find($iddata['brand_id'])['brand_name'];
+			
+			$this->assign('iddata',$iddata);		
+			
+			//查询分类
+			
+			$type = $gtype->query("select * from le_shop_type order by concat(shop_pid,'-',id) asc,type_order asc");
+
+			//分类分层
+			foreach($type as $k=>$v) {
+			$type[$k]['num'] = count(explode('-',$v['shop_pid']));
+			$num = count(explode('-',$v['shop_pid']));
+			$type[$k]['before'] = '';
+			for($i = 0; $i< $num-1; $i++) {
+				$type[$k]['before'] .= '&nbsp;&nbsp;　&nbsp;';
+			}
+		}
+			$this->assign('type',$type);
+
+			//查询品牌
+			
+			$brand = $gbrand->select();
+			$this->assign('brand',$brand);
+
+			$this->display();
+		}else{
+			$this->error('非法操作');
+		}
+	}
+
+	// 执行添加
+	public function insert() {	
+
+		if(IS_POST) {	
+			$type =  M('goods');
+			$data = $_POST;
+
+			//促销日期
+			$data['goods_start_date'] = strtotime($_POST['goods_start_date']);
+			$data['goods_end_date'] = strtotime($_POST['goods_end_date']);
+
+			// 添加日期
+			$data['goods_time'] = time();
+
+			//货号
+			$data['goods_sn'] = date('YmdHis').mt_rand(10000,99999);
+
+			$type -> create($data);
+
+			if($result = $type->add()){
+				$this->success('添加成功',U('index'));
+			}else{
+				$this->error('添加失败');
+			}
+		}	
+	}
+
+	// 执行修改
+	public function save() {
+		if(IS_POST){
+			$data = M(CONTROLLER_NAME);
+			$goods = $_POST;
+			$goods['goods_start_date'] = strtotime($_POST['goods_start_date']);
+			$goods['goods_end_date'] = strtotime($_POST['goods_end_date']);
+
+			if($data->create($goods)){
+				if($data->save()) {
+					$this->success('修改成功','index');
+				}else{
+					$this->error('修改失败');
+				}
+			}
+			
+		}
+	}
+
+	//为商品添加赠品
+	public function giftadd() {
+		$gifts = M('gift');
+		//查询属于该商品的赠品
+		$goods = M('goods');
+		$gogift = $goods->find($_GET['id']);
+		$go = $gifts->where('id='.$gogift['gift_id'])->find();
+		$count =  $gifts -> count();
+		$mypage = $this -> mypage($count,8);
+		$gift = $gifts ->where('is_delete=1')-> limit($mypage->firstRow,$mypage->listRows) -> select();
+		$page = $mypage -> show();
+
+		//该商品拥有赠品
+		$this->assign('go',$go);
+		$this->assign('page',$page);
+		$this->assign('gift',$gift);
+		$this->display();
+	}
+
+	// 执行赠品添加
+	public function giftinsert() {
+		$gifts = M('goods');
+		$gifts->create();
+		if($row = $gifts->save()) {
+			$this->success('操作成功','index',0);
+		}else{
+			$this->error('操作失败');
+		}
+	}
+
+
+	//回收
+	public function recycle() {
+		$goods = M('goods');
+		$goods->id = $_GET['id'];
+		$goods-> is_delete = 1;
+		if($goods->save()) {
+			$this->success('删除成功');
+		}else{
+			$this->error('删除失败');
+		}
+	}
+
+	//批量回收
+	public function recycleall() {
+		$goods = M('goods');
+		$ids = implode(',',$_POST['id']);
+		$map['id'] = array('in',$ids);
+		$sale['is_delete'] = 1;
+		if($num = $goods->where($map)->save($sale)) {
+			$this -> ajaxReturn($num);
+		}else{
+			$this -> ajaxReturn(false);
+		}
+	}
+
+
+}

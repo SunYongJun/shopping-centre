@@ -1,0 +1,240 @@
+<extend name="Public:center" />
+<block name="rightmain">
+    <div class="content">
+        <div class="fc_box">
+            <div class="person_infor clearfix">
+                <div class="photo">
+                    <p>
+                        <img id="imageId" src="__PUBLIC__/{$user.user_pic}" onmouseover="mouseOver()" onmouseout="mouseOut()">    
+                        <a target="_blank" href="#" id="xgtx" style="display:none;" onmouseover="mouseOver()" onmouseout="mouseOut()">修改头像</a>
+                    </p>
+                </div>
+                <div class="infor_r">
+                    <h2>
+                        {$user.user_email}❤{$user.user_alias}
+                        <span>
+                            <a href="#">修改个人资料</a>
+                        </span>
+                    </h2>
+                    <div class="hfxz">
+                        花粉勋章：
+                        <span> <i id="pointSize" style="width: 0%;">0/1000</i>
+                        </span>
+                        <p id="printExplain">
+                            当前已累计消费0，再消费 <em>1000</em>
+                            元即可升级为蜜蜂勋章
+                        </p>
+                    </div>
+                    <div class="tags">
+                        <a href="#">
+                            <span class="on1">
+                                待付款订单： <b>1</b>
+                            </span>
+                        </a>
+                        <a href="#">
+                            <span class="">
+                                待评价订单： <b>0</b>
+                            </span>
+                        </a>
+                        <a href="#">
+                            <span id="redBag_span" class="">
+                                红包：
+                                <b id="redBagCount">0</b>
+                            </span>
+                        </a>
+          <!--               <a href="#">
+                            <span class="">
+                                可用优惠券：
+                                <b>0</b>
+                            </span>
+                        </a> -->
+                    </div>
+                    <div class="duihuan">
+                        <a href="#" class="fr">去兑换 &gt;</a>
+                        可用花粉：{$user.user_coin}
+                    </div>
+
+                </div>
+
+                <div class="fc_tip">
+                    <a href="#" class="fr">
+                        <!-- <img src="__PUBLIC__/home/images/guan.gif"></a> -->
+                    <!-- 您有1个订单未支付，请在2小时内完成支付 -->
+                   <!--  <a href="http://order.lefeng.com/user_orders.jsp?statusType=0&type=new">查看订单</a> -->
+                </div>
+
+                <div class="title">
+                    <a href="#">查看全部</a>
+                    近期订单
+                </div>
+                <div class="jqdd pn-order">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tbody>
+                            <tr>
+                                <th>订单信息</th>
+                                <th class="itemwd260">商品</th>
+                                <th class="itemwd70">订单金额</th>
+                                <th class="itemwd50">订单状态</th>
+                                <th class="itemwd90">操作</th>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <div>
+                                        订单编号：
+                                        <span class="baseId">6390547210004</span>
+                                    </div>
+                                    <div>下单时间：2014-12-01</div>
+                                    <div>收 &nbsp;货 &nbsp;人：王雪</div>
+
+                                </td>
+                                <td>
+
+                                    <div class="pn-od-prod clearfix">
+                                        <li>
+                                            <a href="#" target="_blank">
+                                                <img title="AA Skincare（英国AA网）海藻芦荟眼胶60ml" src="__PUBLIC__/home/images/84840_0_s.jpg"></a>
+                                        </li>
+                                        <li>
+                                            <a href="#" target="_blank">
+                                                <img title="Za 姬芮 恒润娇养 眼霜护肤套组" src="__PUBLIC__/home/images/6784463_0_s.jpg"></a>
+                                        </li>
+                                    </div>
+                                </td>
+                                <td class="itemcenter">
+                                    <span class="pn-price pn">
+                                        <cite>¥</cite>
+                                        395.0
+                                    </span>
+                                    <br>    
+                                    <label>
+                                        (免运费)
+                                        <br>支付宝</label>
+                                </td>
+                                <td class="itemcenter">
+                                    待处理
+                                    <br>    
+                                    <code>等待付款</code>
+
+                                </td>
+                                <td class="itemcenter">
+                                    <div class="pn-order-handle">
+                                        <a class="bt_red" href="#">立即付款</a>
+                                        <br>    
+                                        <a target="_blank" href="#">查看</a>
+                                        <br>    
+                                        <a href="javascript:void(0)" id="order_6390547210004" class="pn-order-merge">合并订单</a>
+                                        <br>    
+                                        <span class="pn-form-cancel">
+                                            <a class="pn-order-cancel" href="javascript:void(0);">取消订单</a>
+                                        </span>
+
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="title2">
+                    <a href="#">查看全部</a>
+                    <span>我收藏的品牌</span>
+                </div>
+                <div class="brand">
+                    <p class="brand-no">你还没有收藏任何品牌</p>
+                </div>
+                <div class="title2">
+                    <a href="#">查看全部</a>
+                    <span>我收藏的商品</span>
+                </div>
+                <div class="brand scsp">
+                    <p class="brand-no">你还没有收藏任何商品</p>
+                </div>
+                <div class="title2">
+                    <span>可能感兴趣的商品</span>
+                </div>
+                <div class="brand scsp" id="interesting">
+                    <div class="brand-box">
+                        <ul>
+                            <li>
+                                <a href="#" target="_blank">
+                                    <img src="__PUBLIC__/home/images/4744472_0_l.jpg" alt="御泥坊红酒透亮矿物蚕丝面膜贴20片超值套装"></a>
+                                <a href="http://product.lefeng.com/product/4744472.html" target="_blank" style="height:38px;overflow:hidden;">御泥坊红酒透亮矿物蚕丝面膜贴20片超值套装</a>
+                                <span>
+                                    <a href="javascript:;" class="fr" data-id="4744472:4924902">加入购物车</a>
+                                    ¥79.9
+                                </span>
+                            </li>
+                            <li>
+                                <a href="http://product.lefeng.com/product/98160.html" target="_blank">
+                                    <img src="__PUBLIC__/home/images/98160_0_l.jpg" alt="澳洲EYEMED－2N玻尿酸保湿补水双效美肌面膜（10片）"></a>
+                                <a href="http://product.lefeng.com/product/98160.html" target="_blank" style="height:38px;overflow:hidden;">澳洲EYEMED－2N玻尿酸保湿补水双效美肌面膜（10片）</a>
+                                <span>
+                                    <a href="javascript:;" class="fr" data-id="98160:102160">加入购物车</a>
+                                    ¥25.0
+                                </span>
+                            </li>
+                            <li>
+                                <a href="http://product.lefeng.com/product/122200.html" target="_blank">
+                                    <img src="__PUBLIC__/home/images/122200_0_l.jpg" alt="完美 芦荟胶40gx2支"></a>
+                                <a href="http://product.lefeng.com/product/122200.html" target="_blank" style="height:38px;overflow:hidden;">完美 芦荟胶40gx2支</a>
+                                <span>
+                                    <a href="javascript:;" class="fr" data-id="122200:124100">加入购物车</a>
+                                    ¥68.0
+                                </span>
+                            </li>
+                            <li>
+                                <a href="http://product.lefeng.com/product/130180.html" target="_blank">
+                                    <img src="__PUBLIC__/home/images/130180_0_l.jpg" alt="JCARE天使爱美丽澳洲山羊奶补水润肌面膜10片x28ml 销售王牌（新老包装随机发货）"></a>
+                                <a href="http://product.lefeng.com/product/130180.html" target="_blank" style="height:38px;overflow:hidden;">JCARE天使爱美丽澳洲山羊奶补水润肌面膜10片x28ml 销售王牌（新老包装随机发货）</a>
+                                <span>
+                                    <a href="javascript:;" class="fr" data-id="130180:209908">加入购物车</a>
+                                    ¥38.0
+                                </span>
+                            </li>
+                            <li>
+                                <a href="http://product.lefeng.com/product/146242.html" target="_blank">
+                                    <img src="__PUBLIC__/home/images/146242_0_l.jpg" alt="JCode吉扣吉扣 丝柔优质化妆棉150片  超值推荐"></a>
+                                <a href="http://product.lefeng.com/product/146242.html" target="_blank" style="height:38px;overflow:hidden;">JCode吉扣吉扣 丝柔优质化妆棉150片  超值推荐</a>
+                                <span>
+                                    <a href="javascript:;" class="fr" data-id="146242:900926">加入购物车</a>
+                                    ¥9.9
+                                </span>
+                            </li>
+                            <li>
+                                <a href="http://product.lefeng.com/product/208720.html" target="_blank">
+                                    <img src="__PUBLIC__/home/images/208720_0_l.jpg" alt="Nature Republic纳益其尔（自然乐园）芦荟舒缓保湿凝胶 300ml"></a>
+                                <a href="http://product.lefeng.com/product/208720.html" target="_blank" style="height:38px;overflow:hidden;">Nature Republic纳益其尔（自然乐园）芦荟舒缓保湿凝胶 300ml</a>
+                                <span>
+                                    <a href="javascript:;" class="fr" data-id="208720:211082">加入购物车</a>
+                                    ¥36.0
+                                </span>
+                            </li>
+                            <li>
+                                <a href="http://product.lefeng.com/product/2208460.html" target="_blank">
+                                    <img src="__PUBLIC__/home/images/2208460_0_l.jpg" alt="中尚浣熊暖身贴ZS—601/贴"></a>
+                                <a href="http://product.lefeng.com/product/2208460.html" target="_blank" style="height:38px;overflow:hidden;">中尚浣熊暖身贴ZS—601/贴</a>
+                                <span>
+                                    <a href="javascript:;" class="fr" data-id="2208460:2306902">加入购物车</a>
+                                    ¥1.1
+                                </span>
+                            </li>
+                            <li>
+                                <a href="http://product.lefeng.com/product/696460.html" target="_blank">
+                                    <img src="__PUBLIC__/home/images/696460_0_l.jpg" alt="【小P品牌】即魅JMIXP爱丽丝公主 梦幻仙境BB霜（亚光）25g"></a>
+                                <a href="http://product.lefeng.com/product/696460.html" target="_blank" style="height:38px;overflow:hidden;">【小P品牌】即魅JMIXP爱丽丝公主 梦幻仙境BB霜（亚光）25g</a>
+                                <span>
+                                    <a href="javascript:;" class="fr" data-id="696460:720902">加入购物车</a>
+                                    ¥38.0
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</block>

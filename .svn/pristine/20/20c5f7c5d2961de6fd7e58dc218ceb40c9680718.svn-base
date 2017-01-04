@@ -1,0 +1,67 @@
+<extend name="Public:layout" />
+<block name="cssjs">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/personal.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/home_v2.css">
+    <link href="__PUBLIC__/home/css/mylafasov5_v2.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/fengchao.css">
+</block>
+<block name="main">
+<div class="main clearfix">
+{:W('Menu/Centers')}
+    <div class="content">
+        <div class="huanhuo"> 
+            <h1 class="jinbi">
+                <span>我的评论</span>
+            </h1>
+        </div>
+        <div class="pn-order">
+            <table width="100%">
+                <tbody>
+                    <tr>
+                        <th class="coms">商品图片</th>
+                        <th class="coms">商品信息</th>
+                        <th class="coms">评论人</th>
+                        <th class="coms">评论星级</th>
+                        <th class="coms">发表评论时间</th>
+                        <th class="coms">评论内容</th>
+                    </tr>
+                    <!--产品列表层 start-->
+                    <empty name="good" >
+                         <tr width="738" height="140" zhui="jia"><td align="center" colspan="8"><span>您的还没有相关的订单哦</span></td></tr>
+
+                    <else />    
+                        <foreach name="good" item="g">
+                            <tr>
+                                <td class="pinglun">
+                                    <a  title="" target="_blank" href="__MODULE__/Product/index/id/{$g.id}"> 
+                                         <img alt="{$g.goods_brief}" src="__PUBLIC__{$g.goods_img}" width="70" height="60"></a>   
+                                </td>
+                                <td class="pinglun">
+                                    <a title="{$g.goods_brief}" target="_blank" href="__MODULE__/Product/index/id/{$g.id}">{$g.goods_brief}</a>
+
+                                </td>
+                                <td class="pinglun">   
+                                <empty name="alias">小蜜蜂<else />{$alias}</empty>
+                                </td>
+                                <td class="pinglun">
+                                    <between name="g.rank" value="1,19"><div class="rank">　</div></between>
+                                    <between name="g.rank" value="20,39"><div class="rank1">　</div></between>
+                                    <between name="g.rank" value="40,59"><div class="rank2">　</div></between>
+                                    <between name="g.rank" value="60,79"><div class="rank3">　</div></between>
+                                    <between name="g.rank" value="80,100"><div class="rank4">　</div></between>
+                                </td>
+                                 <td class="pinglun">
+                                    {$g.times|date="Y-m-d",###}<br>{$g.times|date="H:i:s",###}
+                                </td>
+                                <td class="pinglun">
+                                    <a href="__MODULE__/Product/index/id/{$g.id}">{$g.content}</a>
+                                </td>
+                            </tr>
+                        </foreach>
+                    </empty>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</block>

@@ -1,0 +1,693 @@
+<extend name="Public:layout" />
+<block name="cssjs">
+    <!-- <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/fengchao.css"> -->
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/personal.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/home_v2.css">
+</block>
+<!--header-->
+<!--头部结束-->
+<block name="main">
+<div class="mainBg">
+<div class="main clearfix">
+
+    <div class="side_bar">
+        <h1>
+            <a title="我的蜂巢" href="#">我的蜂巢</a>
+        </h1>
+        <dl>
+            <dt>订单中心</dt>
+            <dd>
+                <a href="__CONTROLLER__/order">我的订单</a>
+                <a href="__CONTROLLER__/">我的收藏</a>
+                <a href="__CONTROLLER__/myBonus">我的红包</a>
+                <a href="__CONTROLLER__/myCoin">我的花粉</a>
+                <a href="__CONTROLLER__/">我的评价</a>
+            </dd>
+        </dl>
+        <dl>
+            <dt>账户管理</dt>
+            <dd>
+                <a href="__CONTROLLER__/inform">个人资料设置</a>
+                <a href="__CONTROLLER__/safe">账户安全设置</a>
+                <a href="__CONTROLLER__/address">收货地址管理</a>
+                <a href="#">邮件/短信订阅</a>
+                <a href="#">站外分享绑定</a>
+            </dd>
+        </dl>
+        <dl>
+            <dt>服务中心</dt>
+            <dd>
+                <a href="#">申请退换货/投诉</a>
+                <a href="#">退货管理</a>
+                <a href="#">换货管理</a>
+                <a href="#">店铺取消订单管理</a>
+                <a href="__CONTROLLER__/reply">商品咨询/回复</a>
+                <a href="__CONTROLLER__/complain">我的投诉</a>
+            </dd>
+        </dl>
+    </div>
+    <div class="content" id="order">
+        <div class="pn-top-nav">
+            <h1 class="clearfix">
+                <span>我的订单</span>
+                <a id="idForStatistics_paimaiOrder" href="#">我的拍卖订单</a>
+            </h1>
+            <div class="pn-top-btn clearfix">
+                <div class="pn-top-btnbox">
+                    <a id="idForStatistics_allOrder" href="#" class="on">全部订单</a>
+                    <a id="idForStatistics_needPayOrder" href="#">
+                        待付款
+                        <cite>1</cite>
+                    </a>
+                    <a id="idForStatistics_needDeliverOrder" href="#">待发货</a>
+                    <a id="idForStatistics_hadDeliverOrder" href="#">已发货</a>
+                    <a id="idForStatistics_hadDoneOrder" href="#">已完成</a>
+                    <a id="idForStatistics_hadCancelOrder" href="#">已取消</a>
+
+                </div>
+                <div class="lf-select lf-fr">
+                    <select id="switchOrder" onchange="switchUrl()">
+                        <option selected="selected" value="new">最近3个月</option>
+                        <option value="old">更早的订单</option>
+                    </select>
+                    <input type="text" define="请选择" autocomplete="off" value="请选择">
+                    <ul></ul>
+                </div>
+            </div>
+        </div>
+        <div class="pn-order">
+
+            <p class="lf-warn">您有1笔订单尚未支付，请在2小时小时之内完成付款，逾期订单将自动取消</p>
+
+            <table>
+                <tbody>
+                    <tr>
+                        <th>订单信息</th>
+                        <th class="itemwd260">商品</th>
+                        <th class="itemwd70">订单金额</th>
+                        <th class="itemwd50">订单状态</th>
+                        <th class="itemwd90">操作</th>
+                    </tr>
+                    <foreach name="data" item="vo">
+                    <tr>
+                        <td>
+                            <div>
+                                订单编号：
+                                <span class="baseId">{$vo.acti}</span>
+                            </div>
+                            <div>下单时间：{$vo.order_time|date="Y-m-d H:i:s",###}</div>
+                            <div>收  &nbsp;货  &nbsp;人：{$name}</div>
+
+                        </td>
+                        
+                        <td>
+                        
+                            <div class="pn-od-prod clearfix">
+                                <foreach name="vo.g" item="vvo">
+                                <li>
+                                    <a href="#" target="_blank">
+                                        <img title="{$vvo.goods_brief}" src="__PUBLIC__/{$vvo.goods_img}"></a>
+                                </li>
+                               <!--  <li>
+                                    <a href="#" target="_blank">
+                                        <img title="Za 姬芮 恒润娇养 眼霜护肤套组" src="__PUBLIC__/home/images/6784463_0_s.jpg"></a>
+                                </li> -->
+                                 </foreach>  
+                            </div>
+                         
+                        </td>
+                        
+                        <td class="itemcenter">
+                            <span class="pn-price pn">
+                                <cite>¥</cite>
+                                {$vo.action_count}
+                            </span>
+                            <br>
+                            <label>
+                                (免运费)
+                                <br>支付宝</label>
+                        </td>
+                        <td class="itemcenter">
+                            待处理
+                            <br>
+                            <code>等待付款</code>
+
+                        </td>
+                        <td class="itemcenter">
+                            <div class="pn-order-handle">
+                                <a  class="bt_red" href="#">立即付款</a>
+                                <br>
+                                <a target="_blank" href="#">查看</a>
+                                <br>
+                                <a href="javascript:void(0)" id="order_6390547210004" class="pn-order-merge">合并订单</a>
+                                <br>
+                                <span class="pn-form-cancel">
+                                    <a class="pn-order-cancel" href="javascript:void(0);">取消订单</a>
+                                </span>
+
+                            </div>
+                        </td>
+                    </tr>
+                </foreach>
+
+                </tbody>
+            </table>
+            <div class="com_page"></div>
+        </div>
+    </div>
+</div>
+</div>
+</block>
+
+<!--
+<script type="text/javascript" src="__PUBLIC__/dist/js/lafaso.class.js"></script>
+<script type="text/javascript" src="__PUBLIC__/dist/js/home_v3.js"></script>
+
+<div style="display: none">
+<script type="text/javascript">
+setTimeout(function () {
+    //baidu
+    //document
+    (function (d) {
+        window.bd_cpro_rtid = "PWTYrjn";
+        var s = d.createElement("script");
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = location.protocol + "//cpro.baidu.com/cpro/ui/rt.js";
+        var s0 = d.getElementsByTagName("script")[0];
+        s0.parentNode.insertBefore(s, s0);
+
+        //ga
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-34801627-1']);
+        _gaq.push(['_setDomainName', 'lefeng.com']);
+        _gaq.push(['_setCampNameKey', 'utm_campaign']);
+        _gaq.push(['_trackPageview']);
+        (function () {
+            var ga = document.createElement('script')
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    })(document);
+}, 100)
+</script>
+
+<script type="text/javascript" src="__PUBLIC__/dist/js/lafaso_wt.js"></script>
+
+</div>
+<script>
+
+    function topCcountDown(t,c,_self,fn){
+        function nd(d){return isNaN(d) ? (d ? new Date(d).getTime() : new Date().getTime()) : d * 1000;}
+        var e = [nd(t[0]),nd(t[1]),nd(t[2])],_s = _self,b;
+        if(!$(_s).length){return false;}
+        if(t[0] && e[0] > e[1]){
+            $(_s).html(c[1]);
+            return false;
+        }else if(e[1] > e[2]){
+            fn && fn($(_s));
+            $(_s).html(c[2]);
+            return false;
+        }
+        (b=function(l){
+            var l=l||(e[2]-e[1])/100,k={
+                D:l/36000/24,H:l/36000%24,M:l/600%60,S:l/10%60,s:l%10
+            };
+            $(_s).html(c[0].replace(/D|H|M|S|s/g,function(m){
+                var n = parseInt(k[m]) + ''
+                if (n.length == 1 && m != 'D' && m != 's'){
+                    n = 0 + n;
+                }
+                return n
+            }));
+            setTimeout(function(){b(l-1)},100);
+        })()
+    }
+
+//topCcountDown([,,'2014/04/18 00:00:00'],['<b>D</b><b>H</b><b>M</b><b>S</b><b>s</b>','',''],'#top_countdown',function(){$('#advTop').remove()});
+
+</script>
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?69200f796b23f8fe027c39886c7298db";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<script type="text/javascript">
+var google_tag_params = {
+ 
+ecomm_pagetype : 'REPLACE_WITH_VALUE',
+ecomm_prodid : 'REPLACE_WITH_VALUE',
+ecomm_pcat : 'REPLACE_WITH_VALUE',
+ecomm_totalvalue : 'REPLACE_WITH_VALUE',
+ecomm_login : 'REPLACE_WITH_VALUE'
+ 
+};
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1049985484;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]>*/</script>
+<script type="text/javascript" src="__PUBLIC__/dist/js/conversion.js"></script>
+<iframe name="google_conversion_frame" title="Google conversion frame" width="300" height="13" src="./我的订单_乐蜂网_files/saved_resource.htm" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no">
+&lt;img height="1" width="1" border="0" alt="" src="http://googleads.g.doubleclick.net/pagead/viewthroughconversion/1049985484/?frame=0&amp;random=1417512876626&amp;cv=7&amp;fst=1417512876626&amp;num=1&amp;fmt=1&amp;guid=ON&amp;u_h=768&amp;u_w=1024&amp;u_ah=738&amp;u_aw=1024&amp;u_cd=24&amp;u_his=38&amp;u_tz=480&amp;u_java=true&amp;u_nplug=16&amp;u_nmime=30&amp;data=ecomm_pagetype%3DREPLACE_WITH_VALUE%3Becomm_prodid%3DREPLACE_WITH_VALUE%3Becomm_pcat%3DREPLACE_WITH_VALUE%3Becomm_totalvalue%3DREPLACE_WITH_VALUE%3Becomm_login%3DREPLACE_WITH_VALUE&amp;frm=0&amp;url=http%3A//order.lefeng.com/user_orders.jsp%3Fcur%3D10f%26p3c51ckp0ze2z0d&amp;ref=http%3A//order.lefeng.com/user_orders.jsp%3Fcur%3D10f%26p3c51ckp0ze2z0d&amp;vis=2" /&gt;
+</iframe>
+<noscript>
+&lt;div style="display:inline;"&gt;
+&lt;img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1049985484/?value=0&amp;guid=ON&amp;script=0"/&gt;
+&lt;/div&gt;
+</noscript>
+
+<script src="__PUBLIC__/dist/js/jquery-1.6.4.min.js" type="text/javascript"></script>
+<script src="__PUBLIC__/dist/js/lf.base.js" type="text/javascript"></script>
+<script src="__PUBLIC__/dist/js/lf.plug.js" type="text/javascript"></script>
+<script src="__PUBLIC__/dist/js/lf.sign.js" type="text/javascript"></script>
+<script>
+lafaso.ready(function () {
+    var $ = lafaso;
+    var orderList = {// my order list
+        'home': $.getId('order'),
+        'select': $.getElements('div.lf-select', this.home),
+        'setClose': function (el, bl) {
+            bl ? (el.style.display = 'block') : (el.style.display = 'none');
+        },
+        'setChoice': function (el) {
+            $.each(el, function (i) {
+                $.addListener(this, 'click', function () {
+                    var sibling = $.siblings(this), parent = this.parentNode, hide = parent.getElementsByTagName('span')[0];
+                    $.addClass(this, 'on');
+                    hide.value = this.innerHTML;
+                    $.each(sibling, function () {
+                        $.removeClass(this, 'on');
+                    });
+                });
+            });
+            return this;
+        },
+        'closeAll': function (el) {
+            var _this = this, all = $.getElements('div.pn-odbox', _this.home);
+            $.each(all, function () {
+                this != el && _this.setClose(this, 0);
+            });
+            return this;
+        },
+        'setFn': function (str) {
+            var self = this;
+            $.each(self[str], function () {
+                var _this = this, parent = _this.parentNode, odbox = $.getClassName('order-' + str, parent)[0],
+                    close = $.getElements('div.pn-odbox-tit a.lf-fr', odbox)[0],
+                    top = $.offset().offsetT(this, 1) + 25, left = $.offset().offsetL(this, 1) - parseInt($.getStyle(odbox, 'width')) + 55;
+                $.css(odbox, { 'top': top + 'px', 'left': left + 'px' });
+                $.addListener(_this, 'click', function (e) {
+                    var ev = $.event.getEvent(e);
+                    $.event.preverntDefault(ev);
+                    self.closeAll(odbox);
+                    odbox && (self.setClose(odbox, 1), function () {
+                        var inpu = $.getElements('div.pn-odbox-sub input', odbox);
+                        str == 'cancel' ? function () {
+                            var list = $.getElements('div.pn-odbox-no span', odbox);
+                            self.setChoice(list);
+                        } () : str == 'merge' && function () {
+                            var box = $.getElements('label.lf-checkbox', odbox),
+                                check = $.fn.likeCheckbox({ 'els': box }).init();
+                            check = null;
+                        } ();
+                        $.each(inpu, function () {
+                            $.addListener(this, 'click', function () {
+                                //按钮
+                                self.setClose(odbox, 0);
+                            });
+                        });
+                    } ());
+                    $.addListener(close, 'click', function (es) {
+                        var ev = $.event.getEvent(es);
+                        $.event.preverntDefault(es);
+                        odbox && self.setClose(odbox, 0);
+                    });
+                });
+            });
+            return this;
+        }
+    };
+    if(orderList.home){
+        orderList.setFn('cancel').setFn('merge').setFn('mater');
+        var checkbox = $.fn.likeSelect({ 'els': orderList.select }).init();
+        checkbox = null;
+    }
+});
+$(function(){
+    
+    //查看物流
+    $('.pn-order-mater').unbind('click').click(function(){
+        var baseId=$(this).parents('tr').find('.baseId').html(),
+            deliveryId=$(this).next('input').attr('value');
+        parseMater($(this),baseId,deliveryId);
+    });
+    
+    //合并订单
+    $('.pn-order-merge').unbind('click').click(function(){
+        baseId=$(this).parents('tr').find('.baseId').html();
+        parseOrder(baseId,$(this));
+        
+    });
+    //店铺订单收货
+    $('.popShopOrderCompleted').unbind('click').click(function(){
+        var  popSh="<div id='confirmReceiveBox' class='pn-odbox order-sh nR'><s class='pn-odbox-nice'></s><div class='pn-odbox-tit clearfix'><cite class='lf-fl'>订单收货</cite><a href='javascript:void(0);' class='lf-fr'></a></div><div class='pn-odbox-con'><form action='#' method='post'><h6>请确认是否收货</h6><div class='pn-odbox-sub'><input id='qx-btn' class='qx-btn' type='button' value='确认' /><input type='button' value='关闭' class='reset' /></div></form></div></div>";
+        baseId=$(this).parents('tr').find('.baseId').html();
+        ballEvent(this,popSh,'.order-sh','.lf-fr','.reset');
+        //点击确定
+        $('#qx-btn').click(function(){
+            $("#confirmReceiveBox").remove();
+            $.ajax({
+                type: "GET",
+                url: "http://shop.lefeng.com/interface/completedOrderByCustomer.jsp",
+                data: {'shopOrderId':baseId},
+                dataType:"jsonp",
+                jsonp:"jsonpcallback",
+                success: function(msg){
+                    var result=msg.result;
+                    if(result!=-1){
+                        var flag=msg.result;
+                    if(flag==1){
+                        lafaso.sign.signBox("您已经对订单："+baseId+" 完成了收货操作，请耐心等待系统为您的订单进行处理！" , 1);
+                        $(this).parents('.order-sh').remove();
+                    }else{
+                        lafaso.sign.signBox("订单："+baseId+" 收货失败！", 1);
+                    }
+                  }
+                },
+                error: function(){
+                     lafaso.sign.signBox("店铺订单收货处理失败! ", 1);
+                }
+            });
+        }); 
+        
+    });
+    
+    //店铺申请退换货--已确认状态
+    $('.popcenter').unbind('click').click(function(){
+        var  popCenter="<div class='pn-odbox order-shop-center nR'><s class='pn-odbox-nice'></s><div class='pn-odbox-tit clearfix'><cite class='lf-fl'>申请退换货</cite><a href='javascript:void(0);' class='lf-fr'></a></div><div class='pn-odbox-con'><form action='#' method='post'><h6>您的订单已经支付，是否申请退款？</h6><div class='pn-odbox-sub'><input id='qx-btn' class='qx-btn' type='button' value='确认' /><input type='button' value='关闭' class='reset' /></div></form></div></div>";
+        baseId=$(this).parents('tr').find('.baseId').html();
+        ballEvent(this,popCenter,'.order-shop-center','.lf-fr','.reset');
+        //点击确定
+        $('#qx-btn').click(function(){
+            window.location.href = "http://order.lefeng.com/center/apply.jsp?orderid="+baseId;
+        }); 
+        
+    });
+    
+    //店铺申请退换货--已发货状态
+    $('.popcenterover').unbind('click').click(function(){
+        var returnAlertBox = $("#returnAlertBox");
+        if(returnAlertBox!=null && returnAlertBox.size()>0){
+            return;
+        }
+        var obj=$(this);
+        var  popCenterOver="<div id='returnAlertBox' class='pn-odbox order-shop-center-over nR'><s class='pn-odbox-nice'></s><div class='pn-odbox-tit clearfix'><cite class='lf-fl'>申请退换货</cite><a href='javascript:void(0);' class='lf-fr'></a></div><div class='pn-odbox-con'><form action='#' method='post'><h6>您的订单已经发货，请选择订单签收状态进行下一步操作？</h6><div class='pn-odbox-sub'><input class='subBtn pn-order-quick' type='button' value='订单未签收'><input type='button' value='订单已签收' class='reset pn-order-judge'></div></form></div></div>";
+        baseId=$(this).parents('tr').find('.baseId').html();
+        ballEvent(this,popCenterOver,'.order-shop-center-over','.lf-fr','.reset');
+        //点击订单未签收
+        $('.pn-order-quick').click(function(){
+            window.location.href = "http://order.lefeng.com/center/apply.jsp?orderid="+baseId;
+        }); 
+        //点击订单已签收
+        $('.pn-order-judge').click(function(){
+            var  popCenterOver1="<div class='pn-odbox order-shop-center-over1 nR'><s class='pn-odbox-nice'></s><div class='pn-odbox-tit clearfix'><cite class='lf-fl'>申请退换货</cite><a href='javascript:void(0);' class='lf-fr'></a></div><div class='pn-odbox-con'><form action='#' method='post'><h6>只有订单在已完成状态下才能进行退换货操作，请先对此订单确认收货，若未收到全部货物，请勿点击确认收货按钮！</h6><div class='pn-odbox-sub'><input class='subBtn pn-order-quick' type='button' value='确认收货'><input type='button' value='关闭' class='reset'></div></form></div></div>";
+            ballEvent(obj,popCenterOver1,'.order-shop-center-over1','.lf-fr','.reset');
+            $('.pn-order-quick').click(function(){
+                var time=1000*20;
+                 var location="http://userinfo.lefeng.com/user/exchange/pop/re_ex_show_order.jsp?orderId="+baseId;
+                $.ajax({
+                    type: "GET",
+                    url: "http://shop.lefeng.com/interface/completedOrderByCustomer.jsp",
+                    data: {'shopOrderId':baseId},
+                    dataType:"jsonp",
+                    jsonp:"jsonpcallback",
+                    success: function(msg){
+                        lefeng.fn.showBox({'width' : 480, 'height' : 130, 'title' : '', 'fn' : function(box){
+                            lefeng.schedule({'el' : box, 'time' : 20000, 'back': function () {
+                                window.location.href=location;
+                            } 
+                            }).init();
+                            
+                        }}).sets();
+                            
+                    },
+                    error: function(){  
+                          lafaso.sign.signBox("订单："+baseId+" 签收失败！", 1);
+                    }
+                });
+            });
+        }); 
+        
+    });
+    
+    
+    //取消订单
+    $('.pn-order-cancel').unbind('click').click(function(){
+        var cancelAlertBox = $("#cancelAlertBox");
+        if(cancelAlertBox!=null && cancelAlertBox.size()>0){
+            return;
+        }
+        var orderThis=$(this);
+        //取消订单弹框 
+        var  cancel="<div id='cancelAlertBox' class='pn-odbox order-cancel nR'><s class='pn-odbox-nice'></s><div class='pn-odbox-tit clearfix'><cite class='lf-fl'>取消订单</cite><a href='javascript:void(0);' class='lf-fr'></a></div><div class='pn-odbox-con'><form action='#' method='post'><h6>告诉我们您取消订单的原因，以便改进我们的服务:</h6><div class='pn-odbox-no clearfix'><span value='18'>不想买了</span><span value='7'>重复下单</span><span  value='9' >测试订单</span><span  value='19' >忘记使用优惠券</span><span  value='16' >价格高</span><span  value='20' >支付失败-账户余额不足</span><span  value='21' >支付失败-网上支付失败</span><br /><span value='13' class='text'>其他原因：<textarea type='text'></textarea></span><input type='hidden' /></div><p class='lf-warn'>请您选择取消订单原因，再提交</p><div class='pn-odbox-sub'><input id='qx-btn' class='qx-btn' type='button' value='确认' /><input type='button' value='关闭' class='reset' /></div></form></div></div>";
+        ballEvent(orderThis,cancel,'.order-cancel','.lf-fr','.reset');
+        //点击确定
+        $('#qx-btn').click(function(){
+            var url="http://order.lefeng.com/inInterface/ajaxOrderCancel.jsp",
+                orderId=orderThis.parents('tr').find('.baseId').html(),
+                reasonType=$(this).parents('form').find('span:.on').attr('value'),
+                otherSpan=$(this).parents('form').find('span:last'),
+                other=$(this).parents('form').find(':text,textarea');
+                if(otherSpan.hasClass('on') && other.val()==''){
+                    $(this).parents('.order-cancel').show();    
+                    alert("请填写其他原因");
+                    return ;
+                }else{
+                    $(this).parents('.order-cancel').remove();
+                }
+                
+            parseCancel(url,orderId,reasonType,other.val(),orderThis);
+            
+        }); 
+    });
+    
+});
+
+//取消订单信息
+function parseCancel(url,orderId,reasonType,other,orderThis){
+    $.ajax({
+        url:url,
+        method:'POST',
+        dataType:"json",
+        data:{"orderId":orderId,"reasonType":reasonType,"other":other},
+        success:function(msg){
+            lafaso.sign.signBox(msg.msg, 1);
+            if(msg.status=="0"){
+                orderThis.parents('tr').find('.bt_red').remove();
+                orderThis.parents('tr').find('.pn-order-merge').remove();
+                orderThis.parents('tr').find('td:eq(3)').html('已取消');
+                orderThis.remove();
+            }
+        }
+    });
+    
+};
+
+
+//查看物流信息
+function parseMater(obj,baseId,deliveryId){
+    //查看物流弹框
+    var  mater="<div class='pn-odbox order-mater'><s class='pn-odbox-nice'></s><div class='pn-odbox-tit clearfix'><cite class='lf-fl'>物流信息</cite><a href='javascript:void(0);' class='lf-fr'></a></div><div class='pn-odbox-con' id='pn-odbox-con'><div class='pn-mater-coll'></div></div></div>";
+    url='http://order.lefeng.com/inInterface/ajaxDeliver.jsp';
+    $.ajax({
+        url:url,
+        method:'POST',
+        dataType:"json",
+        data:{"orderId":baseId,"deliveryId":deliveryId},
+        success:function(msg){
+                ballEvent(obj,mater,'.order-mater','.lf-fr');
+                var target=$('.pn-mater-coll');
+                var test;
+                if(msg.status=='0'){
+                    test=parseOdMater(msg);
+                }else{
+                    test='<div style="color:#999">暂无物流信息</div>';
+                }
+                target.children().remove();
+                target.append(test);
+                var Dls=document.getElementById('pn-odbox-con').getElementsByTagName('dl'),
+                    oDl=Dls[Dls.length-1],
+                    spanId=oDl.getElementsByTagName('span')[0].id,
+                    oDt=oDl.getElementsByTagName('dt')[0],
+                    oSpan=document.createElement("span");
+                if(spanId==8){
+                    oDt.appendChild(oSpan);
+                    oDl.className="itemend";
+                }else{
+                    oDt.appendChild(oSpan);
+                    oDl.className="itemnext";
+                }
+            
+        },
+        error:function(){
+        }   
+    }); 
+    
+};
+//查看物流信息
+function parseOdMater(jsonData){
+    var result='',
+        odeliverleng=jsonData.deliverInfos,
+        POP=odeliverleng[odeliverleng.length-1],
+        orderStatus=POP.orderStatus;
+            
+    for(var i=0,len=odeliverleng.length;i<len;i++){
+        result+='<dl><dt>'+odeliverleng[i].remark+'</dt><dd>'+odeliverleng[i].createTime+'</dd><span type="hidden" id="'+odeliverleng[i].orderStatus+'"></span></dl>';
+        
+    };
+    return result;
+            
+}
+
+//合并订单ajax
+function parseOrder(baseOrderId,obj){
+    var mergeAlertBox = $("#mergeAlertBox");
+    if(mergeAlertBox!=null && mergeAlertBox.size()>0){
+        return;
+    }
+    //合并订单弹框
+    var merge="<div id='mergeAlertBox' class='pn-odbox order-merge nR' ><s class='pn-odbox-nice'></s><div class='pn-odbox-tit clearfix'><cite class='lf-fl'>合并订单</cite><a href='javascript:void(0);' class='lf-fr'></a></div><div class='pn-odbox-con'><p class='lf-point'>温馨提示：合并订单允许将其它待处理且未支付的订单合并到当前订单，便于您一次支付或节省运费</p><h6>请选择要合并的订单：</h6><table class='nM' id='pn-odbox'><tr><th class='itemwd30'>选择</th><th>订单编号</th><th>收货人</th><th>订单金额</th><th>支付方式</th><th>订单状态</th></tr></table><h6>将以上所选订单合并到当前订单：<strong>"+baseOrderId+"</strong></h6><p class='lf-warn'>请至少选择两笔订单才能进行合并</p><div class='pn-odbox-sub'><input class='subBtn' type='button' value='确认' /><input type='button' value='关闭' class='reset' /></div></div></div>";
+    $.ajax({
+        url:'http://order.lefeng.com/inInterface/ajaxMergeOrderList.jsp',
+        method:'POST',
+        data:{"baseOrderId":baseOrderId},
+        dataType:"json",
+        success:function(msg){
+            //有订单
+            if(msg.status=='0'){
+                ballEvent(obj,merge,'.order-merge','.lf-fr','.reset');
+                target=$('#pn-odbox'),
+                test=parseOdbox(msg);
+                target.append(test);
+                //加载多选框按钮
+                $('.lf-checkbox dfn').click(function(){
+                    if($(this).hasClass('on')){
+                        $(this).removeClass('on');  
+                    }else{
+                        $(this).addClass('on'); 
+                    }
+                    
+                }); 
+                //合并订单提交的JSON;
+                $('.subBtn').click(function(){
+                    var subBtn=$(this);
+                    var dfn =$(this).parents('.pn-odbox-con').find('dfn');
+                    var ids="";
+                    dfn.each(function(i){
+                        if($(this).hasClass('on')){
+                            ids+=$(this).parents('tr').find('.mergeIds').text()+',';
+                        }
+                    });
+                    
+                    if(ids!=''){
+                        $.ajax({               
+                            url:'http://order.lefeng.com/inInterface/ajaxMergeOrder.jsp',
+                            method:'POST',
+                            dataType:"json",
+                            data:{"baseOrderId":baseOrderId,"mergeOrderIds":ids},
+                            success:function(msg){
+                                if(msg.status=='0'){
+                                    subBtn.parents('.order-merge').remove();
+                                    lafaso.sign.signBox(msg.msg, 1);
+                                    location.reload();
+                                }else{
+                                    lafaso.sign.signBox(msg.msg, 1);
+                                }
+                            },
+                            error:function(){
+                                lafaso.sign.signBox("系统错误，请稍后再试！", 1);
+                            }
+                        });
+                    }
+                });
+            }else{
+                lafaso.sign.signBox(msg.msg, 1);
+            }
+        },
+        //合并订单列表
+        error:function(){
+            lafaso.sign.signBox("系统错误，请稍后再试！", 1);
+        }
+    });
+    
+};
+//合并订单信息
+function parseOdbox(jsonData){
+    var result='',
+        oStatus=jsonData.status,
+        ordersLeng=jsonData.orders,
+        oLabel='<td class="itemcenter" ><label class="lf-checkbox"><dfn></dfn><input type="checkbox" name="orders" /></label></td>';
+    for(var i=0,len=ordersLeng.length;i<len;i++){
+        result+='<tr>'+oLabel+'<td class="mergeIds">'+ordersLeng[i].id+'</td><td>'+ordersLeng[i].name+'</td><td><span class="pn-price pn" style="padding-top:0;"><cite>&yen;</cite>'+ordersLeng[i].realPay+'</span></td><td>'+ordersLeng[i].payType+'</td><td>'+ordersLeng[i].orderType+'</td></tr>';
+    }
+    return result;
+    
+};
+
+
+//感兴趣的商品信息
+function interesTing(jsonData){
+    var result='',
+        productsLeng=jsonData.products,
+        len=productsLeng.length-4;
+        for(var i=0;i<len;i++){
+            result+='<li><a href="#" target="_blank"><img src='+productsLeng[i].imageUrl+' /></a><span class="lH"><a href="#" target="_blank">'+productsLeng[i].name+'</a></span><span><a href="#" class="fr"></a>¥'+productsLeng[i].userPrice+'<del>¥'+productsLeng[i].marketPrice+'</del></span><span><a href="#" class="hb-btn01">加入购物车</a></span></li>';
+        };
+        return result;
+    
+};
+
+//公共弹框 
+function ballEvent(obj,box,boxChildren,closeBtn,closes){
+        $(obj).parents('.pn-order').append(box);
+        $(boxChildren).show();
+        var childrenWidth=parseInt($(boxChildren).css('width'));
+        $(boxChildren).offset({top:$(obj).offset().top+20,left:$(obj).offset().left-childrenWidth+52})
+        //点击叉
+        $(closes).click(function(){
+            $(this).parents(boxChildren).remove();  
+        });  
+        //点击关闭
+        $(closeBtn).click(function(){
+            $(this).parents(boxChildren).remove();
+        });
+        var spans=$(boxChildren).find('.pn-odbox-no span');
+        spans.click(function(){
+            $(this).addClass('on').siblings().removeClass('on');
+        });
+    };
+    
+function switchUrl(){
+    var type = $("select[id='switchOrder'] option:selected").val();
+    if(type == "new"){//最近订单    
+        window.location.href = "http://order.lefeng.com/user_orders.jsp?statusType=1000&type=new&orderType=0";
+    }
+    if(type == "old"){//历史订单
+        window.location.href = "http://order.lefeng.com/user_orders.jsp?statusType=1000&type=old&orderType=0";  
+    }
+}
+</script>
+-->

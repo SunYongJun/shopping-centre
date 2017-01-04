@@ -1,0 +1,124 @@
+<?php
+namespace Admin\Controller;
+
+class UserController extends CommonController{
+
+	public function index(){
+
+		$user = M('user');
+		$users=$user->select();
+		$this -> assign('user',$users);
+
+		 // 查询总记录数
+        $count = $user-> count();
+        
+        // 调用自定义的分页
+        $mypage = $this -> mypage($count,8);
+
+        $list = $user-> limit($mypage->firstRow.','.$mypage->listRows)
+        ->select();
+
+        $show = $mypage->show();// 分页显示输出
+        $this->assign('list',$list);// 赋值数据集
+        $this->assign('page',$show);// 赋值分页输出
+		$this -> assign('userz','User');
+		$this -> assign('userList','UserIndex');
+		$this -> display();
+	}
+
+	// 添加用户
+	public function add(){
+		$this -> assign('userz','User');
+		$this -> assign('userList','UserAdd');
+		$this -> display();
+	}
+
+	public function checkMail(){
+		$email = $_POST['email'];
+		$user = M('user');
+		$where['user_email'] = $email;
+		$users = $user -> where($where) -> find();
+		if($users){
+			$this -> ajaxReturn(true);
+		}else{
+			$this ->ajaxReturn(false);
+		}
+
+	}
+
+	// 执行添加用户
+	public function insert(){
+
+		$user = M('user');
+		$_POST['user_pwd'] = md5($_POST['user_pwd']);
+		$_POST['user_birth'] = strtotime($_POST['user_birth']);
+		$_POST['user_regtime'] = time();
+		if($_POST['user_pic']==''){
+			unset($_POST['user_pic']);
+		}
+		$user->create();
+		if($user->add()){
+			$this->success('添加成功','index');
+		}else{
+			$this->error('添加失败');
+		}
+	}	
+			
+		
+
+	// 修改用户
+	public function save(){
+		$user = M('user');
+		if(IS_GET){
+			$map['id'] = array('eq',$_GET['id']);
+			$data = $user->where($map)->select();
+			$this -> assign('user',$data[0]);
+		}
+		$this -> display();
+	}
+
+	// 执行修改
+	public function save_doit(){
+		
+		$this -> assign('userz','User');		
+		$user = D('user');
+	
+			if(!$user->create()){
+				exit($user->getError());
+			}else{
+				$map= 'id='.$_POST['id'];
+
+				if($user->where($map)->save()){
+					$this->success('修改成功','index');
+				}else{
+					$this->error('修改失败');
+				};
+			}		
+
+	}
+
+	// 单条删除用户
+	public function del(){
+		$user = M('user');
+		$map = 'id='.I('post.id');
+		$users = $user->where($map)->delete();
+		if($users){
+			echo 1;
+		}else{
+			echo 2;
+		}
+	}
+	// 批量删除
+	public function delall(){
+		if(IS_AJAX){
+            $ids = I('post.id');
+            $ids = implode(',', $ids);
+            $m = M(CONTROLLER_NAME);
+            if($m -> delete($ids)){
+                echo 1;
+            }else{
+                echo 0;
+            }
+        }
+	}
+}

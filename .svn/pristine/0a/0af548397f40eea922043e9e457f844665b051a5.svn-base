@@ -1,0 +1,24 @@
+<?php
+namespace Home\Controller;
+use Think\Controller;
+class CommonController extends Controller {
+     public function _initialize(){
+     	$user = $_SESSION['user']['id'];
+     	if($user){
+     		$user = $_SESSION['user'];
+     		$this -> assign('user',$user);
+     	}
+     	//遍历购物车里面物品
+     	$this -> assign('cart',$_SESSION['cart']);
+     	// 总的物品数
+     	$sum = 0;  //数量
+     	$price = 0;  //总价格
+     	foreach($_SESSION['cart'] as $v){
+     		$sum += $v['num'];
+     		$price += $v['num']*$v['goods_price'];
+     	}
+          
+     	$this -> assign('sum',$sum);
+     	$this -> assign('price',$price);
+     }
+}

@@ -1,0 +1,71 @@
+<?php
+namespace Admin\Controller;
+
+class UserController extends CommonController{
+	public function index(){
+		$user = M('user');
+		$users=$user->select();
+		// var_dump($users);
+		$this->assign('user',$users);
+		$this -> display();
+	}
+
+	// 添加用户
+	public function add(){
+	
+		$this -> display();
+	}
+
+	// 执行添加用户
+	public function insert(){
+		$user = D('user');
+		$data = $_POST;
+		$data['regtime'] = time();
+
+		$user->create($data);
+		if($user->add()){
+			$this->success('恭喜添加成功',U('User/index'),3);
+		}else{
+			$this->error('添加失败！');
+		}
+	}
+
+	public function save(){
+		$user = M('user');
+		if(IS_GET){
+			$map['id'] = array('eq',$_GET['id']);
+			$data = $user->where($map)->select();
+			$this -> assign('user',$data[0]);
+		}
+		$this -> display();
+	}
+
+	public function save_doit(){
+		$user = D('user');
+		if(IS_POST){
+			$user->create();
+			$map= 'id='.$_POST['id'];
+			// var_dump($map);exit();
+			if($user->where($map)->save()){
+			$this->success('修改成功',U('index'));
+		}else{
+			$this->error('修改失败');
+		};
+		}		
+
+		
+		// $this -> display();
+	}
+
+	// 单条删除用户
+	public function del(){
+		$user = M('user');
+		$map = 'id='.I('post.id');
+		$users = $user->where($map)->delete();
+		if($users){
+			echo 1;
+		}else{
+			echo 2;
+		}
+	}
+}

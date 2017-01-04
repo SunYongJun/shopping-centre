@@ -1,0 +1,4 @@
+<extend name="Public:layout" />
+<block name="main">
+文章列表
+</block>

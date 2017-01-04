@@ -1,0 +1,16 @@
+<?php
+	namespace Admin\Model;
+	use Think\Model;
+
+	class UserModel extends Model{
+		protected $_validate = array(
+			array('user_email','','此用户名已存在！',2,'unique'),
+			array('user_email','email','用户邮箱格式不合法！'),
+			array('user_pwd','require','此字段不能为空！'),
+			// array('verify','require','验证码必须！'),
+			array('re_user_pwd','user_pwd','两次密码不一致',0,'confirm'), 
+			array('user_email','checkLength','用户名必须在6-18位',0,'function',3,array(3,5)),
+			);
+	}
+
+ ?>

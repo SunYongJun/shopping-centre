@@ -1,0 +1,220 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0092)https://passport.lefeng.com/register.jsp?returnback=http%3A%2F%2Ftuan.lefeng.com%2F%23%23%23 -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>免费注册_乐蜂网</title >
+<link href="/newlefeng/Public/home/css/loginCenter.css" rel="stylesheet">
+<!--[if (IE 7)|(IE 8)]>
+<link href="css/css3.css" rel="stylesheet" />
+<![endif]--> 
+<!-- <script type="text/javascript" async="" src="/newlefeng/Public/dist/js/rt.js"></script> -->
+<script type="text/javascript" async="" src="/newlefeng/Public/home/js/ga.js"></script>
+<script type="text/javascript" language="javascript" src="/newlefeng/Public/home/js/jquery-1.6.4.min.js"></script>
+  <script>
+				var GLOBAL = {
+					'checkcodeParam':'login_checkcode',
+					'pagename':'register',
+					'pagetype':'reg',
+          'hiddenMyOrderAndMyHive':true
+				};
+			</script>
+</head>
+<body class="bodyBk register" style="overflow-x: hidden;">
+
+<!--  包含头部  -->
+
+<!-- 导航条部分开始 -->
+
+        <div class="Chead">
+            <div class="Chead-main" id="Chead_main">
+                <div class="Chead-info">
+                    <a id="Chead_app" class="Chead-app" href="#" target="_blank" rel="nofollow">手机乐蜂</a>
+                    <div class="Chead-appDown" style="display: none;">
+                        <a href="#" target="_blank" rel="nofollow"></a>
+                    </div> 
+                    <span class="fast-f turl">|</span>   
+                    <span id="Chead_save" class="Chead-save">收藏乐蜂</span>
+                    <span class="fast-f turl">|</span> 
+                    <span id="Chead_fastnav" class="fast-nav turl">快速导航
+                        <i></i>
+                    </span> 
+                    <div class="Chead-floatmenu">
+                        <a href="#" rel="nofollow">推荐好友</a>
+                        <a href="#" rel="nofollow">为我推荐</a>
+                        <a href="#" rel="nofollow">帮助中心</a>
+                        <a href="#" rel="nofollow">专享活动</a>
+                        <a href="#" rel="nofollow">乐蜂校园</a>
+                        <a href="#" rel="nofollow">礼品卡</a>
+                    </div>
+                    <span class="fast-f turl">|</span> 
+                    <a class="turl" href="#">乐蜂首页</a>
+                    <span class="Chead-welcome" id="Cheadlogin"></span>
+                </div>
+            </div>
+        </div>
+
+<!-- 导航条部分结束 -->
+
+
+<!-- logo部分开始 -->
+
+        <div class="Logo-r">
+            <div class="Logo-info-r">
+                <a href="#"></a>
+            </div>
+        </div>
+
+<!-- logo部分结束 -->
+
+
+
+<!-- 主体部分开始 -->
+
+    <div class="loginBk">
+        <div class="warp">
+          <form action="#" id="regform" name="regform" method="post">
+                    <!--  <input type="hidden" id="returnback" name="returnback" value="">
+                     <input type="hidden" id="shoppingId" name="shoppingId" value="">
+                     <input type="hidden" id="skuId" name="skuId" value="">
+                     <input type="hidden" id="checkcode" value="">		
+                     <input type="hidden" id="page" value="reg">      -->      
+          		   <div class="css3 loginContent">
+                      <div class="loginTitle">
+                          <span class="lc1"></span>
+                          <span class="lcr">已有乐蜂账号 ? 
+                              <a id="reg_link" href="/newlefeng/index.php/Home/User/login">登录</a>
+                          </span>
+                      </div>
+          			      <ul class="loginInput">
+                        	<div class="mailtips" style="display:none;" id="mailtips"></div>
+                          <li class="mailwrap nobk regwarp">
+                              <h2>邮箱</h2>
+                              <input type="text" name="user_email" maxlength="40" stu="1" value="" autocomplete="off" tabindex="1">
+                              <div class="focus_text">请输入邮箱地址</div>
+                              <div class="bubbleTips" style="display:none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新注册用户即送90元优惠券礼包。</div>
+                          </li>
+          			          <li class="pwwrap">
+          			              <h2>密码</h2>
+          			              <input type="password" name="user_pwd" stu="2" value="" tabindex="2">
+                              <div class="level" style="display:none;">安全强度
+                                  <b class="cl1">弱</b>
+                                  <b class="cl2">中</b>
+                                  <b class="cl3">强</b>
+                              </div>
+                              <div class="focus_text">6-16位字符，推荐字母、数字和符号组合的密码</div>
+          		            </li>
+          		            
+          			          <li class="pwwrap">
+          			              <h2>确认密码</h2>
+          			              <input type="password" name="re_user_pwd" stu="3" value="" tabindex="3">
+                              <div class="focus_text">请再次输入密码</div>
+          		            </li>
+          			          <li class="yzmwrap">
+          			              <h2>验证码</h2>
+          			              <input name="yzm" type="text" stu="4" maxlength="6" value="" autocomplete="off" tabindex="4" id="vvcode">
+            			            <span mode="1">
+          			               <a href="#">
+                                  <img id="vcode" src="/newlefeng/index.php/Home/User/vcode">
+                               </a>
+                               <a href="javascript:void(0)" onclick="changeVcode()">看不清?<br>换一张</a>
+          		                </span>
+          		               <!--  <span mode="2" style="display:none;">
+                                                           <input name="button" type="button" class="on" stu="5" value="获取短信验证码" autocomplete="off" tabindex="5">
+                             </span> -->
+                             <span id="vspan">12</span>
+                          </li>
+          			          <li class="buttonwrap">
+                            <a href="#" id="formSubmit">同意协议并注册</a>
+                          </li>
+          			          <li class="msgwrap">
+                            <div>
+                                <a href="#" target="_blank">《乐蜂网用户协议》 <br> <br> <br> <br></a>
+                            </div>
+                          </li>
+          		     </ul>
+          			  
+          		   </div>
+          		 </form>
+    		 
+    		 
+        </div>    
+    </div>
+
+<!-- 主体部分结束 -->
+
+
+<!--  包含footer  -->
+
+<!-- footer 开始 -->
+<div style="width: 1200px;" class="loginfooter">
+    <p>
+        <a rel="nofollow" target="_blank" href="#">关于乐蜂</a>&nbsp;
+        <a rel="nofollow" target="_blank" href="#">免责声明</a>&nbsp;
+        <a rel="nofollow" target="_blank" href="#">隐私声明</a>&nbsp;
+        <a rel="nofollow" target="_blank" href="#">版权声明</a>&nbsp;
+        <a rel="nofollow" target="_blank" href="#">招聘信息</a>&nbsp;
+        <a rel="nofollow" target="_blank" href="#">联系我们</a>&nbsp;
+        <a rel="nofollow" target="_blank" href="#">帮助中心</a>&nbsp;
+        <a rel="nofollow" target="_blank" href="#">网站联盟</a>&nbsp;
+        <a target="_blank" href="#">友情链接</a>&nbsp;
+        <a rel="nofollow" target="_blank" href="">商务合作</a>
+    </p>
+    <p>Copyright&nbsp;©2008-2014&nbsp;Lefeng.com&nbsp;All&nbsp;Rights&nbsp;Reserved.&nbsp;
+        <a rel="nofollow" target="_blank" href="#">京ICP证080382号</a>&nbsp;
+        <a rel="nofollow" target="_blank" href="#">京ICP备10006831号-1</a>&nbsp;京公网安备110105014183&nbsp;
+        <a rel="nofollow" target="_blank" href="#">营业执照</a>
+    </p>
+</div> 
+
+<!-- footer 结束 -->
+
+
+<script type="text/javascript" language="javascript" src="/newlefeng/Public/home/js/newRegLogin.js"></script>
+<script type="text/javascript" src="/newlefeng/Public/home/js/lafaso_wt.js"></script>
+<script type="text/javascript">
+  function changeVcode(){
+    document.getElementById('vcode').src="/newlefeng/index.php/Home/User/vcode/"+Math.random();
+  }
+</script>
+<script type="text/javascript">
+    $(function(){
+      $('#formSubmit').bind('click',function(){
+        $.ajax({
+          url:'/newlefeng/index.php/Home/User/register_doit',
+          type:'post',
+          data:$('#regform').serialize(),
+          success:function(data){
+            if(data['status']==1){
+              alert(data['content']);
+              location.href=data.url;
+              
+            }
+            },
+          error:function(data){
+            if(data['status']==0){
+              alert(data['content']);
+            }
+          }
+        })
+
+        return false;
+      })
+
+
+      $('#vvcode').blur(function(){
+        if($(this).val().length > 0){
+          alert('11111');
+        }else{
+          alert('s13z');
+          $('#vspan').html('验证码不能为空！').show();
+          return false;
+        }
+      })
+    })
+
+</script>
+
+  </body>
+</html>

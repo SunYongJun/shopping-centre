@@ -1,0 +1,86 @@
+<extend name="Public:layout" />
+<block name="main">
+
+	<div class="page-content">
+		<div class="page-header">
+			<h1>
+				商品相册管理
+				<small> <i class="icon-double-angle-right"></i>
+					添加图片
+				</small>
+			</h1>
+		</div>
+		<!-- /.page-header -->
+
+		<div class="row">
+			<div class="col-xs-12">
+				<!-- PAGE CONTENT BEGINS -->
+
+				<form class="form-horizontal" role="form" action="__CONTROLLER__/insert" method="post" enctype="multipart/form-data">
+					<input type="hidden" name="goods_id" value="{$Think.get.id}">
+					<div class="form-group">
+						<label class="col-sm-3 control-label no-padding-right" for="form-field-1">商品名称</label>
+
+						<div class="col-sm-9">
+							<input type="text" id="form-field-1"  class="col-xs-10 col-sm-5 " name="gift_name" value="{$goods.goods_name}" disabled/>
+						</div>
+					</div>
+
+					<div class="form-group" id="logo">
+						<label class="col-sm-3 control-label no-padding-right" for="form-field-1" >添加图片</label>
+
+						<div class="col-sm-9">
+							<!-- uploadify上传插件 -->
+							<div id="imgs"></div>
+							<input id="file_upload" name="img_url" type="file" multiple="true" value="" />
+							<!-- uploadify上传插件 -->
+							<input type="hidden" value="" id="uplogo" name="img_url">
+							<!-- 上传的图片地址放到这里面 -->
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-3 control-label no-padding-right" for="form-field-11">商品详细描述</label>
+
+						<div class="col-sm-9 col-xs-6">
+							<textarea name="img_desc" id="" cols="30" rows="5" class="col-xs-6" style="resize:none;"></textarea>
+						</div>
+					</div>
+
+					<div class="clearfix form-actions">
+						<div class="col-md-offset-3 col-md-9">
+							<button class="btn btn-info" type="submit"> <i class="icon-ok bigger-110"></i>
+								Submit
+							</button>
+							&nbsp; &nbsp; &nbsp;
+							<button class="btn" type="reset">
+								<i class="icon-undo bigger-110"></i>
+								Reset
+							</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script src="__PUBLIC__/uploadify/jquery.uploadify.min.js"></script>
+	<script>
+	$(function() {
+		var img = '';
+		var idata = '';
+		// alert('{:U("Flink/myupload")}');
+		$('#file_upload').uploadify({
+	        'swf' : '__PUBLIC__/uploadify/uploadify.swf',
+	        'uploader' : '__CONTROLLER__/myupload',
+	        'buttonText' : '图片上传',
+	        'onUploadSuccess' : function(file, data, response) {
+	        	img += "<img width='200px' src='__PUBLIC__/"+data+"'>";
+	        	$('#imgs').html(img);
+	        	idata += (data+' ');
+	        	$('#uplogo').val(idata);
+	        	console.log(idata);
+        	}
+    	});
+	})
+	</script>
+</block>

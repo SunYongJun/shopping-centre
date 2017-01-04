@@ -1,0 +1,311 @@
+<extend name="Public:layout" />
+<block name="cssjs">
+<link rel="stylesheet" href="__PUBLIC__/home/css/list.css">
+<style>.select a{color:red !important;}.sales{line-height: 20px;color: red;display: inline;float: left;margin-top: 11px;font-size: 16px;font-weight: bold;}.sales b{font-size: 18px;font-weight: bold;font-family: 'microsoft yahei'}.none{line-height: 40px;font-size: 16px;font-weight: bold;color: red;margin: 10px;}</style>
+</block>
+<block name="main">
+<!-- 主体部分开始 -->
+<div class="mainBg">
+<input id="newList" type="hidden">
+<div class="main" style="width: 1200px;">
+<!-- 导航 -->
+<div class="path"> 
+    <span></span> 
+    <a title="" href="__MODULE__/Index/index" title="首页">首页</a>
+    <notempty name="path"> / <a title="" title="{$path.name}">{$path.name}</a></notempty>
+</div>
+
+<!-- 左边的导航 开始-->
+<div class="sidebar" id="sidebar">
+    <div class="sub-nav" id="categorySearch">
+        <h3>{$path.name}</h3>
+        <!-- 判断是否有分类 -->
+        <if condition="$sp">
+        <!-- 遍历出父级分类 -->
+        <foreach name="sp" item="vsp">
+        <p> <b></b> <a rel="nofollow">{$vsp.type_name}</a> </p>
+        <!-- 遍历子分类 -->
+        <ul class="ClearFix">
+            <foreach name="pp" item="vpp">
+            <if condition="$vpp['pid'] eq $vsp['id']">
+            <li> <a rel="nofollow" href="__CONTROLLER__/index/type/{$vpp.id}">{$vpp.type_name} </a> </li>
+            </if>
+            </foreach>
+        </ul>
+        </foreach>
+        </if>
+    </div>
+    <div class="skimbuy" id="seen_and_buy" style="" tname="护肤用品">
+        <h3><em>热销商品</em><b>TOP5</b></h3>
+        <foreach name="top" item="vtop">
+        <dl>
+            <dt> <a target="_blank" href="__MODULE__/Product/index/id/{$vtop.id}"> <img src="__PUBLIC__/{$vtop.goods_img}"></a> </dt>
+            <dd class="nam"> <a target="_blank" href="">{$vtop.goods_name} </a> </dd>
+            <dd class="pri"> <em>￥{$vtop.goods_price}</em><span><i>{$vtop.sales_volume}</i>人购买</span> </dd>
+        </dl></foreach>
+        
+    </div>
+</div>
+<!-- 左边的导航 结束 -->
+
+<div class="cont"> <a name="nav"></a>
+    <div id="cont-nav-show" class="nav ClearFix">
+        <!-- <div class="sel"> <span class="pathattr">已选：</span>
+            请选择查询条件
+            <span class="cancelCheck"><a href="#">清除条件</a></span> </div> -->
+        <ul id="ul-nav-show">
+            <li id="xmod" class="show">
+                <b>品牌：</b>
+                <span style="display: block;" class="more"><i></i>更多</span>
+                <span style="display: none;" class="hide"><i></i>收起</span>
+                <div class="mod" id="brand">
+                    <foreach name="brand" item="vbrand"> 
+                    <span><a href="javascript:void(0)" rel="{$vbrand.id}">{$vbrand.brand_name}<i></i></a></span>
+                    </foreach>
+                </div>
+            </li>
+            <li class="show"><b>分类：</b>
+                <span style="display: block;" class="more"><i></i>更多</span>
+                <span style="display: none;" class="hide"><i></i>收起</span>
+                <div class="mod" id="type">
+                    <foreach name="type" item="vtype">
+                    <span><a href="javascript:void(0)" title="面部(75)" rel="{$vtype.id}">{$vtype.type_name}<i>(75)</i></a></span>
+                    </foreach>
+                </div>
+            </li>
+            <li class="show"><b>价格：</b>
+                <span style="display: block;" class="more"><i></i>更多</span>
+                <span style="display: none;" class="hide"><i></i>收起</span>
+                <div class="mod" id="price">
+                    <span><a href="javascript:void(0)" title="0-39元" rel="1">0-39元<i>(18)</i></a></span>
+                    <span><a href="javascript:void(0)" title="40-79元" rel="2">40-79元<i>(18)</i></a></span>
+                    <span><a href="javascript:void(0)" title="80-129元" rel="3">80-129元<i>(18)</i></a></span>
+                    <span><a href="javascript:void(0)" title="130-259元" rel="4">130-259元<i>(18)</i></a></span>
+                    <span><a href="javascript:void(0)" title="260以上" rel="5">260以上<i>(7)</i></a></span>
+                </div>
+            </li>
+        </ul>
+        <div class="more_nav ClearFix"> <b>更多选项：</b>
+            <div class="more_mod" style="line-height:28px;">
+            <span class="cancelCheck"><a href="javascript:void(0)" id="clearall">清除所有条件</a></span>
+            </div>
+        </div>
+    </div>
+    <form action="" id="gsearch" style="display:none">
+    品牌<input type="text" value="<notempty name='Think.get.brand'>{$Think.get.brand}<else />{$Think.post.brand}</notempty>" name="brand">
+    分类<input type="text" value="<notempty name='Think.get.type'>{$Think.get.type}<else />{$Think.post.type}</notempty>" name="type">
+    价格<input type="text" name="price">
+    order<input type="text" name="order">
+    limit<input type="text" value="5" name="limit">
+    搜索条件<input type="text" value="<notempty name='Think.get.search'>{$Think.get.search}<else />{$Think.post.search}</notempty>" name="search">
+    </form>
+    <a name="list"></a>
+    <div class="list" id="" style="padding-top: 40px;">
+        <div class="sm-nav abs" id="sm-nav"> 
+            <span class="order"> 
+                <a rel="id desc" title="按相似度排序" class="biht-none down" href="javascript:void(0)" id="order1">默认</a> 
+                <a rel="sales_volume desc" title="近期销量由高到低" class="biht-none" href="javascript:void(0)" id="order2"><b></b>热销</a> 
+                <a rel="goods_click desc" title="人气由高到低" class="biht-none" href="javascript:void(0)" id="order3"><b></b>人气</a> 
+                <a rel="goods_price desc" title="点击按价格由低到高" href="javascript:void(0)" class="biht-none pristate " id="order4"><b></b>价格</a> 
+                <a rel="goods_time desc" title="上架时间" class="biht-none" href="javascript:void(0)" id="order5"><b></b>最新</a> 
+            </span> 
+        </div>
+        <div class="smPruArea" id="goodsarea">
+            <div class="makeup ClearFix" >
+                <if condition="$goods neq ''">
+                <foreach name="goods" item="vgoods">
+                <div class="pruwrap" id="81406" inv="0">
+                    <dl skuids="86746" class="">
+                        <dt> 
+                            <a href="#" title=""><img alt="" src="__PUBLIC__/{$vgoods.goods_img}"></a> 
+                        </dt>
+                        <dd class="nam">
+                            <a href="#" target="_blank">{$vgoods.goods_name}
+                            </a>
+                        </dd>
+                        <dd class="pri"> 
+                        <span class="sales"><b>￥</b>{$vgoods.goods_price}</span>
+                            <del class="spri">¥{$vgoods.mprice}</del> 
+                            <a class="to push" pid="81406" sid="86746" href="#">加入购物车</a> 
+                        </dd>
+                        <dd class="mess"> 
+                            <a href="__MODULE__/product/index/id/{$goods.id}" class="buynum">最近{$vgoods.sales_volume}人购买</a> <a href="#" target="_blank" rel="nofollow" class="comnum">{$vgoods.goods_click}次查看</a> 
+                        </dd>
+                    </dl>
+                </div>
+                </foreach>
+                <else/>
+                <div class="none">没有查询到商品！</div>
+                </if>
+                <!-- 这个家伙显示下一页 -->
+                <!-- <div class="nextPageClass"><a href="#"></a><b>&nbsp;</b></div> -->
+                <!-- 这个家伙显示下一页  完 -->
+            </div>
+
+            <!-- 这是分页 -->
+            <div class='pages ClearFix'> 
+                <span>
+                    <a class='downpage' href='javascript:void(0)'>查看更多商品</a>&nbsp;&nbsp;&nbsp;&nbsp;共查询到999个商品
+                </span>
+            </div>
+            <!-- 这是分页   结束 -->
+
+
+        </div>
+    </div>
+    <span class="blank0"></span> </div>
+</div>
+<div class="fwordReSea">
+    <dl>
+        <dd><form action="__MODULE__/List/index" method="get" id="ssgood">
+            <input type="text" class="text" id="sresearch" name="search" value="请输入商品名"></form>
+            <a id="btn-re-search" class="button" href="javascript:void(0)"> </a> </dd>
+    </dl>
+    <div id="relatedQueryKeywords" class="rehotkey"></div>
+</div>
+</div>
+<script>
+    $(function(){
+        //搜索
+        $('#sresearch').focus(function(){
+            $(this).val('');
+        })
+        $('#btn-re-search').click(function(){
+            if($('#sresearch').val() && $('#sresearch').val() != '请输入商品名'){
+                $('#ssgood').submit();
+            }else{
+                layer.msg('请输入商品名！',1,3);
+            }
+        })
+        //点击购买商品
+        $('#goodsarea').delegate('a[buy]','click',function(){
+            var $this = $(this);
+            // $this.click(function(){
+                // 此时没有登录的话跳转到登录
+                if({$user['id']?1:0}){
+                    var id = $this.attr('buy');
+                    $.get('__MODULE__/Cart/add','id='+id,function(data){
+                        if(data.status == 1){
+                            layer.msg(data.content,1,function(){
+                                location.reload();
+                            })
+                        }else{
+                            layer.msg(data.content,1,3);
+                        }
+                    })
+                }else{
+                    layer.msg('请先登录！',2,function(){
+                        location.href = '__MODULE__/User/Login';
+                    })
+                }
+            // })
+        })
+        //页面加载完成发送Ajax请求，返回商品数据
+        ajaxget();
+        //导航条条件设置
+        $('.order a').each(function(){
+            $(this).click(function(){
+                $(this).addClass('down').siblings().removeClass('down');
+                $('input[name=order]').val($(this).attr('rel'));
+                ajaxget();
+            })
+        })
+        //点击品牌分类加载
+        $('#brand span').each(function(){
+                var $this = $(this);
+                $(this).click(function(){
+                    $this.addClass('select').siblings().removeClass('select');
+                    var brand = $this.find('a').attr('rel');
+                    $('input[name=brand]').val(brand);
+                    ajaxget();
+                })
+        })
+        //点击商品分类加载
+        $('#type span').each(function(){
+                var $this = $(this);
+                $(this).click(function(){
+                    $this.addClass('select').siblings().removeClass('select');
+                    var type = $this.find('a').attr('rel');
+                    $('input[name=type]').val(type);
+                    ajaxget();
+                })
+        })
+        //点击价格分类加载
+        $('#price span').each(function(){
+                var $this = $(this);
+                $(this).click(function(){
+                    $this.addClass('select').siblings().removeClass('select');
+                    var price = $this.find('a').attr('rel');
+                    $('input[name=price]').val(price);
+                    ajaxget();
+                })
+        })
+        //清除所有条件
+        $('#clearall').click(function(){
+            $(':input').each(function(){
+                $(this).val('');
+                $('input[name="limit"]').val(5);
+            })
+            $('.mod').each(function(){
+                $(this).find('span').each(function(){
+                    $(this).removeClass('select');
+                })
+            })
+            ajaxget();
+        })
+        //ajax函数，返回商品数据
+        function ajaxget(){
+            $.post('__CONTROLLER__/gsearch',$('#gsearch').serialize(),function(data){
+                    $('#goodsarea').empty().append(data);
+                    /*$('.pruwrap').each(function(){
+                        $('.pruwrap:gt(0)').hide();
+                    });
+
+                    if($('.pruwrap').size() > 0){
+                        $('#idmore').show();
+                    }
+                    //点击下一页加载所有数据
+                    $('#showmore').click(function(){
+                        $('.pruwrap').each(function(){
+                            $(this).show();
+                        });
+                    })*/
+                    //点击加载数据每次加载五条数据
+                    $('#downpage').bind('click',function(){
+                        var limit = parseInt($('input[name=limit]').val());
+                        $('input[name=limit]').val(limit + 5);
+                        ajaxget();
+                    })
+                })
+        }
+
+        //显示更多和收起
+        $('.show').each(function(){
+            var $this = $(this);
+            $this.find('.more').click(function(){
+                $this.css('height','auto');
+                $(this).hide();
+                $this.find('.hide').show();
+            });
+            $this.find('.hide').click(function(){
+                $this.removeAttr('style');
+                $(this).hide();
+                $this.find('.more').show();
+            })
+        })
+    })
+    //list页面的固定导航栏
+    /*
+    *   先求出导航栏到页面顶部的距离  固定值  因为fixed以后他的距离会变的
+    */
+    var otop = $('#sm-nav').offset().top;
+    $(document).scroll(function(){
+        var abstop = $(document).scrollTop();
+        if(abstop >= otop){
+            $('#sm-nav').css({position:'fixed',top:'0px'})
+        }else{
+            $('#sm-nav').css({position:'relative',top:'none'})
+        }
+    })
+</script>
+</block>

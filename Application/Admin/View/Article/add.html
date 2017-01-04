@@ -1,0 +1,139 @@
+<extend name="Public:layout" />
+<block name="toptitle">
+<li class="active"><a href="__MODULE__/ArticleType/index">文章列表</a></li>
+<li class="active"><a href="__MODULE__/ArticleType/add">添加文章</a></li>
+</block>
+<block name="main">
+<!-- 添加文章分类 -->
+
+
+
+<div class="page-content">
+	<div class="page-header">
+		<h1>
+			文章管理
+			<small>
+				<i class="icon-double-angle-right"></i>
+				添加文章
+			</small>
+		</h1>
+	</div><!-- /.page-header -->
+	<div class="row">
+		<div class="col-xs-12">
+			<!-- PAGE CONTENT BEGINS -->
+			<form class="form-horizontal" role="form" id="addform" action="__CONTROLLER__/insert" method="post" enctype="multipart/form-data">
+				<div class="form-group">
+					<label class="col-sm-1 control-label no-padding-right" for="form-field-1" > 文章标题 </label>
+
+					<div class="col-sm-11">
+						<input type="text" id="form-field-1" placeholder="请输入文章标题30字之内。" class="col-xs-10 col-sm-5" name="article_title" maxlength="30" required/><span class="text-danger" style="display:none">请输入文章标题！</span>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-1 control-label no-padding-right" for="form-field-1" > 所属分类 </label>
+					<div class="col-sm-11">
+						<select class="col-xs-10 col-sm-5" id="form-field-select-1" name="article_type">
+						<foreach name="type" item="type">
+							<option value="{$type.id}">{$type.article_type_name}</option>
+						</foreach>
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-1 control-label no-padding-right" for="form-field-1" > 文章内容 </label>
+					<div class="col-sm-11">
+						<!-- 文本编辑器开始 -->
+						<textarea class="col-sm-11" id="container" name="article_content"></textarea>
+						<!-- 文本编辑器结束 -->
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-1 control-label no-padding-right" for="form-field-1" > 文章关键字 </label>
+
+					<div class="col-sm-11">
+						<input type="text" id="form-field-1" placeholder="请输入文章关键字。" class="col-xs-10 col-sm-5" name="article_keywords" required/>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-1 control-label no-padding-right" for="form-field-1" > 文章描述 </label>
+
+					<div class="col-sm-11">
+						<input type="text" id="form-field-1" placeholder="请输入文章描述。" class="col-xs-10 col-sm-5" name="article_desc" required/>
+					</div>
+				</div>
+
+				<!-- <div class="space-4"></div> -->
+
+				<div class="form-group">
+					<label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 是否显示 </label>
+					<div class="col-xs-3">
+						<div class="radio">
+							<label>
+							<input name="is_show" type="radio" class="ace" value="1" checked>
+							<span class="lbl">显示</span>
+							</label>
+							<label>
+							<input name="is_show" type="radio" class="ace" value="0">
+							<span class="lbl">不显示</span>
+							</label>
+						</div>
+					</div>
+				</div>
+
+				<div class="clearfix form-actions">
+					<div class="col-md-offset-1 col-md-9">
+						<button class="btn btn-info"  id="addtype">
+							<i class="icon-ok bigger-110"></i>
+							提交
+						</button>
+
+						&nbsp; &nbsp; &nbsp;
+						<button class="btn" type="reset">
+							<i class="icon-undo bigger-110"></i>
+							重置
+						</button>
+					</div>
+				</div>
+			</form>
+		</div><!-- /.col -->
+	</div><!-- /.row -->
+	</div><!-- /.page-content -->
+	<script type="text/javascript">
+        var ue = UE.getEditor('container',{
+        	autoHeightEnabled: false,
+    		autoFloatEnabled: false,
+    		initialFrameHeight: 265,
+    		initialFrameWidth: 945,
+    		initialContent:'请输入文章内容！'
+        });
+    </script>
+	<script>
+
+	$(function(){
+		$('input[name="article_title"]').focus();
+		$('input[name="article_title"]').blur(function(){
+			if($(this).val()==''){
+				$(this).focus().next().show();
+			}else{
+				$(this).next().hide();
+			}
+		})
+		/*$('#addtype').click(function(){
+			var data = $('#addform').serialize();
+			$.post('__CONTROLLER__/insert',data,function(data){
+				if(data == 1){
+					// alert('success');
+					layer.msg('添加成功！',2,1);
+				}else{
+					layer.msg('添加失败！',2,3);
+					// alert('error');
+				}
+			// })*/
+		// })
+	})
+</script>
+</block>

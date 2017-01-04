@@ -1,0 +1,128 @@
+<extend name="Public:layout" />
+<block name="toptitle">
+<li class="active"><a href="__MODULE__/Order/index">订单管理</a></li>
+</block>
+<block name="main">
+<div class="page-content">
+	<div class="page-header">
+		<h1 id="dianji">
+			订单详细信息
+			<small>
+				<i class="icon-double-angle-right"></i>
+				订单号：{$Think.get.acti} <if condition="$info.is_delete eq 1">&nbsp;&nbsp;<span class="text-warning bigger-110 orange"><i class="icon-warning-sign"></i>该订单已删除！</span></if>
+				</small>
+		</h1>
+	</div><!-- /.page-header -->
+	<div class="col-xs-12">
+		<div class="tabbable">
+			<ul class="nav nav-tabs" id="myTab">
+				<li class="active">
+					<a data-toggle="tab" href="#home">
+						<i class="green icon-home bigger-110"></i>
+						订单基本信息
+					</a>
+				</li>
+
+				<li class="">
+					<a data-toggle="tab" href="#shop">
+						订单内商品信息
+					</a>
+				</li>
+
+				
+			</ul>
+
+			<div class="tab-content">
+				<div id="home" class="tab-pane active">
+					<table id="sample-table-1" class="table table-bordered">
+						<caption  class="green"><h3>基本信息</h3></caption>
+						<tr class="bordered">
+							<td class="col-xs-1 text-right blue"> 订单号 </td>
+							<td class="col-xs-5">{$Think.get.acti}</td>
+							<td class="col-xs-1 text-right blue"> 订单状态 </td>
+							<td class="col-xs-5">{$info.status}</td>
+						</tr>
+						<tr class="bordered">
+							<td class="col-xs-1 text-right blue"> 下单人 </td>
+							<td class="col-xs-5">{$user.user_email}</td>
+							<td class="col-xs-1 text-right blue"> 下单时间 </td>
+							<td class="col-xs-5">{$info.order_time|date='Y-m-d H:i:s',###}</td>
+						</tr>
+						<tr class="bordered">
+							<td class="col-xs-1 text-right blue"> 支付方式 </td>
+							<td class="col-xs-5">{$pay.pay_name}</td>
+							<td class="col-xs-1 text-right blue"> 配送方式 </td>
+							<td class="col-xs-5">{$shipping.shipping_name}</td>
+						</tr>
+						
+						<tr class="bordered">
+							<td class="col-xs-1 text-right blue"> 发货时间 </td>
+							<td class="col-xs-5"> {$info.action_time|date="Y-m-d H:i:s",###} </td>
+							<td class="col-xs-1 text-right blue"> 用户留言 </td>
+							<td class="col-xs-11" colspan="3">{$info.order_message}</td>
+						</tr>
+						<tr class="bordered">
+							<td class="col-xs-1 text-right blue"> 订单金额 </td>
+							<td class="col-xs-11" colspan="3">红包代替的金额+配送金额{$shipping.shipping_money} =总金额{$info.action_count}</td>
+						</tr>
+					</table>
+				
+					<table class="table table-bordered">
+						<caption  class="green"><h3>收货人信息</h3></caption>
+						<tr class="bordered">
+							<td class="col-xs-1 text-right blue"> 收货人 </td>
+							<td class="col-xs-5">{$address.true_name}</td>
+							<td class="col-xs-1 text-right blue"> 电子邮件 </td>
+							<td class="col-xs-5">{$address.address_email}</td>
+						</tr>
+						<tr class="bordered">
+							<td class="col-xs-1 text-right blue"> 最佳送货时间 </td>
+							<td class="col-xs-5"> {$info.delivery} </td>
+							<td class="col-xs-1 text-right blue"> 邮编 </td>
+							<td class="col-xs-5">{$address.address_zip}</td>
+						</tr>
+						<tr class="bordered">
+							<td class="col-xs-1 text-right blue"> 电话 </td>
+							<td class="col-xs-5">2014234234</td>
+							<td class="col-xs-1 text-right blue"> 手机 </td>
+							<td class="col-xs-5">{$address.address_phone}</td>
+						</tr>
+						<tr class="bordered" >
+							<td class="col-xs-1 text-right blue"> 详细地址 </td>
+							<td class="col-xs-5" colspan="3">{$address.address_province}，{$address.address_city}，{$address.address_county}，{$address.address_info}</td>
+						</tr>
+					</table>
+				</div>
+
+				<div id="shop" class="tab-pane">
+					<table class="table table-bordered">
+						<tr class="bordered text-center">
+							<td class="blue">序号</td>
+							<td class="blue">商品名称</td>
+							<td class="blue">货号</td>
+							<td class="blue">价格</td>
+							<td class="blue">数量</td>
+							<td class="blue">小计</td>
+						</tr>
+						<foreach name="goods" item="vgoods">
+						<tr class="bordered text-center">
+							<td> 1 </td>
+							<td>{$vgoods.goods_name}<img src="__PUBLIC__/{$vgoods.goods_img}" height="30"></td>
+							<td> {$vgoods.goods_sn} </td>
+							<td> {$vgoods.goods_price} </td>
+							<td>{$vgoods.num}</td>
+							<td>{$vgoods.sum}</td>
+						</tr>
+						</foreach>
+					</table>
+				</div>
+			</div>
+		</div>
+		<a href="__CONTROLLER__/index" style="margin:10px 0px;" class="btn btn-sm btn-warning">返回订单详细列表</a>
+			
+	</div>
+	
+</div>
+<script src="__PUBLIC__/admin/js/jquery-2.0.3.min.js"></script>
+
+</block>

@@ -1,0 +1,89 @@
+<?php
+namespace Admin\Controller;
+
+class RecycleController extends CommonController{
+	public function _initialize() {
+		$this->assign('menuList',CONTROLLER_NAME.'-'.ACTION_NAME);
+		$this->assign('menu','Goods');
+	}
+
+	public function index(){
+		$type =  M('goods');
+		$count =  $type -> count();
+		$mypage = $this -> mypage($count,8);
+		$data = $type -> where('is_on_sale=0')->limit($mypage->firstRow,$mypage->listRows) -> select();
+
+		$ptype = M('shop_type');
+		$brands = M('brand');
+		//查询所属分类并赋予变量
+		//查询所属品牌并赋予变量
+		foreach($data as $k=>$v) {
+			//分类
+			$map['id'] = array('eq',$v['type_id']);
+			$result = $ptype ->where($map) -> find();
+			$data[$k]['pname'] = $result['type_name'];
+
+			//品牌
+			$map['id'] = array('eq',$v['brand_id']);
+			$brand = $brands->where($map)->find();
+			$data[$k]['bname'] = $brand['brand_name'];
+
+		}
+
+		$page = $mypage -> show();
+
+		$this->assign('page',$page);
+		$this->assign('type',$data);
+		$this -> display();
+	}
+
+	public function delete() {
+		if(IS_GET) {
+			$map['id'] = array('eq',$_GET['id']);
+			$user = M('goods');
+			if($user-> where($map) -> delete()){
+				$this->success('删除成功');
+			}else{
+				$this->error('删除失败');
+			}
+		}
+	}
+
+	//批量删除
+	public function delall() {
+		$ids = implode(',',$_POST['id']);
+		$goods = M('goods');
+		if($goods -> delete($ids)){
+			$this -> ajaxReturn(true);
+		}else{
+			$this -> ajaxReturn(false);
+		}
+	}
+
+	//还原
+	public function recycle() {
+		$goods = M('goods');
+		$goods->id = $_GET['id'];
+		$goods-> is_on_sale = 1;
+		if($goods->save()) {
+			$this->success('删除成功');
+		}else{
+			$this->error('删除失败');
+		}
+	}
+
+	//批量还原
+	public function recycleall() {
+		$goods = M('goods');
+		$ids = implode(',',$_POST['id']);
+		$map['id'] = array('in',$ids);
+		$sale['is_on_sale'] = 1;
+		if($num = $goods->where($map)->save($sale)) {
+			$this -> ajaxReturn($num);
+		}else{
+			$this -> ajaxReturn(false);
+		}
+	}
+
+
+}

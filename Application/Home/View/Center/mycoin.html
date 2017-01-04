@@ -1,0 +1,36 @@
+<extend name="Public:layout" />
+<block name="cssjs">
+    <!-- <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/fengchao.css"> -->
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/personal.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/home_v2.css">
+</block>
+<block name="main">
+<div class="mainBg">
+    <div class="main clearfix">
+
+{:W('Menu/Centers')}
+        <div class="content">
+            <div class="huanhuo">
+                <h1>
+                    我的花粉
+                </h1>
+                <div class="huafen clearfix">
+
+                    <div class="hua_l fl">
+                        <p>
+                            目前可用花粉：
+                            <b>{$user.user_coin}</b>
+                        </p>
+                    </div>
+                    <div class="hua_right fr">
+                        <a target="_blank" href="#">
+                            <img alt="" src="__PUBLIC__/home/images/20141120062804.jpg"></a>
+                    </div>
+                </div>
+                <div class="pn-page cearfix"></div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</block>

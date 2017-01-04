@@ -1,0 +1,9 @@
+<?php
+
+namespace Admin\Controller;
+
+class SetMailController extends CommonController{
+	public function index(){
+		echo '邮件设置';
+	}
+}

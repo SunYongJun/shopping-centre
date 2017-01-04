@@ -1,0 +1,368 @@
+<extend name="Public:layout" />
+<block name="cssjs">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/personal.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/home_v2.css">
+</block>
+<!--header-->
+<!--头部结束-->
+<block name="main">
+<div class="mainBg">
+<div class="main clearfix">
+
+{:W('Menu/Centers')}
+    <div class="content">
+        <div class="fc_box">
+            <div class="person_infor clearfix">
+                <div class="photo">
+                    <p>
+                        <img id="imageId" src="__PUBLIC__{$user.user_pic}" width="100" height="105">    
+                    </p>
+                </div>
+                <div class="infor_r">
+                    <h2>
+                        {$user.user_email}❤{$user.user_alias}
+                        <span>
+                            <a href="__CONTROLLER__/inform">修改个人资料</a>
+                        </span>
+                    </h2>
+                    <div class="hfxz">
+                        花粉勋章：
+                        <span> <i id="pointSize" style="width: 20%;">200/1000</i>
+                        </span>
+                        <p id="printExplain">
+                            当前已累计消费0，再消费 <em>1000</em>
+                            元即可升级为蜜蜂勋章
+                        </p>
+                    </div>
+                    <div class="tags">
+                        <a href="#">
+                        <notempty name="num.a">
+                            <span class="on1">
+                                待付款订单： <b>{$num.a}</b>
+                            </span>
+                        </notempty>
+                        </a>
+                        <a href="#">
+                        <notempty name="num.b">
+                            <span class="on1">
+                                待发货订单： <b>{$num.b}</b>
+                            </span>
+                        </notempty>
+                        </a>
+                        <a href="#">
+                        <notempty name='num.c'>
+                            <span class="on1">
+                                待收货订单：<b>{$num.c}</b>
+                            </span>
+                        </notempty>
+                        </a>
+                    </div>
+                    <div class="duihuan">
+                      
+                        可用花粉：{$user.user_coin}
+                    </div>
+
+                </div>
+
+                <div class="">
+                    <a href="#" class="fr">
+                        &nbsp;</a>
+                    <!-- 您有1个订单未支付，请在2小时内完成支付 -->
+                   <!--  <a href="http://order.lefeng.com/user_orders.jsp?statusType=0&type=new">查看订单</a> -->
+                </div>
+               
+                <div class="title"> <if condition="$data neq 0">
+                    <a href="__CONTROLLER__/order">查看全部</a>
+                    近期订单
+                </div>
+               <div class="jqdd pn-order">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        
+                            <tbody>
+                                <tr>
+                                    <th>订单信息</th>
+                                    <th class="itemwd260">商品</th>
+                                    <th class="itemwd70">订单金额</th>
+                                    <th class="itemwd50">订单状态</th>
+                                    <th class="itemwd90">操作</th>
+                                </tr>
+                                <foreach name="data" item="v">
+                                <tr>
+                                    <td>
+                                        <div>
+                                            订单编号：
+                                            <span class="baseId">{$v['acti']}</span>
+                                        </div>
+                                        <div>下单时间：{$v.order_time|date="Y-m-d H:i:s",###}</div>
+                                        <div>收 &nbsp;货 &nbsp;人：{$truename}</div>
+                                    </td>
+                                        <td>
+                                            <div class="pn-od-prod clearfix">
+                                            <foreach name="v.d" item="vv">
+                                                <li>
+                                               
+                                                    <a href="__MODULE__/Product/index/id/{$vv.id}" target="_blank">
+                                                        <img title="{$vv['goods_brief']}" src="__PUBLIC__/{$vv['goods_img']}"></a>
+                                              
+                                                </li>
+                                             </foreach>
+                                            </div>
+                                        </td>
+                                    
+                                    <td class="itemcenter">
+                                        <span class="pn-price pn">
+                                            <cite>¥</cite>
+                                            {$v['action_count']}
+                                        </span>
+                                        <br>    
+                                        <label>
+                                            (免运费)
+                                            <br>{$pay.pay_name}</label>
+                                    </td>
+                                    <td class="itemcenter">
+                                    <if condition="$v['action_status'] eq 0">未付款<br><code>等待付款</code><elseif condition="$v['action_status'] eq 1" />已付款<br><code>等待卖家发货</code><elseif condition="$v['action_status'] eq 2" />已发货<br><code>等待买家确认收货</code><elseif condition="$v['action_status'] eq 3" />已完成<br><code>再次购买</code><elseif condition="$v['action_status'] eq 4" />已取消<br><code>订单已取消</code> </if>
+                                           
+                                        
+
+                                    </td>
+                                    <td class="itemcenter">
+                                        <div class="pn-order-handle">
+                                        <if condition="$v['action_status'] eq 0"><a class="bt_red" href="#">立即付款</a></if>
+                                            <br>   
+                                            <a  target="_blank" href="__CONTROLLER__/look/acti/{$v.acti}">查看</a>
+                                            <br>      
+                                            <span class="pn-form-cancel">
+                                            <if condition="$v['action_status'] eq 0"><a class="pn-order-cancel" href="javascript:void(0);" >取消订单</a><elseif condition="$v['action_status'] eq 4" /> <else /><a class="pn-order-cancel" href="javascript:void(0);" del="{$v.id}">申请退货</a></if>
+                                            </span>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                </foreach>
+                            </tbody>
+                       
+                    </table>
+
+                </div>
+                    
+
+                </if>
+                
+                <div class="title2">
+                    <a href="__CONTROLLER__/like">查看全部</a>
+                    <span>我收藏的商品</span>
+                </div>
+                <div class="brand scsp">
+                    <!-- <p class="brand-no">你还没有收藏任何商品</p> -->
+                    <ul>
+                    <foreach name="coll" item="o">
+                        <li>
+                            <a href="__MODULE__/Product/index/id/{$o.id}" target="_blank">
+                                <img src="__PUBLIC__{$o.goods_img}"></a>
+                            <a href="__MODULE__/Product/index/id/{$o.id}" target="_blank" style="height:38px;overflow:hidden;">{$o.goods_brief}</a>
+                            <span>
+                                <a href="javascript:;" good-id="{$o.id}">加入购物车</a><br>
+                                ￥{$o.goods_price}
+                            </span>
+                        </li>
+                    </foreach>
+                    </ul>   
+                </div>
+                <div class="title2">
+                    <span>可能感兴趣的商品</span>
+                </div>
+                <div class="brand scsp" id="interesting">
+                    <div class="brand-box">
+                        <ul>
+                            <li>
+                                <a href="#" target="_blank">
+                                    <img src="__PUBLIC__/home/images/4744472_0_l.jpg" alt="御泥坊红酒透亮矿物蚕丝面膜贴20片超值套装"></a>
+                                <a href="http://product.lefeng.com/product/4744472.html" target="_blank" style="height:38px;overflow:hidden;">御泥坊红酒透亮矿物蚕丝面膜贴20片超值套装</a>
+                                <span>
+                                    <a href="javascript:;" class="fr" data-id="4744472:4924902">加入购物车</a>
+                                    ¥79.9
+                                </span>
+                            </li>
+                            <li>
+                                <a href="http://product.lefeng.com/product/98160.html" target="_blank">
+                                    <img src="__PUBLIC__/home/images/98160_0_l.jpg" alt="澳洲EYEMED－2N玻尿酸保湿补水双效美肌面膜（10片）"></a>
+                                <a href="http://product.lefeng.com/product/98160.html" target="_blank" style="height:38px;overflow:hidden;">澳洲EYEMED－2N玻尿酸保湿补水双效美肌面膜（10片）</a>
+                                <span>
+                                    <a href="javascript:;" class="fr" data-id="98160:102160">加入购物车</a>
+                                    ¥25.0
+                                </span>
+                            </li>
+                            <li>
+                                <a href="http://product.lefeng.com/product/122200.html" target="_blank">
+                                    <img src="__PUBLIC__/home/images/122200_0_l.jpg" alt="完美 芦荟胶40gx2支"></a>
+                                <a href="http://product.lefeng.com/product/122200.html" target="_blank" style="height:38px;overflow:hidden;">完美 芦荟胶40gx2支</a>
+                                <span>
+                                    <a href="javascript:;" class="fr" data-id="122200:124100">加入购物车</a>
+                                    ¥68.0
+                                </span>
+                            </li>
+                            <li>
+                                <a href="http://product.lefeng.com/product/130180.html" target="_blank">
+                                    <img src="__PUBLIC__/home/images/130180_0_l.jpg" alt="JCARE天使爱美丽澳洲山羊奶补水润肌面膜10片x28ml 销售王牌（新老包装随机发货）"></a>
+                                <a href="http://product.lefeng.com/product/130180.html" target="_blank" style="height:38px;overflow:hidden;">JCARE天使爱美丽澳洲山羊奶补水润肌面膜10片x28ml 销售王牌（新老包装随机发货）</a>
+                                <span>
+                                    <a href="javascript:;" class="fr" data-id="130180:209908">加入购物车</a>
+                                    ¥38.0
+                                </span>
+                            </li>
+                            <li>
+                                <a href="http://product.lefeng.com/product/130180.html" target="_blank">
+                                    <img src="__PUBLIC__/home/images/130180_0_l.jpg" alt="JCARE天使爱美丽澳洲山羊奶补水润肌面膜10片x28ml 销售王牌（新老包装随机发货）"></a>
+                                <a href="http://product.lefeng.com/product/130180.html" target="_blank" style="height:38px;overflow:hidden;">JCARE天使爱美丽澳洲山羊奶补水润肌面膜10片x28ml 销售王牌（新老包装随机发货）</a>
+                                <span>
+                                    <a href="javascript:;" class="fr" data-id="130180:209908">加入购物车</a>
+                                    ¥38.0
+                                </span>
+                            </li>
+                            <li>
+                                <a href="http://product.lefeng.com/product/130180.html" target="_blank">
+                                    <img src="__PUBLIC__/home/images/130180_0_l.jpg" alt="JCARE天使爱美丽澳洲山羊奶补水润肌面膜10片x28ml 销售王牌（新老包装随机发货）"></a>
+                                <a href="http://product.lefeng.com/product/130180.html" target="_blank" style="height:38px;overflow:hidden;">JCARE天使爱美丽澳洲山羊奶补水润肌面膜10片x28ml 销售王牌（新老包装随机发货）</a>
+                                <span>
+                                    <a href="javascript:;" class="fr" data-id="130180:209908">加入购物车</a>
+                                    ¥38.0
+                                </span>
+                            </li>
+                            <li>
+                                <a href="http://product.lefeng.com/product/130180.html" target="_blank">
+                                    <img src="__PUBLIC__/home/images/130180_0_l.jpg" alt="JCARE天使爱美丽澳洲山羊奶补水润肌面膜10片x28ml 销售王牌（新老包装随机发货）"></a>
+                                <a href="http://product.lefeng.com/product/130180.html" target="_blank" style="height:38px;overflow:hidden;">JCARE天使爱美丽澳洲山羊奶补水润肌面膜10片x28ml 销售王牌（新老包装随机发货）</a>
+                                <span>
+                                    <a href="javascript:;" class="fr" data-id="130180:209908">加入购物车</a>
+                                    ¥38.0
+                                </span>
+                            </li>
+                            <li>
+                                <a href="http://product.lefeng.com/product/130180.html" target="_blank">
+                                    <img src="__PUBLIC__/home/images/130180_0_l.jpg" alt="JCARE天使爱美丽澳洲山羊奶补水润肌面膜10片x28ml 销售王牌（新老包装随机发货）"></a>
+                                <a href="http://product.lefeng.com/product/130180.html" target="_blank" style="height:38px;overflow:hidden;">JCARE天使爱美丽澳洲山羊奶补水润肌面膜10片x28ml 销售王牌（新老包装随机发货）</a>
+                                <span>
+                                    <a href="javascript:;" class="fr" data-id="130180:209908">加入购物车</a>
+                                    ¥38.0
+                                </span>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- 退货弹出框 -->
+<div id='thyy' class='pn-odbox order-cancel nR'>
+    <s class='pn-odbox-nice'></s>
+    <div class='pn-odbox-tit clearfix'>
+        <cite class='lf-fl'>取消订单</cite>
+        <a href='javascript:void(0);' class='lf-fr'></a>
+    </div>
+    <div class='pn-odbox-con'>
+        <form id="reasons" action='#' method='post'>
+            <h6>告诉我们您退货的原因，以便改进我们的服务:</h6>
+            <div class='pn-odbox-no clearfix' id="spans">
+                <span value='18'>不想买了</span>
+                <span value='7'>重复下单</span>
+                <span  value='9' >测试订单</span>
+                <span  value='19' >忘记使用花粉</span>
+                <span  value='16' >价格高</span>
+                <span  value='20' >支付失败-账户余额不足</span>
+                <span  value='21' >支付失败-网上支付失败</span>
+                <br />
+                <span value='13' class='text'>
+                    其他原因：
+                    <textarea style="resize:none;width:360px" id="tarea" type='text'></textarea>
+                </span>
+                <input type='hidden' value="" name="id" />
+            </div>
+            <p class='lf-warn'>请您选择退货原因，再提交</p>
+            <div class='pn-odbox-sub'>
+                <input id='qx-btn' class='qx-btn' type='button' value='确认' />
+                <input type='button' value='关闭' class='reset' />
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    $(function(){
+    // -------------------------------退货---------------------------------------------
+        var del = '';
+        $('a[del]').bind('click',function(){
+            $('body').after('<div id="zhezhao"></div>');
+            del = $(this).attr('del');
+
+            $('#thyy').show();
+        })
+
+        // 关掉取消订单表
+        $('.lf-fr,.reset').bind('click',function(){
+            $('#zhezhao').remove();
+            $('#thyy').hide();
+        })
+
+        $('#spans').children().bind('click',function(){
+                $(this).addClass('xuan').css('color','red');
+                });
+
+        $('#qx-btn').bind('click',function(){
+            var v ='';
+            $('span').each(function(){
+                if($(this).hasClass('xuan')){
+                  v += $(this).attr('value')+',';
+                }
+            })
+             var res = $('#tarea').val(); 
+
+             // 退货原因为空时 不能提交
+             if(res || v){
+                $.ajax({
+                url:'__CONTROLLER__/reason',
+                // data:$('#reasons').serialize(),
+                data:{id:del,zhi:v,zhis:res},
+                type:'post',
+                success:function(data){
+                   if(data){
+                      layer.msg('退货成功');
+                      window.location.reload();
+                      $('#zhezhao').remove();
+                      $('#thyy').hide();    
+                   }
+                }
+            })
+          }
+            
+        })
+        $('a[good-id]').hover(function(){
+            $(this).css({color:'red'});
+        })
+        $('a[good-id]').mouseout(function(){
+            $(this).css({color:'#666'});
+        })
+
+        $('a[good-id]').bind('click',function(){
+            // alert($(this).attr('good-id'));
+            var d= $(this).attr('good-id');
+            $.post('__MODULE__/Cart/add',{id:d},function(data){
+                 if(data.status == 1){
+                    layer.msg(data.content,1,function(){
+                        // location.reload();
+                        $('#Chead-shopping').empty().load('__MODULE__/Common/mycart');
+                    })
+                }else{
+                    layer.msg(data.content,1,3);
+                }
+            })
+        })
+
+    })
+</script>
+</block>

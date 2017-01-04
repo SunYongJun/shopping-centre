@@ -1,0 +1,643 @@
+<extend name="Public:layout" />
+<block name="cssjs">
+    <!-- <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/fengchao.css"> -->
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/personal.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/home_v2.css">
+    <link href="__PUBLIC__/home/css/site_v5.css" rel="stylesheet" type="text/css">
+    <link href="__PUBLIC__/home/css/mylafasov5_v2.css" rel="stylesheet" type="text/css">
+</block>
+<!--头部结束-->
+<block name="main">
+<!-- <script>
+function showAdd(){
+    $("#contentAddid").show();
+}
+
+function check(){
+    var contentadd = $("#contentadd").val();
+    var id = $("#complaintid").val();
+    if(contentadd==""||contentadd=="请准确描述您的详情补充，500字以内"){
+        alert("请输入补充说明");
+        $("#contentadd").focus();
+        return false;
+    }
+    if(contentadd.length>500){
+        alert("详情补充在500字以内");
+        $("#contentadd").focus();
+        return false;
+    }
+    if(confirm("是否要再次投诉?")){
+        $.ajax({
+            type: "POST",
+            url:"my_complaint_execute.jsp",
+            data:{id:id,handleType:"contentadd",contentadd:contentadd},
+            success: function(data){
+                if(data){
+                    alert('您的再次投诉已提交成功，我们会在48小时之内给您回复，请您耐心等待！');
+                    window.location.href = "http://userinfo.lefeng.com/user/complaint/my_complaint.jsp?pageNo=1";
+                }else{
+                    alert('投诉失败，请稍后再试！');
+                }
+            }
+        });
+    }
+}
+function toShowDetail(id){
+    $.ajax({
+            dataType: "json",//返回json格式的数据
+            type: "POST",
+            url:"/user/complaint/my_complaint_execute.jsp",//获取退货详情
+            data:{id:id,handleType:"detail"},
+            success: function(data){
+                if(data != null && data.length > 0){
+                    for(var i=0;i<data.length;i++){
+                        $("#showinfo").show();
+                        $("#username").html(data[i].USERNAME);
+                        $("#complaintid").val(id);
+                        $("#operastatus").html(data[i].OPERASTATUS);
+                        $("#comtype").html(data[i].COMSTATUS);
+                        $("#mobile").html(data[i].MOBILE);
+                        $("#orderid").html(data[i].ORDERID==""?"&nbsp;":data[i].ORDERID);
+                        //$("#title").html(data[i].TITLE);
+                        $("#content").html(data[i].CONTENT);
+                        $("#result").html(data[i].RESULT);
+                        $("#createat").html(data[i].CREATEAT);
+                        if(data[i].OPERASTATUS == '已完成' || data[i].OPERASTATUS == '已处理'){
+                            $('#user_comment_p').css('display','block');
+                        }else{
+                            $('#user_comment_p').css('display','none');
+                        }
+                        var imgstr = (data[i].ATT).split("#");
+                        var str = "";
+                        for(var i=0;i<imgstr.length;i++){
+                            if(imgstr[i]!=""){
+                                str += "<span ><a href='"+imgstr[i]+"' target='_blank' class='fl' style='cursor:pointer;'><b class='fl complaintchrightp'>"
+                                     +"附件"+(i+1)+"</b></a></span>";
+                                
+                            }
+                        }
+                        if(imgstr.length>0)
+                        {
+                            $("#complaintAtt").html(str);
+                        }
+                    }
+                }
+            }
+    });
+    location.hash="detailInfo";
+}
+function openImg(imgUrl){
+    window.open(imgUrl);
+}
+//撤消退货申请
+function toCancel(id){
+    if(confirm("是否确定要撤消投诉?")){
+        $.ajax({
+            type: "POST",
+            url:"/user/complaint/my_complaint_execute.jsp",
+            data:{id:id,handleType:"toCancel"},
+            success: function(data){
+                if(data){
+                    alert('已撤消投诉！');
+                    window.location.href = "http://userinfo.lefeng.com/user/complaint/my_complaint.jsp?pageNo=1";
+                }else{
+                    alert('撤消投诉失败，请稍后再试！');
+                }
+            }
+        });
+    }
+}
+
+</script> -->
+<div class="myWrap">
+<aside class="fl mylafasoV2L">
+    <!--[if IE]>
+    <noscript>
+        <div class="fl mylafasoV2L"></noscript>
+        <![endif]-->
+        <!-- partial_1299568417898 -->
+        <div class="side_bar">
+            <h1>
+                <a title="我的蜂巢" href="#">我的蜂巢</a>
+            </h1>
+            <dl>
+                <dt>订单中心</dt>
+                <dd>
+                    <a href="__CONTROLLER__/order">我的订单</a>
+                    <a href="__CONTROLLER__/">我的收藏</a>
+                    <a href="__CONTROLLER__/myBonus">我的红包</a>
+                    <a href="__CONTROLLER__/myCoin">我的花粉</a>
+                    <a href="__CONTROLLER__/order">我的评价</a>
+                </dd>
+            </dl>
+            <dl>
+                <dt>账户管理</dt>
+                <dd>
+                    <a href="#">个人资料设置</a>
+                    <a href="__CONTROLLER__/safe">账户安全设置</a>
+                    <a href="__CONTROLLER__/address">收货地址管理</a>
+                    <a href="__CONTROLLER__/">邮件/短信订阅</a>
+                    <a href="__CONTROLLER__/">站外分享绑定</a>
+                </dd>
+            </dl>
+            <dl>
+                <dt>服务中心</dt>
+                <dd>
+                    <a href="#">申请退换货/投诉</a>
+                    <a href="#">退货管理</a>
+                    <a href="#">换货管理</a>
+                    <a href="#">店铺取消订单管理</a>
+                    <a href="#">商品咨询/回复</a>
+                    <a href="__CONTROLLER__/complain">我的投诉</a>
+                </dd>
+            </dl>
+        </div>
+        <!-- // <script type="text/javascript" src="__PUBLIC__/dist/js/W960.js"></script> -->
+        <!-- 左侧 -->
+        <!--[if IE]>
+        <noscript></div>
+    </noscript>
+    <![endif]-->
+</aside>
+
+<section class="fr mylafasoV2R">
+    <div class="fr mylafasoV2R">
+        <div class="complaintWarp">
+            <div class="returnwarp">
+                <h2>我的投诉管理</h2>
+                <div class="myApptable">
+                    <p class="myApptablehead">
+                        <span class="bh">投诉编号</span>
+                        <span class="lx">投诉类型</span>
+                        <span class="sj">申请时间</span>
+                        <span class="zt">状态</span>
+                        <span class="cz">操作</span>
+                    </p>
+                    <ul id="returnlist"></ul>
+                    <div style="padding-bottom:50px;" class="returnwarplistsure">
+                        <div class="manu">共0条记录</div>
+                    </div>
+
+                </div>
+
+                <a name="detailInfo" id="detailInfo"></a>
+                <div id="showinfo" style="display:none;">
+                    <div class="returnwarp">
+                        <h2>申请详情</h2>
+                    </div>
+                    <div class="returnwarpLetter">
+                        <p class="complaintchrightp" style="display:none" id="complaintchrightp"> <em onclick="this.parentNode.style.display=&#39;none&#39;"><img src="__PUBLIC__/home/images/complaint_06.jpg"></em>
+                            请您对处理结果进行处理，7天内不处理，系统会默认为您认可了我们的处理结果。
+                        </p>
+                    </div>
+                    <p class="mycomResultBox">
+                        <span class="left">
+                            <strong>用户姓名：</strong>
+                        </span>
+                        <span id="username" style="width:92px;" class="right"></span>
+                        <span style="width:92px;" class="left">
+                            <strong>处理状态：</strong>
+                        </span>
+                        <span id="operastatus" style="width:92px;" class="right"></span>
+                        <span style="width:92px;" class="left">
+                            <strong>投诉类型：</strong>
+                        </span>
+                        <span id="comtype" style="width:92px; margin-left:0px;" class="right"></span>
+                    </p>
+                    <p class="mycomResultBox">
+                        <span class="left">
+                            <strong>手机号码：</strong>
+                        </span>
+                        <span id="mobile" style="width:92px;" class="right"></span>
+                        <span style="width:92px;" class="left">
+                            <strong>相关订单：</strong>
+                        </span>
+                        <span id="orderid" style="width:92px;" class="right"></span>
+                        <span style="width:92px;" class="left">
+                            <strong>提交日期：</strong>
+                        </span>
+                        <span style="width:92px; margin-left:0px;" class="right" id="createat"></span>
+                    </p>
+                    <p class="mycomResultBox mt20">
+                        <span class="left">
+                            <strong>上传附件：</strong>
+                        </span>
+                        <span class="right" id="complaintAtt"></span>
+                    </p>
+                    <p class="mycomResultBox">
+                        <span class="left">
+                            <strong>原因详情：</strong>
+                        </span>
+                        <span id="content" class="right"></span>
+                    </p>
+                    <p class="mycomResultBox">
+                        <span class="left">
+                            <strong>处理结果：</strong>
+                        </span>
+                        <span id="result" class="right colorFf0000"></span>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+        <div class="reco">
+            <link rel="stylesheet" href="http://css.imglefeng.com/css/tuijian/tj.css">
+            <!-- // <script type="text/javascript" src="__PUBLIC__/home/js/scroll_tj.js"></script> -->
+            <style type="text/css">
+.alt-succ dl .nam{margin:0px !important;}
+.alt-succ dl{overflow:none !important;}
+.alt-succ .more a{float:none !important;}
+.clearfix:after{
+content: ".";
+display: block;
+height: 0;
+clear: both;
+visibility: hidden;}
+</style>
+<!--
+            <script type="text/javascript">
+jQuery(function(){loadRecommend()});function loadRecommend(){var productIds=getProductIds();var userId="";jQuery.ajax({type:"GET",url:'http://passport.lefeng.com/inc/valide_user.jsp',dataType:'jsonp',success:function(data){if(data.user!='transient'){userId=data.userId;getRecommend(userId,productIds)}else{getRecommend(userId,productIds)}},error:function(data){getRecommend(userId,productIds)}})}function getRecommend(userId,productIds){jQuery.getJSON("http://tuijian.lefeng.com/recom/recommend.jsp?callback=?",{"key":"guesscate","type":"a","productSize":"l","priceSize":"42","count":"12","isAllCate":false,"exSelf":true,"cateCount":"5","minCountPerCate":"4","showCate":true,"userId":userId,"qids":productIds},function(json){if(json){var products=json.products;var cateInfos=json.cateInfo;var recoHtmls=[];var tjurl="http://rfu.lefeng.com/1_0_011_0004_";recoHtmls.push("<div>");recoHtmls.push("<div class=\"tjright\">");recoHtmls.push("<div class=\"tjcon tjInterest wrap\" count=\"4\">");recoHtmls.push("<div class=\"tjInterHead content_tag\"  >");recoHtmls.push("<dl class=\"tjInterTit cur\">你可能感兴趣</dl>");for(var i in cateInfos){var cateInfo=cateInfos[i];recoHtmls.push("<dl cateId=\""+cateInfo.cateId+"\">");recoHtmls.push("<dt><img src=\""+cateInfo.imageUrl+"\"></dt>");recoHtmls.push("<dd class=\"nam\">"+cateInfo.cateName+"</dd>");recoHtmls.push("</dl>")}recoHtmls.push("<em class=\"morecommend\">");recoHtmls.push("<a href=\"http://active.lefeng.com/user/tj/tj_product.jsp\" target=\"_blank\">更多推荐&gt;&gt;</a>");recoHtmls.push("</em>");recoHtmls.push("</div>");recoHtmls.push("<div class=\"skimright\" style=\"display:block;\">");recoHtmls.push("<p class=\"skimpage page\"></p>");recoHtmls.push("<div class=\"skimWarp\"> ");recoHtmls.push("<span class=\"comBtnL disabled btn\"></span>");recoHtmls.push("<span class=\"comBtnR btn\"></span>");recoHtmls.push("<div class=\"skimConlist\">");recoHtmls.push("<div class=\"skimlist\">");recoHtmls.push("<ul>");for(var j in products){var sn=new String(parseInt(j)+1);if(sn.length<2){sn="0"+sn}var product=products[j];recoHtmls.push("<li>");recoHtmls.push("<a tjurl=\""+tjurl+sn+"/product/"+product.id+".html\" href=\"http://product.lefeng.com/product/"+product.id+".html?wt.s_pg=Recommend&wt.s_pf=VAB_detail\" target=\"_blank\" title=\""+product.name+"\"><img load=\""+product.imageUrl+"\" alt=\""+product.name+"\"></a>");recoHtmls.push("<p class=\"nam\"><a tjurl=\""+tjurl+sn+"/product/"+product.id+".html\" target=\"_blank\" href=\"http://product.lefeng.com/product/"+product.id+".html?wt.s_pg=Recommend&wt.s_pf=VAB_detail\" title=\""+product.name+"\">"+product.name+"</a></p> ");recoHtmls.push("<p class=\"pri\"><img load=\""+product.priceImageUrl+"\"><a target=\"_blank\" href=\"http://shopping.lefeng.com/cart/cart.jsp?process=add&quantity=1&skuId="+product.skuid+"\" onclick=\"_tag.dcsMultiTrack('wt.ct','button','wt.pid','"+product.skuid+"','wt.nu','1')\" class=\"to push\" productId=\""+product.id+"\" skuId=\""+product.skuid+"\" >加入购物车</a></p>");recoHtmls.push("</li>")}recoHtmls.push("</ul>");recoHtmls.push("</div>");recoHtmls.push("</div>");recoHtmls.push("</div>");recoHtmls.push("</div>");recoHtmls.push("</div>");recoHtmls.push("</div>");recoHtmls.push("</div>");var temp=jQuery(recoHtmls.join(''));jQuery("div.reco").append(temp);tagClick.call(jQuery(".content_tag",temp),function(){getCateRecommend(arguments[0])})}})}function getCateRecommend(cateId){var loadedCateId=jQuery("div.skimright[cateId='"+cateId+"']");if(!!loadedCateId.length){bindPage.call(loadedCateId);return}jQuery.getJSON("http://tuijian.lefeng.com/recom/recommend.jsp?callback=?",{"key":"catehot","type":"a","cateId":cateId,"productSize":"l","priceSize":"42","count":"12"},function(json){if(json){var area=jQuery("div.tjcon.tjInterest.wrap");var tjurl="http://rfu.lefeng.com/1_0_011_0004_";var recoHtmls=[];recoHtmls.push("<div class=\"skimright\" cateId=\""+cateId+"\">");recoHtmls.push("<p class=\"skimpage page\"></p>");recoHtmls.push("<div class=\"skimWarp\"> ");recoHtmls.push("<span class=\"comBtnL disabled btn\"></span>");recoHtmls.push("<span class=\"comBtnR btn\"></span>");recoHtmls.push("<div class=\"skimConlist\">");recoHtmls.push("<div class=\"skimlist\">");recoHtmls.push("<ul>");for(var i in json){var sn=new String(parseInt(i)+1);if(sn.length<2){sn="0"+sn}var product=json[i];recoHtmls.push("<li>");recoHtmls.push("<a tjurl=\""+tjurl+sn+"/product/"+product.id+".html\" href=\"http://product.lefeng.com/product/"+product.id+".html?wt.s_pg=Recommend&wt.s_pf=VAB_detail\" target=\"_blank\" title=\""+product.name+"\"><img load=\""+product.imageUrl+"\" alt=\""+product.name+"\"></a>");recoHtmls.push("<p class=\"nam\"><a tjurl=\""+tjurl+sn+"/product/"+product.id+".html\" target=\"_blank\" href=\"http://product.lefeng.com/product/"+product.id+".html?wt.s_pg=Recommend&wt.s_pf=VAB_detail\" title=\""+product.name+"\">"+product.name+"</a></p> ");recoHtmls.push("<p class=\"pri\"><img load=\""+product.priceImageUrl+"\"><a target=\"_blank\" href=\"http://shopping.lefeng.com/cart/cart.jsp?process=add&quantity=1&skuId="+product.skuid+"\" onclick=\"_tag.dcsMultiTrack('wt.ct','button','wt.pid','"+product.skuid+"','wt.nu','1')\" class=\"to push\" productId=\""+product.id+"\" skuId=\""+product.skuid+"\" >加入购物车</a></p>");recoHtmls.push("</li>")}recoHtmls.push("</ul>");recoHtmls.push("</div>");recoHtmls.push("</div>");recoHtmls.push("</div>");recoHtmls.push("</div>");var temp=jQuery(recoHtmls.join(''));area.append(temp);bindPage.call(temp)}})}function getProductIds(){var history_info=getCookie("history_info");var productIds="";if(history_info!=null&&history_info!=''&&history_info!='undefined'){var history_arg=history_info.split("jQuery");var endCount=history_arg.length;for(var i=0;i<endCount;i++){if(history_arg[i]!=null&&history_arg[i]!="undefined"){var wlink=history_arg[i].split("+");if(wlink!=null&&wlink[1]!=null&&wlink[1]!=""){var productLink=wlink[1].replace("www.lefeng.com","product.lefeng.com");var productId=productLink.substring(34,(productLink.length-5));if(i==0){productIds+=productId}else{productIds+=","+productId}}}}}return productIds}function getCookie(b){var a=document.cookie.match(new RegExp("(^| )"+b+"=([^;]*)(;|jQuery)"));if(a!=null){return unescape(a[2])}return null}
+</script>
+-->
+            <div>
+                <div class="tjright">
+                    <div class="tjcon tjInterest wrap" count="4">
+                        <div class="tjInterHead content_tag">
+                            <dl class="tjInterTit cur" index="0">你可能感兴趣</dl>
+                            <dl cateid="26861" index="1">
+                                <dt>
+                                    <img src="__PUBLIC__/dist/images/4464460_0_m.jpg"></dt>
+                                <dd class="nam">护肤套装</dd>
+                            </dl>
+                            <dl cateid="26266" index="2">
+                                <dt>
+                                    <img src="__PUBLIC__/dist/images/185404_0_m.jpg"></dt>
+                                <dd class="nam">眼霜</dd>
+                            </dl>
+                            <dl cateid="26255" index="3">
+                                <dt>
+                                    <img src="__PUBLIC__/dist/images/155962_0_m.jpg"></dt>
+                                <dd class="nam">化妆水</dd>
+                            </dl>
+                            <dl cateid="26329" index="4">
+                                <dt>
+                                    <img src="__PUBLIC__/dist/images/111084_0_m.jpg"></dt>
+                                <dd class="nam">洗发水</dd>
+                            </dl>
+                            <dl cateid="26297" index="5">
+                                <dt>
+                                    <img src="__PUBLIC__/dist/images/75284_0_m.jpg"></dt>
+                                <dd class="nam">唇膏/口红</dd>
+                            </dl>
+                            <em class="morecommend"><a href="http://active.lefeng.com/user/tj/tj_product.jsp" target="_blank">更多推荐&gt;&gt;</a></em> 
+                        </div>
+                        <div class="skimright" style="display: block;">
+                            <p class="skimpage page">
+                                <a href="javascript:;" class="cur">1</a>
+                                <a href="javascript:;">2</a>
+                                <a href="javascript:;">3</a>
+                            </p>
+                            <div class="skimWarp">
+                                <span class="comBtnL disabled btn"></span>
+                                <span class="comBtnR btn"></span>
+                                <div class="skimConlist">
+                                    <div class="skimlist">
+                                        <ul>
+                                            <li>
+                                                <a tjurl="http://rfu.lefeng.com/1_0_011_0004_01/product/118380.html" href="http://product.lefeng.com/product/118380.html?wt.s_pg=Recommend&wt.s_pf=VAB_detail" target="_blank" title="井尚美玫瑰精华润手霜60g（护手霜）">
+                                                    <img alt="井尚美玫瑰精华润手霜60g（护手霜）" src="__PUBLIC__/home/images/118380_0_l.jpg"></a>
+                                                <p class="nam">
+                                                    <a tjurl="http://rfu.lefeng.com/1_0_011_0004_01/product/118380.html" target="_blank" href="http://product.lefeng.com/product/118380.html?wt.s_pg=Recommend&wt.s_pf=VAB_detail" title="井尚美玫瑰精华润手霜60g（护手霜）">井尚美玫瑰精华润手霜60g（护手霜）</a>
+                                                </p>
+                                                <p class="pri">
+                                                    <img src="__PUBLIC__/home/images/118380_42_44.png">
+                                                    <a target="_blank" href="http://shopping.lefeng.com/cart/cart.jsp?process=add&quantity=1&skuId=120720" onclick="_tag.dcsMultiTrack(&#39;wt.ct&#39;,&#39;button&#39;,&#39;wt.pid&#39;,&#39;120720&#39;,&#39;wt.nu&#39;,&#39;1&#39;)" class="to push" productid="118380" skuid="120720">加入购物车</a>
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <a tjurl="http://rfu.lefeng.com/1_0_011_0004_02/product/74461.html" href="http://product.lefeng.com/product/74461.html?wt.s_pg=Recommend&wt.s_pf=VAB_detail" target="_blank" title="BEELY手足霜100g">
+                                                    <img alt="BEELY手足霜100g" src="./我的投诉管理_乐蜂网_files/74461_0_l.jpg"></a>
+                                                <p class="nam">
+                                                    <a tjurl="http://rfu.lefeng.com/1_0_011_0004_02/product/74461.html" target="_blank" href="http://product.lefeng.com/product/74461.html?wt.s_pg=Recommend&wt.s_pf=VAB_detail" title="BEELY手足霜100g">BEELY手足霜100g</a>
+                                                </p>
+                                                <p class="pri">
+                                                    <img src="__PUBLIC__/home/images/74461_42_29.png">
+                                                    <a target="_blank" href="http://shopping.lefeng.com/cart/cart.jsp?process=add&quantity=1&skuId=81021" onclick="_tag.dcsMultiTrack(&#39;wt.ct&#39;,&#39;button&#39;,&#39;wt.pid&#39;,&#39;81021&#39;,&#39;wt.nu&#39;,&#39;1&#39;)" class="to push" productid="74461" skuid="81021">加入购物车</a>
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <a tjurl="http://rfu.lefeng.com/1_0_011_0004_03/product/189021.html" href="http://product.lefeng.com/product/189021.html?wt.s_pg=Recommend&wt.s_pf=VAB_detail" target="_blank" title="乐蔓棉花派嫩白手霜（滋润）60ml（护手霜）">
+                                                    <img alt="乐蔓棉花派嫩白手霜（滋润）60ml（护手霜）" src="__PUBLIC__/home/images/189021_0_l.jpg"></a>
+                                                <p class="nam">
+                                                    <a tjurl="http://rfu.lefeng.com/1_0_011_0004_03/product/189021.html" target="_blank" href="http://product.lefeng.com/product/189021.html?wt.s_pg=Recommend&wt.s_pf=VAB_detail" title="乐蔓棉花派嫩白手霜（滋润）60ml（护手霜）">乐蔓棉花派嫩白手霜（滋润）60ml（护手霜）</a>
+                                                </p>
+                                                <p class="pri">
+                                                    <img src="__PUBLIC__/home/images/189021_42_29.png">
+                                                    <a target="_blank" href="http://shopping.lefeng.com/cart/cart.jsp?process=add&quantity=1&skuId=186581" onclick="_tag.dcsMultiTrack(&#39;wt.ct&#39;,&#39;button&#39;,&#39;wt.pid&#39;,&#39;186581&#39;,&#39;wt.nu&#39;,&#39;1&#39;)" class="to push" productid="189021" skuid="186581">加入购物车</a>
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <a tjurl="http://rfu.lefeng.com/1_0_011_0004_04/product/180281.html" href="http://product.lefeng.com/product/180281.html?wt.s_pg=Recommend&wt.s_pf=VAB_detail" target="_blank" title="JCARE天使爱美丽玻尿酸温和保湿护甲手霜80g">
+                                                    <img alt="JCARE天使爱美丽玻尿酸温和保湿护甲手霜80g" src="__PUBLIC__/dist/images/180281_0_l.jpg"></a>
+                                                <p class="nam">
+                                                    <a tjurl="http://rfu.lefeng.com/1_0_011_0004_04/product/180281.html" target="_blank" href="http://product.lefeng.com/product/180281.html?wt.s_pg=Recommend&wt.s_pf=VAB_detail" title="JCARE天使爱美丽玻尿酸温和保湿护甲手霜80g">JCARE天使爱美丽玻尿酸温和保湿护甲手霜80g</a>
+                                                </p>
+                                                <p class="pri">
+                                                    <img src="__PUBLIC__/dist/images/180281_42_57.png">
+                                                    <a target="_blank" href="http://shopping.lefeng.com/cart/cart.jsp?process=add&quantity=1&skuId=176226" onclick="_tag.dcsMultiTrack(&#39;wt.ct&#39;,&#39;button&#39;,&#39;wt.pid&#39;,&#39;176226&#39;,&#39;wt.nu&#39;,&#39;1&#39;)" class="to push" productid="180281" skuid="176226">加入购物车</a>
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <a tjurl="http://rfu.lefeng.com/1_0_011_0004_05/product/185741.html" href="http://product.lefeng.com/product/185741.html?wt.s_pg=Recommend&wt.s_pf=VAB_detail" target="_blank" title="郁美净浴后乳液220g（身体乳）">
+                                                    <img load="http://img2.imglefeng.com/images/product/000/000/000/185/741/185741_0_l.jpg" alt="郁美净浴后乳液220g（身体乳）"></a>
+                                                <p class="nam">
+                                                    <a tjurl="http://rfu.lefeng.com/1_0_011_0004_05/product/185741.html" target="_blank" href="http://product.lefeng.com/product/185741.html?wt.s_pg=Recommend&wt.s_pf=VAB_detail" title="郁美净浴后乳液220g（身体乳）">郁美净浴后乳液220g（身体乳）</a>
+                                                </p>
+                                                <p class="pri">
+                                                    <img load="http://price3.imglefeng.com/185741_42_13.png">
+                                                    <a target="_blank" href="http://shopping.lefeng.com/cart/cart.jsp?process=add&quantity=1&skuId=182921" onclick="_tag.dcsMultiTrack(&#39;wt.ct&#39;,&#39;button&#39;,&#39;wt.pid&#39;,&#39;182921&#39;,&#39;wt.nu&#39;,&#39;1&#39;)" class="to push" productid="185741" skuid="182921">加入购物车</a>
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <a tjurl="http://rfu.lefeng.com/1_0_011_0004_06/product/10590.html" href="http://product.lefeng.com/product/10590.html?wt.s_pg=Recommend&wt.s_pf=VAB_detail" target="_blank" title="曼秀雷敦水份润手霜50g">
+                                                    <img load="http://img3.imglefeng.com/images/product/000/000/000/010/590/10590_0_l.jpg" alt="曼秀雷敦水份润手霜50g"></a>
+                                                <p class="nam">
+                                                    <a tjurl="http://rfu.lefeng.com/1_0_011_0004_06/product/10590.html" target="_blank" href="http://product.lefeng.com/product/10590.html?wt.s_pg=Recommend&wt.s_pf=VAB_detail" title="曼秀雷敦水份润手霜50g">曼秀雷敦水份润手霜50g</a>
+                                                </p>
+                                                <p class="pri">
+                                                    <img load="http://price3.imglefeng.com/10590_42_30.png">
+                                                    <a target="_blank" href="http://shopping.lefeng.com/cart/cart.jsp?process=add&quantity=1&skuId=10710" onclick="_tag.dcsMultiTrack(&#39;wt.ct&#39;,&#39;button&#39;,&#39;wt.pid&#39;,&#39;10710&#39;,&#39;wt.nu&#39;,&#39;1&#39;)" class="to push" productid="10590" skuid="10710">加入购物车</a>
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <a tjurl="http://rfu.lefeng.com/1_0_011_0004_07/product/10565.html" href="http://product.lefeng.com/product/10565.html?wt.s_pg=Recommend&wt.s_pf=VAB_detail" target="_blank" title="曼秀雷敦天然植物润唇膏—无香料4g">
+                                                    <img load="http://img2.imglefeng.com/images/product/000/000/000/010/565/10565_0_l.jpg" alt="曼秀雷敦天然植物润唇膏—无香料4g"></a>
+                                                <p class="nam">
+                                                    <a tjurl="http://rfu.lefeng.com/1_0_011_0004_07/product/10565.html" target="_blank" href="http://product.lefeng.com/product/10565.html?wt.s_pg=Recommend&wt.s_pf=VAB_detail" title="曼秀雷敦天然植物润唇膏—无香料4g">曼秀雷敦天然植物润唇膏—无香料4g</a>
+                                                </p>
+                                                <p class="pri">
+                                                    <img load="http://price3.imglefeng.com/10565_42_5.png">
+                                                    <a target="_blank" href="http://shopping.lefeng.com/cart/cart.jsp?process=add&quantity=1&skuId=10685" onclick="_tag.dcsMultiTrack(&#39;wt.ct&#39;,&#39;button&#39;,&#39;wt.pid&#39;,&#39;10685&#39;,&#39;wt.nu&#39;,&#39;1&#39;)" class="to push" productid="10565" skuid="10685">加入购物车</a>
+                                                </p>
+                                            </li>
+                <!--                             <li>
+                    <a tjurl="http://rfu.lefeng.com/1_0_011_0004_08/product/185727.html" href="http://product.lefeng.com/product/185727.html?wt.s_pg=Recommend&wt.s_pf=VAB_detail" target="_blank" title="郁美净儿童霜超市装25g*5">
+                        <img load="http://img1.imglefeng.com/images/product/000/000/000/185/727/185727_0_l.jpg" alt="郁美净儿童霜超市装25g*5"></a>
+                    <p class="nam">
+                        <a tjurl="http://rfu.lefeng.com/1_0_011_0004_08/product/185727.html" target="_blank" href="http://product.lefeng.com/product/185727.html?wt.s_pg=Recommend&wt.s_pf=VAB_detail" title="郁美净儿童霜超市装25g*5">郁美净儿童霜超市装25g*5</a>
+                    </p>
+                    <p class="pri">
+                        <img load="http://price1.imglefeng.com/185727_42_63.png">
+                        <a target="_blank" href="http://shopping.lefeng.com/cart/cart.jsp?process=add&quantity=1&skuId=182907" onclick="_tag.dcsMultiTrack(&#39;wt.ct&#39;,&#39;button&#39;,&#39;wt.pid&#39;,&#39;182907&#39;,&#39;wt.nu&#39;,&#39;1&#39;)" class="to push" productid="185727" skuid="182907">加入购物车</a>
+                    </p>
+                </li>
+                <li>
+                    <a tjurl="http://rfu.lefeng.com/1_0_011_0004_09/product/7165.html" href="http://product.lefeng.com/product/7165.html?wt.s_pg=Recommend&wt.s_pf=VAB_detail" target="_blank" title="美润 护手霜（渗透滋养型）盒装100g（资生堂旗下品牌）">
+                        <img load="http://img2.imglefeng.com/images/product/000/000/000/007/165/7165_0_l.jpg" alt="美润 护手霜（渗透滋养型）盒装100g（资生堂旗下品牌）"></a>
+                    <p class="nam">
+                        <a tjurl="http://rfu.lefeng.com/1_0_011_0004_09/product/7165.html" target="_blank" href="http://product.lefeng.com/product/7165.html?wt.s_pg=Recommend&wt.s_pf=VAB_detail" title="美润 护手霜（渗透滋养型）盒装100g（资生堂旗下品牌）">美润 护手霜（渗透滋养型）盒装100g（资生堂旗下品牌）</a>
+                    </p>
+                    <p class="pri">
+                        <img load="http://price2.imglefeng.com/7165_42_61.png">
+                        <a target="_blank" href="http://shopping.lefeng.com/cart/cart.jsp?process=add&quantity=1&skuId=7345" onclick="_tag.dcsMultiTrack(&#39;wt.ct&#39;,&#39;button&#39;,&#39;wt.pid&#39;,&#39;7345&#39;,&#39;wt.nu&#39;,&#39;1&#39;)" class="to push" productid="7165" skuid="7345">加入购物车</a>
+                    </p>
+                </li>
+                <li>
+                    <a tjurl="http://rfu.lefeng.com/1_0_011_0004_10/product/79180.html" href="http://product.lefeng.com/product/79180.html?wt.s_pg=Recommend&wt.s_pf=VAB_detail" target="_blank" title="JCARE澳洲山羊奶滋养身体乳乳蛋白活肤250ml 全网热销超100万瓶">
+                        <img load="http://img1.imglefeng.com/images/product/000/000/000/079/180/79180_0_l.jpg" alt="JCARE澳洲山羊奶滋养身体乳乳蛋白活肤250ml 全网热销超100万瓶"></a>
+                    <p class="nam">
+                        <a tjurl="http://rfu.lefeng.com/1_0_011_0004_10/product/79180.html" target="_blank" href="http://product.lefeng.com/product/79180.html?wt.s_pg=Recommend&wt.s_pf=VAB_detail" title="JCARE澳洲山羊奶滋养身体乳乳蛋白活肤250ml 全网热销超100万瓶">JCARE澳洲山羊奶滋养身体乳乳蛋白活肤250ml 全网热销超100万瓶</a>
+                    </p>
+                    <p class="pri">
+                        <img load="http://price3.imglefeng.com/79180_42_12.png">
+                        <a target="_blank" href="http://shopping.lefeng.com/cart/cart.jsp?process=add&quantity=1&skuId=209923" onclick="_tag.dcsMultiTrack(&#39;wt.ct&#39;,&#39;button&#39;,&#39;wt.pid&#39;,&#39;209923&#39;,&#39;wt.nu&#39;,&#39;1&#39;)" class="to push" productid="79180" skuid="209923">加入购物车</a>
+                    </p>
+                </li>
+                <li>
+                    <a tjurl="http://rfu.lefeng.com/1_0_011_0004_11/product/121124.html" href="http://product.lefeng.com/product/121124.html?wt.s_pg=Recommend&wt.s_pf=VAB_detail" target="_blank" title="黑色竹炭超细软毛牙刷4支家庭装(呵护牙齿 女人我最大推荐)">
+                        <img load="http://img1.imglefeng.com/images/product/000/000/000/121/124/121124_0_l.jpg" alt="黑色竹炭超细软毛牙刷4支家庭装(呵护牙齿 女人我最大推荐)"></a>
+                    <p class="nam">
+                        <a tjurl="http://rfu.lefeng.com/1_0_011_0004_11/product/121124.html" target="_blank" href="http://product.lefeng.com/product/121124.html?wt.s_pg=Recommend&wt.s_pf=VAB_detail" title="黑色竹炭超细软毛牙刷4支家庭装(呵护牙齿 女人我最大推荐)">黑色竹炭超细软毛牙刷4支家庭装(呵护牙齿 女人我最大推荐)</a>
+                    </p>
+                    <p class="pri">
+                        <img load="http://price3.imglefeng.com/121124_42_36.png">
+                        <a target="_blank" href="http://shopping.lefeng.com/cart/cart.jsp?process=add&quantity=1&skuId=123104" onclick="_tag.dcsMultiTrack(&#39;wt.ct&#39;,&#39;button&#39;,&#39;wt.pid&#39;,&#39;123104&#39;,&#39;wt.nu&#39;,&#39;1&#39;)" class="to push" productid="121124" skuid="123104">加入购物车</a>
+                    </p>
+                </li>
+                <li>
+                    <a tjurl="http://rfu.lefeng.com/1_0_011_0004_12/product/110870.html" href="http://product.lefeng.com/product/110870.html?wt.s_pg=Recommend&wt.s_pf=VAB_detail" target="_blank" title="巨型一号丝瓜水美肤液（配方水）320ml">
+                        <img load="http://img3.imglefeng.com/images/product/000/000/000/110/870/110870_0_l.jpg" alt="巨型一号丝瓜水美肤液（配方水）320ml"></a>
+                    <p class="nam">
+                        <a tjurl="http://rfu.lefeng.com/1_0_011_0004_12/product/110870.html" target="_blank" href="http://product.lefeng.com/product/110870.html?wt.s_pg=Recommend&wt.s_pf=VAB_detail" title="巨型一号丝瓜水美肤液（配方水）320ml">巨型一号丝瓜水美肤液（配方水）320ml</a>
+                    </p>
+                    <p class="pri">
+                        <img load="http://price3.imglefeng.com/110870_42_22.png">
+                        <a target="_blank" href="http://shopping.lefeng.com/cart/cart.jsp?process=add&quantity=1&skuId=113509" onclick="_tag.dcsMultiTrack(&#39;wt.ct&#39;,&#39;button&#39;,&#39;wt.pid&#39;,&#39;113509&#39;,&#39;wt.nu&#39;,&#39;1&#39;)" class="to push" productid="110870" skuid="113509">加入购物车</a>
+                    </p>
+                </li> -->
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--
+<script type="text/javascript"> 
+ 
+function format(){
+    var h = document.documentElement.offsetHeight > document.documentElement.scrollHeight ? document.documentElement.offsetHeight : document.documentElement.scrollHeight;
+    $("#bg").css("height",h);
+    $("#bg").fadeIn();
+    $("#bg").fadeTo("fast",0.5);
+    getObj("selectItem").style.display = "block";
+    getObj("selectItem").style.left = (getObj("bg").offsetWidth - getObj("selectItem").offsetWidth)/2 + "px";
+    getObj("selectItem").style.top = document.documentElement.scrollTop + (document.documentElement.clientHeight-getObj("selectItem").offsetHeight)/2 + "px";
+}
+//评分
+function formatC(){
+    getObj("selectItem").style.display = "none";
+    $("#bg").fadeOut();
+    var score = $('input[@name=po][@checked]').val();
+    var id = $("#complaintid").val();
+    $.ajax({
+        type: "POST",
+        url:"my_complaint_execute.jsp",
+        data:{id:id,handleType:"toScore",score:score},
+        success: function(data){
+            if(data){
+                alert('评分成功！');
+                window.location.href = "http://userinfo.lefeng.com/user/complaint/my_complaint.jsp?pageNo=1";
+            }else{
+                alert('评分失败，请稍后再试！');
+            }
+        }
+    });
+}
+function formatClose(){
+    getObj("selectItem").style.display = "none";
+    $("#bg").fadeOut();
+}
+
+function openjd315(){
+    window.open('http://jd315.jiading.gov.cn/website/pages/intro_12.htm');
+}
+</script>
+-->
+<div id="bg"></div>
+<div class="myAppPointerbox" id="selectItem">
+    <div class="myAppPointerbg"></div>
+    <div class="myAppPointercont">
+        <p class="closebox">
+            <a href="javascript:formatClose();" target="_self">
+                <img src="__PUBLIC__/home/complaint_23.jpg"></a>
+        </p>
+        <p class="letterbox">
+            感谢您对乐蜂网的关心，您的投诉是对我们最大的鞭策，希望以后能带给您更好的服务。也请您给我这次的服务评分，非常感谢您的支持。
+        </p>
+        <p class="radionbox">
+            <span>
+                <label>
+                    <input name="po" type="radio" value="3" checked="">
+                    <em>3分(满意)</em>
+                </label>
+            </span>
+            <span>
+                <label>
+                    <input name="po" type="radio" value="2">
+                    <em>2分(一般)</em>
+                </label>
+            </span>
+            <span>
+                <label>
+                    <input name="po" type="radio" value="1">
+                    <em>1分(很差)</em>
+                </label>
+            </span>
+        </p>
+        <p class="btnbox tac">
+            <a href="javascript:formatC();" target="_self">
+                <img src="__PUBLIC__/home/images/complaint_24.jpg"></a>
+        </p>
+    </div>
+</div>
+<!-- foot -->
+
+<!-- foot -->
+<p class="clear"></p>
+</div>
+</block>
+<!--
+<script type="text/javascript" src="__PUBLIC__/dist/js/lafaso.class.js"></script>
+<script type="text/javascript" src="__PUBLIC__/dist/js/home_v3.js"></script>
+
+<div style="display: none">
+<script type="text/javascript">
+setTimeout(function () {
+    //baidu
+    //document
+    (function (d) {
+        window.bd_cpro_rtid = "PWTYrjn";
+        var s = d.createElement("script");
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = location.protocol + "//cpro.baidu.com/cpro/ui/rt.js";
+        var s0 = d.getElementsByTagName("script")[0];
+        s0.parentNode.insertBefore(s, s0);
+
+        //ga
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-34801627-1']);
+        _gaq.push(['_setDomainName', 'lefeng.com']);
+        _gaq.push(['_setCampNameKey', 'utm_campaign']);
+        _gaq.push(['_trackPageview']);
+        (function () {
+            var ga = document.createElement('script')
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    })(document);
+}, 100)
+</script>
+
+<script type="text/javascript" src="__PUBLIC__/dist/js/lafaso_wt.js"></script>
+
+</div>
+<script>
+
+    function topCcountDown(t,c,_self,fn){
+        function nd(d){return isNaN(d) ? (d ? new Date(d).getTime() : new Date().getTime()) : d * 1000;}
+        var e = [nd(t[0]),nd(t[1]),nd(t[2])],_s = _self,b;
+        if(!$(_s).length){return false;}
+        if(t[0] && e[0] > e[1]){
+            $(_s).html(c[1]);
+            return false;
+        }else if(e[1] > e[2]){
+            fn && fn($(_s));
+            $(_s).html(c[2]);
+            return false;
+        }
+        (b=function(l){
+            var l=l||(e[2]-e[1])/100,k={
+                D:l/36000/24,H:l/36000%24,M:l/600%60,S:l/10%60,s:l%10
+            };
+            $(_s).html(c[0].replace(/D|H|M|S|s/g,function(m){
+                var n = parseInt(k[m]) + ''
+                if (n.length == 1 && m != 'D' && m != 's'){
+                    n = 0 + n;
+                }
+                return n
+            }));
+            setTimeout(function(){b(l-1)},100);
+        })()
+    }
+
+//topCcountDown([,,'2014/04/18 00:00:00'],['<b>D</b><b>H</b><b>M</b><b>S</b><b>s</b>','',''],'#top_countdown',function(){$('#advTop').remove()});
+
+</script>
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?69200f796b23f8fe027c39886c7298db";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<script type="text/javascript">
+var google_tag_params = {
+ 
+ecomm_pagetype : 'REPLACE_WITH_VALUE',
+ecomm_prodid : 'REPLACE_WITH_VALUE',
+ecomm_pcat : 'REPLACE_WITH_VALUE',
+ecomm_totalvalue : 'REPLACE_WITH_VALUE',
+ecomm_login : 'REPLACE_WITH_VALUE'
+ 
+};
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1049985484;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]>*/</script>
+<script type="text/javascript" src="__PUBLIC__/dist/js/conversion.js"></script>
+<iframe name="google_conversion_frame" title="Google conversion frame" width="300" height="13" src="./我的投诉管理_乐蜂网_files/saved_resource.htm" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no">
+&lt;img height="1" width="1" border="0" alt="" src="http://googleads.g.doubleclick.net/pagead/viewthroughconversion/1049985484/?frame=0&amp;random=1417523793716&amp;cv=7&amp;fst=1417523793716&amp;num=1&amp;fmt=1&amp;guid=ON&amp;u_h=768&amp;u_w=1024&amp;u_ah=738&amp;u_aw=1024&amp;u_cd=24&amp;u_his=50&amp;u_tz=480&amp;u_java=true&amp;u_nplug=16&amp;u_nmime=30&amp;data=ecomm_pagetype%3DREPLACE_WITH_VALUE%3Becomm_prodid%3DREPLACE_WITH_VALUE%3Becomm_pcat%3DREPLACE_WITH_VALUE%3Becomm_totalvalue%3DREPLACE_WITH_VALUE%3Becomm_login%3DREPLACE_WITH_VALUE&amp;frm=0&amp;url=http%3A//userinfo.lefeng.com/user/complaint/my_complaint.jsp%3Fcur%3D17f&amp;vis=1" /&gt;
+</iframe>
+<noscript>
+&lt;div style="display:inline;"&gt;
+&lt;img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1049985484/?value=0&amp;guid=ON&amp;script=0"/&gt;
+&lt;/div&gt;
+</noscript>
+-->

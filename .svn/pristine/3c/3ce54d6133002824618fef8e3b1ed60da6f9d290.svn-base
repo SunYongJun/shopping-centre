@@ -1,0 +1,18 @@
+<!-- 页面的菜单 -->
+<!-- 遍历下的父级分类 -->
+<foreach name="pt" item="vpt">       
+<dl id="webf1">
+    <!-- 遍历子级分类 -->
+	<dt><strong>{$vpt.type_name}</strong>
+	<p>
+    <foreach name="ct" item="vct">
+        <if condition="$vct['pid'] eq $vpt['id']">
+		<a href="__MODULE__/list/index/type/{$vct.id}" target="_blank">{$vct.type_name}</a>
+        </if>
+    </foreach>
+	</p>
+    <b class="arrow-right"></b>
+    </dt>
+    
+</dl>
+</foreach>

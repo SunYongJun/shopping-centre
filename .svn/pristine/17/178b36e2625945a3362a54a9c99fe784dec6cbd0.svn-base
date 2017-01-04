@@ -1,0 +1,73 @@
+.amain{
+	width:1000px;
+	height: auto;
+	overflow: hidden;
+	padding: 40px 0px;
+	margin: 30px auto;
+	text-align: center;
+	background: #fff;
+}
+.amain h1{
+	font-size: 20px;
+	font-weight: bold;
+	color: #333;
+	margin: 10px 0px; 
+}
+.amain span{
+	font-size: 12px;
+	color: #999;
+}
+.amain span b{
+	color: #666;
+	margin-right: 10px;
+}
+.amain .con{
+	text-align: left;
+	margin: 30px 0px 20px 0px;
+}
+
+/*文章列表页面*/
+.con{
+	width: 960px;
+	height: auto;
+	margin: 20px auto;
+	background: #fff;
+	padding: 10px 20px;
+}
+.list{
+	margin: 20px 0px;
+}
+.list h1{
+	border-bottom: 1px solid #ECEDDB;
+	font-size: 18px;
+	color: #444;
+	font-family: 'microsoft yahei';
+	text-align: left;
+	padding-bottom: 10px;
+}
+.list ul{
+	width: 100%;
+	height: auto;;
+}
+.list ul li{
+	height: 32px;
+	line-height: 32px;
+	width: 100%;
+	border-bottom: 1px dotted #efefef;
+}
+.list ul li:hover{
+	background: #f5f5f5;
+}
+.list ul li:hover a{
+	color: red;
+}
+.list ul li b{
+	margin-right: 10px;
+}
+.list ul li:hover b{
+	font-weight: bold;
+}
+.list ul li span{
+	float: right;
+	color: #999;
+}

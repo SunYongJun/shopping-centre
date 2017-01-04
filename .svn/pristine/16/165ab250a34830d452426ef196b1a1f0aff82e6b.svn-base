@@ -1,0 +1,39 @@
+﻿/*左侧导航*/
+.mainBg{ background:#f1ebde; overflow:hidden;}
+.clearfix:after {content: ".";display: block;height: 0;clear: both;visibility: hidden;}
+.clearfix {display: inline-block;}
+*html .clearfix {height: 1%;}
+.clearfix {display: block;}
+/*左侧菜单(全部上线后在起用)*/
+/*左侧菜单*/
+.side_bar{ width:218px;overflow:hidden; border:1px solid #ddd; border-top:none; overflow:hidden; zoom:1; float:left;display:inline; background:#fff9ed;box-shadow:0 0 3px #e8e2d5;-webkit-box-shadow:0 0 3px #e8e2d5;-moz-box-shadow:0 0 3px #e8e2d5;-ms-filter:"progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color='#e8e2d5')";filter:progid:DXImageTransform.Microsoft.Shadow(Strength=3,Direction=135,Color='#e8e2d5');zoom:1}
+.fl .side_bar{ border:none;}
+.side_bar .myL h3{ text-indent:10px; height:30px; line-height:30px; border-top:1px solid #ddd; color:#404040; font-weight:bold;color:#404040;}
+.side_bar .myL .myleftmenu{ width:218px; border-top:1px solid #eee; margin:0 auto; padding-top:10px; line-height:26px; text-indent:10px;}
+.side_bar .myL .last{border-bottom:1px solid #E6E6E6;}
+.side_bar .myL ul li a{color:#404040}
+.side_bar .myL ul li a:link,.myWrap .myL ul li a:visited,.myWrap .myL ul li a:active{color:#404040; height:26px; overflow:hidden; display:block;}
+.side_bar .myL ul li a:hover{color:#963C00; text-decoration:none; background-color:#eee;}
+.side_bar .myL ul li.current{color:#963C00;background-color:#eee;}
+.side_bar .myL ul li.current a{color:#963C00;}
+.side_bar h1{ font:18px/65px Microsoft YaHei!important; height:68px; color:#3D392D; background:url(../images/icon1.gif) 37px center no-repeat; padding-left:65px; position:relative;}
+.side_bar h1 a{ position:absolute; width:218px; height:68px; left:1px; top:1px; text-align:center;font:18px/65px Microsoft YaHei!important;}
+.side_bar dl{ display:block; overflow:hidden; zoom:1; padding-bottom:20px;}
+.side_bar dt{ font:bold 14px/32px Microsoft YaHei; height:32px; border-bottom:1px dotted #999; border-top:1px dotted #999; background:url(http://img1.imglefeng.com/images/fengchao/icon2.gif) 44px center no-repeat; padding-left:59px; margin-bottom:12px;}
+.side_bar dd a{ display:block; padding-left:76px; height:30px; line-height:30px;}
+.side_bar dd a:hover{ background-color:#F5C278; color:#fff; font-weight:bold;}
+.side_bar dd a.on{ background-color:#F5C278; color:#fff; font-weight:bold;}
+
+
+/*自定义生日属性*/
+
+.birth{
+	background:fuchsia;
+	width:90px;
+	padding:3px 15px;
+	float:left;
+	margin-left:10px;
+}
+.clear{
+	clear:both;
+}

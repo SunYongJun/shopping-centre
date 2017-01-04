@@ -1,0 +1,28 @@
+<?php
+namespace Home\Controller;
+
+class CollectController extends AuthController{
+	public function index(){
+
+	}
+
+	public function insert(){
+		$uid = $_SESSION['user']['id'];
+		$gid = intval($_POST['id']);
+		$m = M('collect_goods');
+		$data = array(
+			'user_id' => $uid,
+			'goods_id' => $gid,
+			'add_time' => time()
+			);
+		$m -> create($data);
+		if($m -> add()){
+			$out['status'] = 1;
+			$out['content'] = '收藏成功！';
+		}else{
+			$out['status'] = 2;
+			$out['content'] = '收藏失败！';
+		}
+		$this -> ajaxReturn($out);
+	}
+}

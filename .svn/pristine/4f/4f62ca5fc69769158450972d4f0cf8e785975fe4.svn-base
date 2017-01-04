@@ -1,0 +1,420 @@
+<extend name="Public:layout" />
+<block name="cssjs">
+    <script src="__PUBLIC__/home/js/grap.js"></script>
+    <script src="__PUBLIC__/home/js/unslider.js"></script>
+    <!-- // <script src="__PUBLIC__/home/js/jquery.min.js"></script> -->
+    <style>
+    .banner {position: relative;width: 100%;overflow: auto;text-shadow: 0 0 1px rgba(0,0,0,.05), 0 1px 2px rgba(0,0,0,.3);background: #fff;box-shadow: 0 1px 2px rgba(0,0,0,.25);text-align: center}
+    .banner ul {list-style: none;width: 300%;}
+    .banner ul li {display: block;float: left;width: 33%;height: 300px;-o-background-size: 100% 100%;-ms-background-size: 100% 100%;-moz-background-size: 100% 100%;-webkit-background-size: 100% 100%;background-size: 100% 100%;box-shadow: inset 0 -3px 6px rgba(0,0,0,.1);}
+    .banner .dots {position: absolute;left: 0;right: 0;bottom: 20px;}
+    .banner .dots li {display: inline-block;width: 8px;height: 8px;margin: 0 4px;text-indent: -999em;border: 2px solid #fff;border-radius: 8px;cursor: pointer;opacity: .4;-webkit-transition: background .5s, opacity .5s;-moz-transition: background .5s, opacity .5s;transition: background .5s, opacity .5s;}
+    .banner .dots li.active {background: #fff;opacity: 1;}
+    #ad{width: 100%;height: 67px;overflow: hidden;}
+    #ad div{width: 1000px;height: 67px;margin: 0px auto;}
+    #ad div a{float:right;}
+    .fad{width:1000px;height: 67px;margin: 0px auto;}
+    </style>
+</block>
+<!-- 广告  顶部广告  -->
+<block name="ad">
+<notempty name="ad">
+    <div id="ad" style="background:url(__PUBLIC__/{$ad.ad_picture}) center no-repeat">
+        <div><a href="javascript:;" class="adclose"><img src="__PUBLIC__/home/images/close.png" alt=""></a></div>
+    </div>
+</notempty>
+</block>
+
+<block name="main">
+	<!-- 主体部分开始 -->
+<!-- 轮播图片 开始 -->
+<div class="banner">
+<ul>
+    <li><img src="__PUBLIC__/home/images/lunbo1.jpg" alt="" height="300"></li>
+    <li><img src="__PUBLIC__/home/images/lunbo2.jpg" alt="" height="300"></li>
+    <li><img src="__PUBLIC__/home/images/lunbo3.jpg" alt="" height="300"></li>
+</ul>
+</div>
+
+<!-- 轮播图片 结束 -->
+
+<!--zys clip s-->
+<div class="cuxiao">
+</div>
+<!--zys clip e -->
+
+<!-- 主体页面开始 -->
+<div class="main clearfloat">
+	<!-- <div class="productTitle" id="tabnews">
+        <h1	 class="title1">&nbsp;</h1>
+        <h4>这里是公告内容</h4>
+    </div> -->
+
+	<!-- 限时秒杀 开始 -->
+	<div class="seckill">
+		<div class="seckill-title">
+			<h1></h1>
+			<div class="seckill-datebar">
+				<dl>
+                    <foreach name="sale" item="vsale">
+                    <dd class="">{$vsale.brand_name}</dd>
+                    </foreach>
+                    <!-- <dd id="dsk2_b" class="">奥迪</dd> -->
+                    <!-- <dd id="dsk3_b" class="">迪奥</dd> -->
+                </dl>
+			</div>
+		</div>
+		<div class="seckill-box">
+            <foreach name="sale" item="vsale">
+            <dl id="1472641" style="display: none;">
+                <dd>
+                    <a href="javascript:;" target="_blank">
+                        <img src="__PUBLIC__/{$vsale.goods_img}" alt="" width="620" height="360">
+                    </a>
+                </dd>
+                <dt>
+                    <if condition="($vsale['sale_start'] lt $vsale['now']) AND $vsale['sale_end'] gt $vsale['now']">
+                    <!-- 抢购显示这个 -->
+                    <div class="secTime" >
+                        <span start="{$vsale.now}" end="{$vsale.sale_end}" class="saletime">
+                            <b class="t1">0</b>
+                            <b class="t2">0</b>
+                            <b class="t3">0</b>
+                            <b class="t4">0</b>
+                        </span>
+                        <i></i>
+                    </div>
+                    <else />
+                    <!-- 抢购结束显示这个 -->
+                    <div class="secTime" style="display:block">
+                        <b class="seckillEnd">已结束，下次下手要快哦</b>
+                        <!-- 这里的ID要设置成一样的 -->
+                        <span id="dsk" b="2014-11-29 08:00:00" e="2014-11-29 09:59:59" bj="1417219200" class="seckillhide" style="display: none;">
+                            <b class="t1">0</b>
+                            <b class="t2">00</b>
+                            <b class="t3">00</b>
+                            <b class="t4">04</b>
+                        </span>
+                        <i class="endSec"></i>
+                    </div>
+                    </if>
+                    <div class="secText">
+                        <a href="javascript:;" target="_blank">
+                            <b>{$vsale[sale] / $vsale[goods_price] * 10 | round=###,1}折/</b> {$vsale.goods_name}
+                        </a>
+                    </div>
+                    <if condition="($vsale['sale_start'] lt $vsale['now']) AND $vsale['sale_end'] gt $vsale['now']">
+                    <!-- 抢购显示这个 -->
+                    <div class="secPrice">
+                        <a href="javascript:void(0)" title="加入购物车"  buy="{$vsale.gid}" sale="{$vsale.sale}">立即秒杀</a>
+                        <span>{$vsale.sale}</span>
+                        <b>{$vsale.goods_price}</b>
+                    </div>
+                    <else />
+                    <!-- 抢购结束显示这个 -->
+                    <div class="secPrice" style="display:block">
+                        <a href="javascript:void(0)" target="_blank" class="end">已结束</a>
+                        <span>{$vsale.sale}</span>
+                        <b>{$vsale.goods_price}</b>
+                    </div>
+                    </if>
+                    <div class="secNow">
+                        <i>{$vsale.sales_volume}人已购买</i>
+                    </div>
+                </dt>
+            </dl>
+            </foreach>
+        </div>
+	</div>
+	<!-- 限时秒杀  结束 -->
+
+	<!-- pp s -->
+	<div class="productTitle" id="tabnews">
+		<h1 class="title1">
+			&nbsp;
+		</h1>
+		<h4><!-- 这里是公告内容 -->
+            <i></i>
+            <dd class="on" style="height: 15px; top: -4px;">
+                <foreach name="news" item="vnews">
+                <a target="_blank" href="__MODULE__/Article/index/id/{$vnews.id}">{$vnews.article_title|mb_substr=0,10,'utf-8'}</a>
+                </foreach>
+            </dd>
+        </h4>
+	</div>
+	<!-- pp e -->
+	
+    <!-- 品牌特卖  开始   adv list s -->
+    <div class="first-ad clearfloat">
+    	<!-- <div class="ad-right"></div> -->
+    	<div class="ad-left" id="ad-list">
+            <foreach name="brand" item="vbrand">
+            <a href="__MODULE__/List/index/brand/{$vbrand.id}" target="_blank">
+                <img src="__PUBLIC__/{$vbrand.brand_logo}" alt="">
+                <div class="ad-tips">
+                    <h1>{$vbrand.brand_name}化妆品特卖专场</h1>
+                    <h2>{$vbrand.brand_desc}</h2>
+                    <!-- <h3>2.3折起 满179减30</h3> -->
+                    <!-- <div class="d1417399199" b="1417140000">
+                        <i></i>
+                        <b>1</b>天
+                        <b>23</b>小时
+                        <b>25</b>分钟
+                        <b>33</b>秒
+                    </div> -->
+                </div>
+            </a>
+            </foreach>
+        </div>
+    </div>
+    <!-- 品牌特卖 结束  adv list e -->
+    
+    <!-- 最新爆款  开始 s -->
+    <div class="productTitle" id="smallnav">
+        <h1 class="title2">&nbsp;</h1>
+<!--         <ul>
+            这里追加分类内容
+        </ul> -->
+    </div>
+    <div class="bigimg-box clearfloat" id="commodity-list">
+        <foreach name="new" item="vnew">
+        <dl class="p1" id="i184023" num="0">
+            <div class="new_added">
+            <a goods_sn="{$vnew.goods_sn}" num="1" href="javascript:void(0)" title="加入购物车" data-img="{$vnew.goods_img}" buy="{$vnew.id}">加入购物车
+            </a>
+            </div>
+            <dt>
+                <a href="__MODULE__/Product/index/id/{$vnew.id}" class="commodity-img" target="_blank"><img src="__PUBLIC__/{$vnew.goods_img}" width="310" height="310" alt="">
+                </a>
+            </dt>
+            <dd>
+                <h4><a target=""><b>{$vnew.goods_sale}折/</b> {$vnew.goods_name}</a>
+                </h4>
+                <div class="t_price_box_L">
+                    <div class="t_price_L">
+                        <span>{$vnew.goods_price}</span>
+                        <b>{$vnew[goods_price] / $vnew[goods_sale] | round=###,2}</b>
+                    </div>
+                </div>
+                <div class="c-info d1417399199" o="">
+                    销量<b>{$vnew.sales_volume}</b><a href="__MODULE__/List/index/brand/{$vnew.brand_id}" target="_blank">{$vnew.brand_name}</a>
+                </div>
+                <div class="t_buy_pople">
+                    <b>{$vnew.goods_click}</b>人已查看
+                </div>
+            </dd>
+            <div class="d1_tips"></div>
+        </dl>
+        </foreach>  
+    </div>
+    <!-- 最新爆款  结束 e -->
+    
+    <!-- 最后疯抢  开始 s -->
+    <div class="productTitle">
+        <h1 class="title3">&nbsp;</h1>
+    </div>
+    <div class="bigimg-box clearfloat" id="commodity-list-end">
+        <!-- 开始遍历所有商品 -->
+        <foreach name="end" item="vend">
+        <dl class="p492" id="i127230" num="4">
+            <div class="new_added">
+                <a goods_sn="{$vend.goods_sn}" num="1" href="javascript:void(0)" title="加入购物车" data-img="{$vend.goods_img}" buy="{$vend.id}">加入购物车</a>
+            </div>
+            <dt>
+                <a href="__MODULE__/Product/index/id/{$vend.id}" class="commodity-img" target="_blank">
+                    <img src="__PUBLIC__/{$vend.goods_img}" width="310" height="310" alt="">
+                </a>
+            </dt>
+            <dd>
+                <h4>
+                    <a target="_blank" href="__MODULE__/Product/index/id/{$vend.id}">
+                        <b>{$vend.goods_sale}折/</b> {$vend.goods_name}
+                    </a>
+                </h4>
+                <div class="t_price_box_L">
+                    <div class="t_price_L">
+                        <span>{$vend.goods_price}</span>
+                        <b>{$vend[goods_price] / $vend[goods_sale] | round=###,2}</b>
+                    </div>
+                </div>
+                <div class="c-info d1417312799" o="">
+                    销量<b>{$vend.sales_volume}</b><a href="__MODULE__/List/index/brand/{$vend.brand_id}" target="_blank">{$vend.brand_name}</a>
+                </div>
+                <div class="t_buy_pople">
+                    <b>{$vend.goods_click}</b>人已查看
+                </div>
+            </dd>
+            <div class="d1_tips"></div>
+        </dl>
+    
+        </foreach>
+        <!-- 开始遍历所有商品 -->
+        
+    </div>
+    <!-- 最后疯抢结束 e -->
+    <!-- 底部广告 -->
+    <notempty name="fad">
+    <div class="fad" style="background:url(__PUBLIC__/{$fad.ad_picture}) center no-repeat">    
+        <a href="javascript:;" style="float:right" ><img src="__PUBLIC__/home/images/close.png" alt=""></a>
+    </div>
+    </notempty>
+ <!-- 友情链接 s-->
+ <div class="productTitle">
+     <h1 class="title4">&nbsp;</h1>
+ </div>
+ 
+ <div class="fxb-box">
+    <!-- 文字链接 -->
+    <div class="module1">
+        <ul>
+            <foreach name="text" item="vtext">
+            <li><a href="http://{$vtext.link_url}">{$vtext.link_name}</a></li>
+            </foreach>
+        </ul>
+    </div>
+    <!-- 图片链接 -->
+    <div class="module2">
+        <ul>
+            <foreach name="fimg" item="vimg">
+            <li><a href="http://{$vimg.link_url}"><img src="__PUBLIC__/{$vimg.link_logo}" alt="{$vimg.link_name}" height="40" width="150"></a></li>
+            </foreach>
+        </ul>
+    </div>
+ </div>
+ <!-- 友情链接 e -->
+</div>
+<!-- 底部的搜索框 -->
+<div class="Cfooter-search">
+ 	<h1>更多心仪商品快速搜索:</h1>
+	<div id="Chead_search" class="Chead-search">
+        <div class="search-input"><form action="__MODULE__/List/index" method="get" id="ssgood">
+            <strong id="search-submit" class="search-submit">搜索</strong>
+            <input autocomplete="off" name="search" value="请输入商品名" type="text" id="sresearch"></form>
+        </div>
+        <p>热门：
+            <a id="searchKey1" href="#">面膜</a> 
+            <a id="searchKey2" href="#">BB霜</a> 
+            <a id="searchKey3" href="#">山羊奶</a>&nbsp; 
+            <a id="searchKey4" href="#">百雀羚</a> 
+            <a id="searchKey5" href="#">御泥坊</a>
+            <a id="searchKey6" href="#">金镶玉</a>
+        </p>
+    </div>
+</div>
+<!-- 搜索框结束 -->
+<!-- 主体部分结束 -->
+<!-- <div id="dsk2">asd</div> -->
+<!-- 首页轮播图片 -->
+<script>
+    $(function(){
+        //点击关闭广告
+        $('.adclose').click(function(){
+            $('#ad').slideUp('slow');
+        })
+        $('.fad a').click(function(){
+            $('.fad').slideUp('slow');
+        })
+        //搜索
+        $('#sresearch').focus(function(){
+            $(this).val('');
+        })
+        $('#search-submit').click(function(){
+            if($('#sresearch').val() && $('#sresearch').val() != '请输入商品名'){
+                $('#ssgood').submit();
+            }else{
+                layer.msg('请输入商品名！',1,3);
+            }
+        })
+        //点击购买按钮
+        $('a[buy]').each(function(){
+            var $this = $(this);
+            $this.click(function(){
+                // 此时没有登录的话跳转到登录
+                if({$user['id']?1:0}){
+                    var id = $this.attr('buy');
+                    var data = 'id='+id;
+                    if($this.attr('sale')){
+                        var sale = $this.attr('sale');
+                        data = 'id='+id+'&sale='+sale;
+                    }
+                    $.post('__MODULE__/Cart/add',data,function(data){
+                        if(data.status == 1){
+                            layer.msg(data.content,1,function(){
+                                // location.reload();
+                                $('#Chead-shopping').empty().load('__MODULE__/Common/mycart');
+                            })
+                        }else{
+                            layer.msg(data.content,1,3);
+                        }
+                    })
+                }else{
+                    layer.msg('请先登录！',2,function(){
+                        location.href = '__MODULE__/User/Login';
+                    })
+                }
+            })
+        })
+        // 鼠标移上出先购买图标
+        $('#commodity-list dl,#commodity-list-end dl').each(function(){
+            var $this = $(this);
+            $(this).hover(function(){
+                $this.addClass('hov');
+            },function(){
+                $this.removeClass('hov');
+            })
+        })
+        // 轮播
+        /*$('#bq li').each(function(index){
+            var i = index;
+            var $this = $(this);
+            $(this).mouseover(function(){
+                $this.addClass('on').siblings().removeClass('on');
+                $('.first-show div:eq('+i+')').show().siblings().not('ul').hide();
+            })
+        })*/
+
+        //抢购
+        $('.saletime').each(function(){
+            
+            timer($(this));
+        })
+        // timer($('#dsk2'));
+        $('.seckill-datebar dl dd:eq(0)').addClass('on');
+        $('.seckill-box dl:eq(0)').show();
+
+        /*$('.seckill-datebar dl dd').each(function(i){
+            var $this = $(this);
+            $(this).click(function(){
+                $this.addClass('on').siblings().removeClass('on');
+                $('.seckill-box dl:eq('+i+')').show().siblings().hide();
+            })
+        })*/
+        var i = 1;
+        var grap = setInterval(function(){
+            $('.seckill-datebar dl dd:eq('+i+')').addClass('on').siblings().removeClass('on');
+            $('.seckill-box dl:eq('+i+')').fadeIn().siblings().hide();
+            i++;
+            $('.seckill-datebar dl dd').each(function(n){
+                var $this = $(this);
+                $this.click(function(){
+                    $this.addClass('on').siblings().removeClass('on');
+                    $('.seckill-box dl:eq('+n+')').show().siblings().hide();
+                    i = n;
+                })
+            })
+            var size = $('.seckill-datebar dl dd').size();
+            if(i == size){
+                i = 0;
+            }
+        },5000)
+        //改的新banner轮播
+        $('.banner').unslider({
+            speed: 800,  //滚动速度
+            delay: 7000,    //切换时间
+            keys: true,     //键盘控制
+            dots: true,     //显示点导航
+            fluid: false    //支持响应式布局
+        });
+    })
+</script>
+</block>

@@ -1,0 +1,99 @@
+<?php
+/*  
+*	确定订单的状态
+*/
+function action($n){
+	switch($n){
+		case 0:
+			return "<span>订单生成，待付款</span>";
+			break;
+		case 1:
+			return "<span class='text-danger'>已付款，待发货</span>";
+			break;
+		case 2:
+			return "<span class='text-primary'>已发货，待收货</span>";
+			break;
+		case 3:
+			return "<span class='text-success'>已收货</span>";
+			break;
+		case 4:
+			return "<span class='text-warning'>取消订单</span>";
+			break;
+		case 5:
+			return "<span class='text-muted'>退货</span>";
+			break;
+		default:
+			return "<span>错误</span>";
+			break;
+	}
+}
+
+/*
+*	确定订单的最佳配送时间
+*/
+function dev($d){
+	switch($d){
+		case 1:
+			return '<span>不限时间</span>';
+			break;
+		case 2:
+			return '<span>周一到周五</span>';
+			break;
+		case 3:
+			return '<span>周六日/节假日</span>';
+			break;
+	}
+}
+function order_action($action){
+	switch($action){
+		case 0:
+			return '未确认';
+			break;
+		case 1:
+			return '已确认';
+			break;
+		case 2:
+			return '已取消';
+			break;
+		default:
+			return '无效';
+			break;
+	}
+} 
+// 判断付款状态
+function order_pay($action){
+	switch($action){
+		case 0:
+			return '未付款';
+			break;
+		case 1:
+			return '已付款';
+			break;
+		case 2:
+			return '已退款';
+			break;
+		default:
+			return '无效';
+			break;
+	}
+} 
+// 判断发货状态
+function order_shipping($action){
+	switch($action){
+		case 0:
+			return '未发货';
+			break;
+		case 1:
+			return '已发货';
+			break;
+		case 2:
+			return '已收货';
+			break;
+		case 3:
+			return '已退货';
+			break;
+		default:
+			return '无效';
+			break;
+	}
+} 

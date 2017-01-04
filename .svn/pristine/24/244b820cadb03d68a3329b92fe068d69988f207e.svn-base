@@ -1,0 +1,157 @@
+<?php 
+namespace Home\Controller;
+use Think\Controller;
+
+	class UserController extends Controller{
+		public function index(){
+			$this -> display();
+		}
+
+		public function register(){
+			$this-> display();
+		}
+		function check_verify($code, $id = ''){
+					    $verify = new \Think\Verify();
+				        return $verify->check($code, $id);
+				    }
+		public function register_doit(){
+			if(IS_AJAX){
+				$user = D('user');
+				$_POST['user_pwd'] = md5($_POST['user_pwd']);
+				$_POST['re_user_pwd'] = md5($_POST['re_user_pwd']);
+				
+				$data = $_POST;
+				// $data['yzm'] = $_POST['yzm'];
+				// var_dump($data);exit();
+					
+				if(!$user -> create($data)){
+					exit($user->getError());
+				}else{
+					$codes = $data['yzm'];
+					//var_dump($codes);
+					if(!$this->check_verify($codes)){
+						// return false;
+						// $this->error('验证码错误');
+						$datas = array(
+							'status' => 2,
+							'content' => '验证码不正确，请重新输入！',
+							);
+						// var_dump($datas);exit();	
+						$this -> ajaxReturn($datas);	
+						return;
+					}
+
+					if($user -> add()){
+						$data['status'] = 1;
+						$data['content'] = '恭喜您已成为蜂蜜一员！';
+						$data['url'] = U('User/success');
+
+						$user_email = $_POST['user_email'];
+						$user_pwd = $_POST['user_pwd'];
+
+						$where = array(
+							'user_email' => $user_email,
+							'user_pwd' => $user_pwd,
+							);
+
+							$mes = $user->where($where)->find();
+							if(!empty($mes)){
+								$userz = array(
+									'id' => $mes['id'],
+									'user_email'=> $mes['user_email'],
+									'user_pic' => $mes['user_pic'],
+									'user_alias' => $mes['user_alias'],
+									'user_sex' => $mes['user_sex'],
+									'user_money' => $mes['user_money'],
+									'user_coin' => $mes['user_coin'],
+									'user_level' => $mes['user_level'],
+									'user_phone' => $mes['user_phone'],
+									'user_lastlogin' => time(),
+
+								);	
+							$_SESSION['user'] = $userz;
+								}
+					}else{
+						
+						$data['status'] = 0;
+						$data['content'] = '怎么回事，注册失败了！';
+					};
+				};
+				$this -> ajaxReturn($data);
+			}
+		}
+
+		public function vcode(){
+			$Verify = new \Think\Verify();
+			$Verify ->imageW = 85;
+			$Verify ->imageH = 40;
+			$Verify ->fontSize = 13;
+			$Verify ->useNoise = false;
+			$Verify ->length = 4;
+
+
+			$Verify->entry();
+		}
+		public function login(){
+			$this -> display();
+		}
+
+		public function checklogin(){
+			//
+			if(IS_AJAX){
+				 // var_dump($_POST);exit();	
+				$user_email = $_POST['user_email'];
+				$user_pwd = $_POST['user_pwd'];
+
+				$where = array(
+					'user_email' => $user_email,
+					'user_pwd' => md5($user_pwd),
+					);
+				$user = D('user');
+				$user ->create();
+				$mes = $user -> where($where)->find();
+				// echo $user->getlastsql();
+				if(!empty($mes)){
+					$data= array(
+						'status' => '1',
+						'content' => '恭喜登陆成功！正在跳转...',
+						'url' => U('User/success'),
+					);
+					$userz = array(
+						'id' => $mes['id'],
+						'user_email'=> $mes['user_email'],
+						'user_pic' => $mes['user_pic'],
+						'user_alias' => $mes['user_alias'],
+						'user_sex' => $mes['user_sex'],
+						'user_money' => $mes['user_money'],
+						'user_coin' => $mes['user_coin'],
+						'user_level' => $mes['user_level'],
+						'user_phone' => $mes['user_phone'],
+						'user_lastlogin' => time(),
+
+
+					);
+
+					// session('user',$userz);
+					$_SESSION['user'] = $userz;
+					// var_dump($_SESSION);
+				}else{
+					$data = array(
+						'status' => '0',
+						'content' => '账户或密码错误，请重新尝试...',
+					);
+				};
+				$this -> ajaxReturn($data);
+
+			}
+		}
+		public function success(){
+			$this->display();
+		}
+		public function logout(){
+			session('user','null');
+			$this -> success('退出成功','index');
+		}
+
+	}
+ ?>

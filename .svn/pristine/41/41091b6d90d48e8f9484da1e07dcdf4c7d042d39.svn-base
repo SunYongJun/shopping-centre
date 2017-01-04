@@ -1,0 +1,255 @@
+<extend name="Public:layout" />
+<block name="cssjs">
+<link rel="stylesheet" href="__PUBLIC__/home/css/list.css">
+<style>.select a{color:red !important;}.sales{line-height: 20px;color: red;display: inline;float: left;margin-top: 11px;font-size: 16px;font-weight: bold;}.none{line-height: 40px;font-size: 16px;font-weight: bold;color: red;margin: 10px;}</style>
+</block>
+<block name="main">
+<!-- 主体部分开始 -->
+<div class="mainBg">
+<input id="newList" type="hidden">
+<div class="main" style="width: 1200px;">
+<!-- 导航 -->
+<div class="path"> 
+    <span>相关商品<b class="pri">84</b>件</span> 
+    <a title="" href="#" title="护肤彩妆">护肤彩妆</a> /
+    <h1>护肤用品</h1>
+</div>
+
+<!-- 左边的导航 开始-->
+<div class="sidebar" id="sidebar">
+    <div class="sub-nav" id="categorySearch">
+        <h3>护肤彩妆</h3>
+        <!-- 判断是否有分类 -->
+        <if condition="$sp">
+        <!-- 遍历出父级分类 -->
+        <foreach name="sp" item="vsp">
+        <p> <b></b> <a rel="nofollow" href="__CONTROLLER__/index/id/{$vsp.id}">{$vsp.type_name}</a> </p>
+        <!-- 遍历子分类 -->
+        <ul class="ClearFix">
+            <foreach name="pp" item="vpp">
+            <if condition="$vpp['pid'] eq $vsp['id']">
+            <li> <a rel="nofollow" href="__CONTROLLER__/index/id/{$vpp.id}">{$vpp.type_name} </a> </li>
+            </if>
+            </foreach>
+        </ul>
+        </foreach>
+        </if>
+    </div>
+    <div class="skimbuy" id="seen_and_buy" style="" tname="护肤用品">
+        <h3>浏览<em>护肤用品</em>最终买了</h3>
+        <dl>
+            <dt> <a target="_blank" href="#"> <img src="#" alt=""> </a> </dt>
+            <dd class="nam"> <a target="_blank" href="#" title="">百雀羚水嫩倍现至尚套装（洁面乳95g+精华水100ml+精华霜50g） </a> </dd>
+            <dd class="pri"> <img src="#"> <span><i>14.2%</i>购买</span> </dd>
+        </dl>
+    </div>
+    <div class="pankhis" id="history">
+        <h3>最近浏览过的商品</h3>
+        <dl class="noborder">
+            <dt><a target="_blank" title="完美 芦荟胶40gx2支" href="#"><img src="#"></a></dt>
+            <dd class="nam"><a target="_blank" title="完美 芦荟胶40gx2支" href="#">完美 芦荟胶40gx2支</a><img src="#"></dd>
+        </dl>
+    </div>
+</div>
+<!-- 左边的导航 结束 -->
+
+<div class="cont"> <a name="nav"></a>
+    <div id="cont-nav-show" class="nav ClearFix">
+        <!-- <div class="sel"> <span class="pathattr">已选：</span>
+            请选择查询条件
+            <span class="cancelCheck"><a href="#">清除条件</a></span> </div> -->
+        <ul id="ul-nav-show">
+            <li id="xmod" class="show">
+                <b>品牌：</b>
+                <span style="display: block;" class="more"><i></i>更多</span>
+                <span style="display: none;" class="hide"><i></i>收起</span>
+                <div class="mod" id="brand">
+                    <foreach name="brand" item="vbrand"> 
+                    <span><a href="javascript:void(0)" rel="{$vbrand.id}">{$vbrand.brand_name}<i></i></a></span>
+                    </foreach>
+                </div>
+            </li>
+            <li class="show"><b>分类：</b>
+                <span style="display: block;" class="more"><i></i>更多</span>
+                <span style="display: none;" class="hide"><i></i>收起</span>
+                <div class="mod" id="type">
+                    <foreach name="type" item="vtype">
+                    <span><a href="javascript:void(0)" title="面部(75)" rel="{$vtype.id}">{$vtype.type_name}<i>(75)</i></a></span>
+                    </foreach>
+                </div>
+            </li>
+            <li class="show"><b>价格：</b>
+                <span style="display: block;" class="more"><i></i>更多</span>
+                <span style="display: none;" class="hide"><i></i>收起</span>
+                <div class="mod" id="price">
+                    <span><a href="javascript:void(0)" title="0-39元" rel="1">0-39元<i>(18)</i></a></span>
+                    <span><a href="javascript:void(0)" title="40-79元" rel="2">40-79元<i>(18)</i></a></span>
+                    <span><a href="javascript:void(0)" title="80-129元" rel="3">80-129元<i>(18)</i></a></span>
+                    <span><a href="javascript:void(0)" title="130-259元" rel="4">130-259元<i>(18)</i></a></span>
+                    <span><a href="javascript:void(0)" title="260以上" rel="5">260以上<i>(7)</i></a></span>
+                </div>
+            </li>
+        </ul>
+        <div class="more_nav ClearFix"> <b>更多选项：</b>
+            <div class="more_mod" style="line-height:28px;">
+            <span class="cancelCheck"><a href="javascript:void(0)" id="clearall">清除所有条件</a></span>
+            </div>
+        </div>
+    </div>
+    <form action="" id="gsearch">
+    品牌<input type="text" value="{$brand_id}" name="brand">
+    分类<input type="text" value="{$type_id}" name="type">
+    价格<input type="text" name="price">
+    order<input type="text" name="order">
+    </form>
+    <a name="list"></a>
+    <div class="list" id="" style="padding-top: 40px;">
+        <div class="sm-nav abs" id="sm-nav"> 
+            <span class="order"> 
+                <a rel="id desc" title="按相似度排序" class="biht-none down" href="javascript:void(0)" id="order1">默认</a> 
+                <a rel="sales_volume desc" title="近期销量由高到低" class="biht-none" href="javascript:void(0)" id="order2"><b></b>热销</a> 
+                <a rel="goods_click desc" title="人气由高到低" class="biht-none" href="javascript:void(0)" id="order3"><b></b>人气</a> 
+                <a rel="goods_price desc" title="点击按价格由低到高" href="javascript:void(0)" class="biht-none pristate " id="order4"><b></b>价格</a> 
+                <a rel="goods_time desc" title="上架时间" class="biht-none" href="javascript:void(0)" id="order5"><b></b>最新</a> 
+            </span> 
+        </div>
+        <div class="smPruArea">
+            <div class="makeup ClearFix" id="goodsarea">
+                <if condition="$goods neq ''">
+                <foreach name="goods" item="vgoods">
+                <div class="pruwrap" id="81406" inv="0">
+                    <dl skuids="86746" class="">
+                        <dt> 
+                            <a href="#" title=""><img alt="" src="__PUBLIC__/{$vgoods.goods_img}"></a> 
+                        </dt>
+                        <dd class="nam">
+                            <a href="#" target="_blank">{$vgoods.goods_name}
+                            </a>
+                        </dd>
+                        <dd class="pri"> 
+                            <span class="sales">￥{$vgoods.goods_price}</span> 
+                            <del class="spri">¥{$vgoods.mprice}</del> 
+                            <a class="to push" pid="81406" sid="86746" href="#">加入购物车</a> 
+                        </dd>
+                        <dd class="mess"> 
+                            <a href="#" class="buynum">最近{$vgoods.sales_volume}人购买</a> <a href="#" target="_blank" rel="nofollow" class="comnum">{$vgoods.goods_click}次查看</a> 
+                        </dd>
+                    </dl>
+                </div>
+                </foreach>
+                <else/>
+                <div class="none">没有查询到商品数据！</div>
+                </if>
+                <!-- 这个家伙显示下一页 -->
+                <!-- <div class="nextPageClass"><a href="#"></a><b>&nbsp;</b></div> -->
+                <!-- 这个家伙显示下一页  完 -->
+            </div>
+
+            <!-- 这是分页 -->
+            <div class="pages ClearFix"> <span><!--<a class="uppage stop">&lt;上一页</a><a class="down">1</a><a href="#">2</a>--><a style="display:none" class="downpage" href="#">查看更多数据</a></span> </div>
+            <!-- 这是分页   结束 -->
+
+        </div>
+    </div>
+    <span class="blank0"></span> </div>
+</div>
+<div class="fwordReSea">
+    <dl>
+        <dd>
+            <input type="text" class="text" id="research" name="search" val="补水">
+            <a id="btn-re-search" class="button" href="javascript:return false;" onclick="javascript:void(0)"> </a> </dd>
+    </dl>
+    <div id="relatedQueryKeywords" class="rehotkey"></div>
+</div>
+</div>
+<script>
+    $(function(){
+        //判断分页
+        $('.pruwrap').each(function(){
+            $('.pruwrap:gt(1)').hide();
+        })
+        if($('.pruwrap').size() > 1){
+            $('.downpage').show();
+        }
+        
+        //导航条条件设置
+        $('.order a').each(function(){
+            $(this).click(function(){
+                $(this).addClass('down').siblings().removeClass('down');
+                $('input[name=order]').val($(this).attr('rel'));
+                ajaxget();
+            })
+        })
+        $('#brand span').each(function(){
+                var $this = $(this);
+                $(this).click(function(){
+                    $this.addClass('select').siblings().removeClass('select');
+                    var brand = $this.find('a').attr('rel');
+                    $('input[name=brand]').val(brand);
+                    ajaxget();
+                })
+        })
+        $('#type span').each(function(){
+                var $this = $(this);
+                $(this).click(function(){
+                    $this.addClass('select').siblings().removeClass('select');
+                    var type = $this.find('a').attr('rel');
+                    $('input[name=type]').val(type);
+                    ajaxget();
+                })
+        })
+        $('#price span').each(function(){
+                var $this = $(this);
+                $(this).click(function(){
+                    $this.addClass('select').siblings().removeClass('select');
+                    var price = $this.find('a').attr('rel');
+                    $('input[name=price]').val(price);
+                    ajaxget();
+                })
+        })
+        //清除所有条件
+        $('#clearall').click(function(){
+            $(':input').each(function(){
+                $(this).val('');
+            })
+            $('.mod').each(function(){
+                $(this).find('span').each(function(){
+                    $(this).removeClass('select');
+                })
+            })
+        })
+        //ajax函数
+        function ajaxget(){
+            $.get('__CONTROLLER__/gsearch',$('#gsearch').serialize(),function(data){
+                    $('#goodsarea').empty().append(data);
+                })
+        }
+        $('.show').each(function(){
+            var $this = $(this);
+            $this.find('.more').click(function(){
+                $this.css('height','auto');
+                $(this).hide();
+                $this.find('.hide').show();
+            });
+            $this.find('.hide').click(function(){
+                $this.removeAttr('style');
+                $(this).hide();
+                $this.find('.more').show();
+            })
+        })
+    })
+    //list页面的固定导航栏
+    /*
+    *   先求出导航栏到页面顶部的距离  固定值  因为fixed以后他的距离会变的
+    */
+    var otop = $('#sm-nav').offset().top;
+    $(document).scroll(function(){
+        var abstop = $(document).scrollTop();
+        if(abstop >= otop){
+            $('#sm-nav').css({position:'fixed',top:'0px'})
+        }else{
+            $('#sm-nav').css({position:'relative',top:'none'})
+        }
+    })
+</script>
+</block>

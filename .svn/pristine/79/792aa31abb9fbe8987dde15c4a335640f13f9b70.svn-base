@@ -1,0 +1,19 @@
+<?php
+namespace Admin\Controller;
+
+class ArticleController extends CommonController{
+	public function index(){
+		$this -> display();
+	}
+
+	public function add(){
+		$type = M('article_type');
+		$type = $type -> field('id,article_type_name') -> select();
+		$this -> assign('type',$type);
+		$this -> display();
+	}
+
+	public function insert(){
+		var_dump(I('post.'));
+	}
+}

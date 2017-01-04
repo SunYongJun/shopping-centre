@@ -1,0 +1,285 @@
+<extend name="Public:layout" />
+<block name="cssjs">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/personal.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/home_v2.css">
+</block>
+<!--header-->
+<!--头部结束-->
+<block name="main">
+<div class="mainBg">
+<div class="main clearfix">
+{:W('Menu/Centers')}
+    <div class="content" id="order">
+        <div class="pn-top-nav">
+            <h1 class="clearfix">
+                <span>我的订单</span>
+                
+            </h1>
+            <div class="pn-top-btn clearfix">
+                <div class="pn-top-btnbox">
+                    <a id="idForStatistics_allOrder" href="javascript:void(0)" class="on">全部订单</a>
+                    <a class="dd" val="0" id="idForStatistics_needPayOrder" href="javascript:void(0)">
+                        待付款
+                        <!-- <cite>1</cite> -->
+                    </a>
+                    <a class="dd" val="1" id="idForStatistics_needDeliverOrder" href="javascript:void(0)">待发货</a>
+                    <a class="dd" val="2" id="idForStatistics_hadDeliverOrder" href="javascript:void(0)">已发货</a>
+                    <a class="dd" val="3" id="idForStatistics_hadDoneOrder" href="javascript:void(0)">已完成</a>
+                    <a class="dd" val="4" id="idForStatistics_hadCancelOrder" href="javascript:void(0)">已取消</a>
+
+                </div>
+                
+            </div>
+        </div>
+        <div class="pn-order">
+
+            <table>
+                <tbody id="tb">
+                    <tr>
+                        <th>订单信息</th>
+                        <th class="itemwd260">商品</th>
+                        <th class="itemwd70">订单金额</th>
+                        <th class="itemwd50">订单状态</th>
+                        <th class="itemwd90">操作</th>
+                    </tr>
+                    <foreach name="data" item="vo">
+                    <tr id="{$vo.id}">
+                        <td>
+                            <div>
+                                订单编号：
+                                <span class="baseId">{$vo.acti}</span>
+                            </div>
+                            <div>下单时间：<br>{$vo.order_time|date="Y-m-d H:i:s",###}</div>
+                            <div>收  &nbsp;货  &nbsp;人：{$name}</div>
+                        </td>
+                        
+                        <td>
+                        
+                            <div class="pn-od-prod clearfix">
+                                <foreach name="vo.g" item="vvo">
+                                <li>
+                                    <a href="__MODULE__/Product/index/id/{$vvo.id}" target="_blank">
+                                        <img title="{$vvo.goods_brief}" src="__PUBLIC__/{$vvo.goods_img}"></a>
+                                </li>
+                                 </foreach>  
+                            </div>
+                         
+                        </td>
+                        
+                        <td class="itemcenter">
+                            <span class="pn-price pn">
+                                <cite>¥</cite>
+                                {$vo.action_count}
+                            </span>
+                            <br>
+                            <label>
+                                (免运费)
+                                <br>{$pay.pay_name}</label>
+                        </td>
+                        <td class="itemcenter">
+                            <if condition="$vo['action_status'] eq 0">未付款<br><code>等待付款</code><elseif condition="$vo['action_status'] eq 1" />已付款<br><code>等待卖家发货</code><elseif condition="$vo['action_status'] eq 2" />已发货<br><code>等待买家确认收货</code><elseif condition="$vo['action_status'] eq 3" />已完成<br>
+                            <a  class="bt_red" href="__MODULE__/order/confirm/id/{$vvo.id}">再次购买</a>
+                            <elseif condition="$vo['action_status'] eq 4" />已取消</if>
+
+                        </td>
+                        <td class="itemcenter">
+                            <div class="pn-order-handle">
+                                <if condition="$vo['action_status'] eq 0"><a  class="bt_red" href="__MODULE__/order/confirm/id/{$vo.id}">立即付款</a><elseif condition="$vo['action_status'] eq 2" /><a bt="{$vo.id}"  class="bt_red" href="javascript:;">确认收货</a></if>
+                                <br>
+                                <a target="_blank" href="__CONTROLLER__/look/acti/{$vo.acti}">查看</a>
+                                <span class="pn-form-cancel">
+                                <if condition="$vo['action_status'] eq 0"><a class="pn-order-cancel" href="javascript:void(0);" cancel="{$vo.id}">取消订单</a><elseif condition="$vo['action_status'] eq 4" /> <elseif condition="$vo['action_status'] eq 3" /> <else /><a class="pn-order-cancel" href="javascript:void(0);" del="{$vo.id}">申请退货</a></if>
+                                </span>
+                            </div>
+                        </td>
+                    </tr>
+                </foreach>
+                <tr style="display:none" height="140" zhui="jia"><td align="center" colspan="5"><span>您的还没有相关的订单哦</span></td></tr>
+
+                </tbody>
+            </table>
+            <div class="com_page"></div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- 退货弹出框 -->
+<div id='thyy' class='pn-odbox order-cancel nR'>
+    <s class='pn-odbox-nice'></s>
+    <div class='pn-odbox-tit clearfix'>
+        <cite class='lf-fl'>退货单</cite>
+        <a href='javascript:void(0);' class='lf-fr'></a>
+    </div>
+    <div class='pn-odbox-con'>
+        <form id="reasons" action='#' method='post'>
+            <h6>告诉我们您退货的原因，以便改进我们的服务:</h6>
+            <div class='pn-odbox-no clearfix' id="spans">
+                <span value='18'>不想买了</span>
+                <span value='7'>重复下单</span>
+                <span  value='9' >测试订单</span>
+                <span  value='19' >忘记使用花粉</span>
+                <span  value='16' >价格高</span>
+                <span  value='20' >支付失败-账户余额不足</span>
+                <span  value='21' >支付失败-网上支付失败</span>
+                <br />
+                <span value='13' class='text'>
+                    其他原因：
+                    <textarea style="resize:none;width:360px" id="tarea" type='text'></textarea>
+                </span>
+                <input type='hidden' value="" name="id" />
+            </div>
+            <p class='lf-warn'>请您选择退货原因，再提交</p>
+            <div class='pn-odbox-sub'>
+                <input id='qx-btn' class='qx-btn' type='button' value='确认' />
+                <input type='button' value='关闭' class='reset' />
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- ---------------------------------------------------------------------------- -->
+<div id="shenqing" class='pn-odbox order-shop-center nR'>
+    <s class='pn-odbox-nice'>sas</s>
+    <div class='pn-odbox-tit clearfix'>
+        <cite class='lf-fl'>申请退换货</cite>
+        <a href='javascript:void(0);' class='lf-fr'></a>
+    </div>
+    <div id="queren" class='pn-odbox-con'>
+        <form action='#' method='post'>
+            <h6>您的订单已经支付，是否申请退款？</h6>
+            <div class='pn-odbox-sub'>
+                <input id='qx-btn' class='qx-btn' type='button' value='确认' />
+                <input type='button' value='关闭' class='reset' />
+            </div>
+        </form>
+    </div>
+</div>
+<!-- ---------------------------------------------------------------------------- -->
+<script>
+    $(function(){
+
+        // -------------------------------取消订单---------------------------------------------
+        var del = '';
+        $('a[del]').bind('click',function(){
+            $('body').after('<div id="zhezhao"></div>');
+            del = $(this).attr('del');
+
+            $('#thyy').show();
+        })
+        // 关掉取消订单表
+        $('.lf-fr,.reset').bind('click',function(){
+            $('#zhezhao').remove();
+            $('#thyy').hide();
+        })
+
+        $('#spans').children().bind('click',function(){
+                $(this).addClass('xuan').css('color','red');
+                });
+
+        $('#qx-btn').bind('click',function(){
+            var v ='';
+            $('span').each(function(){
+                if($(this).hasClass('xuan')){
+                  v += $(this).attr('value')+',';
+                 
+                }
+            })
+             var res = $('#tarea').val(); 
+
+             // 退货原因为空时 不能提交
+             if(res || v){
+                $.ajax({
+                url:'__CONTROLLER__/reason',
+                // data:$('#reasons').serialize(),
+                data:{id:del,zhi:v,zhis:res},
+                type:'post',
+                success:function(data){
+                   if(data){
+                      layer.msg('退货成功');
+                      window.location.reload();
+                      $('#zhezhao').remove();
+                      $('#thyy').hide();    
+                   }
+                }
+            })
+             }
+            
+            
+        })
+
+        //--------------------------------订单状态---------------------------------------------
+     $('#idForStatistics_allOrder').click(function(){
+        $(this).css({color:'#666',fontWeight:'bold'});
+        $(this).nextAll().css({color:'#666',fontWeight:'normal'});
+     })
+   $('.dd').bind('click',function(){
+
+    $(this).css({color:'#666',fontWeight:'bold',border:'0px'});
+    $(this).siblings().css({'color':'#666',fontWeight:'normal'});
+     $('tr[zhui="jia"]').hide();
+
+        $.ajax({
+            type:'post',
+            url:'__CONTROLLER__/ordertwo',
+            data:{action_status:$(this).attr('val')},
+            success:function(data){
+                 $('tr[id]').hide();
+                    if(data){
+                        $.each(data,function(i,v){
+                        $.each($('tr[id]'),function(){
+                            if($(this).attr('id')==v){
+                                $(this).show();
+                            }
+                        })
+                    })      
+                }else{
+                   $('tr[zhui="jia"]').show();
+                }   
+            }
+        })
+
+
+   })
+
+
+    $('#idForStatistics_allOrder').bind('click',function(){
+
+        $('tr').show();
+        $('tr[zhui="jia"]').hide();
+    })
+
+    // 确认收货
+    $('a[bt]').click(function(){
+        var d = $(this).attr('bt');
+        layer.confirm('请再次确认收货...',function(index){
+            layer.close('index');
+             $.post('__CONTROLLER__/makesure',{id:d},function(data){
+            if(data){
+                layer.msg('确认收货成功！');
+                window.location.reload();
+            }else{
+                layer.msg('确认收货失败！',1,2);
+            }
+        })
+        })
+       
+    })
+    // 取消订单
+    $('a[cancel]').bind('click',function(){
+        var can = $(this).attr('cancel');
+        // alert(can);
+        $.post('__CONTROLLER__/cancelorder',{id:can},function(data){
+            if(data){
+                layer.msg('取消订单成功');
+                window.location.reload(); 
+            }else{
+                layer.msg('取消订单失败');
+            }
+        })
+    })
+
+})
+
+</script>
+</block>
+

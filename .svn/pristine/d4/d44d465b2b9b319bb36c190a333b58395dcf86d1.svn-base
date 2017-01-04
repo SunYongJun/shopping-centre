@@ -1,0 +1,627 @@
+<extend name="Public:layout" />
+<block name="cssjs">
+<link rel="stylesheet" href="__PUBLIC__/home/css/product.css">
+<script src="__PUBLIC__/home/js/jqzoom.js"></script>
+<style>#mlens_wrapper_0{width:400px;}</style>
+</block>
+<block name="main">
+<!-- 主体部分开始 -->
+<div class="bgcolor">
+    <div class="main mauto">
+        <!-- 主体的导航 -->
+        <p class="path">
+        <span class="fr" style="float:right">商品编码：{$goods.goods_sn}</span>
+        <a href="__MODULE__/Index/index">首页</a>
+        &nbsp;/&nbsp;
+        <foreach name="path" item="vpath">
+        <a href="__MODULE__/Product/index/id/{$vpath.pid}">{$vpath.type_name}</a>
+        &nbsp;/&nbsp;
+        </foreach>
+        {$goods.goods_name} </p>
+        <div class="mianA">
+            <div class="info-left proInfobox">
+                <dl id="imgshow">
+                    <dt>
+                    <img class="jqzoom" alt="" id="juzoom" src="__PUBLIC__/{$goods.goods_img}" >
+                    <!-- 放大的图片显示在这里 -->
+                    <!-- <div class="zoomdiv" style="top: 0px; left: 400px; width: 460px; height: 478px; display: none;"><img class="bigimg" src="#"></div> -->
+                    <a class="btn-bigimg" href="__MODULE__/Picture/index/id/{$goods.id}" style="display: block;" target="_blank">查看大图</a>
+                    </dt>
+                    <dd>
+                    <div class="spec-wrap">
+                        <div class="spec-item">
+                            <!--图片滚动-->
+                            <a class="imgselect" supsrc="#" bigsrc="#" href="javascript:void(0)" group="0">
+                            <img src="__PUBLIC__/{$goods.goods_img}" alt="">
+                            </a>
+                            <foreach name="goods['img_url']" item="img">
+                                <neq name="img" value=""><a class="" supsrc="#" bigsrc="#" href="javascript:void(0)" group="1">
+                            <img src="__PUBLIC__/{$img}" alt="">
+                            </a></neq>
+                        </foreach>
+                        </div>
+                    </div>
+                    </dd>
+                </dl>
+            </div>
+            <div class="info-right">
+                <h1><span class="pname">{$goods.goods_name}</span></h1>
+                <div class="pos05">
+                    <p class="specials">
+                    <span class="zshf">赠送花粉：{$goods.goods_coin}<i></i></span>
+                    <font style="font-size:20px;font-weight:bold">￥{$goods.goods_price}</font>
+                    <del>市场价：￥{$goods.mprice}</del>
+                    </p>
+                    <div class="hfsm"><b class="tip_flag"></b>
+                        <p>购物1元得1个花粉，100花粉价值1元</p>
+                    </div>
+                    <p></p>
+                    <div class="sale">
+                        <div class="cuxiao">
+                            <div class="pos"><em class="zeng1">赠品</em>
+                                <div class="row">
+                                    <dl class="sa2">
+                                        <notempty name="gift.id">
+                                        <dt class="manzeng">
+                                        <div class="cx_n">{$gift.gift_name}
+                                        <label>￥{$gift.gift_price}</label>
+                                        <!-- <span></span> --></div>
+                                        <div class="zengpin" style="display:none"><b class="tip_flag"></b>
+                                            <h3>商品的名字名字啊男士大宝</h3>
+                                            <ul>
+                                                <li><a href="#" target="_blank" title="#"><img src="__PUBLIC__/{$goods.goods_img}" ></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        </dt>
+                                        <else/>
+                                        <dt  class="manzeng"><div class="cx_n">该商品暂无赠品！</dt>
+                                        </notempty>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- promotion -->
+                    <div class="line"></div>
+                    <p class="messagenu">评　价：<b><em style="width: {$ranks}%;"></em></b><a href="#pingjia">{$pjs}人评价</a>
+                    </p>
+                    <div class="line"></div>
+                    <!-- color -->
+                    <!-- color -->
+                </div>
+                <div class="bg_gray">
+                    <div class="number" style="">数　量：
+                        <div>
+                            <span>
+                            <a id="min" href="javascript:void(0)">-</a>
+                            <b id="quantity">
+                            <input type="text" value="1" id="num" readonly="true">
+                            </b>
+                            <a id="max" href="javascript:void(0)">+</a>
+                            </span>
+                            <em class="tip_wm2"></em>
+                        </div>
+                    </div>
+                    <div id="hf_buy" class="hf_buy">查看数：<span>{$goods.goods_click}</span></div>
+                    <!-- add cart button -->
+                    <div class="heig">
+                        <a class="join" style="" goods="{$goods.id}">加入购物车</a>
+                        <!-- 下面这货为到货通知 -->
+                        <a class="hasalarm" style="display: none;" href="#"></a>
+                        <a class="save" data="{$goods.id}" href="javascript:void(0)"><span></span></a>
+                        <div class="fshareBox">
+                            <div class="fShareTitle">分享</div>
+                            <span class="share" style="display: none;">
+                            <a href="#" title="分享到新浪微博" class="sina" style="background-position: -159px -116px;"></a>
+                            <a href="#" title="分享到腾讯微博" class="qqt" style="background-position: -181px -116px;"></a>
+                            <a title="分享到QQ空间" class="qqz" style="background-position: -203px -116px;"></a>
+                            <a title="分享到人人网" class="renren" style="background-position: -225px -116px;"></a>
+                            <a title="分享到开心网" class="kaixin" style="background-position: -247px -116px;"></a>
+                            <a title="分享到搜狐微博" class="sohu" style="background-position: -269px -116px;"></a>
+                            <a title="分享到网易微博" class="t163" style="background-position: -291px -116px;"></a>
+                            <a title="分享到豆瓣" class="douban" style="background-position: -313px -116px;"></a>
+                            <b class="tip_flag"></b>
+                            </span>
+                        </div>
+                    </div>
+                    <!-- notenough button -->
+                    <div class="oosarea" style="display: none;">
+                        <div class="ooslist">
+                            <div class="oosmore">为您推荐其它同类热销商品：</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sekuai"></div>
+            <div class="clear"></div>
+            <!--<div class="alt-succ" id="alt-succ" style="display:none;">
+                <div class="sum">
+                    <h3>该商品已成功放入购物车</h3>
+                    <p>购物车共 <b>0</b>件商品&nbsp;&nbsp;合计：<b>0</b>元</p>
+                    <p>
+                    <a class="pay" href="#">去结算</a>
+                    <a href="javascript:void(0)" onclick="$(&#39;#alt-succ&#39;).hide()">&lt;&lt;继续购物</a>
+                    </p>
+                    <span class="succ-ico" onclick="$(&#39;#alt-succ&#39;).hide()"></span>
+                </div>
+                <p class="more" id="alt-succ-more">购买过该商品的人还购买过</p>
+                <div>
+                    <dl>
+                        <dt><a tjurl="#" target="_blank" href="#" title="百雀羚草本亮肤补水滋养面膜22g*8片铁盒"><img src="./images/205528_0_l.jpg"></a>
+                        </dt>
+                        <dd class="nam"><a tjurl="#" target="_blank" href="#" title="百雀羚草本亮肤补水滋养面膜22g*8片铁盒">百雀羚草本亮肤补水滋养面膜22g*8片铁盒</a>
+                        </dd>
+                        <dd class="pri"><img src="./images/205528_72_24.png"></dd>
+                    </dl>
+                    <dl>
+                        <dt><a tjurl="#" target="_blank" href="#" title="百雀羚草本水嫩倍现盈透精华水100ml"><img src="./images/81420_0_l.jpg"></a>
+                        </dt>
+                        <dd class="nam"><a tjurl="#" target="_blank" href="#" title="百雀羚草本水嫩倍现盈透精华水100ml">百雀羚草本水嫩倍现盈透精华水100ml</a>
+                        </dd>
+                        <dd class="pri"><img src="./images/81420_72_12.png"></dd>
+                    </dl>
+                    <dl>
+                        <dt><a tjurl="#" target="_blank" href="#" title="百雀羚草本水嫩倍现能量精华面膜25g*8片"><img src="./images/81425_0_l.jpg"></a>
+                        </dt>
+                        <dd class="nam"><a tjurl="#" target="_blank" href="#" title="百雀羚草本水嫩倍现能量精华面膜25g*8片">百雀羚草本水嫩倍现能量精华面膜25g*8片</a>
+                        </dd>
+                        <dd class="pri"><img src="./images/81425_72_17.png"></dd>
+                    </dl>
+                    <dl>
+                        <dt><a tjurl="#" target="_blank" href="#" title="百雀羚水嫩倍现套装(精华水100ml+乳液100ml)赠品随机"><img src="./images/207228_0_l.jpg"></a>
+                        </dt>
+                        <dd class="nam"><a tjurl="#" target="_blank" href="#" title="百雀羚水嫩倍现套装(精华水100ml+乳液100ml)赠品随机">百雀羚水嫩倍现套装(精华水100ml+乳液100ml)赠品随机</a>
+                        </dd>
+                        <dd class="pri"><img src="./images/207228_72_60.png"></dd>
+                    </dl>
+                    <dl class="none">
+                        <dt><a tjurl="#" target="_blank" href="#" title="百雀羚草本净白补水面膜22g*5"><img src="./images/81407_0_l.jpg"></a>
+                        </dt>
+                        <dd class="nam"><a tjurl="#" target="_blank" href="#" title="百雀羚草本净白补水面膜22g*5">百雀羚草本净白补水面膜22g*5</a>
+                        </dd>
+                        <dd class="pri"><img src="./images/81407_72_63.png"></dd>
+                    </dl>
+                </div>
+                <a class="succ-close" href="javascript:void(0)" onclick="$(&#39;#alt-succ&#39;).hide()">关闭</a>
+            </div>-->
+        </div>
+        <div class="baozhang">
+            <div class="bz"><img src="__PUBLIC__/home/images/bz-1.jpg"><span>免运费<em>网付69全场99</em></span></div>
+            <div class="bz"><img src="__PUBLIC__/home/images/bz-2.jpg"><span>全正品<em>正品承诺假一赔十</em></span></div>
+            <div class="bz"><img src="__PUBLIC__/home/images/bz-3.jpg"><span>最放心<em>45天无条件退换货</em></span></div>
+            <div class="bz"><img src="__PUBLIC__/home/images/bz-4.jpg"><span>限时达<em>限时到达超时赔付</em></span></div>
+            <div class="qijian_box">
+                <div class="qijian">
+                    <a href="#" target="_blank">
+                        <img src="__PUBLIC__/{$goods.brand_logo}">
+                        <b>{$goods.brand_name}</b>
+                        <span>搜索<br>{$goods.brand_name}商品</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="more-pro" id="proGroupInfo">
+            <!-- 推荐组合，同品牌最多三个商品推荐 -->
+            <h3><a href="javascript:void(0)" class="down">推荐组合</a>
+            </h3>
+            <div id="hotInfo" style="" class="more-cont">
+                <h4></h4>
+                <div class="pro-child">
+                    <div class="cont-left">
+                        <div class="proslide" style="width: 495px;">
+                            <foreach name="tj" item="vtj">
+                            <dl>
+                                <b class="pro-ico2">+</b>
+                                <dt><a target="_blank" href="__CONTROLLER__/index/id/{$vtj.id}"><img src="__PUBLIC__/{$vtj.goods_img}"></a>
+                                </dt>
+                                <dd class="nam"><a target="_blank" href="__CONTROLLER__/index/id/{$vtj.id}">{$vtj.goods_name}</a>
+                                </dd>
+                                <dd class="pri">￥{$vtj.goods_price}</dd>
+                            </dl>
+                            </foreach>
+                            <!--<dl>
+                                <b class="pro-ico2">+</b>
+                                <dt><a target="_blank" href="#"><img src="./images/81421_0_l.jpg"></a>
+                                </dt>
+                                <dd class="nam"><a target="_blank" href="#">百雀羚草本水嫩倍现保湿精华乳液100ml</a>
+                                </dd>
+                                <dd class="pri">￥123</dd>
+                            </dl>
+                            <dl>
+                                <dt><a target="_blank" href="#"><img src="./images/81420_0_l(1).jpg"></a>
+                                </dt>
+                                <dd class="nam"><a target="_blank" href="#">百雀羚草本水嫩倍现盈透精华水100ml</a>
+                                </dd>
+                                <dd class="pri">￥123</dd>
+                            </dl>-->
+                        </div>
+                    </div>
+                    <div class="cont-right">
+                        <b>推荐组合</b>
+                        <i>{$goods.brand_name} </i>
+                        <p class="price1">市场价：<del><span>￥{$msum}</span></del></p>
+                        <p class="price2">优惠价：<span>￥{$psum}</span></p>
+                        <div class="zuhe">
+                            <a class="buy" href="javascript:void(0)" rel="{$ids}"></a>
+                        </div>
+                        <em class="pro-ico3">=</em>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main">
+            <div class="sidebar">
+                <!--<h3 id="buyandbuy" style="">购买该商品的用户还购买了</h3>
+                <div>
+                    <dl>
+                        <dt><a tjurl="http://rfu.lefeng.com/1_0_007_0012_01/product/205528.html" target="_blank" href="#/product/205528.html" title="百雀羚草本亮肤补水滋养面膜22g*8片铁盒"><img src="./images/205528_0_l(1).jpg"></a>
+                        </dt>
+                        <dd class="nam"><a tjurl="http://rfu.lefeng.com/1_0_007_0012_01/product/205528.html" target="_blank" href="#/product/205528.html" title="百雀羚草本亮肤补水滋养面膜22g*8片铁盒">百雀羚草本亮肤补水滋养面膜22g*8片铁盒</a>
+                        </dd>
+                        <dd class="pri"><del class="fr mark_price">￥128.0</del><img src="./images/205528_73_24.png"></dd>
+                    </dl>
+                </div>
+                <h3 id="seeandbuy" style="">浏览该商品的用户最终买了</h3>
+                <div>
+                    <dl>
+                        <dt><a tjurl="http://rfu.lefeng.com/1_0_007_0009_01/product/81406.html" target="_blank" href="./images/百雀羚草本8杯水保湿水嫩面膜22g 5_百雀羚_护肤用品_面贴膜_乐蜂网.htm" title="百雀羚草本8杯水保湿水嫩面膜22g*5"><img src="./images/81406_0_l(1).jpg"></a>
+                        </dt>
+                        <dd class="nam"><a tjurl="http://rfu.lefeng.com/1_0_007_0009_01/product/81406.html" target="_blank" href="./images/百雀羚草本8杯水保湿水嫩面膜22g 5_百雀羚_护肤用品_面贴膜_乐蜂网.htm" title="百雀羚草本8杯水保湿水嫩面膜22g*5">百雀羚草本8杯水保湿水嫩面膜22g*5</a>
+                        </dd>
+                        <dd class="pri"><span class="fr">42.1%购买</span><img src="./images/81406_73_62.png"></dd>
+                    </dl>
+                   
+                    <dl class="none">
+                        <dt><a tjurl="http://rfu.lefeng.com/1_0_007_0009_05/product/81425.html" target="_blank" href="#/product/81425.html" title="百雀羚草本水嫩倍现能量精华面膜25g*8片"><img src="./images/81425_0_l.jpg"></a>
+                        </dt>
+                        <dd class="nam"><a tjurl="http://rfu.lefeng.com/1_0_007_0009_05/product/81425.html" target="_blank" href="#/product/81425.html" title="百雀羚草本水嫩倍现能量精华面膜25g*8片">百雀羚草本水嫩倍现能量精华面膜25g*8片</a>
+                        </dd>
+                        <dd class="pri"><span class="fr">11.7%购买</span><img src="./images/81425_73_17(1).png"></dd>
+                    </dl>
+                </div>-->
+                <!-- 浏览该商品的用户还浏览了 -->
+                <h3 id="seeandsee" style="">同类最热销商品</h3>
+                <div>
+                    <if condition="$hgood neq ''">
+                    <foreach name="hgood" item="hgood">
+                    <dl>
+                        <dt><a href="__MODULE__/Product/index/id/{$hgood.id}" title="{$hgood.goods_name}"><img src="__PUBLIC__/{$hgood.goods_img}"></a>
+                        </dt>
+                        <dd class="nam"><a target="_blank" href="__MODULE__/Product/index/id/{$hgood.id}">{$hgood.goods_name}</a>
+                        </dd>
+                        <dd class="pri"><del class="fr mark_price">￥{$hgood.mprice}</del>￥{$hgood.goods_price}</dd>
+                    </dl>
+                    </foreach>
+                    </if>
+                </div>
+                <h3 id="brandhot" style="">同品牌最热销商品</h3>
+                <div>
+                    <if condition="$tgood neq ''">
+                    <foreach name="tgood" item="tgood">
+                    <dl>
+                        <dt><a href="__MODULE__/Product/index/id/{$tgood.id}" title="{$tgood.goods_name}"><img src="__PUBLIC__/{$tgood.goods_img}"></a>
+                        </dt>
+                        <dd class="nam"><a target="_blank" href="__MODULE__/Product/index/id/{$tgood.id}" title="">{$tgood.goods_name}</a>
+                        </dd>
+                        <dd class="pri"><del class="fr mark_price">￥{$tgood.mprice}</del>￥{$tgood.goods_price}</dd>
+                    </dl>
+                    </foreach>
+                    </if>
+                </div>
+            </div>
+            <div id="detail" class="detail">
+                <h3 class="sie">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tbody>
+                        <tr>
+                            <td><a tag="tabc" class="startnode down">商品详情</a></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                </h3>
+            </div>
+            <!-- 商品详情 -->
+            <div id="detail2" class="detail">
+                <!-- product content -->
+                <div class="cont tabc">
+                    <div class="dtl_msg">
+                        {$goods.goods_desc}
+                    </div>
+                </div>
+            </div>
+            <div id="detail" class="detail">
+                <h3 class="sie">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" id="pingjia">
+                    <tbody>
+                        <tr>
+                            <td><a tag="tabc" class="startnode down">商品评价</a></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                </h3>
+            </div>
+            <!-- 商品评价 -->
+            <div id="detail2" class="detail">
+                <!-- product content -->
+                <div class="cont tabc">
+                    <foreach name="pingjia" item="pingjia">
+                    <div class="photo ClearFix">
+                        <div class="pho_left" style="float:left">
+                            <img width="64px;" height="64px;" src="__PUBLIC__/{$pingjia.pic}">                            
+                            <p>{$pingjia.username}</p>
+                            <span>{$pingjia.comment_time|date='Y-m-d',###}</span>
+                        </div>
+                        <div class="pho_rignt hui" style="float:right">
+                            <div class="star_big">
+                                评分：{$pingjia.comment_rank} 分
+                                <span class="xing5"></span>
+                                <div class="koubei">2014-8-16 16:29:47</div>
+                            </div>
+                            <div class="pj_text">
+                                {$pingjia.comment_content}
+                            </div>
+                            <div class="infor_img ClearFix">
+                                <p>
+                                    管理员回复：<span style="color:#C9AF67">[{$pingjia.reply_time|date='Y-m-d',###}]</span>{$pingjia.reply}
+                                </p>
+                                <div class="zy_bt">
+                                    <span>
+                                        <a href="javascript:void(0);">
+                                            
+                                        </a>
+                                        <input type="hidden" value="0" id="coment_vote_14704106" name="coment_vote_14704106">                            
+                                        <a target="_blank" class="reply_bt" href="#">
+                                            
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="reply_box" style="display:none;"> <b></b>
+                            </div>
+                        </div>
+                        <div class="jian3 hui2"></div>
+                    </div>
+                    <div class="clearfix"></div>
+                    </foreach>
+                    <!--<div class="photo ClearFix">
+                        <div class="pho_left" style="float:left">
+                            <img width="64px;" height="64px;" src="#">                            
+                            <p>t***F</p>
+                            <span>中性</span>
+                        </div>
+                        <div class="pho_rignt hui" style="float:right">
+                            <div class="star_big">
+                                评分：
+                                <span class="xing5"></span>
+                                <div class="koubei">2014-12-3 21:31:07</div>
+                            </div>
+                            <div class="pj_text">真心好用,同事也都喜欢</div>
+                            <div class="infor_img ClearFix">
+                                <p>
+                                    <a target="_blank" href="#">
+                                        <img src="#"></a>
+                                </p>
+                                <div class="zy_bt">
+                                    <span>
+                                        <a href="javascript:void(0);">
+                                            有用 <em>(0)</em>
+                                        </a>
+                                        <input type="hidden" value="0" id="coment_vote_15059808" name="coment_vote_15059808">                            
+                                        <a target="_blank" class="reply_bt" href="#">
+                                            回复 <em>(0)</em>
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="reply_box" style="display:none;"> <b></b>
+                            </div>
+                        </div>
+                        <div class="jian3 hui2"></div>
+                    </div>-->
+                </div>
+            </div>
+            <!-- 评价框 -->
+                <!-- 没有登录的时候不显示 -->
+            <notempty name="user['id']">
+            <if condition="$ispj eq 0">
+            <div class="detail mytail" id="pjk">
+                <h3 class="mych">我的评价</h3>
+                <form action="" method="post">
+                    <table class="mypj">
+                        <tr>
+                            <td class="mylt">选择星级</td>
+                            <td class="xingji">
+                                <p>
+                                    <b id="bxj">
+                                        <em style="width: 100%;" val="100" id="pxj"></em>
+                                    </b>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="mylt">评价内容</td>
+                            <td>
+                                <textarea name="" id="mytext"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <a class="mybtn" ids="{$goods.id}"></a>
+                                <span class="waning">请输入评价内容！</span>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            </if>
+            </notempty>
+            </div>
+        </div>
+    </div>
+</div>
+    <script>
+    $(function(){
+        //评价的星级
+        $('#bxj').bind('click',function(e){
+            var h = $('#bxj').width();
+            var ml = e.pageX - $(this).offset().left;
+            // var bw = $(this).offset().left;
+            var bfb = Math.round(ml/89*100);//算出百分比
+            //超过90%就算是100%。
+            if(bfb > 90){
+                bfb = 100;
+            }
+            $('#pxj').css('width',bfb+'%').attr('val',bfb);
+        })
+        //ajax发送评价的内容
+        $('.mybtn').bind('click',function(){
+            if(!$('#mytext').val()){
+                $('.waning').show().css('color','red');
+                return;
+            }
+            var data = 'comment_rank='+$('#pxj').attr('val')+'&goods_id='+$(this).attr('ids')+'&comment_content='+$('#mytext').val();
+            $.post('__MODULE__/Collect/comment',data,function(data){
+                if(data.status == 1){
+                    layer.msg(data.content,1,function(){
+                        $('#pjk').slideUp(function(){
+                            location.reload();
+                        });
+                    });
+                }else{
+                    layer.msg(data.content,2,0);
+                }
+            })
+        })
+        //添加收藏
+        $('.save').click(function(){
+            var gd = 'id='+$(this).attr('data');
+            $.post('__MODULE__/Collect/insert',gd,function(data){
+                if(data.status == 0){
+                    // alert('123');
+                    layer.confirm('您还未登录，是否前去登录？',function(){
+                        location.href = '__MODULE__/User/login';
+                    });
+                }else{
+                    layer.msg(data['content'],1,1);
+                }
+            });
+        })
+        //推荐组合去掉最后一个+号
+        $('.pro-ico2:eq('+($('.pro-ico2').size()-1)+')').empty();
+        // remove($('.pro-ico2:eq('+i+')'));
+        //增减购买的数量
+    	$('#min').click(function(){
+    		var quan = $('#quantity').find('input').val();
+    		if(quan -1 <= 0){
+    			return false;
+    		}
+    		$('#quantity').find('input').val(quan - 1);
+    	})
+    	$('#max').click(function(){
+    		var quan = $('#quantity').find('input').val();
+    		$('#quantity').find('input').val(parseInt(quan) + 1);
+    	})
+
+        /*$('.manzeng').hover(function(){
+            $('.zengpin').toggle();
+        })*/
+    
+        
+        // 图片替换
+        $('.spec-item a').each(function(){
+        	$(this).click(function(){
+        		// var ssimg = $(this).find('img').attr('src');
+        		var ssimg = $(this).find('img').attr('src');
+        		$(this).addClass('imgselect').siblings().removeClass('imgselect').find('img').removeClass('imgselect');
+        		// ssimg.addClass('imgselect').parent().siblings().find('img').removeClass('imgselect');
+        		$('#juzoom').attr('src',ssimg);
+        		$('#juzoom').attr('data-big',ssimg);
+        		$('#zoomimg').css('background-image','url('+ssimg+')')
+        		// $('#zoomimg').attr('ssimg','123')
+        	})
+        })
+        //放大镜
+        $("#juzoom").mlens({
+			imgSrc: $("#juzoom").attr("data-big"),
+ 			lensShape: "circle",
+			lensSize: 100,
+			borderSize: 1,
+			borderColor: "#fff"
+		})
+        //选择花粉购按钮
+        $('#hf_buy').find('em').click(function(){
+            $(this).toggleClass('gou');
+        })
+        //加入购物车点击跳出已加入购物车
+        $('.join').click(function(){
+            // 判断是否登陆
+            if({$user['id']?1:0}){
+                var goodid = $(this).attr('goods');
+                var buy = $('#num').val();
+                var data = {'id':goodid,'num':buy};
+                $.post('__MODULE__/Cart/add',data,function(data){
+                    if(data.status == 1){
+                        layer.msg(data.content,1,function(){
+                            // location.reload();
+                            $('#Chead-shopping').empty().load('__MODULE__/Common/mycart');
+                        })
+                        //$('#alt-succ').show(); //这一行弹出加入成功
+                    }else{
+                        layer.msg(data.content,1,3);
+                    }
+                })
+            }else{
+                layer.msg('请先登录！',2,function(){
+                    location.href = '__MODULE__/User/Login';
+                })
+            }
+            // alert(goodid);
+            //$('#alt-succ').show(); //这一行弹出加入成功
+        })
+        //购买组合
+        $('.buy').click(function(){
+            if({$user['id']?1:0}){
+                var data = 'id='+$(this).attr('rel');
+                $.post('__MODULE__/Cart/add',data,function(data){
+                    if(data.status == 1){
+                        layer.msg(data.content,1,function(){
+                            // location.reload();
+                            $('#Chead-shopping').empty().load('__MODULE__/Common/mycart');
+                        })
+                        //$('#alt-succ').show(); //这一行弹出加入成功
+                    }else{
+                        layer.msg(data.content,1,3);
+                    }
+                })
+            }else{
+                layer.msg('请先登录！',2,function(){
+                    location.href = '__MODULE__/User/Login';
+                })
+            }
+        })
+        //显示分享
+        $('.fShareTitle').mouseenter(function(){
+            $(this).next().show();
+
+        }).mouseleave(function(){
+            if ($(this).next().is('hidden')) {
+                $(this).next().slideUp(100);
+            }
+        })
+        $('.fShareTitle').next().mouseleave(function(){
+            $(this).slideUp(100);
+        })
+    })
+    </script>
+<!-- 主体部分结束 -->
+</block>

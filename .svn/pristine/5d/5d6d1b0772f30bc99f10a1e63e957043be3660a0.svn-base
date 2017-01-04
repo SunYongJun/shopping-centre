@@ -1,0 +1,150 @@
+<extend name="Public:layout" />
+<block name="main">
+
+	<div class="page-content">
+		<div class="page-header">
+			<h1>
+				赠品管理
+				<small> <i class="icon-double-angle-right"></i>
+					添加赠品
+				</small>
+			</h1>
+		</div>
+		<!-- /.page-header -->
+
+		<div class="row">
+			<div class="col-xs-12">
+				<!-- PAGE CONTENT BEGINS -->
+
+				<form class="form-horizontal" role="form" action="__CONTROLLER__/insert" method="post" enctype="multipart/form-data" id="form">
+
+					<div class="form-group">
+						<label class="col-sm-3 control-label no-padding-right" for="form-field-1">赠品名称</label>
+
+						<div class="col-sm-9">
+							<input type="text" id="form-field-1"  class="col-xs-10 col-sm-5" name="gift_name" /><span></span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-3 control-label no-padding-right" for="form-field-2">赠品价格</label>
+
+						<div class="col-sm-9">
+							<input type="text" id="form-field-2"  class="col-xs-10 col-sm-5" name="gift_price" /><span></span>
+						</div>
+					</div>
+
+					<div class="space-4"></div>
+
+					<div class="form-group">
+						<label class="col-sm-3 control-label no-padding-right" for="form-field-3">赠品数量</label>
+
+						<div class="col-sm-9">
+							<input type="number" id="form-field-3"  class="col-xs-10 col-sm-5" name="gift_count" /><span></span>
+
+						</div>
+					</div>
+
+					<div class="space-4"></div>
+
+					<div class="form-group">
+						<label class="col-sm-3 control-label no-padding-right">是否是删除的</label>
+
+						<div class="col-sm-9">
+							<div class="col-xs-12 col-sm-6">
+								<div class="control-group">
+
+									<label>
+										<input name="is_delete" type="radio" class="ace" value="1" />
+										<span class="lbl">是　</span>
+									</label>
+
+									<label>
+										<input name="is_delete" type="radio" class="ace" value="0" />
+										<span class="lbl">否</span>
+									</label>
+
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="clearfix form-actions">
+						<div class="col-md-offset-3 col-md-9">
+							<button class="btn btn-info" type="button"> <i class="icon-ok bigger-110"></i>
+								提 交
+							</button>
+							&nbsp; &nbsp; &nbsp;
+							<button class="btn" type="reset">
+								<i class="icon-undo bigger-110"></i>
+								重 置
+							</button><span></span>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script src="__PUBLIC__/uploadify/jquery.uploadify.min.js"></script>
+	<script>
+	$(function() {
+		var img = '';
+		// alert('{:U("Flink/myupload")}');
+		$('#file_upload').uploadify({
+		        'swf' : '__PUBLIC__/uploadify/uploadify.swf',
+		        'uploader' : '__CONTROLLER__/myupload',
+		        'buttonText' : 'LOGO上传',
+		        'onUploadSuccess' : function(file, data, response) {
+		        	img += "<img width='200px' src='__PUBLIC__/"+data+"'>";
+		        	$('#imgs').html(img);
+		        	$('#uplogo').val(data);
+	        	}
+	    	});
+
+		//名称
+		var bool = false;
+		$('#form-field-1').blur(function() {
+			if(!$(this).val()) {
+				$(this).next().css('color','red').html('请填入赠品名称');
+				bool = false;
+			}else{
+				$(this).next().html('');
+				bool = true;
+			}
+		})
+
+		//数量
+		var num = false;
+		$('#form-field-3').blur(function() {
+			var reg = /^[0-9]+$/;
+			if(!reg.test($(this).val())) {
+				$(this).next().css('color','red').html('请填入数量');
+				num = false;
+			}else{
+				num = true;
+			}
+		})
+
+		//价格
+		var boolp = false;
+		$('#form-field-2').blur(function() {
+			var reg = /^[0-9\.]+$/;
+			if(!reg.test($(this).val())) {
+				$(this).next().css('color','red').html('请填入价格');
+				boolp = false;
+			}else{
+				boolp = true;
+			}
+		})
+
+		$('button[type="button"]').click(function() {
+			if(bool && boolp && num) {
+				$('#form').submit();
+			}else{
+				$(this).next().next().css('color','red').html('请填入完整合法的分类信息！')
+			}
+		})
+
+	})
+	</script>
+</block>

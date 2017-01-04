@@ -1,0 +1,143 @@
+<?php
+
+/*
+*	订单中心关于订单部分，继承Auth类
+*	MyOrder/order        我的订单
+*	MyOrder/orderTwo     订单状态
+*   MyOrder/look         订单详情
+*   MyOrder/makeSure     确认收货
+*   MyOrder/cancelOrder  取消订单
+*   @author              王雪
+*/
+
+namespace Home\Controller;
+
+	class MyOrderController extends AuthController{
+
+		public function order(){
+		/*
+			$id 指用户id     $id1 指该用户的订单id    $id2 指商品id
+			$map 指用户id等于order_action里的user_id条件
+			$map1 指订单id 等于order_goods里的action_id 
+			$map2 指goods表中的id 等于 order_goods里的goods_id
+			$goo 指所有的订单的商品信息（订单id 商品id 购买数量goods_number）
+		*/
+
+			$oa= M('order_action');        //订单表
+			$id = $_SESSION['user']['id']; //当前用户id
+			$ogs = M('order_goods');       //订单表
+			$goos = M('goods');            //商品表
+			$acc = M('user_account');      //支付方式及状态
+			$true = M('user_address');     //获取用户真实姓名
+			$pay = M('pay_type');          //获取用户支付方式
+
+			
+			if($id){
+				$map['user_id'] = $id;
+				$true_name = $true -> where($map) -> find();
+				$name = $true_name['true_name'];
+				$ooa = $oa ->where($map) -> select();
+				foreach($ooa as $k=>$v){
+					$paid = $pay ->where('id='.$v['pay_id'])->find();
+					$data[$k] = $v;
+					$id1 = $v['id'];
+					$map1['action_id'] = $id1;
+					$goo = $ogs -> where($map1) -> select();
+					foreach($goo as $kk=>$vv){//提取每一个订单的信息
+						$id2 = $vv['goods_id'];
+						$map2['id']=$id2;
+						$shangpin = $goos -> where($map2) -> find();
+						// var_dump($shangpin);exit();
+						$data[$k]['g'][$kk]=$shangpin;
+					}
+				}
+			}
+			$this -> assign('pay',$paid);
+			$this -> assign('data',$data);
+			$this -> assign('name',$name);
+			$this -> display();
+		}
+
+		// 订单状态
+		public function orderTwo(){
+			$m = M('order_action');
+			$id = $_SESSION['user']['id'];
+			if($id){
+				$maps['user_id'] = $id;
+				$maps['action_status'] = $_POST['action_status'];
+				$mm = $m -> where($maps) ->select();
+				foreach ($mm as $k => $v) {
+					$arr[]=$v['id'];
+				}
+				$this -> ajaxReturn($arr);
+			}
+		}
+
+
+		// 订单详情
+		public function look(){
+			$actis = $_GET['acti'];
+			$order = M('order_action');    //订单表
+			$og = M('order_goods');        //商品订单关联表
+			$good = M('goods');            //商品表
+			$addr = M('user_address');     //用户地址表
+			$pay = M('pay_type');          //支付方式
+
+			// 查询订单表
+			$maps['acti'] = $actis; 
+			$result = $order -> where($maps) -> find();//所有订单信息
+			$guanlian = $og ->where('action_id='.$result['id'])->select();
+			$i = 0;
+			foreach($guanlian as $a=>$b){
+				$g[$i] = $good -> where('id='.$b['goods_id']) -> find();
+				$g[$i]['num'] = $b['goods_number'];
+				$g[$i]['total'] = $b['goods_number'] * $g[$i]['goods_price'];
+				$i++;
+			}
+
+			// 用户地址
+			$addrs = $addr -> where('id='.$result['address_id'])->find();
+
+			// 用户支付方式
+			$pays = $pay ->where('id='.$result['pay_id'])->find();
+
+			// 送货时间
+			// $
+
+			$this->assign(goods,$g);
+			$this->assign(address,$addrs);
+			$this->assign(pay,$pays);
+			$this->assign(order,$result);
+			$this->display();
+		}
+
+
+		// 确认收货
+		public function makeSure(){
+			$id = $_POST['id'];
+			$order = M('order_action');
+			$data['action_status']=3;
+			$cha = $order->where('id='.$id)->save($data);
+			if($cha){
+				$this ->ajaxReturn(true);
+			}else{
+				$this ->ajaxReturn(false);
+			}
+		}
+
+		// 取消订单
+		public function cancelOrder(){
+			//传过来的是订单的id
+			$m = M('order_action');
+			$data['action_status'] = 4;
+			$cha = $m -> where('id='.$_POST['id'])->save($data);
+			if($cha){
+				$this->ajaxReturn(true);
+			}else{
+				$this->ajaxReturn(false);
+			}
+
+		}
+				
+	}
+

@@ -1,0 +1,379 @@
+<?php 
+namespace Home\Controller;
+use Think\Area;
+
+	class CenterController extends CommonController{
+		public function index(){
+
+			$users = $_SESSION['user'];
+			$id = $_SESSION['user']['id'];
+			
+			if($id){
+			// 
+			$tr = M('user_address');
+			$maps['user_id'] = $id;
+			$trr = $tr ->where($maps)->find();
+			if($trr){
+				$true_name = $trr['true_name'];
+
+			}
+			$oa = M('order_action');
+			$pay = M('pay_type');
+			$map['user_id'] = $id;
+
+			$or = $oa->where($map)-> order(array('order_time'=>'DESC'))->find();
+			if($or){
+				$paid = $pay -> where('id='.$or['pay_id'])->find();
+			$data['ding']= $or;
+			$og = M('order_goods');
+
+			$map1['action_id'] = $or['id'];
+			$ogs = $og -> where($map1) -> select();
+			// var_dump($ogs);这个订单的所有商品(二维)
+			$goo = M('goods');
+
+			foreach ($ogs as $k => $v) {
+				
+				$map2['id'] = $v['goods_id'];
+				$goos = $goo -> where($map2) ->find();
+				// var_dump($k);
+				$data['ding']['d'][$k]= $goos;
+
+			}
+		}else{
+			$data=0;
+		}
+
+		// 查询 未付款的订单
+
+		$ooa=$oa->where('action_status=0 and user_id='.$id)->select();//代付款
+		$oob=$oa->where('action_status=1 and user_id='.$id)->select();//待发货
+		$ooc=$oa->where('action_status=2 and user_id='.$id)->select();//待收货
+		$num['a'] = count($ooa);
+		$num['b'] = count($oob);
+		$num['c'] = count($ooc);
+		}
+			// 用户收藏商品
+			$coll = M('collect_goods');
+			$where['user_id'] = $id;
+			$where['is_status'] = 1;
+
+ 			$colls = $coll->where($where)->order(array('add_time'=>'DESC'))->limit(4)->select();
+			$i=0;
+			foreach($colls as $a=>$b){
+				// var_dump($b);
+				$g[$i] = $goo -> where('id='.$b['goods_id'])->find();
+				$i++;
+
+			}
+
+			// 
+			// var_dump($g);
+			$this -> assign('num',$num);
+			$this -> assign('data',$data);
+			$this -> assign('user',$users);
+			$this -> assign('pay',$paid);
+			$this -> assign('coll',$g);
+			
+			$this -> assign('truename',$true_name);
+			$this -> display();
+	}
+
+		// 
+		public function myBonus(){
+			$this -> display();
+		}
+
+
+		// 我的花粉
+		public function myCoin(){
+			$user = $_SESSION['user'];
+			$this -> assign('user',$user);
+			$this -> display();
+		}
+		// 账户安全设置
+		public function safe(){
+			$muser = M('user');
+			$where['id'] = $_SESSION['user']['id'];
+			$myuser = $muser -> where($where) -> find();
+			var_dump($myuser);
+			$user = $_SESSION['user'];
+			$this -> assign('user',$user);
+			$this -> display();
+		}
+		// 地址管理
+		public function address(){
+			$id = $_SESSION['user']['id'];
+			$addr = M('user_address');
+			$address = Area::city(array('请选择','请选择','请选择'));
+			$maps['user_id']=$id;
+			$addrs = $addr -> where($maps)->select();
+			// var_dump($addrs);
+			// 把该用户的地址发过去
+			$this -> assign('address',$address);
+			$this -> assign('oid',$id);
+			$this -> assign('dizhi',$addrs);
+			$this -> display();
+		}
+
+		// 我的投诉
+		public function complain(){
+			$this -> display();
+		}
+		// 我的咨询 回复
+		public function reply(){
+			$this -> display();
+		}
+
+		// 个人资料
+		public function inform(){
+			$user = $_SESSION['user'];
+			// $id = $_SESSION['user']['id'];
+			// $m = M('user');
+			// $zl = $m -> where('id='.$id) -> save(); 
+ 			$this -> assign('user',$user);
+			$this -> display();
+		}
+
+		// 修改个人资料
+		public function inform_doit(){
+			// 
+			if(IS_AJAX){
+				// var_dump($_POST);
+				$id = $_SESSION['user']['id'];
+				$user = D('user');
+				$data = $_POST;
+				if(!$user->create($data)){
+					exit($user->getError());
+				}else{
+					$map = 'id='.$id;
+					if($_POST['user_pic'] == '') {
+						unset($_POST['user_pic']);
+					}
+					$user->create();
+					$r = $user->where($map)->save();
+					if($r){
+						$datas['status']=1;
+						$datas['content']='修改成功';
+						$datas['url'] = U('Center/index');
+						$rr = $user->find($id);
+						
+						$_SESSION['user'] = $rr;
+					}else{
+						$datas['status']=0;
+						$datas['content']='修改失败';
+					}
+				}
+				$this -> ajaxReturn($datas);
+			}
+		}
+		//更改密码
+		public function changepwd(){
+			$this -> display();
+		}
+
+		// 密码
+		public function checkpwd(){
+			if(IS_AJAX){
+				// $pwd = $_POST[]
+				// var_dump($_SESSION);				
+				// var_dump($_POST);exit();
+				$user = M('user');
+				$id = $_SESSION['user']['id'];
+				$r = $user -> find($id);
+				// var_dump($_POST);exit();
+				if($r['user_pwd'] == md5($_POST['user_pwd'])){
+					$data['status'] = 1;
+					$data['content'] = '旧密码一致';
+					
+				}else{
+					$data['status'] = 0;
+					$data['content'] = '旧密码不正确';
+				};
+				$this -> ajaxReturn($data);
+			}
+
+		}
+		// 第二次密码
+		public function checkrepwd(){
+			if(IS_POST){
+				if($_POST['new_pwd'] != $_POST['re_new_pwd']){
+					$data['status']=0;
+					$this->ajaxReturn($data);
+					return;
+				}
+
+
+				$user = M('user');
+					$id = $_SESSION['user']['id'];
+					$map = 'id='.$id;
+					$da['user_pwd'] =md5($_POST['new_pwd']);
+					$row = $user->where($map)->save($da);
+					// var_dump($row);exit();
+					if($row){
+						$data['status']=2;
+						$data['url'] = U('Center/index');
+					}else{
+						$data['status']=0;
+					}
+					$this->ajaxReturn($data);
+					
+			}
+
+		}
+
+		// 增加或修改地址
+		public function addre(){
+			$addr = M('user_address');
+			if($_POST['id']){
+				if($addr->create()){
+					$addr-> save();
+					$data = '修改成功';
+				}
+			}else{
+				$_POST['user_id'] = $_SESSION['user']['id'];
+				$addr->create();
+				$addr->add();
+				$data = '添加成功';
+			}
+			$this->ajaxReturn($data);
+		}
+
+		// 退货原因
+		public function reason(){
+			// var_dump($_POST);exit;	
+			$id = $_POST['id'];
+			$m = M('order_action');
+			$maps['id'] = $id;
+			$data['action_status'] = 4;
+			$data['reason'] = $_POST['zhi'];
+			$data['reason'] .= $_POST['zhis'];
+			$data['action_time'] = time();
+
+			$result = $m -> where($maps) ->save($data);
+			if($result){
+				$this -> ajaxReturn(true);
+			}else{
+				// $this -> ajaxReturn($m->getlastsql());
+				$this -> ajaxReturn(false);
+			}
+
+
+
+		}
+		public function cancelorder(){
+			// var_dump($_POST);
+			//传过来的是订单的id
+			$m = M('order_action');
+			$data['action_status'] = 4;
+			$cha = $m -> where('id='.$_POST['id'])->save($data);
+			if($cha){
+				$this->ajaxReturn(true);
+			}else{
+				$this->ajaxReturn(false);
+			}
+
+		}
+
+		// 收藏
+		public function like(){
+			$m = M('collect_goods');
+			$mm = M('goods');
+			$id = $_SESSION['user']['id'];
+			$maps['user_id'] = $id; 
+			$maps['is_status'] = 1;
+			$result = $m -> where($maps)->order(array('add_time'=>'DESC')) ->select();
+			// var_dump($result);
+			// foreach ($result as $k => $v) {
+			foreach ($result as &$v) {
+				$gid = $v['goods_id'];//收藏的商品id
+				// var_dump($gid);
+				$where['id'] = $gid;
+				$result1 = $mm -> where($where) -> find();
+				// $result[$k]['shoucang'] = $result1;
+				$v['shoucang'] = $result1;
+				
+			}
+
+				// var_dump($result);
+ 
+
+			$this -> assign('coll',$result);
+			$this -> display();
+		}
+		// 取消收藏
+		public function cancel(){
+			if(IS_POST){
+				// var_dump($_POST);
+				$m = M('collect_goods');
+				$where['goods_id'] = $_POST['gid'];
+				$data['is_status'] = 0;
+
+				$result = $m-> where($where)->save($data);	
+				if($result){
+					$this -> ajaxReturn(true);
+				}else{
+					$this -> ajaxReturn(false);
+				}
+			}
+		}
+		public function makesure(){
+			// var_dump($_POST);
+			$id = $_POST['id'];
+			$order = M('order_action');
+			$data['action_status']=3;
+			$cha = $order->where('id='.$id)->save($data);
+			if($cha){
+				$this ->ajaxReturn(true);
+			}else{
+				$this ->ajaxReturn(false);
+			}
+		}
+
+		// 我的评论
+		public function comment(){
+			$id = $_SESSION['user']['id'];
+			$com = M('comment');
+			$where['user_id']=$id;
+			$where['is_show']=1;
+			$comm = $com->where($where)->select();
+			$good = M('goods');
+			$i=0;
+			foreach($comm as $k=>$v){
+				// var_dump($v);
+				$goods[$i] = $good -> where('id='.$v['goods_id'])->find();
+				$goods[$i]['content'] = $v['comment_content'];
+				$goods[$i]['rank'] = intval($v['comment_rank']);
+				$goods[$i]['times'] = $v['comment_time'];
+				$i++;
+			}
+			// var_dump($goods);
+			// var_dump($_SESSION['user']['user_alias']);
+			$this -> assign('alias',$_SESSION['user']['user_alias']);
+			$this -> assign('good',$goods);
+			$this -> display();
+		}
+
+		//修改地址时原地址生成
+		public function addredit() {
+			$addr = M('user_address');
+			$address = $addr->find($_POST['id']);
+			$address = Area::city(array($address['address_province'],$address['address_city'],$address['address_county']));
+			$this->ajaxReturn($address);
+		}
+
+		//删除订单地址
+		public function delete() {
+			if($_POST['id']){
+				$addr = M('user_address');
+				$map['id'] = array('eq',$_POST['id']);
+				if($addr->where($map)->delete()){
+					$this->ajaxReturn(1);
+				}
+
+			}
+
+		}
+
+	}
+ ?>

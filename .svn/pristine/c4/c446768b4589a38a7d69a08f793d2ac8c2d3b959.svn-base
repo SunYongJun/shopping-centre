@@ -1,0 +1,8 @@
+<?php
+// 公共类，所有的控制器继承这个公共类
+namespace Admin\Controller;
+use Think\Controller;
+
+class CommonController extends Controller {
+    
+}

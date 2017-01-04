@@ -1,0 +1,67 @@
+<?php
+namespace Home\Controller;
+
+class ProductController extends CommonController{
+	public function index(){
+		$id = intval($_GET['id']);
+		$good = M('goods');
+		$goods = $good -> find($id);
+
+		// 判断传过来的ID，没有赋值跳转回首页
+		if(!$id && !$goods){
+			$this -> error('没有找到指定商品！',U('Index/index'));
+		}
+		
+		//查询商品的品牌
+		$brand = M('brand') -> field('brand_name,brand_logo') -> where($goods['brand_name']) -> find();
+		$goods['brand_name'] = $brand['brand_name'];
+		$goods['brand_logo'] = $brand['brand_logo'];
+
+		//计算市场价格
+		$price = round($goods['goods_price'] / $goods['goods_sale'],2);
+		$goods['mprice'] = $price;
+
+		//查询商品的相册
+		$img = M('goods_gallery') -> field('img_url') -> where("goods_id='".$goods['id']."'") -> find();
+		$goods['img_url'] = explode(' ', $img['img_url']);
+		
+		//推荐组合，找三个同类品牌的商品
+		$where['brand_id'] = array('eq',$goods['brand_id']);
+		$where['id'] = array('neq',$goods['id']);
+		$tj = M('goods') -> field('id,goods_name,goods_img,goods_price,goods_sale') -> where($where) -> limit(3) -> order('goods_click desc') -> select();
+		//循环遍历出推荐商品的总价格和市场价格
+		$sum = 0;//总价格
+		$msum = 0; //总的市场价
+		$ids = '';
+		foreach($tj as $pv){
+			$sum += $pv['goods_price'];
+			$msum += round($pv['goods_price']/$pv['goods_sale'],2);
+			$ids .= $pv['id'].',';
+		}
+		$this -> assign('sum',$sum);
+		$this -> assign('msum',$msum);
+		$this -> assign('ids',trim($ids,','));
+		$this -> assign('tj',$tj);
+		//查询商品的评价
+
+		//评论星级
+
+		//导航条
+		$m = M('shop_type');
+		$i= $goods['type_id'];
+		$pp = array();
+		while($i){
+			if($i == 0){
+				break;
+			}
+			$path = $m -> field('pid,type_name') -> find($i);
+			$pp[] = $path;
+			$i = $path['pid'];
+		}
+		$this -> assign('path',array_reverse($pp));
+		
+		//查询到的商品信息分配给变量
+		$this -> assign('goods',$goods);
+		$this -> display();
+	}
+}

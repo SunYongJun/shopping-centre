@@ -1,0 +1,662 @@
+<extend name="Public:layout" />
+<block name="cssjs">
+<link rel="stylesheet" href="__PUBLIC__/home/css/product.css">
+<script src="__PUBLIC__/home/js/jqzoom.js"></script>
+</block>
+<block name="main">
+<!-- 主体部分开始 -->
+<div class="bgcolor">
+            <div class="main mauto">
+                <!-- 主体的导航 -->
+                <p class="path">
+                <span class="fr" style="float:right">商品编码：81406</span>
+                <a href="#">首页</a>
+                &nbsp;/&nbsp;
+                <a href="#">护肤用品</a>
+                &nbsp;/&nbsp;
+                <a href="#">面贴膜</a>
+                &nbsp;/&nbsp;
+                百雀羚草本8杯水保湿水嫩面膜22g*5 </p>
+                <div class="mianA">
+                    <div class="info-left proInfobox">
+                        <dl id="imgshow">
+                            <dt>
+                            <img class="jqzoom" alt="" id="juzoom" src="__PUBLIC__/home/images/union_login.jpg" data-big="__PUBLIC__/home/images/union_login.jpg">
+                            <!-- 放大的图片显示在这里 -->
+                            <!-- <div class="zoomdiv" style="top: 0px; left: 400px; width: 460px; height: 478px; display: none;"><img class="bigimg" src="#"></div> -->
+                            <a class="btn-bigimg" href="#" style="display: block;" target="_blank">查看大图</a>
+                            </dt>
+                            <dd>
+                            <div class="spec-wrap">
+                                <div class="spec-item">
+                                    <!--图片滚动-->
+                                    <a class="imgselect" supsrc="#" bigsrc="#" href="javascript:void(0)" group="0">
+                                    <img src="__PUBLIC__/home/images/register_back.jpg" alt="">
+                                    </a>
+                                    <a class="" supsrc="#" bigsrc="#" href="javascript:void(0)" group="1">
+                                    <img src="__PUBLIC__/home/images/login-bk.jpg" alt="">
+                                    </a>
+                                    <a class="" supsrc="#" bigsrc="#" href="javascript:void(0)" group="2">
+                                    <img src="__PUBLIC__/home/images/118380_0_l.jpg" alt="">
+                                    </a>
+                                    <a class="" supsrc="#" bigsrc="#" href="javascript:void(0)" group="3">
+                                    <img src="__PUBLIC__/home/images/122200_0_l.jpg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="info-right">
+                        <h1><span class="pname">百雀羚草本8杯水保湿水嫩面膜22g*5</span></h1>
+                        <div class="pos05">
+                            <p class="specials">
+                            <span class="zshf">赠送花粉：23<i></i></span>
+                            <font style="font-size:20px;font-weight:bold">￥23</font>
+                            <del>市场价：25.5</del>
+                            </p>
+                            <div class="hfsm"><b class="tip_flag"></b>
+                                <p>购物1元得1个花粉，100花粉价值1元</p>
+                            </div>
+                            <p></p>
+                            <div class="sale">
+                                <div class="cuxiao">
+                                    <div class="pos"><em class="zeng1">满额赠</em>
+                                        <div class="row">
+                                            <dl class="sa2">
+                                                <dt class="manzeng">
+                                                <div class="cx_n">百雀羚满168送199，赠完为止，不累计<span></span></div>
+                                                <div class="zengpin"><b class="tip_flag"></b>
+                                                    <h3>满168元及以上赠送以下商品</h3>
+                                                    <ul>
+                                                        <li><a href="#" target="_blank"><img src="./images/6356470_0_m.jpg" title="#"></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                </dt>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- promotion -->
+                            <div class="line"></div>
+                            <p class="messagenu">评　价：<b><em style="width: 90%;"></em></b><a href="#/product/81406.html###">875人评价</a>
+                            ，<a href="#/product/81406.html###"><span>3个口碑</span></a>
+                            </p>
+                            <div class="line"></div>
+                            <div id="peisong_type" class="peisong_type" style="display: none;">
+                                <div class="tab_item_wrap">
+                                    <ul class="tab_item">
+                                        <li><a href="#/product/81406.html###" class="hover"><span>请选择</span><b></b></a>
+                                        </li>
+                                        <li><a href="#/product/81406.html###"><span>请选择</span><b></b></a>
+                                        </li>
+                                        <li><a href="#/product/81406.html###"><span>请选择</span><b></b></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- color -->
+                            <!-- color -->
+                        </div>
+                        <div class="bg_gray">
+                            <div class="number" style="">数　量：
+                                <div>
+                                    <span>
+                                    <a id="min" href="javascript:void(0)">-</a>
+                                    <b id="quantity">
+                                    <input type="text" value="1">
+                                    </b>
+                                    <a id="max" href="javascript:void(0)">+</a>
+                                    </span>
+                                    <em class="tip_wm2"></em>
+                                </div>
+                            </div>
+                            <div id="hf_buy" class="hf_buy">花粉购：<em class=""></em><span>￥</span>21.80+120花粉</div>
+                            <!-- add cart button -->
+                            <div class="heig">
+                                <a class="join" style="">加入购物车</a>
+                                <a class="hasalarm" style="display: none;" href="#"></a>
+                                <a class="save" href="#/product/81406.html###"><span>4459</span></a>
+                                <div class="fshareBox">
+                                    <div class="fShareTitle">分享</div>
+                                    <span class="share" style="display: none;">
+                                    <a href="#/product/81406.html###" title="分享到新浪微博" class="sina" style="background-position: -159px -116px;"></a>
+                                    <a href="#/product/81406.html###" title="分享到腾讯微博" class="qqt" style="background-position: -181px -116px;"></a>
+                                    <a title="分享到QQ空间" class="qqz" style="background-position: -203px -116px;"></a>
+                                    <a title="分享到人人网" class="renren" style="background-position: -225px -116px;"></a>
+                                    <a title="分享到开心网" class="kaixin" style="background-position: -247px -116px;"></a>
+                                    <a title="分享到搜狐微博" class="sohu" style="background-position: -269px -116px;"></a>
+                                    <a title="分享到网易微博" class="t163" style="background-position: -291px -116px;"></a>
+                                    <a title="分享到豆瓣" class="douban" style="background-position: -313px -116px;"></a>
+                                    <b class="tip_flag"></b>
+                                    </span>
+                                </div>
+                            </div>
+                            <!-- notenough button -->
+                            <div class="oosarea" style="display: none;">
+                                <div class="ooslist">
+                                    <div class="oosmore">为您推荐其它同类热销商品：</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sekuai"></div>
+                    <div class="clear"></div>
+                </div>
+                <div class="baozhang">
+                    <div class="bz"><img src="__PUBLIC__/home/images/bz-1.jpg"><span>免运费<em>网付69全场99</em></span></div>
+                    <div class="bz"><img src="__PUBLIC__/home/images/bz-2.jpg"><span>全正品<em>正品承诺假一赔十</em></span></div>
+                    <div class="bz"><img src="__PUBLIC__/home/images/bz-3.jpg"><span>最放心<em>45天无条件退换货</em></span></div>
+                    <div class="bz"><img src="__PUBLIC__/home/images/bz-4.jpg"><span>限时达<em>限时到达超时赔付</em></span></div>
+                    <div class="qijian_box">
+                        <div class="qijian">
+                            <a href="http://brand.lefeng.com/brand/pehchaolin.html" target="_blank">
+                            <img onerror="$(&#39;.qijian_box&#39;).remove()" src="./images/685959_0_b.jpg">
+                            <b>百雀羚<br>
+                            pehchaolin</b>
+                            <span url="http://brand.lefeng.com/brand/pehchaolin.html">进入<br>
+                            品牌旗舰店</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="more-pro" id="proGroupInfo">
+                    <h3><a href="#/product/81406.html###" class="down">优惠礼包</a>
+                    <a href="#/product/81406.html###">人气组合</a>
+                    </h3>
+                    <div id="hotInfo" style="" class="more-cont">
+                        <h4></h4>
+                        <div class="pro-child">
+                            <div class="cont-left">
+                                <div class="proslide" style="width: 495px;">
+                                    <dl>
+                                        <b class="pro-ico2">+</b>
+                                        <dt><a target="_blank" href="#/product/81406.html" title="百雀羚草本8杯水保湿水嫩面膜22g*5" tjurl="http://rfu.lefeng.com/0_0_007_0028_01/product/81406.html"><img src="./images/81406_0_l.jpg"></a>
+                                        </dt>
+                                        <dd class="nam"><a target="_blank" href="#/product/81406.html" title="百雀羚草本8杯水保湿水嫩面膜22g*5" tjurl="http://rfu.lefeng.com/0_0_007_0028_01/product/81406.html">百雀羚草本8杯水保湿水嫩面膜22g*5</a>
+                                        </dd>
+                                        <dd class="pri"><img class="price" src="./images/81406_72_62.png"></dd>
+                                    </dl>
+                                    <dl>
+                                        <b class="pro-ico2">+</b>
+                                        <dt><a target="_blank" href="#/product/81421.html" title="百雀羚草本水嫩倍现保湿精华乳液100ml" tjurl="http://rfu.lefeng.com/0_0_007_0028_02/product/81421.html"><img src="./images/81421_0_l.jpg"></a>
+                                        </dt>
+                                        <dd class="nam"><a target="_blank" href="#/product/81421.html" title="百雀羚草本水嫩倍现保湿精华乳液100ml" tjurl="http://rfu.lefeng.com/0_0_007_0028_02/product/81421.html">百雀羚草本水嫩倍现保湿精华乳液100ml</a>
+                                        </dd>
+                                        <dd class="pri"><img class="price" src="./images/81421_72_13.png"></dd>
+                                    </dl>
+                                    <dl>
+                                        <dt><a target="_blank" href="#/product/81420.html" title="百雀羚草本水嫩倍现盈透精华水100ml" tjurl="http://rfu.lefeng.com/0_0_007_0028_03/product/81420.html"><img src="./images/81420_0_l(1).jpg"></a>
+                                        </dt>
+                                        <dd class="nam"><a target="_blank" href="#/product/81420.html" title="百雀羚草本水嫩倍现盈透精华水100ml" tjurl="http://rfu.lefeng.com/0_0_007_0028_03/product/81420.html">百雀羚草本水嫩倍现盈透精华水100ml</a>
+                                        </dd>
+                                        <dd class="pri"><img class="price" src="./images/81420_72_12(1).png"></dd>
+                                    </dl>
+                                </div>
+                            </div>
+                            <div class="cont-right">
+                                <b>优惠礼包1</b>
+                                <i>百雀羚 补水保湿三件套(精华乳液100ml+盈透精华水100ml+水嫩面膜22g*5）套装</i>
+                                <p class="price1">市场价：<del><span>163.5</span></del></p>
+                                <p class="price2">优惠价：<span><img class="price" src="./images/4206462_73_62.png"></span></p>
+                                <div class="zuhe">
+                                    <a class="buy" target="_blank" href="http://shopping.lefeng.com/cart/cart.jsp?productId=4206462&skuId=4342904&quantity=1&process=add" wtfg="YHLB"></a>
+                                </div>
+                                <em class="pro-ico3">=</em>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="pkgInfo" style="display:none;" class="more-cont">
+                        <div class="pro-child">
+                            <div class="cont-left">
+                                <div class="proslide" style="width: 660px;">
+                                    <dl>
+                                        <b class="pro-ico2">+</b>
+                                        <dt><a target="_blank" href="./images/百雀羚草本8杯水保湿水嫩面膜22g 5_百雀羚_护肤用品_面贴膜_乐蜂网.htm" title="百雀羚草本8杯水保湿水嫩面膜22g*5" tjurl="http://rfu.lefeng.com/1_0_007_0030_01/product/81406.html"><img src="./images/81406_bg_0_s.jpg"></a>
+                                        </dt>
+                                        <dd class="nam">
+                                        <a target="_blank" href="./images/百雀羚草本8杯水保湿水嫩面膜22g 5_百雀羚_护肤用品_面贴膜_乐蜂网.htm" title="百雀羚草本8杯水保湿水嫩面膜22g*5" tjurl="http://rfu.lefeng.com/1_0_007_0030_01/product/81406.html">百雀羚草本8杯水保湿水嫩面膜22g*5</a>
+                                        </dd>
+                                        <dd class="pri">
+                                        <input type="checkbox" checked="" value="81406" sid="86746" up="2550" mp="250" fid="" style="display:none;">
+                                        ￥23.0</dd>
+                                    </dl>
+                                    <dl style="">
+                                        <b class="pro-ico2">+</b>
+                                        <dt><a target="_blank" href="#/product/98160.html" title="澳洲EYEMED－2N玻尿酸保湿补水双效美肌面膜(10片）" tjurl="http://rfu.lefeng.com/1_0_007_0030_02/product/98160.html"><img src="./images/98160_0_l.jpg"></a>
+                                        </dt>
+                                        <dd class="nam">
+                                        <a target="_blank" href="#/product/98160.html" title="澳洲EYEMED－2N玻尿酸保湿补水双效美肌面膜(10片）" tjurl="http://rfu.lefeng.com/1_0_007_0030_02/product/98160.html">澳洲EYEMED－2N玻尿酸保湿补水双效美肌面膜(10片）</a>
+                                        </dd>
+                                        <dd class="pri"><em class="gou"></em>
+                                        <input type="checkbox" checked="" value="98160" sid="102160" up="9900" mp="7400">
+                                        ￥25.0</dd>
+                                    </dl>
+                                    <dl style="">
+                                        <b class="pro-ico2">+</b>
+                                        <dt><a target="_blank" href="#/product/130180.html" title="JCARE天使爱美丽澳洲山羊奶补水润肌面膜10片x28ml 销售王牌(新老包装随机发货）" tjurl="http://rfu.lefeng.com/1_0_007_0030_03/product/130180.html"><img src="./images/130180_0_l.jpg"></a>
+                                        </dt>
+                                        <dd class="nam">
+                                        <a target="_blank" href="#/product/130180.html" title="JCARE天使爱美丽澳洲山羊奶补水润肌面膜10片x28ml 销售王牌(新老包装随机发货）" tjurl="http://rfu.lefeng.com/1_0_007_0030_03/product/130180.html">JCARE天使爱美丽澳洲山羊奶补水润肌面膜10片x28ml 销售王牌(新老包装随机发货）</a>
+                                        </dd>
+                                        <dd class="pri"><em class="gou"></em>
+                                        <input type="checkbox" checked="" value="130180" sid="209908" up="7800" mp="4000">
+                                        ￥38.0</dd>
+                                    </dl>
+                                    <dl style="">
+                                        <dt><a target="_blank" href="#/product/130204.html" title="JCARE天使爱美丽丝瓜薏仁皙透面膜10片x28ml(新老包装随机发货）" tjurl="http://rfu.lefeng.com/1_0_007_0030_04/product/130204.html"><img src="./images/130204_0_l.jpg"></a>
+                                        </dt>
+                                        <dd class="nam">
+                                        <a target="_blank" href="#/product/130204.html" title="JCARE天使爱美丽丝瓜薏仁皙透面膜10片x28ml(新老包装随机发货）" tjurl="http://rfu.lefeng.com/1_0_007_0030_04/product/130204.html">JCARE天使爱美丽丝瓜薏仁皙透面膜10片x28ml(新老包装随机发货）</a>
+                                        </dd>
+                                        <dd class="pri"><em class="gou"></em>
+                                        <input type="checkbox" checked="" value="130204" sid="209909" up="7800" mp="4000">
+                                        ￥38.0</dd>
+                                    </dl>
+                                </div>
+                            </div>
+                            <form action="http://shopping.lefeng.com/cart/cart.jsp" method="post" id="zjdp_freePkgForm">
+                                <input type="hidden" name="productId" id="productId" value="">
+                                <input type="hidden" name="skuId" id="skuId" value="">
+                                <input type="hidden" name="freePkgId" id="freePkgId" value="">
+                                <input type="hidden" id="process" name="process" value="add">
+                                <input type="hidden" id="quantity" name="quantity" value="1">
+                            </form>
+                            <div class="cont-right">
+                                <b>人气组合</b>
+                                <p class="price1">市场价：<del><span>￥280.5</span></del></p>
+                                <p class="price2">优惠价：<span>￥124.0</span></p>
+                                <p>可节省：<span class="price3">￥156.5</span></p>
+                                <div class="zuhe"><a class="buy" href="" target="_blank" flg="zjdp_comp" wtfg="YQGM_detail"></a>
+                                </div>
+                                <em class="pro-ico3">=</em>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="main">
+                    <div class="sidebar">
+                        <div id="qjd_img" class="qjd"><img onerror="$(&#39;#qjd_img&#39;).hide();" src="./images/685959.jpg"></div>
+                        <div class="qjd_shouquan" style="display: none;"><a class="guan"></a>
+                        <img src="./images/685959(1).jpg"></div>
+                        <a name="tabc"></a>
+                        <h3 id="buyandbuy" style="">购买该商品的用户还购买了</h3>
+                        <div>
+                            <dl>
+                                <dt><a tjurl="http://rfu.lefeng.com/1_0_007_0012_01/product/205528.html" target="_blank" href="#/product/205528.html" title="百雀羚草本亮肤补水滋养面膜22g*8片铁盒"><img src="./images/205528_0_l(1).jpg"></a>
+                                </dt>
+                                <dd class="nam"><a tjurl="http://rfu.lefeng.com/1_0_007_0012_01/product/205528.html" target="_blank" href="#/product/205528.html" title="百雀羚草本亮肤补水滋养面膜22g*8片铁盒">百雀羚草本亮肤补水滋养面膜22g*8片铁盒</a>
+                                </dd>
+                                <dd class="pri"><del class="fr mark_price">￥128.0</del><img src="./images/205528_73_24.png"></dd>
+                            </dl>
+                           
+                        </div>
+                        <h3 id="seeandbuy" style="">浏览该商品的用户最终买了</h3>
+                        <div>
+                            <dl>
+                                <dt><a tjurl="http://rfu.lefeng.com/1_0_007_0009_01/product/81406.html" target="_blank" href="./images/百雀羚草本8杯水保湿水嫩面膜22g 5_百雀羚_护肤用品_面贴膜_乐蜂网.htm" title="百雀羚草本8杯水保湿水嫩面膜22g*5"><img src="./images/81406_0_l(1).jpg"></a>
+                                </dt>
+                                <dd class="nam"><a tjurl="http://rfu.lefeng.com/1_0_007_0009_01/product/81406.html" target="_blank" href="./images/百雀羚草本8杯水保湿水嫩面膜22g 5_百雀羚_护肤用品_面贴膜_乐蜂网.htm" title="百雀羚草本8杯水保湿水嫩面膜22g*5">百雀羚草本8杯水保湿水嫩面膜22g*5</a>
+                                </dd>
+                                <dd class="pri"><span class="fr">42.1%购买</span><img src="./images/81406_73_62.png"></dd>
+                            </dl>
+                           
+                            <dl class="none">
+                                <dt><a tjurl="http://rfu.lefeng.com/1_0_007_0009_05/product/81425.html" target="_blank" href="#/product/81425.html" title="百雀羚草本水嫩倍现能量精华面膜25g*8片"><img src="./images/81425_0_l.jpg"></a>
+                                </dt>
+                                <dd class="nam"><a tjurl="http://rfu.lefeng.com/1_0_007_0009_05/product/81425.html" target="_blank" href="#/product/81425.html" title="百雀羚草本水嫩倍现能量精华面膜25g*8片">百雀羚草本水嫩倍现能量精华面膜25g*8片</a>
+                                </dd>
+                                <dd class="pri"><span class="fr">11.7%购买</span><img src="./images/81425_73_17(1).png"></dd>
+                            </dl>
+                        </div>
+                        <!-- 浏览该商品的用户还浏览了 -->
+                        <h3 id="seeandsee" style="">同类最热销商品</h3>
+                        <div>
+                            <dl>
+                                <dt><a tjurl="http://rfu.lefeng.com/1_0_007_0008_01/product/4744472.html" target="_blank" href="#/product/4744472.html" title="御泥坊红酒透亮矿物蚕丝面膜贴20片超值套装"><img src="./images/4744472_0_l.jpg"></a>
+                                </dt>
+                                <dd class="nam"><a tjurl="http://rfu.lefeng.com/1_0_007_0008_01/product/4744472.html" target="_blank" href="#/product/4744472.html" title="御泥坊红酒透亮矿物蚕丝面膜贴20片超值套装">御泥坊红酒透亮矿物蚕丝面膜贴20片超值套装</a>
+                                </dd>
+                                <dd class="pri"><del class="fr mark_price">￥629.0</del><img src="./images/4744472_73_24.png"></dd>
+                            </dl>
+                            
+                            
+                            <dl class="none">
+                                <dt><a tjurl="http://rfu.lefeng.com/1_0_007_0008_05/product/6408461.html" target="_blank" href="#/product/6408461.html" title="静佳JPlus大马士革玫瑰水润天丝面膜苗绣限量礼盒28ml*20pcs"><img src="./images/6408461_0_l.jpg"></a>
+                                </dt>
+                                <dd class="nam"><a tjurl="http://rfu.lefeng.com/1_0_007_0008_05/product/6408461.html" target="_blank" href="#/product/6408461.html" title="静佳JPlus大马士革玫瑰水润天丝面膜苗绣限量礼盒28ml*20pcs">静佳JPlus大马士革玫瑰水润天丝面膜苗绣限量礼盒28ml*20pcs</a>
+                                </dd>
+                                <dd class="pri"><del class="fr mark_price">￥238.0</del><img src="./images/6408461_73_13.png"></dd>
+                            </dl>
+                        </div>
+                        <h3 id="brandhot" style="">同品牌最热销商品</h3>
+                        <div>
+                            <dl>
+                                <dt><a tjurl="http://rfu.lefeng.com/1_0_007_0024_01/product/81406.html" target="_blank" href="./images/百雀羚草本8杯水保湿水嫩面膜22g 5_百雀羚_护肤用品_面贴膜_乐蜂网.htm" title="百雀羚草本8杯水保湿水嫩面膜22g*5"><img src="./images/81406_0_l.jpg"></a>
+                                </dt>
+                                <dd class="nam"><a tjurl="http://rfu.lefeng.com/1_0_007_0024_01/product/81406.html" target="_blank" href="./images/百雀羚草本8杯水保湿水嫩面膜22g 5_百雀羚_护肤用品_面贴膜_乐蜂网.htm" title="百雀羚草本8杯水保湿水嫩面膜22g*5">百雀羚草本8杯水保湿水嫩面膜22g*5</a>
+                                </dd>
+                                <dd class="pri"><del class="fr mark_price">￥25.0</del><img src="./images/81406_73_62(1).png"></dd>
+                            </dl>
+                            
+                            <dl class="none">
+                                <dt><a tjurl="http://rfu.lefeng.com/1_0_007_0024_05/product/207244.html" target="_blank" href="#/product/207244.html" title="百雀羚净白亮肤隔离霜35g(赠小样装 随机派送）"><img src="./images/207244_0_l.jpg"></a>
+                                </dt>
+                                <dd class="nam"><a tjurl="http://rfu.lefeng.com/1_0_007_0024_05/product/207244.html" target="_blank" href="#/product/207244.html" title="百雀羚净白亮肤隔离霜35g(赠小样装 随机派送）">百雀羚净白亮肤隔离霜35g(赠小样装 随机派送）</a>
+                                </dd>
+                                <dd class="pri"><del class="fr mark_price">￥33.0</del><img src="./images/207244_73_12.png"></dd>
+                            </dl>
+                        </div>
+                        <h3 id="interest" style="">您可能感兴趣的商品</h3>
+                        <div>
+                            <dl>
+                                <dt><a tjurl="http://rfu.lefeng.com/1_0_007_0011_01/product/208720.html" target="_blank" href="#/product/208720.html" title="Nature Republic纳益其尔(自然乐园）芦荟舒缓保湿凝胶 300ml"><img src="./images/208720_0_l.jpg"></a>
+                                </dt>
+                                <dd class="nam"><a tjurl="http://rfu.lefeng.com/1_0_007_0011_01/product/208720.html" target="_blank" href="#/product/208720.html" title="Nature Republic纳益其尔(自然乐园）芦荟舒缓保湿凝胶 300ml">Nature Republic纳益其尔(自然乐园）芦荟舒缓保湿凝胶 300ml</a>
+                                </dd>
+                                <dd class="pri"><del class="fr mark_price">￥45.0</del><img src="./images/208720_73_16.png"></dd>
+                            </dl>
+                           
+                            <dl class="none">
+                                <dt><a tjurl="http://rfu.lefeng.com/1_0_007_0011_05/product/81425.html" target="_blank" href="#/product/81425.html" title="百雀羚草本水嫩倍现能量精华面膜25g*8片"><img src="./images/81425_0_l.jpg"></a>
+                                </dt>
+                                <dd class="nam"><a tjurl="http://rfu.lefeng.com/1_0_007_0011_05/product/81425.html" target="_blank" href="#/product/81425.html" title="百雀羚草本水嫩倍现能量精华面膜25g*8片">百雀羚草本水嫩倍现能量精华面膜25g*8片</a>
+                                </dd>
+                                <dd class="pri"><del class="fr mark_price">￥75.0</del><img src="./images/81425_73_17(2).png"></dd>
+                            </dl>
+                        </div>
+                        <h3>最近浏览过的商品</h3>
+                        <div>
+                            <dl>
+                                <dt><a target="_blank" title="完美 芦荟胶40gx2支" href="#/product/122200.html" tjurl="http://rfu.lefeng.com/0_0_007_0031_01/product/122200.html"><img src="./images/122200_bg_0_l.jpg"></a>
+                                </dt>
+                                <dd class="nam"><a target="_blank" title="完美 芦荟胶40gx2支" href="#/product/122200.html" tjurl="http://rfu.lefeng.com/0_0_007_0031_01/product/122200.html">完美 芦荟胶40gx2支</a>
+                                </dd>
+                                <dd class="pri"><img src="./images/122200_73_24.png"></dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div id="detail" class="detail">
+                        <h3 class="sie">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tbody>
+                                <tr>
+                                    <td><a tag="tabc" href="#/product/81406.html###" class="startnode down">商品详情</a></td>
+                                    <td><a tag="comment" href="#/product/81406.html###">口碑评价<span>(875)</span></a></td>
+                                    <td><a tag="zixun" href="#/product/81406.html###">商品咨询<span>(55)</span></a></td>
+                                    <td><a tag="lfcn" href="#/product/81406.html###">乐蜂承诺</a></td>
+                                    <td width="216" class="addcar_tipbox"><div class="addcar_tip">
+                                        <span class="h3cararea"><a id="dh_add_car" class="add_car" href="#/product/81406.html###"><em>加入购物车</em></a>
+                                        </span>
+                                        <div class="tip3 ClearFix" style="display: none;">
+                                            <p class="tip_mes_box"></p>
+                                            <dl>
+                                                <dt>
+                                                <a href="./images/百雀羚草本8杯水保湿水嫩面膜22g 5_百雀羚_护肤用品_面贴膜_乐蜂网.htm" target="_blank">
+                                                <img width="90" height="90" src="./images/81406_bg_0_s.jpg"></a>
+                                                </dt>
+                                                <dd>
+                                                <a href="./images/百雀羚草本8杯水保湿水嫩面膜22g 5_百雀羚_护肤用品_面贴膜_乐蜂网.htm" target="_blank">百雀羚草本8杯水保湿水嫩面膜22g*5</a>
+                                                <p><img class="price" src="./images/81406_73_62.png"><del>￥25.5</del></p>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                    </div></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </h3>
+                    </div>
+                    <div id="comment" class="pj_box fl">
+                        <div class="pingjia">
+                            <h5> 口碑评价 </h5>
+                            <div class="pj_box ClearFix">
+                                <table class="hpl" border="0" cellpadding="0" cellspacing="0" width="120">
+                                    <tbody>
+                                        <tr>
+                                            <td class=""><b>90</b><span>%</span>
+                                                <br>
+                                                好评 <br>
+                                                <i><em>875</em>人评价</i>
+                                            <em style="display: none;" ascore="10" fcount="4459" praise="3"></em></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="pj_custmor ClearFix search_keyword">
+                                    <div class="custmor_right">
+                                        <h2>大家都这么说</h2>
+                                        <a href="javascript:;" param="pid=81406&amp;cateId=75&amp;pageNo=1">用着蛮有感觉的(52）<i></i></a>
+                                        <a href="javascript:;" param="pid=81406&amp;cateId=72&amp;pageNo=1">味道挺好闻(6）<i></i></a>
+                                    </div>
+                                </div>
+                                <div class="bg2">
+                                    <div class="pl_sm">
+                                        <a class="wypj" target="_blank" href="http://shopping.lefeng.com/user/user_orders.jsp?statusType=8">&nbsp;</a>
+                                        <p> 发布评价即可获得10个花粉 </p>
+                                        <p> 第一位评价用户将获得20花粉 </p>
+                                        <p>
+                                        <b class="rule">口碑报告</b>再送5元优惠券 </p>
+                                        <div style="display: none;" class="feel"> 评价100字以上并上传真实照片即有机会被评为口碑报告。 <b class="bottom"></b>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end pj_box-->
+                        </div>
+                        <!--end pingjia-->
+                        <!--tag_wm-->
+                        <div class="tag_wm wrap_tag">
+                            <ul>
+                                <li class="on" index="0">
+                                    <a href="#/product/81406.html#"><span>口碑评价(875)</span>
+                                    </a>
+                                </li>
+                                <li class="" index="1">
+                                    <a href="#/product/81406.html#"><span>好评(795)</span>
+                                    </a>
+                                </li>
+                                <li index="2">
+                                    <a href="#/product/81406.html#"><span>中评(75)</span>
+                                    </a>
+                                </li>
+                                <li index="3">
+                                    <a href="#/product/81406.html#"><span>差评(5)</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--end tag_wm-->
+                        <div class="tab_con wrap_con">
+                            <div class="pj_infor">
+                                <div class="photo ClearFix ">
+                                    <div class="pho_left"><img width="64px;" height="64px;" src="./images/0_02.jpg">
+                                        <p>43**@qq.com</p>
+                                    <span></span></div>
+                                    <div class="pho_rignt hui">
+                                        <div class="star_big">评分：<span class="xing5"></span>
+                                            <div class="koubei">2014-8-7 15:29:26</div>
+                                        </div>
+                                        <div class="pj_text"><a href="http://review.lefeng.com/reply/81406-14672642.html" target="_blank">用了几天感觉很好，很水。就是怕是不是刚开始用的效果好，之后就慢慢的不吸收了呢。我用其他的就是这样呢。</a>
+                                        </div>
+                                        <div class="infor_img ClearFix">
+                                            <p><a target="_blank" href="http://review.lefeng.com/reply/81406-14672642.html"><img src="./images/14672642-o1-a1.jpg"></a>
+                                            <a target="_blank" href="http://review.lefeng.com/reply/81406-14672642.html"><img src="./images/14672642-o2-a1.jpg"></a>
+                                            </p>
+                                            <div class="zy_bt"><span><a onclick="vote(14672642,1,this)" href="javascript:void(0);">有用<em>(0)</em></a>
+                                                <input type="hidden" value="0" id="coment_vote_14672642" name="coment_vote_14672642">
+                                                <a target="_blank" class="reply_bt" href="http://review.lefeng.com/reply/81406-14672642.html">回复<em>(0)</em></a>
+                                            </span></div>
+                                        </div>
+                                        <div class="reply_box" style="display:none;"><b></b></div>
+                                    </div>
+                                    <div class="jian3 hui2"></div>
+                                </div>
+                                <div class="photo ClearFix nokoubei">
+                                    <div class="pho_left"><img width="64px;" height="64px;" src="./images/4_02(1).jpg">
+                                        <p>41**@qq.com</p>
+                                    <span></span></div>
+                                    <div class="pho_rignt hui">
+                                        <div class="star_big">评分：<span class="xing5"></span>
+                                            <div class="koubei none2">3天前</div>
+                                        </div>
+                                        <div class="pj_text"><a href="http://review.lefeng.com/reply/81406-15034455.html" target="_blank">包装挺好，防护好，无破损，还未打开用，第一次使用，不知效果</a>
+                                        </div>
+                                        <div class="infor_img ClearFix">
+                                            <p><a target="_blank" href="http://review.lefeng.com/reply/81406-15034455.html"><img src="./images/15034455-o1-a1.jpg"></a>
+                                            </p>
+                                            <div class="zy_bt"><span><a onclick="vote(15034455,1,this)" href="javascript:void(0);">有用<em>(0)</em></a>
+                                                <input type="hidden" value="0" id="coment_vote_15034455" name="coment_vote_15034455">
+                                                <a target="_blank" class="reply_bt" href="http://review.lefeng.com/reply/81406-15034455.html">回复<em>(0)</em></a>
+                                            </span></div>
+                                        </div>
+                                        <div class="reply_box" style="display:none;"><b></b></div>
+                                    </div>
+                                    <div class="jian3 hui2"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--tab_con-->
+                        <div style="display: none;" class="tab_con search_content">
+                        </div>
+                        <div class="pl_all real_content" id="zixun">
+                            <a target="_blank" href="http://review.lefeng.com/review/81406-0-0-a-1.html" class="fR">查看全部评价(875)</a>
+                        </div>
+                        <div style="display: none;" class="pl_all search_page">
+                            <a target="_blank" href="http://review.lefeng.com/review/81406-0-0-a-1.html" class="fR">查看全部评价(875)</a>
+                            <div class="page3 search_pingjia">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ask fl zixun_content" id="zixun_content">
+                        <h5> 咨询与回复 </h5>
+                        <div class="tag_wm tag_zixun">
+                            
+                        </div>
+                        <!--tag_wm-->
+                        <div class="tab_con con_zixun">
+                            <div class="spzx" style="display: block;">
+                                <div class="wen">
+                                    <span class="fR"><em>2014-11-04 13:35:03</em>
+                                    </span>
+                                    <b><i>t***8</i> 敏感皮肤可以用吗</b>
+                                </div>
+                                <div class="da ClearFix">
+                                    <b><em class="fR">2014-11-04 13:45:33</em>小蜜蜂回复：</b>
+                                    <span>您好！由于敏感肌肤的敏感源和敏感程度有所不同，建议您敏感肌肤在使用前先在耳后和手腕部试用为佳哦。感谢您对乐蜂网的关注，祝您购物愉快！</span>
+                                </div>
+                                
+                                <div class="wen">
+                                    <span class="fR"><em>2014-10-15 16:06:03</em>
+                                    </span>
+                                    <b><i>131****9137</i> 发哪家物流公司？</b>
+                                </div>
+                                <div class="da ClearFix">
+                                    <b><em class="fR">2014-10-15 16:11:01</em>小蜜蜂回复：</b>
+                                    <span>您好！目前乐蜂网快递均为第三方合作物流，如：中通、申通、圆邦、宅急送、韵达、EMS、乐捷递、通和天下等，均由系统自动分配的。感谢您对乐蜂网的关注，祝您购物愉快！</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--tab_con-->
+                        <div class="search-data">
+                            <div class="fanhui">
+                                <span>声明：以下回复仅对提问者3天内有效，其他网友仅供参考！</span>共搜索到 <b></b>条相关咨询 <a class="lan" href="javascript:void(0);">返回</a>
+                            </div>
+                            <div class="datalist"></div>
+                        </div>
+                        <div class="wytw">
+                            <h4>
+                            <b><a class="askto" href="javascript:void(0);">我要提问</a>
+                            </b>
+                            <span><a target="_blank" href="#/goods/productQa_v4.jsp?productId=81406">查看全部咨询<em>(55)</em></a>
+                            </span>
+                            </h4>
+                            <div class="tw_box zixunpost">
+                                <i class="bottom"></i>
+                                <div class="biaodan">
+                                    <form id="questionForm" name="questionForm" action="#/goods/productQa_v4.jsp" method="post">
+                                        <input type="hidden" id="type" name="type" value="2">
+                                        <input type="hidden" id="productId" name="productId" value="81406">
+                                        <p>
+                                        <em>
+                                        <input type="radio" value="0" name="consultType">
+                                        </em>商品咨询 <em>
+                                        <input type="radio" value="1" name="consultType">
+                                        </em>配送支付 <em>
+                                        <input type="radio" value="2" name="consultType">
+                                        </em>售后服务 </p>
+                                        <div class="chengnou"> 网上支付满69元免运费，货到付款满99元免运费，其余每单10元；全国40大主力城市限时到达，超时赔付 <a href="http://www.lefeng.com/help/s_sy.html" target="_blank">查看详细</a>
+                                        </div>
+                                        <div class="tw_bt">
+                                            <a class="fR submitf"></a>
+                                            <textarea rows="" cols="" name="reMark" id="reMark" placeholod="">请输入您要咨询的问题。</textarea>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="chenggong">
+                                    <p>
+                                    <span>提交成功，小蜜蜂会尽快回复您的问题</span>您可以在 <a target="_blank" href="http://order.lefeng.com/my_lafaso.jsp">我的蜂巢</a>
+                                    查看回复结果 </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="f-service" class="f-service"><a name="lfcn"></a>
+                        <h4 class="t-lfcn">&nbsp;</h4>
+                        <ul>
+                            <li cimg="f-service-img1.jpg"><b style="background-position: 0px 0px;">&nbsp;</b>100%正品</li>
+                            <li cimg="f-service-img2.jpg"><b style="background-position: -75px 0px;">&nbsp;</b>品牌直供</li>
+                            <li cimg="f-service-img3.jpg"><b style="background-position: -148px 0px;">&nbsp;</b>严格把关</li>
+                            <li cimg="f-service-img4.png"><b style="background-position: -223px 0px;">&nbsp;</b>45天退货</li>
+                            <li cimg="f-service-img5.png"><b style="background-position: -297px 0px;">&nbsp;</b>限时到达</li>
+                            <li cimg="f-service-img6.jpg"><b style="background-position: -371px 0px;">&nbsp;</b>上门退货</li>
+                            <li cimg="f-service-img7.jpg"><b style="background-position: -446px 0px;">&nbsp;</b>美妆专家</li>
+                            <li cimg="f-service-img8.jpg"><b style="background-position: -521px 0px;">&nbsp;</b>汇聚好评</li>
+                            <li cimg="f-service-img9.jpg"><b style="background-position:-595px 0px ;">&nbsp;</b>贴心客服</li>
+                        </ul>
+                        <div class="f-service-con"><img alt="" src="./images/f-service-img1.jpg"></div>
+                    </div>
+                    <script>jQuery('#f-service ul li:not(.f-service-y)').mouseenter(function(){jQuery(this).siblings().removeClass('h').end().addClass('h').parent().next().find('img').attr('src','http://img10.imglefeng.com/images/productDetail/i/'+jQuery(this).attr('cimg'))});</script>
+                </div>
+            </div>
+        </div>
+        <script>
+        $(function(){
+        	$('#min').click(function(){
+        		var quan = $('#quantity').find('input').val();
+        		if(quan -1 <= 0){
+        			return false;
+        		}
+        		$('#quantity').find('input').val(quan - 1);
+        	})
+        	$('#max').click(function(){
+        		var quan = $('#quantity').find('input').val();
+        		$('#quantity').find('input').val(parseInt(quan) + 1);
+        	})
+        })
+        
+        // 图片替换
+        $('.spec-item a').each(function(){
+        	$(this).click(function(){
+        		// var ssimg = $(this).find('img').attr('src');
+        		var ssimg = $(this).find('img').attr('src');
+        		$(this).addClass('imgselect').siblings().removeClass('imgselect').find('img').removeClass('imgselect');
+        		// ssimg.addClass('imgselect').parent().siblings().find('img').removeClass('imgselect');
+        		$('#juzoom').attr('src',ssimg);
+        		$('#juzoom').attr('data-big',ssimg);
+        		$('#zoomimg').css('background-image','url('+ssimg+')')
+        		// $('#zoomimg').attr('ssimg','123')
+        	})
+        })
+        //放大镜
+        $("#juzoom").mlens({
+			imgSrc: $("#juzoom").attr("data-big"),
+ 			lensShape: "circle",
+			lensSize: 200,
+			borderSize: 1,
+			borderColor: "#fff"
+		})
+        </script>
+<!-- 主体部分结束 -->
+</block>

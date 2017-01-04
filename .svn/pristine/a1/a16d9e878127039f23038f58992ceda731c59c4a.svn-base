@@ -1,0 +1,10 @@
+<?php
+namespace Home\Controller;
+
+class ProductController extends CommonController{
+	public function index(){
+		// echo 'product';
+		// var_dump($_SESSION);
+		$this -> display();
+	}
+}

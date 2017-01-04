@@ -1,0 +1,110 @@
+<?php
+	namespace Home\Controller;
+	use Think\Controller;
+	class ForgetpwdController extends Controller{
+		public function index(){
+			$this ->display();
+		}
+
+		public function checkpwd(){
+			$useremail = $_POST['user_email'];
+			$user = M('user');
+			$where['user_email'] = $useremail;
+			$users = $user -> where($where) -> find();
+			// $data['url']=U('Forgetpwd/checkTwice');
+			$data['question']=$users['user_question'];
+			
+			// var_dump($data);
+			if(isset($_POST['answer'])){
+				if($_POST['answer']==$users['user_answer']){
+					$this ->ajaxReturn(true);
+				}else{
+					$this ->ajaxReturn(false);
+				}
+
+				exit;
+			}
+			if($users){
+				$this -> ajaxReturn($data);
+			}else{
+				$this -> ajaxReturn($data);
+			}
+		}
+
+
+		public function checkTwice(){
+			$user = M('user');
+			// var_dump($_POST);exit;
+			$answer = $_POST['data'];
+			$where['user_email'] = $_POST['emails'];
+			$users = $user -> where($where) -> find();
+			// var_dump($users);exit;
+
+			if(isset($_POST['data'])){
+				if($_POST['data']==$users['user_answer']){
+					$this ->ajaxReturn(true);
+				}else{
+					$this ->ajaxReturn(false);
+				}
+
+				exit;
+			}
+		}
+		public function checkThird(){
+			$user = M('user');
+			$useremail = $_POST['email'];
+			$userpass['user_pwd'] = md5($_POST['password']);
+			$where['user_email'] = $useremail;
+
+			$result = $user->where($where)->save($userpass);
+			if($result){
+				$users = $user ->where($where)->find();
+				$_SESSION['user']=$users;
+				$_SESSION['user']['user_pwd']=null;
+
+				$this ->ajaxReturn(true);
+			}else{
+				$this ->ajaxReturn(false);
+			}
+
+		}
+
+		// 检查用户邮箱是否存在
+		public function checkEmail(){
+			// var_dump($_POST);
+			$user = M('user');
+			$useremail = $_POST['emails'];
+			$where['user_email']=$useremail;
+			$users = $user -> where($where)->find();
+			if($users){
+				$this->ajaxReturn(true);
+			}else{
+				$this->ajaxReturn(false);
+			}
+		}
+
+		public function vcode(){
+			$Verify = new \Think\Verify();
+			$Verify->fontSize = 15;
+			$Verify->fontttf = '5.ttf'; 
+			$Verify->length   = 4;
+			$Verify->useNoise = false;
+			$Verify->entry();
+		}
+
+		function check_verify($code, $id = ''){
+		    $verify = new \Think\Verify();
+		        return $verify->check($code, $id);
+		    }
+
+
+		public function checkVcode(){
+			$code = $_POST['vcode'];
+			if($this->check_verify($code)){
+				$this -> ajaxReturn(true);
+			}else{
+				$this -> ajaxReturn(false);
+			}
+		}
+	}
+

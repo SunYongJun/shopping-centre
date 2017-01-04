@@ -1,0 +1,1 @@
+a:8:{i:0;s:2:"id";i:1;s:3:"pid";i:2;s:8:"shop_pid";i:3;s:9:"type_name";i:4;s:10:"type_order";i:5;s:7:"is_show";s:3:"_pk";s:2:"id";s:5:"_type";a:6:{s:2:"id";s:7:"int(11)";s:3:"pid";s:7:"int(11)";s:8:"shop_pid";s:12:"varchar(100)";s:9:"type_name";s:11:"varchar(50)";s:10:"type_order";s:10:"tinyint(4)";s:7:"is_show";s:10:"tinyint(4)";}}

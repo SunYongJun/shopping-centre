@@ -1,0 +1,296 @@
+<extend name="Public:layout" />
+<block name="cssjs">
+    <!-- <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/fengchao.css">
+    -->
+    <!-- <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/bootstrap.min.css">
+    -->
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/personal.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/home_v2.css">
+
+    <script src="__PUBLIC__/uploadify/jquery.uploadify.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/uploadify/uploadify.css"></block>
+<!--header-->
+<!--头部结束-->
+<block name="main">
+    <div class="mainBg">
+        <div class="main clearfix">
+            {:W('Menu/Centers')}
+            <div class="content">
+                <div class="pn-top-nav">
+                    <h1 class="clearfix">
+                        <span>个人资料设置</span>
+                    </h1>
+                    <div class="pn-top-btn clearfix">
+                        <div class="pn-top-btnbox lf-fl">
+                            <a href="#" class="on">详细资料</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="pn-article" id="pnArticle">
+                    <form action="inform_doit" method="post" name="user" id="useruser" enctype="multipart/form-data">
+
+                        <dl class="clearfix">
+                            <dt>
+                                <cite>*</cite>
+                                邮箱地址：
+                            </dt>
+                            <dd>
+                                <input class="pn-input pn-input-auto pn-input-nobd" maxlength="35" value="{$user.user_email}"  type="text" name="useremail" disabled="disabled">
+                                <input maxlength="35" name="user_email" value="{$user.user_email}" type="hidden">
+                                <a href="">验证</a>
+                                <span class="lf-showerr" style="opacity: 1;display : none;"></span>
+                            </dd>
+                        </dl>
+                        <dl class="clearfix">
+                            <dt>
+                                <cite></cite>
+                                手机号码：
+                            </dt>
+                            <dd>
+                                <input class="pn-input" name="user_phone" maxlength="11" id="mobile" type="text"  value="{$user.user_phone}">
+                                <!--   <a href="#" id="checkThis">验证</a>
+                            -->
+                            <span style="opacity: 1;display : none;" class="lf-showerr"></span>
+                            <span class="lf-showerr" style="opacity: 1;display : none;"></span>
+                        </dd>
+                    </dl>
+
+                    <dl class="clearfix">
+                        <dt>
+                            <cite></cite>
+                            昵称：
+                        </dt>
+                        <dd>
+                            <input class="pn-input" name="user_alias" maxlength="14" type="text" value="{$user.user_alias}">
+                            <span style="opacity: 1;display : none;" class="lf-showerr"></span>
+                            <span class="lf-showerr" style="opacity: 1;display : none;"></span>
+                        </dd>
+                    </dl>
+                    <!-- dl class="clearfix">
+                    <dt>姓名：</dt>
+                    <dd>
+                        <input class="pn-input" id="username" name="username" maxlength="12" type="text">
+                        <span class="lf-showerr" style="opacity: 1;display : none;"></span>
+                    </dd>
+                </dl>
+                -->
+                <dl class="clearfix">
+                    <dt>性别：</dt>
+                    <dd>
+                        &nbsp;&nbsp;&nbsp;
+                        <input name="user_sex" value="男" type="radio" <if condition="$user['user_sex'] eq 1">checked</if>
+                    >男&nbsp;&nbsp;&nbsp;
+                    <input name="user_sex" value="女" type="radio" <if condition="$user['user_sex'] neq 1">checked</if>
+                >女
+            </dd>
+        </dl>
+        <dl class="clearfix">
+            <dt>
+                <cite></cite>
+                提问问题：
+            </dt>
+            <dd>
+                <input class="pn-input" name="user_question" maxlength="50" type="text" value="">
+                <span style="opacity: 1;">用于找回密码(推荐设置)</span>
+                <span class="lf-showerr" style="opacity: 1;display : none;"></span>
+
+            </dd>
+        </dl>
+        <dl class="clearfix">
+            <dt>
+                <cite></cite>
+                设定答案：
+            </dt>
+            <dd>
+                <input class="pn-input" name="user_answer" maxlength="50" type="text" value="">
+                <span style="opacity: 1";>用于找回密码(推荐设置)</span>
+                <span class="lf-showerr" style="opacity: 1;display : none;"></span>
+            </dd>
+        </dl>
+        <dl style="width:350px;clear:both;margin-left:180px;padding:20px 0 0px 40px;">
+            <div class="col-sm-3">
+
+                <!-- uploadify上传插件 -->
+                <div id="imgs" style="width:100px">
+                    <img src="__PUBLIC__/{$user.user_pic}" height="100" width="100px" id="change" style="margin-left:10px"></div>
+
+                <input id="file_upload" name="user_pic" type="file" multiple="true" value="" />
+                <!-- uploadify上传插件 -->
+                <input type="hidden" value="" id="uplogo" name="user_pic"></div>
+            <!-- 上传的图片地址放到这里面 -->
+
+            <!-- </div>--></dl>
+
+        <dl class="clearfix">
+            <dt>生日：</dt>
+            <dd class="clearfix">
+                <input name="user_birth" class="birthday" value="" id="birthday" type="hidden">
+                <div style="position: relative; z-index: 1;" class="lf-select">
+                    <select id="year" name="aa">
+                        <option value="0">请选择</option>
+                    </select>
+                    <input value="{$user['user_birth']|date='Y',###}年" define="请选择" autocomplete="off" type="text" name="birth_year">
+                    <ul style="display: none; z-index: 10; width: 92px; top: 31px;">
+                        <li>
+                            <a href="javascript:void(0);" class="on">请选择</a>
+                        </li>
+                    </ul>
+                </div>
+                <div style="position: static; z-index: 0;" class="lf-select">
+                    <select id="month">
+                        <option value="0">请选择</option>
+                    </select>
+                    <input value="{$user['user_birth']|date='m',###}月" define="请选择" autocomplete="off" type="text" name="birth_month">
+                    <ul style="display: none; z-index: 0; width: 92px; top: 31px;">
+                        <li>
+                            <a href="javascript:void(0);" class="on">请选择</a>
+                        </li>
+                    </ul>
+                </div>
+                <div style="position: static; z-index: 0;" class="lf-select">
+                    <select id="day">
+                        <option value="0">请选择</option>
+                    </select>
+               
+                <input value="{$user['user_birth']|date='d',###}日" define="请选择" autocomplete="off" type="text" name="birth_day">
+                <ul style="display: none; z-index: 0; width: 92px; top: 31px;">
+                    <li id="uday">
+                        <a href="javascript:void(0);" class="on">请选择</a>
+                    </li>
+                </ul>
+            </div>
+        </dd>
+    </dl>
+    <div class="clear"></div>
+
+    <dl class="clearfix">
+        <dt>&nbsp;</dt>
+        <dd>
+            <input id="fasong" value="保存" class="pn-submit" type="button" ></dd>
+    </dl>
+</form>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+    $(function(){
+        $('#fasong').bind('click',function(){
+            $.ajax({
+            url:'__CONTROLLER__/inform_doit',
+            type:'post',
+            data:$('#useruser').serialize(),
+            success:function(data){
+                if(data['status']==1){
+                    // console.log(data);
+                    location.href=data.url; 
+                }else if(data['status']==0){
+
+                    location.reload(true);
+                }
+            }
+        })
+        })
+
+                // 图片上传插件
+        var img = '';
+        // alert('{:U("Flink/myupload")}');
+        $('#file_upload').click(function(){
+            $('#change').hide();
+        })
+        $('#file_upload').uploadify({
+            'swf' : '__PUBLIC__/uploadify/uploadify.swf',
+            'uploader' : '__CONTROLLER__/myupload',
+            'buttonText' : '更换头像',
+            'onUploadSuccess' : function(file, data, response) {
+                console.log(data)
+                img = "<img height='100px' src='__PUBLIC__/"+data+"'>";
+                $('#imgs').html(img);
+                $('#uplogo').val(data);
+            }
+        });
+        
+    })
+
+//生日
+    $(function() {
+        //生成年份
+        for(var i=1954;i<2015;i++) {
+           $('#year').append('<option value="'+i+'">'+i+'年</option>');
+           $('#year').next().next('ul').children('li').append('<a href="javascript:void(0);" value="'+i+'年">'+i+'年</a>');
+        }
+        //生成月份
+        for(var i=1;i<13;i++) {
+            if(i<10){
+                i = '0'+i;
+            }
+           $('#month').append('<option value="'+i+'">'+i+'月</option>');
+           $('#month').next().next('ul').children('li').append('<a href="javascript:void(0);" value="'+i+'月">'+i+'月</a>');
+        }
+      var birthday = '';
+        $('input[autocomplete="off"]').bind('click',function() {
+            $('.lf-select').children('ul').hide();
+           $(this).parent().children('ul').show();
+           // console.log($(this));
+        })
+        $('.lf-select').children('ul').children('li').children('a').bind('click',function() {
+
+            var va = $(this).attr('value');
+            var reg = /[年月日]/;
+        
+            $(this).parent().parent().prev('input').val($(this).attr('value')); 
+                 
+            $(this).parent().parent().hide();         
+          
+
+             //生成日期
+             $('#day').next().next('ul').children('li').children().remove();
+             var dac = $('#month').next('input').val().replace(reg,'');
+             var yec = $('#year').next('input').val().replace(reg,'');
+             yec = parseInt(yec);
+
+             if(dac == '01' || dac == '03' || dac == '05' || dac == '07' || dac == '08' || dac == '10' || dac == '12' ){
+                var daym = 31;
+             }else if(dac == '02') {
+                if(yec%4 == 0){
+                    var daym = 29;
+                }else{
+                    var daym = 28;
+                }
+                
+             }else{
+                var daym = 30;
+             }     
+            for(var i=1;i<=daym;i++) {
+                if(i<10) {
+                    i = '0' + i;
+                }
+                   $('#day').append('<option value="'+i+'">'+i+'日</option>');
+                   $('#day').next().next('ul').children('li').append('<a href="javascript:void(0);" value="'+i+'日">'+i+'日</a>');
+             }
+
+             var byear = $('input[name="birth_year"]').val().replace(reg,'');
+             var bmon = $('input[name="birth_month"]').val().replace(reg,'');
+             birthday = byear+bmon;
+             $('#birthday').val(birthday); 
+        })
+
+        //绑定日期时间
+        $('#uday').delegate('a','click',function() {
+             $(this).parent().parent().prev('input').val($(this).attr('value')); 
+                 
+            $(this).parent().parent().hide();      
+              var reg = /[年月日]/;
+              var byear = $('input[name="birth_year"]').val().replace(reg,'');
+             var bmon = $('input[name="birth_month"]').val().replace(reg,'');
+             var bday = $('input[name="birth_day"]').val().replace(reg,'');
+           
+             birthday = byear+bmon+bday;
+             $('#birthday').val(birthday); 
+        })
+
+    })
+</script>
+</block>

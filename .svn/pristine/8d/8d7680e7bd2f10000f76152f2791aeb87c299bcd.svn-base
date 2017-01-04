@@ -1,0 +1,95 @@
+<?php 
+namespace Home\Controller;
+
+	class CenterController extends CommonController{
+		public function index(){
+			// var_dump($_SESSION['user']);
+			$users = $_SESSION['user'];
+			$this -> assign('user',$users);
+			$this -> display();
+		}
+
+		// 
+		public function myBonus(){
+			$this -> display();
+		}
+		// 我的订单
+		public function order(){
+			$this -> display();
+		}
+
+		// 我的花粉
+		public function myCoin(){
+			$user = $_SESSION['user'];
+			$this -> assign('user',$user);
+			$this -> display();
+		}
+		// 账户安全设置
+		public function safe(){
+			$user = $_SESSION['user'];
+			$this -> assign('user',$user);
+			$this -> display();
+		}
+		// 地址管理
+		public function address(){
+			$this -> display();
+		}
+
+		// 我的投诉
+		public function complain(){
+			$this -> display();
+		}
+		// 我的咨询 回复
+		public function reply(){
+			$this -> display();
+		}
+
+		public function inform(){
+			$user = $_SESSION['user'];
+			$this -> assign('user',$user);
+			$this -> display();
+		}
+		public function inform_doit(){
+			// 
+			if(IS_AJAX){
+				// var_dump($_POST);
+				$id = $_SESSION['user']['id'];
+				$user = D('user');
+				$data = $_POST;
+				if(!$user->create($data)){
+					exit($user->getError());
+				}else{
+					$map = 'id='.$id;
+					$r = $user->where($map)->save();
+					if($r){
+						$datas['status']=1;
+						$datas['content']='修改成功';
+						$datas['url'] = U('Center/index');
+
+						// $_SESSION['user']=;
+						// var_dump($r);
+						$rr = $user->find($id);
+						
+						$_SESSION['user'] = $rr;
+					}else{
+						$datas['status']=0;
+						$datas['content']='修改失败';
+
+					}
+
+				}
+				$this -> ajaxReturn($datas);
+			}
+		}
+		public function changepwd(){
+			$this -> display();
+
+		}
+
+
+
+
+
+
+	}
+ ?>

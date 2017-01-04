@@ -1,0 +1,144 @@
+<?php
+/*
+*   文章的增删改查
+*   Article/index   先是文章列表
+*   Article/add、Article/insert     添加文章
+*   Article/edit、Article/save   修改文章
+*   Article/del、Article/delall  删除文章
+*   $author 蒋永忠
+*/
+
+namespace Admin\Controller;
+class ArticleController extends CommonController{
+    /*
+    *   文章列表
+    */
+	public function index(){
+        // 分配左侧菜单样式变量
+        $this -> assign('menu','Article');
+        $this -> assign('menuList','Articleindex');
+        // 搜索条件
+        if(I('get.keywords')){
+            $keyword = I('get.keywords');
+        }else{
+            $keyword = '';
+        }
+        $map['article.article_title'] = array('like',"%".$keyword."%");
+
+        $model = M('article');
+        // 查询满足要求的总记录数
+        $count = $model -> table('le_article_type type, le_article article') 
+        -> where('type.id = article.article_type') 
+        -> where($map)
+        -> count();
+        
+        // 调用自定义的分页
+        $mypage = $this -> mypage($count,8);
+
+        $list = $model -> table('le_article_type type, le_article article') 
+        -> where('type.id = article.article_type') 
+        -> where($map)
+        -> field('type.article_type_name,article.*')
+        -> limit($mypage->firstRow.','.$mypage->listRows)
+        ->select();
+        foreach($list as &$v){
+            $user = M('admin_user') -> where('id='.$v['article_author']) -> field('admin_name') -> find();
+            $v['user'] = $user['admin_name'];
+        }
+
+        $show = $mypage->show();// 分页显示输出
+        $this->assign('list',$list);// 赋值数据集
+        $this->assign('page',$show);// 赋值分页输出
+        $this -> display();
+	}
+    /*
+    *   添加文章
+    */
+	public function add(){
+        // 分配左侧菜单样式变量
+        $this -> assign('menu','Article');
+        $this -> assign('menuList','Articleadd');
+
+		$type = M('article_type');
+		$type = $type -> field('id,article_type_name') -> select();
+		$this -> assign('type',$type);
+		$this -> display();
+	}
+
+    /*
+    *   插入添加文章数据
+    */
+	public function insert(){
+        // 文章添加时间
+        $_POST['article_time'] = time();
+        // // 文章作者id，当前登录用户的id
+        $_POST['article_author'] = session('admin.id');
+        $m = M('article');
+        
+        if($m->data($_POST)->add()){
+            $this -> success('添加成功！','index',1);
+        }else{
+            $this -> error('添加失败！','index');
+            // echo '失败';
+        }  
+	}
+
+    /*
+    *   删除文章，返回数据共Ajax处理
+    */
+    public function del(){
+        $m = M(CONTROLLER_NAME);
+        if($m -> where('id='.I('post.id')) -> delete()){
+            echo 1;
+        }else{
+            echo 0;
+        }
+    } 
+    /*
+    *   修改文章
+    */
+    public function edit(){
+        // 分配左侧菜单样式变量
+        $this -> assign('menu','Article');
+        
+        $id = $_GET['id'];
+        $m = M(CONTROLLER_NAME);
+        $article = $m -> find($id);
+
+        $type = M('article_type');
+        $type = $type -> field('id,article_type_name') -> select();
+
+        $this -> assign('type',$type);
+        $this -> assign('show',$article); 
+        $this -> display();
+    }
+
+    /*
+    *   修改文章，跳转文章列表
+    */
+    public function save(){
+       
+        $m = M(CONTROLLER_NAME);
+        $m -> create();
+        if($m->save()){
+            $this -> success('修改成功！','index',1);
+        }else{
+            $this -> error('修改失败！');
+        }
+    }
+    /*
+    *   批量删除文章
+    */
+    public function delall(){
+        if(IS_AJAX){
+            $ids = I('post.id');
+            $ids = implode(',', $ids);
+            $m = M(CONTROLLER_NAME);
+            if($m -> delete($ids)){
+                echo 1;
+            }else{
+                echo 0;
+            }
+        }
+    }
+}

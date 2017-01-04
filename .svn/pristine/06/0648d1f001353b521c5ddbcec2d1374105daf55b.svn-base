@@ -1,0 +1,126 @@
+<?php
+namespace Admin\Controller;
+
+class ArticleTypeController extends CommonController{
+	public function index(){
+		// 分配左侧菜单样式变量
+        $this -> assign('menu','Article');
+        $this -> assign('menuList','ArticleTypeindex');
+
+		$m = M(CONTROLLER_NAME);
+		// 搜索条件
+		if(I('get.keywords')){
+			$keyword = I('get.keywords');
+			$keyword = "article_type_name like '%".$keyword."%'";
+		}else{
+			$keyword = '';
+		}
+		
+		$count = $m -> where($keyword) -> count();// 查询满足要求的总记录数
+
+		// 调用自定义的分页
+		$mypage = $this -> mypage($count,8);
+
+		// 进行分页数据查询 注意limit方法的参数要使用Page类的属性
+		$list = $m-> where($keyword)->order('id desc')->limit($mypage->firstRow.','.$mypage->listRows)->select();
+		$show = $mypage->show();// 分页显示输出
+		$this->assign('list',$list);// 赋值数据集
+		$this->assign('page',$show);// 赋值分页输出
+		$this -> display();
+	}
+
+	public function add(){
+		// 分配左侧菜单样式变量
+        $this -> assign('menu','Article');
+        $this -> assign('menuList','ArticleTypeindex');
+        
+		$this -> display();
+	}
+
+	Public function insert(){
+		$m = M(CONTROLLER_NAME);
+		if(IS_POST){
+			if(I('post.is_show')){
+				$_POST['is_show'] = 1;
+			}else{
+				$_POST['is_show'] = 0;
+			}
+			if(I('post.article_type_name') == null || !I('post.article_order') == null){
+				echo 0;
+				exit;
+			}
+			$m -> create();
+			if($m -> add()){
+				// $this -> success('添加成功！',U('ArticleType/index'),1);
+				echo 1;
+			}else{
+				// $this -> error('添加失败！',U('ArticleType/add'),1);
+				echo 0;
+			}
+		}
+	}
+
+	public function del(){
+		$m = M(CONTROLLER_NAME);
+		$a = M('article');
+		$id = $_POST['id'];
+		if($id){
+			if($m -> delete($id)){
+				if($a -> where('article_type='.$id) -> delete()){
+					echo 1;
+				}else{
+					echo 0;
+				}
+			}else{
+				echo 0;
+			}
+		}else{
+			echo 0;
+		}
+	} 
+
+	public function edit(){
+		// 分配左侧菜单样式变量
+        $this -> assign('menu','ArticleType');
+
+		$id = 'id='.I('get.id');
+		$m = M(CONTROLLER_NAME);
+		$type = $m -> where($id) -> find();
+		$this -> assign('type',$type); 
+		$this -> display();
+	}
+
+	Public function save(){
+		$m = M(CONTROLLER_NAME);
+		if(IS_AJAX){
+			$m -> create();
+			if($m -> save()){
+				echo 1;
+			}else{
+				echo 0;
+			}
+		}else{
+			echo 0;
+		}
+		 
+	}
+
+	public function delall(){
+		if(IS_AJAX){
+			$ids = $_POST['id'];
+			$ids = implode(',', $ids);
+			$m = M(CONTROLLER_NAME);
+			$a = M('article');
+			if($ids){
+				if($m -> delete($ids)){
+					if($a -> where(array('article_type'=>array('in',$ids))) -> delete()){
+						echo 1;
+					}
+				}else{
+					echo 0;
+				}
+			}
+			
+		}
+	}
+}

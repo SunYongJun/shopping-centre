@@ -1,0 +1,100 @@
+<?php
+namespace Admin\Controller;
+
+class ShopTypeController extends CommonController{
+	public function index(){
+		$type =  M('shop_type');
+		$data = $type->select();
+		foreach($data as $k=>$v) {
+			$map['id'] = array('eq',$data[$k]['pid']);
+			$result = $type -> field('type_name') ->where($map) -> select();
+			// print_r($result);
+			if(!empty($result)){
+				$data[$k]['pname'] = $result[0]['type_name'];
+			}else{
+				$data[$k]['pname'] = '顶级分类';
+			}
+		}		
+		$this->assign('type',$data);
+		// print_r($data);exit;
+		$this -> display();
+	}
+
+	public function add() {
+		$type =  M('shop_type');
+		$data = $type->select();
+		$this->assign('type',$data);
+
+		$this -> display();
+	}
+
+	public function edit() {
+		$type = M('shop_type');
+		//查询父类信息
+		$pdata = $type->select();
+		$this->assign('pdata',$pdata);
+		// print_r($pdata);
+		//查询该ID信息
+		$map['id'] = array('eq',$_GET['id']);
+		$iddata = $type->where($map)->select();
+		
+		$this->assign('iddata',$iddata[0]);
+		$this->display();
+	}
+
+	public function insert() {	
+
+		if(IS_POST) {			
+			print_r($_POST);
+			$type =  M('shop_type');
+			$data = $_POST;
+			$pid = $_POST['shop_pid'];
+			if($pid == ''){
+				$data['shop_pid'] = '0';
+			}else{
+				$pdata = $type->query("SELECT CONCAT(shop_pid,'-',id) AS p FROM le_shop_type WHERE id=$pid");
+				$data['shop_pid'] = $pdata[0]['p'];			
+			}
+			print_r($data);
+			$type -> create($data);
+
+			if($result = $type->add()){
+				
+				$this->success('添加成功');
+			}else{
+				$this->error('添加失败');
+			}
+		}
+	}
+
+	public function delete() {
+		if(IS_GET) {
+			$map['id'] = array('eq',$_GET['id']);
+			$user = M('shop_type');
+			if($user-> where($map) -> delete()){
+				$this->success('删除成功');
+			}else{
+				$this->error('删除失败');
+			}
+		}
+	}
+
+	public function save() {
+		if(IS_POST){
+			$data = M(CONTROLLER_NAME);
+			$map['id'] = array('eq',$_POST['pid']);
+			$datap = $data->where($map)->select();
+			$pdata = $_POST;
+			$pdata['shop_pid'] = $datap[0]['shop_pid'].'-'.$datap[0]['id'];
+			// print_r($_POST);
+			// print_r($datap);exit;
+			$data->create($pdata);
+			if($data->save()) {
+				$this->success('修改成功',U('ShopType/index'));
+			}else{
+				$this->error('修改失败');
+			}
+		}
+	}
+
+}

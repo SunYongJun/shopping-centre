@@ -1,0 +1,50 @@
+<?php
+namespace Home\Controller;
+
+class CartController extends CommonController{
+	public function index(){
+		$this -> display();
+	}
+
+	public function add() {
+		if($_GET['id']){
+			if(empty($_SESSION['cart'][$_GET['id']])) {
+			$carts = M('goods');
+			$cart = $carts->find($_GET['id']);
+			$_SESSION['cart'][$_GET['id']] = $cart;
+			$_SESSION['cart'][$_GET['id']]['num'] = 1;
+			}else{
+				$_SESSION['cart'][$_GET['id']]['num']++;
+			}
+			$data['status'] = 1;
+			$data['content'] = '加入购物车成功';
+		}else{
+			$data['status'] = 0;
+			$data['content'] = '加入购物车失败';
+		}
+		$this->ajaxReturn($data);
+	}
+
+	public function minus() {
+		if($_POST['id']){
+			if($_SESSION['cart'][$_POST['id']]['num'] > 1){
+				$_SESSION['cart'][$_POST['id']]['num']--;
+			}
+			$this->ajaxReturn($_SESSION['cart'][$_POST['id']]['num']);
+		}
+	}
+
+	public function plur() {
+		if($_POST['id']){
+			$_SESSION['cart'][$_POST['id']]['num']++;
+			$this->ajaxReturn($_SESSION['cart'][$_POST['id']]['num']);
+		}
+	}
+
+	public function delete() {
+		if($_GET['id']){
+			unset($_SESSION['cart'][$_GET['id']]);
+			$this->success('移除成功');
+		}
+	}
+}

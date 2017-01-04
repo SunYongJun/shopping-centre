@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title><block name="title">乐蜂网</block></title>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/home.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/mylefeng.css">
+    <link href="__PUBLIC__/home/css/bus.css" rel="stylesheet" type="text/css" class="lefeng-lazy" charset="utf-8">
+    <script src="__PUBLIC__/home/js/jquery-1.6.4.min.js"></script>
+    <script src="__PUBLIC__/home/js/mylefeng.js"></script>
+    <block name="cssjs">
+    </block>
+</head>
+<body class="Wmin new">
+<block name="head">   
+<!-- header 开始 -->
+<div class="Chead">
+        <div class="Chead-info" id="Chead_info">
+            <div class="Chead-info-box">
+                <a id="Chead_app" class="Chead-app" href="#" target="_blank" rel="nofollow">手机乐蜂</a>
+                <div class="Chead-appDown" style="display: none;">
+                    <div>
+                        <img src="__PUBLIC__/home/images/xz_icon_for_lf.jpg" width="112" height="112">
+                        <h6><b class="i1"></b><b class="i2"></b>客户端</h6>
+                        <a href="#" target="_blank" rel="nofollow">立即下载 </a>
+                    </div>
+                    <span class="fast-nav turl" style="color: rgb(102, 102, 102);"><a class="Chead-app" href="#" target="_blank" rel="nofollow">手机乐蜂</a></span>
+                </div>
+                <span id="Chead_save" class="Chead-save" style="color: rgb(102, 102, 102);">收藏乐蜂</span>
+                <span id="Chead_fastnav" class="fast-nav turl" style="color: rgb(102, 102, 102);">快速导航<i></i></span>
+                <div class="Chead-floatmenu" style="display: none;">
+                    <div>
+                        <a href="#" rel="nofollow">礼品卡</a>
+                        <a href="#" rel="nofollow">帮助中心</a>
+                        <a href="#" rel="nofollow">乐蜂校园</a>
+                        <a href="#" rel="nofollow">推荐好友</a>
+                        <a href="#" rel="nofollow">猜你喜欢</a>
+                        <a href="#" rel="nofollow">合作专区</a>
+                        <a href="#" rel="nofollow">清仓打折</a>
+                    </div>
+                    <span class="fast-nav turl" style="color: rgb(102, 102, 102);">快速导航<i></i></span>
+                </div>
+                <a class="turl" href="#" target="_blank" id="fxbmain" style="color: rgb(102, 102, 102);">蜂向标社区<i></i></a>
+                <div class="Chead-fxb" style="display: none;">
+                    <a class="turl" href="#" target="_blank" style="color: rgb(102, 102, 102);">蜂向标社区<i></i></a>
+                    <a href="#" target="_blank" rel="nofollow">达人</a>
+                    <a href="#" target="_blank" rel="nofollow">试用</a>
+                    <a href="#" target="_blank" rel="nofollow">口碑</a>
+                    <a href="#" target="_blank" rel="nofollow">逛街</a>
+                    <a href="#" target="_blank" rel="nofollow">美丽俏佳人</a>
+                </div>
+                <a class="turl" href="#" id="Chuafen" style="color: rgb(102, 102, 102);">花粉商城</a>
+                <a class="turl" id="Chead_myhome_btn" href="#" style="color: rgb(102, 102, 102);">我的订单<i></i></a>
+                <div class="Chead-myhome" style="display: none;">
+                    <a class="turl" href="#" style="color: rgb(102, 102, 102);">我的订单<i></i></a>
+                    <a href="#" rel="nofollow">我的蜂巢</a>
+                    <a href="#" rel="nofollow">我的优惠券</a>
+                    <a href="#" rel="nofollow">我的花粉</a>
+                    <a href="#" rel="nofollow">我的收藏</a>
+                    <a href="#" rel="nofollow">我的评价</a>
+                    <a href="#" rel="nofollow">0元抽奖</a>
+                </div>
+                <span class="Chead-welcome" id="Cheadlogin">欢迎来到乐蜂，请&nbsp;
+                    <a href="#">登录</a>&nbsp;<a href="#">免费注册</a>
+                </span>
+                送货到<a href="#" class="areaSellBtn">欢迎欢迎</a>
+            </div>
+        </div>
+        
+        <div class="chead-bk">
+			<a href="#" target="_blank"><dl class="b1"></dl></a>
+			<a href="#" target="_blank"><dl class="b2"></dl></a>
+			<a href="#" target="_blank"><dl class="b3"></dl></a>
+		</div>
+        
+
+		<!--购物车 s-->
+        <div class="Chead-info-box">
+            <div class="Chead-shopping" id="Chead-shopping">
+                <div class="shopping-btn" onclick="#">
+                    <strong id="cartbuy">0</strong>
+                </div>
+                <div class="shopping-list" id="shopping_list" style="display: none;">
+                    <div class="shopping-list-title"><strong>0</strong></div>
+                    <!-- 没有商品显示这个 -->
+                    <!-- <div class="shopping-list-pro noshop"><i></i><b></b>您的购物车还没有商品，<br>赶紧去选购吧！</div> -->
+                    <!-- 没有商品显示这个结束 -->
+                    <!-- 有商品显示这个 读取session的数据-->
+                    <div class="shopping-list-pro">
+                        <i></i>
+                        <div class="shopping-list-bar" id="shopping_list_info">
+                            <dl>
+                                <dt>
+                                    <a href="#" target="_blank" title="自然奇迹 玫瑰晶皙花水450ml">
+                                        <img src="http://img3.imglefeng.com/images/product/000/000/004/064/462/4064462_0_s.jpg">
+                                    </a>
+                                </dt>
+                                <dd class="shopping-pro">
+                                    <a href="#" target="_blank">自然奇迹 玫瑰晶皙花水450ml
+                                    </a>
+                                </dd>
+                                <dd class="shopping-price">
+                                    <em>￥109.00</em>×1
+                                    <a href="###" onclick="fillCartObj.delCartItem('4194904_0_0_0_0___0_0',-1);">删除</a>
+                                </dd>
+                            </dl>
+                        </div>
+                        <p>共<b>1</b>件商品</p>
+                        <p>
+                            <span>共计：<b>
+                            <em>￥</em>109</b>
+                            </span>
+                        </p>
+                        <a class="goshopping" href="#">去购物车结算</a>
+                    </div>
+                    <!-- 有商品显示这个结束 -->
+                </div>
+            </div>
+        </div>
+
+        <div class="Chead-logo"><a href="#"></a></div>
+        <div class="Cnav-main" id="Cnav_main">
+            <div class="Chead-info-box">
+                <!--navone s-->
+
+                <!-- 搜索框 -->
+                <div id="Chead_search_t" class="Chead-search-t">
+                    <div class="search-input-t">
+                        <strong id="search-submit-t" class="search-submit-t" onclick="去搜索"></strong>
+                        <input id="search-t" val="" autocomplete="off" name="search" value="输入商品名" type="text">
+                    </div>
+                    <!-- 搜索的下拉列表 -->
+                    <div id="auto-t" class="searchtip-t" style="display: none;">
+                        <span>&nbsp;</span>
+                        <strong>蜂友最爱搜</strong>
+                        <div>
+                            <ul id="searchLi0" class="">
+                                <li class="r"><b>159</b>件商品</li>
+                                <li class="l"><a href="">资生堂</a></li>
+                            </ul>
+                            <ul id="searchLi1" class="">
+                                <li class="r"><b>216</b>件商品</li>
+                                <li class="l"><a href="">悦诗风吟</a></li>
+                            </ul>
+                            <ul id="searchLi2" class="">
+                                <li class="r"><b>94</b>件商品</li>
+                                <li class="l"><a href="">faceshop</a></li>
+                            </ul>
+                            <ul id="searchLi3" class="">
+                                <li class="r"><b>306</b>件商品</li>
+                                <li class="l"><a href="">欧莱雅</a></li>
+                            </ul>
+                            <ul id="searchLi4">
+                                <li class="r"><b>205</b>件商品</li>
+                                <li class="l"><a href="">jplus</a></li>
+                            </ul>
+                            <ul id="searchLi5">
+                                <li class="r"><b>222</b>件商品</li>
+                                <li class="l"><a href="">美宝莲<</a>/li>
+                            </ul>
+                            <ul id="searchLi6" class="">
+                                <li class="r"><b>47</b>件商品</li>
+                                <li class="l"><a href="">欧诗漫</a></li>
+                            </ul>
+                            <ul id="searchLi7" class="on">
+                                <li class="r"><b>216</b>件商品</li>
+                                <li class="l"><a href="">innisfree</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="Cnav-one" id="Cnav-one">
+                    <a href="#" class="on">
+                        限时特卖 </a>
+                    <a href="#" target="_blank">
+                        美妆商城<i></i> </a>
+                    <a href="#" target="_blank">
+                        服饰精选 </a>
+                    <a href="#" target="_blank" class="cnav-919"><img src="__PUBLIC__/home/images/nav-ms.png"></a>
+                </div>
+				<!-- 所有商品的下拉菜单 -->
+                <div class="float-list" id="float-list" style="display: none;">
+
+                    <a href="#" target="_blank" class="float-list-btn">全部商品分类
+                        <i></i><b></b>
+                    </a>
+                    <div id="orderDivId" class="orderDivId">
+                        <dl id="webf0">
+            				<dt><strong>热门功效</strong>
+            				<p>
+                				<a href="#" target="_blank">补水</a>
+                                <a href="#" target="_blank">去眼袋</a>
+                                <a href="#" target="_blank">深度清洁</a>				
+                            </p>
+            				<p>
+            				    <a href="#" target="_blank">祛痘</a>
+            				    <a href="#" target="_blank">去干纹</a>    
+                                <a href="#" target="_blank">提拉紧致</a>
+            				</p>
+            				<b class="arrow-right"></b></dt>
+            				<dd biht-layer="热门功效">					
+            				</dd>
+                        </dl>
+
+
+                        <dl id="webf1">
+                        	<dt><strong>面部护肤</strong>
+                        	<p>
+                        		<a href="#" target="_blank">面霜</a> <a href="#" target="_blank">化妆水</a> <a href="#" target="_blank">套装</a> <a href="#" target="_blank">面膜</a> </p>
+                        	<p> 
+                                <a href="#" target="_blank">洗面奶</a> 
+                                <a href="#">精华</a> 
+                                <a href="#" target="_blank">眼霜</a> 
+                                <a href="#" target="_blank">防晒</a>
+                        	</p>
+                            <b class="arrow-right"></b>
+                            </dt>
+                        	<dd biht-layer="面部护肤">
+                        	</dd>
+                        </dl>
+                        <dl id="webf2">
+                        	<dt><strong>彩妆香水</strong>
+                        	<p>
+                                <a href="#" target="_blank">BB霜</a> 
+                                <a href="#" target="_blank">卸妆</a> 
+                                <a href="#" target="_blank">粉底</a> 
+                                <a href="#" target="_blank">隔离</a> 	 	
+                        	</p>
+                        	<p>
+                                <a href="#" target="_blank">睫毛膏</a>  
+                                <a href="#" target="_blank">眼线</a> 
+                                <a href="#" target="_blank">香水</a> 
+                                <a href="#" target="_blank">工具</a>
+                        	</p>
+                        	<b class="arrow-right"></b>
+                            </dt>
+                        	<dd biht-layer="彩妆香水">
+                        	</dd>
+                        </dl>
+                        <dl id="webf3">
+                        	<dt><strong>身体洗护</strong>
+                        	<p>
+                                <a href="#" target="_blank">护手</a> 
+                                <a href="#" target="_blank">身体乳</a> 
+                                <a href="#" target="_blank">沐浴</a> 
+                                <a href="#" target="_blank">护足</a>
+                        	</p>
+                        	<p>
+                                <a href="#" target="_blank">洗发护发</a>  
+                                <a href="#" target="_blank">脱毛</a> 
+                                <a href="#" target="_blank">私密</a>
+                        	</p>
+                            <b class="arrow-right"></b>
+                            </dt>
+                        	<dd biht-layer="身体洗护">
+                        	</dd>
+                        </dl>
+                        <dl id="webf5">
+                        	<dt><strong>男士孕婴</strong>
+                        	<p> 
+                                <a href="#" target="_blank">洁面</a> 
+                                <a href="#" target="_blank">防晒</a> 
+                                <a href="#" target="_blank">护肤套装</a> 
+                        	</p>
+                        	<p>
+                                <a href="#" target="_blank">面膜</a> 
+                                <a href="#" target="_blank">香水</a> 
+                                <a href="#" target="_blank">孕妇</a> 
+                                <a href="#" target="_blank">婴儿</a>			
+                            </p>
+                            <b class="arrow-right"></b>
+                            </dt>
+                        	<dd biht-layer="男士孕婴">
+                        	</dd>
+                        </dl>
+
+                        <dl id="webf4">
+                        	<dt style="background:none;"><strong>食品保健</strong>
+                        	<p> 
+                                <a href="#" target="_blank">瘦身</a> 
+                                <a href="#" target="_blank">红枣</a> 
+                                <a href="#" target="_blank">胶原蛋白</a> 
+                        	</p>
+                        	<p>
+                                <a href="#" target="_blank">调养</a> 
+                                <a href="#" target="_blank">丰胸</a> 
+                                <a href="#" target="_blank">祛斑</a> 
+                                <a href="#" target="_blank">排毒</a>			
+                            </p>
+                            <b class="arrow-right"></b>
+                            </dt>
+                        	<dd biht-layer="食品保健">
+                        	</dd>
+                        </dl>
+                        <p class="minp">
+                            <a href="#" target="_blank" class="float-list-s2">全球甄选</a>
+                            <a href="#" target="_blank" class="float-list-s1">清仓打折</a>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+</div>    
+<!-- header 结束 -->
+</block>
+<block name="main">
+
+</block>
+
+<block name="foot">
+<!-- footer -->
+<div id="Cfooter" class="Cfooter">	
+   
+	<div class="Cfooter-service" id="Cfooter_service">
+		<div>
+    		<dl onclick="window.open(&#39;http://www.lefeng.com/zhuanti/jdzp/index.html?rel=nofollow&#39;)">
+    	       <dt style="display: block; background-position: -174px -432px;"></dt>
+    	       <dd><b>免运费</b>网付69元 全场满99</dd>
+            </dl>
+    		<dl>
+    	       <dt style="display: block; background-position: -174px -492px;"></dt>
+    	       <dd><b>全正品</b>正品发票 假一赔十</dd>
+            </dl>
+    		<dl>
+    	       <dt style="display: block; background-position: -174px -552px;"></dt>
+    	       <dd><b>最放心</b>无条件 退换货</dd>
+            </dl>
+    		<dl>
+    	       <dt style="display: block; background-position: -174px -612px;"></dt>
+    	       <dd><b>限时达</b>限时到达 超时赔付</dd>
+            </dl>
+		</div>
+	</div>
+	
+    <!-- 底部导航 -->
+	<div class="Cfooter-info" id="Cfooter_info">
+		<dl>
+			<dt>
+				<div class="Cfooter-tel"><strong></strong><em>客服 7x24小时 (全年无休)</em></div>
+				<p>CEO邮箱：<a href="mailto:ceo@lefeng.com">ceo@lefeng.com</a></p>
+				<p>客服邮箱：<a href="mailto:help@lefeng.com">help@lefeng.com</a></p>
+			</dt>
+			<dd>
+                <strong>新手指南</strong> 
+                <a rel="nofollow" target="_blank" href="http://www.lefeng.com/zhuanti/help/gwlc.html?biid=7520">购物流程</a> 
+                <a rel="nofollow" target="_blank" href="http://www.lefeng.com/help/hy1.html?biid=7520">会员计划及花粉</a> 
+                <a rel="nofollow" target="_blank" href="http://www.lefeng.com/help/yhqgz.html?biid=7520">优惠券规则</a>
+                <a rel="nofollow" target="_blank" href="http://www.lefeng.com/zhuanti/help/lxkf.html?biid=7520">联系客服</a> 
+                <a rel="nofollow" target="_blank" href="http://www.lefeng.com/help/cjgwwt.html?biid=7520">常见问题</a>
+            </dd>
+            <dd>
+                <strong>付款方式</strong> 
+                <a rel="nofollow" target="_blank" href="http://www.lefeng.com/zhuanti/help/zxzf.html?biid=7520">在线支付</a> 
+                <a rel="nofollow" target="_blank" href="http://www.lefeng.com/zhuanti/help/lfhykzf.html?biid=7520">礼品卡支付</a> 
+                <a rel="nofollow" target="_blank" href="http://www.lefeng.com/zhuanti/help/hdfk.html?biid=7520">货到付款</a> 
+                <a rel="nofollow" target="_blank" href="http://www.lefeng.com/zhuanti/help/yhhk.html?biid=7520">银行汇款</a> 
+            </dd>
+            <dd>
+                <strong>配送服务</strong>
+                <a rel="nofollow" target="_blank" href="http://www.lefeng.com/help/s_sy.html?biid=7520">配送时效及运费</a> 
+                <a rel="nofollow" target="_blank" href="http://www.lefeng.com/zhuanti/help/pssj.html?biid=7520">超时赔付</a> 
+                <a rel="nofollow" target="_blank" href="http://www.lefeng.com/help/s3.html?biid=7520">验货与签收</a> 
+                <a rel="nofollow" target="_blank" href="http://www.lefeng.com/zhuanti/help/psxxgz.html?biid=7520">配送信息跟踪</a>
+            </dd>
+            <dd>
+                <strong>售后服务</strong>
+                <a rel="nofollow" target="_blank" href="http://www.lefeng.com/help/thhzc.html?biid=7520">退换货政策</a> 
+                <a rel="nofollow" target="_blank" href="http://www.lefeng.com/zhuanti/help/thhqy.html?biid=7520">上门退换货服务</a> 
+                <a rel="nofollow" target="_blank" href="http://www.lefeng.com/zhuanti/help/thhwsbl.html?biid=7520">退换货网上办理</a>
+                <a rel="nofollow" target="_blank" href="http://www.lefeng.com/zhuanti/help/bltk.html?biid=7520">退款时限</a> 
+                <a rel="nofollow" target="_blank" href="http://www.lefeng.com/zhuanti/help/xxpfzd.html?biid=7520">先行赔付</a> 
+                <a rel="nofollow" target="_blank" href="http://www.lefeng.com/zhuanti/help/fpzdsm.html?biid=7520">发票说明</a>
+            </dd>
+            <dd>
+                <strong>特色服务</strong> 
+                <a rel="nofollow" target="_blank" href="http://www.lefeng.com/giftcard/card.html">礼品卡</a> 
+                <a target="_blank" href="http://f.lefeng.com/tryout">产品试用</a> 
+                <a rel="nofollow" target="_blank" href="http://active.lefeng.com/pollen/pollenStore.jsp?biid=7520">花粉中心</a>
+                <a rel="nofollow" target="_blank" href="http://cuxiao.lefeng.com/xzhuanti_tjhy.html">推荐好友</a>
+            </dd>
+            <dd class="f-sao1"><strong>乐蜂网微信</strong><b></b></dd>
+            <dd class="f-sao2"><strong>达人问妆</strong><b></b></dd>
+		</dl>
+	</div>
+	
+    <!-- 版权信息等等等 -->
+	<div class="Cfooter-copyright" id="Cfooter_copyright">
+        <a rel="nofollow" target="_blank" href="http://www.lefeng.com/help/aboutlefeng.html?biid=7520">关于乐蜂</a>　
+        <a rel="nofollow" target="_blank" href="http://www.lefeng.com/help/websmlefeng.html?biid=7520">免责声明</a>　
+        <a rel="nofollow" target="_blank" href="http://www.lefeng.com/help/yssmlefeng.html?biid=7520">隐私声明</a>　
+        <a rel="nofollow" target="_blank" href="http://www.lefeng.com/help/copyright.html?biid=7520">版权声明</a>　
+        <a rel="nofollow" target="_blank" href="http://www.lefeng.com/help/zhaopin.html?biid=7520">招聘信息</a>　
+        <a rel="nofollow" target="_blank" href="http://www.lefeng.com/zhuanti/help/lxkf.html?biid=7520">联系我们</a>　
+        <a rel="nofollow" target="_blank" href="http://www.lefeng.com/help/helpcenter.html?biid=7520">帮助中心</a>　
+        <a rel="nofollow" target="_blank" href="http://union.lefeng.com/?biid=7520">网站联盟</a>　
+        <a target="_blank" href="http://www.lefeng.com/help/friendlink.html?biid=7520">友情链接</a>　
+        <a href="http://www.lefeng.com/zhuanti_hezuo.html" target="_blank" rel="nofollow">商务合作</a>
+        <br>
+		<span class="carial">Copyright <b>©</b> 2008-2014 Lefeng.com All Rights Reserved.</span>
+        <a rel="nofollow" target="_blank" href="http://www.miibeian.gov.cn/?biid=7520">沪ICP备14028833号-1</a>&nbsp;&nbsp;
+        <span>京公网安备11010502014183</span>　
+        <a rel="nofollow" target="_blank" href="http://images.lefeng.com/indexfiles/businesslicence_new.jpg?biid=7520">营业执照</a>
+		<div class="Cfooter-copyright-img">
+    		<a class="szfw" id="___szfw_logo___" rel="nofollow" target="_blank" href="javascript:void(0);" onclick="return false;"></a>
+
+          
+            <a id="cnnic_url" tabindex="65535" rel="nofollow" target="_blank" href="javascript:void(0);" onclick="return false;change_CNNIC(&#39;cnnic_url&#39;)" oncontextmenu="return false;"></a>
+            
+            <a class="itrust" rel="nofollow" target="_blank" href="javascript:void(0);" onclick="return false;">中国互联网信用评价中心</a>
+            <a href="http://www.lefeng.com/zhuanti/help/xfwq.html?biid=7520" target="_blank" rel="nofollow" class="xfwq"></a>
+            <a href="javascript:void(0);" target="_blank" rel="nofollow" class="jybz" onclick="return false;"></a>
+        </div>
+	</div>
+</div>
+<div id="file_upload-button" class="uploadify-button">
+    <span class="uploadify-button-text">更改1LOGO</span>
+</div>
+</block>
+
+<!-- 侧边栏的小蜜蜂 -->
+<!-- <div class="new_floatBtn" id="floatBtn" style="display: block;">
+    <a href="http://www.lefeng.com/zhuanti/mobile/index.html?biht-layer=nothing" target="_blank" class="floatBtn1" id="floatBtn1" style="display:block">
+        <b></b>
+    </a> 
+    <a href="http://tuan.lefeng.com/###" class="floatBtn2 on2" id="floatBtn2"></a> <a href="http://tuan.lefeng.com/###" class="floatBtn3"></a> 
+    <a href="http://tuan.lefeng.com/###" class="floatBtn4"></a>
+    <a href="http://tuan.lefeng.com/###" class="floatBtn5" id="customer_service"></a>  
+</div> -->
+
+<!-- 开始弹出的选择城市 -->
+<!-- <div class="regionalTipBox" id="regionalTipBox">
+    <div class="rtTitle">
+        <span></span>
+        <h1>请选择您的收货地区</h1>
+    </div>
+    <div class="rtTable">
+        <dl>
+            <dd>华北地区</dd>
+            <dt>
+                <a href="###" pid="01">北京</a>
+                <a href="###" pid="02">天津</a>
+                <a href="###" pid="03">河北</a>
+                <a href="###" pid="04">山西</a>
+                <a href="###" pid="05">内蒙古</a>
+            </dt>
+        </dl>
+        <dl>
+            <dd>华南地区</dd>
+            <dt>
+                <a href="###" pid="19">广东</a>
+                <a href="###" pid="20">广西</a>
+                <a href="###" pid="16">河南</a>
+                <a href="###" pid="17">湖北</a>
+                <a href="###" pid="18">湖南</a>
+                <a href="###" pid="21">海南</a>
+            </dt>
+        </dl>
+        <dl>
+            <dd>华东地区</dd>
+            <dt>
+                <a href="###" pid="09">上海</a>
+                <a href="###" pid="10">江苏</a>
+                <a href="###" pid="11">浙江</a>
+                <a href="###" pid="12">安徽</a>
+                <a href="###" pid="13">福建</a>
+                <a href="###" pid="14">江西</a>
+                <a href="###" pid="15">山东</a>
+            </dt>
+        </dl>
+        <dl>
+            <dd>西南地区</dd>
+            <dt>
+                <a href="###" pid="22">重庆</a>
+                <a href="###" pid="23">四川</a>
+                <a href="###" pid="24">贵州</a>
+                <a href="###" pid="25">云南</a>
+                <a href="###" pid="26">西藏</a>
+            </dt>
+        </dl>
+        <dl>
+            <dd>东北地区</dd>
+            <dt>
+                <a href="###" pid="06">辽宁</a>
+                <a href="###" pid="07">吉林</a>
+                <a href="###" pid="08">黑龙江</a>
+            </dt>
+        </dl>
+        <dl>
+            <dd>西北地区</dd>
+            <dt>
+                <a href="###" pid="27">陕西</a>
+                <a href="###" pid="28">甘肃</a>
+                <a href="###" pid="29">青海</a>
+                <a href="###" pid="30">宁夏</a>
+                <a href="###" pid="31">新疆</a>
+            </dt>
+        </dl>
+    </div>
+    <div class="rtBottom"></div>
+</div> -->
+
+<!-- 右侧栏 -->
+<!-- <div id="miniBus" style="right: -270px;">
+    <div class="mini-bar">
+        <div class="mini-barlist">
+            <ul style="margin-top: -211px;">
+                <li displayed="load" data-name="logo" class="">
+                    <div class="mini-mi logo" style="padding: 0px;">
+                        <i class="mini-ease"></i>
+                        <code></code>
+                        <span style="visibility: hidden; left: 0px;">个人中心</span>
+                    </div>
+                </li>
+                <li displayed="login" data-name="ticket" class="">
+                    <div class="mini-mi ticket" style="padding: 0px;">
+                        <i class="mini-ease"></i>
+                        <code></code>
+                        <span style="visibility: hidden; left: 0px;">我的优惠券</span>
+                    </div>
+                </li>
+                <li displayed="skim" data-name="browse" class="">
+                    <div class="mini-mi browse" style="padding: 0px;">
+                        <i class="mini-ease"></i>
+                        <code></code>
+                        <span style="visibility: hidden; left: -80px;">最近浏览</span>
+                    </div>
+                </li>
+                <li displayed="login" data-name="collec" class="">
+                    <div class="mini-mi collec" style="padding: 0px;">
+                        <i class="mini-ease"></i>
+                        <code></code>
+                        <span style="visibility: hidden; left: -80px;">我的收藏</span>
+                    </div>
+                </li>
+                <li displayed="server" data-name="service" class="">
+                    <div class="mini-mi service" style="padding: 0px;">
+                        <i class="mini-ease"></i>
+                        <code></code>
+                        <span style="visibility: hidden; left: 0px;">在线客服</span>
+                    </div>
+                </li>
+                <li displayed="view" data-name="callback" class="">
+                    <div class="mini-mi callback" style="padding: 0px;">
+                        <i class="mini-ease"></i>
+                        <code></code>
+                        <span style="visibility: hidden; left: 0px;">意见反馈</span>
+                    </div>
+                </li>
+                <li displayed="hide" data-name="shopping" class="">
+                    <div class="mini-mi shopping" style="padding: 0px;">
+                        <i class="mini-ease"></i>
+                        <code></code>
+                        <span style="visibility: hidden; left: 0px;">我的购物车</span>
+                        <abbr style="opacity: 0.9999999999999999;">0</abbr>
+                        <del>1</del>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div> -->
+<!-- 滚到顶部按钮 -->
+<div class="topdown" id="top_down" title="回到顶部">&nbsp;</div>
+</body>
+<script>
+    
+</script>
+</html>

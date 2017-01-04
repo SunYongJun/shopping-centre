@@ -1,0 +1,391 @@
+<extend name="Public:layout" />
+<block name="cssjs">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/personal.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/home_v2.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/fengchao.css">
+</block>
+<!--header-->
+<!-- 头部结束 -->
+<block name="main">
+<div class="mainBg">
+<div class="main clearfix">
+{:W('Menu/Centers')}
+    <!-- <div class="content">
+        <div class="shouhuo">
+            <h1>收货地址管理</h1>
+            <div class="dzgl">
+                <h2 id="h2_displayNum">
+                    最多可保存10个地址，您还可以增加
+                    <span>9</span>
+                    个
+                </h2>
+                <h2 id="h2_disFull" style="color: red; display: none;">收货地址薄已满</h2>
+                <ul id="path_list">
+                <foreach name="dizhi" item="vvo">
+                    <li id="ship_info_li_8195149061" class="zz">
+                        <div>
+                            <span class="tit">{$vvo['true_name']}</span>
+                            <span class="mL20">{$vvo['address_phone']}</span>
+                        </div>
+                        <p>
+                            {$vvo['address_province']}-{$vvo['address_city']}-{$vvo['address_county']}
+                            <br>{$vvo['address_info']}</p> <i style="display: none;"><a href="javascript:void(0);" name="aa" class="fr">删除</a>
+                            <a href="javascript:void(0);" class="new_dizhi">修改</a>
+                            <a href="javascript:void(0);" class="moren">设为默认地址</a></i> 
+                        <span style="display:none" name="ship_info" id="ship_info_span_8195149061" shipid="8195149061" receiver="王雪" idcard="" province="北京市" city="市辖区" county="昌平区" address="回龙观文化西路兄弟连楼" zipcode="102200" mobile="13241291060" phone="" email="" countyid="010113" defaultaddrstate="0"></span>
+                    </li>
+                </foreach>
+    
+                    <li id="bb"> <em><a id="cc" href="javascript:void(0);" class="new_dizhi" >使用新地址</a></em> 
+                    </li>
+                     </ul>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="content">
+              <div class="shouhuo">
+                <h1>收货地址管理</h1>
+                <div class="dzgl">
+                    <h2 id="h2_displayNum">最多可保存10个地址，您还可以增加<span>6</span>个</h2>
+                    <h2 id="h2_disFull" style="color: red;display: none;">收货地址薄已满</h2>
+                    <ul id="path_list">
+                    <!-- 为什么要在这样用java代码循环？是因为之前是直接在js中通过异步方式结合模板动态添加的元素 -->
+                        <!-- ，每次点击左侧的【收货地址管理】菜单，其实就是转向本页面的链接（刷新整个页面）：
+                            问题在于这样动态添加需要等页面加载完成之后执行：
+                                对于ie9及以上版本，firefox,chrome等浏览器由于对渲染做了优化， 肉眼看不出有刷新
+                                但对于ie8及以下版本，每次都可以看到右侧收货地址有刷新，所有改成初始是这样加载。
+                        -->
+<!---->                 
+                        <foreach name="dizhi" item="v">
+                            <li class="" id="ship_info_li_8195977011">
+                                <div><span class="tit">{$v.true_name}</span><span class="mL20">{$v.address_phone}</span></div>
+                                <p>{$v.address_province}-{$v.address_city}-{$v.address_county}<br>{$v.address_info}</p>
+                                <i style="display: none;">
+                                    <a href="javascript:void(0);" name="aa" class="fr" del="{$v.id}">删除</a>
+                                    <a href="javascript:void(0);" class="new_dizhi" edit="{$v.id}">修改</a>  
+                                    <a href="javascript:void(0);" class="moren">设为默认地址</a>
+                                </i>
+                                <span style="display:none" name="ship_info" id="{$v.id}" receiver="{$v.true_name}" province="{$v.address_province}" city="{$v.address_city}" county="{$v.address_county}" address="{$v.address_info}" zipcode="{$v.address_zip}" phone="{$v.address_phone}" email="{$v.address_email}"></span>
+                            </li>
+                        </foreach>
+                        
+                        <li id="ship_info_li_add">
+                            <em><a href="javascript:void(0);" class="new_dizhi" id="cc">使用新地址</a></em>
+                        </li>
+<!---->
+                    </ul>
+                </div>
+              </div>
+            </div>
+
+  </div>
+</div>
+
+
+<!-- 地址弹框 -->
+<div style="display: none; top: 157px; margin-left: 200px;" class="publicAlertbox g68" id="bjshdz">
+        <h1 id="formTitle">编辑收货地址</h1>
+        <form id="sends">
+            <div class="edit_shdz">
+                <ul>
+                    <li id="li_receiver"><em><i>*</i>收货人姓名：</em><input value="" id="shipwindow_receiver" class="g29" name="true_name" type="text"><span>请输入收货人姓名</span></li>
+                    <li id="li_diqu"><em class="fL lineH"><i>*</i>所在地区：</em>
+                    <p id="addre">{$address}</p>
+                       <span class="lineH">请选择地区</span><p>注：标"*"的为支持货到付款的地区</p>
+                    </li>
+                   
+                    <li id="li_address"><em><i>*</i>详细地址：</em><input value="" id="shipwindow_address" class="g29" name="address_info" type="text"><span>请输入街道地址</span></li>
+                    <li id="li_postcode"><em><i>*</i>邮政编码：</em><input id="shipwindow_postcode" name="address_zip" value="" type="text">
+                        参考邮编：<b id="refer_postcode">102200</b><a href="javascript:void(0);" class="yellow pd41" id="clone">使用此邮编</a><span id="three">邮箱输入有误</span>
+                    </li>
+                    <li id="li_mobileAndPhone"><em><i>*</i>手机号码：</em><input value="" id="shipwindow_mobile" class="g9" type="text" name="address_phone">&nbsp;&nbsp;
+                        <p>用于接受订单短信或送货前确认<span id="four">请输入手机号码或固定电话</span></p>
+                    </li>
+                    <li id="li_email"><em>电子邮箱：</em><input value="now@csdn.com" id="shipwindow_email" class="g29" name="address_email" type="text"><span id="five">邮箱输入有误</span><p>用于接收订单状态提醒邮件,便于您及时了解订单状态</p></li>
+                    <li><p><a href="javascript:void(0)" id="shipwindow_optbutton" opt="update"><img src="__PUBLIC__/home/images/bt3.jpg"></a></p></li>
+                </ul>
+            </div>
+            <a href="javascript:void(0);" class="close"></a>
+            <input id="shipwindow_shipId" value="" style="width:298px;" type="hidden">
+            <input id="shipwindow_defaultAddrState" value="0" style="width:298px;" type="hidden">
+        </form>
+    </div>
+
+    <!-- 遮罩 -->
+    <div style="height: 1886px;display:none;" class="alert_bg"></div>
+
+
+<!-- <div id="zhezhao">
+  弹框开始
+<div  class="publicAlertbox g68" id="bjshdz">
+    <h1 id="formTitle">编辑收货地址</h1>
+    <form id="sends">
+        <input type="hidden" name="id" value="{$oid}">
+        <div class="edit_shdz">
+            <ul>
+                <li id="li_receiver"> <em><i>*</i>
+                        收货人姓名：</em> 
+                    <input id="shipwindow_receiver" type="text" class="g29" name="true_name" maxlength="10">
+                    <span id="one">请输入收货人姓名</span>
+                </li>
+                <li id="li_diqu">
+                    <em class="fL lineH">
+                        <i>*</i>
+                        所在地区：
+                        
+                    </em>
+                    　{$address}<em id="address_warnning"></em>
+                    <p>注：标"*"的为支持货到付款的地区</p>
+                </li>
+                <li id="li_idcard" style="display:none">
+                    <em>身份证号：</em>
+                    <input id="shipwindow_idcard" type="text" class="g29" name="idcard">
+                    <span></span>
+                </li>
+                <li id="li_address">
+                    <em>
+                        <i>*</i>
+                        详细地址：
+                    </em>
+                    <input id="shipwindow_address" type="text" class="g29" name="address_info" maxlength="50">
+                    <span id="two">请输入街道地址</span>
+                </li>
+                <li id="li_postcode">
+                    <em>
+                        <i>*</i>
+                        邮政编码：
+                    </em>
+                    <input id="shipwindow_postcode" type="text" name="address_zip" value="" maxlength="6">
+                    参考邮编： <b id="refer_postcode">052200</b>
+                   
+                    <span id="three">邮编输入有误</span>
+                </li>
+                <li id="li_mobileAndPhone">
+                    <em>
+                        <i>*</i>
+                        手机号码：
+                    </em>
+                    <input id="shipwindow_mobile" maxlength="11" type="text" name="address_phone" class="g9"><span id="four">请输入联系电话</span>
+                    <p>
+                        用于接受订单短信或送货前确认
+                        
+                    </p>
+                </li>
+                <li id="li_email">
+                    <em>电子邮箱：</em>
+                    <input id="shipwindow_email" type="text" class="g29" name="address_email">
+                    <span id="five">邮箱输入有误</span>
+                    <p>用于接收订单状态提醒邮件,便于您及时了解订单状态</p>
+                </li>
+                <li>
+                    <p>
+                        <a href="javascript:void(0)" id="shipwindow_optbutton" opt="add" >
+                            <img src="__PUBLIC__/home/images/bt3.jpg"></a>
+                    </p>
+                </li>
+            </ul>
+        </div>
+        <a href="javascript:void(0);" class="close"></a>
+        <input id="shipwindow_shipId" value="" type="hidden" style="width:298px;">
+        <input id="shipwindow_defaultAddrState" value="false" type="hidden" style="width:298px;"></form>
+</div>  
+</div>
+弹框结束 -->
+
+<script>
+    $(function(){
+
+        //地址框鼠标移动上加样式
+        $('#path_list').children('li').bind('mouseover',function() {
+            $(this).addClass('on');
+            $(this).children('i').show();
+        })
+        $('#path_list').children('li').bind('mouseout',function() {
+            $(this).removeClass('on');
+            $(this).children('i').hide();
+        })
+
+         //赋予遮罩高度
+        var dheight = $(document).height();
+        $('.alert_bg').css('height',dheight);
+        console.log(dheight);
+
+
+        var xingming = false;
+        var dizhis = false;//省市区
+        var dizhi = false;//详细地址
+        var youbian = false;
+        var dianhua = false;
+
+        $('#cc').bind('click',function(){
+            $('#bjshdz').show();
+            $('.alert_bg').show();
+
+            
+
+    })
+        //聚焦时 输出请输入用户名
+
+            $('#shipwindow_receiver').bind('focus',function(){
+                $(this).next().show();           
+            });
+             // 失焦时 如果值为空的时候 显示收货人姓名不能为空
+            $('#shipwindow_receiver').bind('blur',function(){
+                $(this).next().hide();
+                if($(this).val().length ==0){
+                    $(this).next().html('收货人姓名不能为空.').css('color','red').show();
+                }else{
+                    xingming = true;
+                }
+            })
+
+            // 判断收货地址不能
+            $('#shipwindow_address').bind('click',function(){
+                 if(!$(this).val()){
+                $('#address_warnning').html('请输入地址').css('color','red');
+             
+            }else{
+                dizhis = true;
+            }
+            })
+           
+
+            // 判断详细地址不能为空
+            $('#shipwindow_address').bind('focus',function(){
+                $(this).next().show();
+                
+            })
+            $('#shipwindow_address').bind('blur',function(){
+                $(this).next().hide();
+                if($(this).val().length ==0){
+                    $(this).next().html('详细地址不能为空').css('color','red').show();
+                }else if($(this).val().length > 50){
+                     $(this).next().html('详细地址长度不得大于50字').css('color','red').show();
+                }else{
+                    $(this).next().html('');
+                    dizhi = true;
+                }
+            })
+
+            // 判断邮编
+            $('#shipwindow_postcode').bind('blur',function(){
+                var reg = /^[0-9]{6}$/;
+                if(!reg.test($(this).val())){
+                    $('#three').css('color','red').show();
+                }else{
+                     $('#three').html('').show();
+                     youbian = true;
+                }
+            })
+
+            // 判断手机号码
+           $('#shipwindow_mobile').bind('focus',function(){
+            $('#four').show();
+           })
+           $('#shipwindow_mobile').bind('blur',function(){
+                if($(this).val().length==0){
+                     $('#four').html('号码不能为空').show();
+                }else if($(this).val().length > 11 || $(this).val().length < 7){
+                    $('#four').html('号码格式不正确').show();
+                }else{
+                    $('#four').html('').show();
+                    dianhua = true;
+                }
+           })
+
+          // 判断邮箱
+           $('#shipwindow_email').bind('blur',function(){
+                if($(this).val()){
+                
+                    var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-]+)+$/;
+                    if(!reg.test($(this).val())){
+                        $('#five').html('邮箱格式不正确！').css('color','red').show();
+                    }else{
+                        $('#five').html('');
+
+                    }
+                }    
+      }); 
+        $('.close').bind('click',function(){
+            $('#bjshdz,.alert_bg').fadeOut('slow');
+        });
+
+        // 发送表单
+        $('#shipwindow_optbutton').bind('click',function(){
+            if(xingming && dizhi && youbian && dianhua && dizhis){
+                $.ajax({
+                type:'post',
+                data:$('#sends').serialize(),
+                url:'__CONTROLLER__/addre',
+                success:function(data){
+                   if(data){
+                        console.log(data)
+                        layer.msg(data);
+                        $('#bjshdz,.alert_bg').fadeOut('slow');
+                   }else{
+                        layer.msg('操作失败');
+                        $('#bjshdz,.alert_bg').fadeOut('slow');
+                   }
+                }
+            })
+            }else{
+                layer.msg('收货信息不正确！',1,5);
+            }            
+        })
+
+            //修改地址前获取原数据
+            $('a[edit]').bind('click',function() {
+
+                    xingming = true;
+                    dizhis = true;//省市区
+                     dizhi = true;//详细地址
+                    youbian = true;
+                    dianhua = true;
+                    var va = $(this).attr('edit');
+                    $('#bjshdz').show();
+                    $('#sends').append('<input type="hidden" name="id" value="'+va+'">');
+                    $('.alert_bg').show();
+
+                    var inf = $('span[id="'+va+'"]');
+                    $('#shipwindow_receiver').val(inf.attr('receiver'));
+
+                    //省市区  //修改前获取源数据
+                    $.post('__CONTROLLER__/addredit',{id:va},function(data) {
+                      if(data) {
+                          $('#addre').html(data);
+                      }
+                  });
+                     
+                     //详细地址
+                     $('#shipwindow_address').val(inf.attr('address'));
+
+                     //邮编
+                     $('#shipwindow_postcode').val(inf.attr('zipcode'));
+
+                     //手机
+                     $('#shipwindow_mobile').val(inf.attr('phone'))                          
+
+                    //邮箱
+                    $('#shipwindow_email').val(inf.attr('email'))
+
+            })
+
+            //删除地址
+            $('a[del]').bind('click',function() {
+                  if(confirm('确定删除么')) {
+                          var id = $(this).attr('del');
+                        $.post('__CONTROLLER__/delete',{id:id},function(data) {
+                          if(data) {
+                                location.reload(true);
+                            }
+                        })
+                  }
+            })
+
+
+
+    })
+
+</script>
+</block>

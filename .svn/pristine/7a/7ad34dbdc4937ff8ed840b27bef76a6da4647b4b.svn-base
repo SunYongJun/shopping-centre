@@ -1,0 +1,804 @@
+<extend name="Public:layout" />
+<block name="cssjs">
+    <script src="__PUBLIC__/home/js/grap.js"></script>
+    <script src="__PUBLIC__/home/js/unslider.js"></script>
+    <style>
+    .banner {position: relative;width: 100%;overflow: auto;text-shadow: 0 0 1px rgba(0,0,0,.05), 0 1px 2px rgba(0,0,0,.3);background: #fff;box-shadow: 0 1px 2px rgba(0,0,0,.25);text-align: center}
+    .banner ul {list-style: none;width: 300%;}
+    .banner ul li {display: block;float: left;width: 33%;height: 300px;-o-background-size: 100% 100%;-ms-background-size: 100% 100%;-moz-background-size: 100% 100%;-webkit-background-size: 100% 100%;background-size: 100% 100%;box-shadow: inset 0 -3px 6px rgba(0,0,0,.1);}
+    .banner .dots {position: absolute;left: 0;right: 0;bottom: 20px;}
+    .banner .dots li {display: inline-block;width: 8px;height: 8px;margin: 0 4px;text-indent: -999em;border: 2px solid #fff;border-radius: 8px;cursor: pointer;opacity: .4;-webkit-transition: background .5s, opacity .5s;-moz-transition: background .5s, opacity .5s;transition: background .5s, opacity .5s;}
+    .banner .dots li.active {background: #fff;opacity: 1;}
+    </style>
+</block>   
+<block name="main">
+	<!-- 主体部分开始 -->
+<!-- 轮播图片 开始 -->
+<div class="banner">
+<ul>
+    <li><img src="__PUBLIC__/home/images/lunbo1.jpg" alt="" height="300"></li>
+    <li><img src="__PUBLIC__/home/images/lunbo2.jpg" alt="" height="300"></li>
+    <li><img src="__PUBLIC__/home/images/lunbo3.jpg" alt="" height="300"></li>
+</ul>
+</div>
+<!-- 旧的banner -->
+<!-- <div class="first-show" style="height: 300px;">
+    <div style="height: 300px; z-index: 1; display: none; opacity: 1; background: url(__PUBLIC__/home/images/lunbo1.jpg) 50% 0% no-repeat rgb(246, 215, 131);" class="biht-none">
+        <a id="webs0" target="_blank" onclick="this.blur();" href="#"></a>
+    </div>
+    <div style="height: 300px; z-index: 1; opacity: 1; display: none; background: url(__PUBLIC__/home/images/lunbo2.jpg) 50% 0% no-repeat rgb(40, 18, 2);" class="biht-none">
+        <a id="webs1" target="_blank" onclick="this.blur();" href="#"></a>
+    </div>
+    <div style="height: 300px; z-index: 10; opacity: 1; display: block; background: url(__PUBLIC__/home/images/lunbo3.jpg) 50% 0% no-repeat rgb(123, 18, 82);" class="biht-none">
+        <a id="webs2" target="_blank" onclick="this.blur();" href="#"></a>
+    </div>
+    <ul id="bq">
+        <span>
+        <li class=""></li>
+        <li class=""></li>
+        <li class="on"></li>
+        </span>
+    </ul>
+</div> -->
+
+<!-- 轮播图片 结束 -->
+
+<!--zys clip s-->
+<div class="cuxiao">
+</div>
+<!--zys clip e -->
+
+<!-- 主体页面开始 -->
+<div class="main clearfloat">
+	<!-- <div class="productTitle" id="tabnews">
+        <h1	 class="title1">&nbsp;</h1>
+        <h4>这里是公告内容</h4>
+    </div> -->
+
+	<!-- 限时秒杀 开始 -->
+	<div class="seckill">
+		<div class="seckill-title">
+			<h1></h1>
+			<div class="seckill-datebar">
+				<dl>
+    				<!-- <dd id="dsk0_b" bjtime="2014/11/29 04:00:00" style="display: none;">04:00
+                                            <i></i>
+                                        </dd>
+                                        <dd id="dsk1_b" bjtime="2014/11/29 06:00:00" style="display: none;">06:00
+                                            <i></i>
+                                        </dd> -->
+                    <dd id="dsk2_b" bjtime="2014/11/29 08:00:00" class="on">08:00开始</dd>
+                    <dd id="dsk3_b" bjtime="2014/11/29 10:00:00" class="">10:00结束</dd>
+                    <!-- <dd id="dsk4_b" bjtime="2014/11/29 12:00:00" class="">12:00未开始</dd> -->
+                    <!-- <dd id="dsk5_b" bjtime="2014/11/29 14:00:00" style="display: none;">14:00
+                        <i></i>
+                    </dd>
+                    <dd id="dsk6_b" bjtime="2014/11/29 16:00:00" style="display: none;">16:00
+                        <i></i>
+                    </dd> -->
+                </dl>
+			</div>
+		</div>
+		<div class="seckill-box">
+            <!--<dl id="1448643" style="display: none;">
+                <dd>
+                    <a href="http://seckill.lefeng.com/static_html/1448643.html?biid=MS01_0_1" target="_blank">
+                        <img src="./images/20141126055379.jpg" alt="" width="620" height="360">
+                    </a>
+                </dd>
+                <dt>
+                    <div class="secTime">
+                        <b class="seckillEnd">已结束，下次下手要快哦</b>
+                        <span id="dsk0" b="2014-11-29 04:00:00" e="2014-11-29 05:59:59" bj="1417204800" class="seckillhide" style="display: none;">
+                            <b class="t1">0</b>
+                            <b class="t2">00</b>
+                            <b class="t3">00</b>
+                            <b class="t4">04</b>
+                        </span>
+                        <i class="endSec"></i>
+                    </div>
+                    <div class="secText">
+                        <a href="http://seckill.lefeng.com/static_html/1448643.html?biid=MS01_0_1" target="_blank">
+                            <b>5.0折/</b> 卡姿兰魅惑浓郁眼线膏3.5g 02#黑色！爱上卡姿兰爱上大眼睛！轻轻一抹瞬间完成完美眼妆！魅惑深邃的眼睛迷倒众生！既能浓丽纤细，亦可晕染浓郁烟熏妆效，柔滑质感易上色，轻松描画自然流畅线条，配合专业精细眼线刷，自动勾勒魅感电眼！
+                        </a>
+                    </div>
+                    <div class="secPrice">
+                        <a href="http://seckill.lefeng.com/static_html/1448643.html?biid=MS01_0_1" target="_blank" class="end">已结束</a>
+                        <span>29</span>
+                        <b>59</b>
+                    </div>
+                    <div class="secNow">
+                        <i>3812人正在查看</i>
+                    </div>
+                </dt>
+            </dl>
+            <dl id="1448644" style="display: none;">
+                <dd>
+                    <a href="http://seckill.lefeng.com/static_html/1448644.html?biid=MS01_0_2" target="_blank">
+                        <img src="./images/20141126054924.jpg" alt="" width="620" height="360">
+                    </a>
+                </dd>
+                <dt>
+                    <div class="secTime">
+                        <b class="seckillEnd">已结束，下次下手要快哦</b>
+                        <span id="dsk1" b="2014-11-29 06:00:00" e="2014-11-29 07:59:59" bj="1417212000" class="seckillhide" style="display: none;">
+                            <b class="t1">0</b>
+                            <b class="t2">00</b>
+                            <b class="t3">00</b>
+                            <b class="t4">04</b>
+                        </span>
+                        <i class="endSec"></i>
+                    </div>
+                    <div class="secText">
+                        <a href="http://seckill.lefeng.com/static_html/1448644.html?biid=MS01_0_2" target="_blank">
+                            <b>8.0折/</b> 佰草集平衡系列超值装（洁面乳100ml+化妆水30ml*3+平衡露50ml），提炼传统平衡调节理论，将平衡之道运用到护肤上，平衡油脂和水分，令肌肤调和一致，平静应对季节变换。
+                        </a>
+                    </div>
+                    <div class="secPrice">
+                        <a href="http://seckill.lefeng.com/static_html/1448644.html?biid=MS01_0_2" target="_blank" class="end">已结束</a>
+                        <span>179</span>
+                        <b>224</b>
+                    </div>
+                    <div class="secNow">
+                        <i>3812人正在查看</i>
+                    </div>
+                </dt>
+            </dl>
+            <dl id="1448645" style="display: none;">
+                <dd>
+                    <a href="http://seckill.lefeng.com/static_html/1448645.html?biid=MS01_0_3" target="_blank">
+                        <img src="./images/20141126055024.jpg" alt="" width="620" height="360">
+                    </a>
+                </dd>
+                <dt>
+                    <div class="secTime">
+                        <b class="seckillEnd">已结束，下次下手要快哦</b>
+                        <span id="dsk2" b="2014-11-29 08:00:00" e="2014-11-29 09:59:59" bj="1417219200" class="seckillhide" style="display: none;">
+                            <b class="t1">0</b>
+                            <b class="t2">00</b>
+                            <b class="t3">00</b>
+                            <b class="t4">04</b>
+                        </span>
+                        <i class="endSec"></i>
+                    </div>
+                    <div class="secText">
+                        <a href="http://seckill.lefeng.com/static_html/1448645.html?biid=MS01_0_3" target="_blank">
+                            <b>8.2折/</b> Kiehl's科颜氏亚马逊白泥净致面膜125ml！内含亚马逊白泥，有效帮助肌肤排毒、净化毛孔、深层清洁，改善多余油脂分泌的神奇面膜，使用后肌肤呈现出细腻、平滑及洁净！
+                        </a>
+                    </div>
+                    <div class="secPrice">
+                        <a href="http://seckill.lefeng.com/static_html/1448645.html?biid=MS01_0_3" target="_blank" class="end">已结束</a>
+                        <span>229</span>
+                        <b>280</b>
+                    </div>
+                    <div class="secNow">
+                        <i>3813人正在查看</i>
+                    </div>
+                </dt>
+            </dl>-->
+            <dl id="1472641" style="display: block;">
+                <dd>
+                    <a href="#" target="_blank">
+                        <img src="__PUBLIC__/home/images/53701a257f63e.jpg" alt="" width="620" height="360">
+                    </a>
+                </dd>
+                <dt>
+                    <!-- 抢购显示这个 -->
+                    <div class="secTime" >
+                        <span id="dsk2" data="2014-12-12 00:00:21" ></span>
+                        <i></i>
+                    </div>
+                    <!-- 抢购结束显示这个 -->
+                    <div class="secTime" style="display:none">
+                        <b class="seckillEnd">已结束，下次下手要快哦</b>
+                        <span id="dsk2" b="2014-11-29 08:00:00" e="2014-11-29 09:59:59" bj="1417219200" class="seckillhide" style="display: none;">
+                            <b class="t1">0</b>
+                            <b class="t2">00</b>
+                            <b class="t3">00</b>
+                            <b class="t4">04</b>
+                        </span>
+                        <i class="endSec"></i>
+                    </div>
+                    <div class="secText">
+                        <a href="#" target="_blank">
+                            <b>4.4折/</b> 用过就会不断回购的经典面膜！我的美丽日记黑珍珠面膜10片（防伪码版），含有大溪地顶级黑珍珠璀璨精华，迅速浸润疲倦黯沉肌肤，还原初始柔嫩细致的平顺光滑，深层唤回动容白皙的无瑕素颜美肌！
+                        </a>
+                    </div>
+                    <!-- 抢购显示这个 -->
+                    <div class="secPrice">
+                        <a href="#" target="_blank">立即秒杀</a>
+                        <span>52</span>
+                        <b>120</b>
+                    </div>
+                    <!-- 抢购结束显示这个 -->
+                    <div class="secPrice" style="display:none">
+                        <a href="http://seckill.lefeng.com/static_html/1448645.html?biid=MS01_0_3" target="_blank" class="end">已结束</a>
+                        <span>229</span>
+                        <b>280</b>
+                    </div>
+                    <div class="secNow">
+                        <i>3814人正在查看</i>
+                    </div>
+                </dt>
+            </dl>
+            <!--<dl id="1472642" style="display: none;">
+                <dd>
+                    <a href="http://seckill.lefeng.com/static_html/1472642.html?biid=MS01_0_5" target="_blank">
+                        <img src="./images/20141128040449.jpg" alt="" width="620" height="360">
+                    </a>
+                </dd>
+                <dt>
+                    <div class="secTime">
+                        <b class="seckillEnd">惊爆价，敬请期待</b>
+                        <span id="dsk4" b="2014-11-29 12:00:00" e="2014-11-29 13:59:59" bj="1417233600" class="seckillhide" style="display: none;">
+                            <b class="t1">0</b>
+                            <b class="t2">00</b>
+                            <b class="t3">00</b>
+                            <b class="t4">04</b>
+                        </span>
+                        <i></i>
+                    </div>
+                    <div class="secText">
+                        <a href="http://seckill.lefeng.com/static_html/1472642.html?biid=MS01_0_5" target="_blank">
+                            <b>??折/</b> 御泥坊蜂蜜补水保湿基础护理8件套（洁面乳100ml+润肤水150ml+润肤乳120ml+蚕丝面膜*5片）甄选高山百花蜜，打通肌肤营养通道，深层补充水分，深层滋养，赶走干燥，肌肤光滑Q弹，远离各种肌肤困扰！
+                        </a>
+                    </div>
+                    <div class="secPrice">
+                        <a href="http://seckill.lefeng.com/static_html/1472642.html?biid=MS01_0_5" target="_blank" class="end">未开始</a>
+                        <span>??</span>
+                        <b>336.5</b>
+                    </div>
+                    <div class="secNow">
+                        <i>3813人正在查看</i>
+                    </div>
+                </dt>
+            </dl>
+            <dl id="1472643" style="display: none;">
+                <dd>
+                    <a href="http://seckill.lefeng.com/static_html/1472643.html?biid=MS01_0_6" target="_blank">
+                        <img src="./images/20141128041141.jpg" alt="" width="620" height="360">
+                    </a>
+                </dd>
+                <dt>
+                    <div class="secTime">
+                        <b class="seckillEnd">惊爆价，敬请期待</b>
+                        <span id="dsk5" b="2014-11-29 14:00:00" e="2014-11-29 15:59:59" bj="1417240800" class="seckillhide" style="display: none;">
+                            <b class="t1">0</b>
+                            <b class="t2">00</b>
+                            <b class="t3">00</b>
+                            <b class="t4">04</b>
+                        </span>
+                        <i></i>
+                    </div>
+                    <div class="secText">
+                        <a href="http://seckill.lefeng.com/static_html/1472643.html?biid=MS01_0_6" target="_blank">
+                            <b>??折/</b> 雅诗兰黛弹性紧实眼霜15ml，为脆弱的眼部区域带来令人惊奇的紧致功效，赋予眼部迷人光采！是为眼睛减龄的必备单品，让眼睛看起来永远年轻！
+                        </a>
+                    </div>
+                    <div class="secPrice">
+                        <a href="http://seckill.lefeng.com/static_html/1472643.html?biid=MS01_0_6" target="_blank" class="end">未开始</a>
+                        <span>??</span>
+                        <b>560</b>
+                    </div>
+                    <div class="secNow">
+                        <i>3812人正在查看</i>
+                    </div>
+                </dt>
+            </dl>
+            <dl id="1472644" style="display: none;">
+                <dd>
+                    <a href="http://seckill.lefeng.com/static_html/1472644.html?biid=MS01_0_7" target="_blank">
+                        <img src="./images/20141128040750.jpg" alt="" width="620" height="360">
+                    </a>
+                </dd>
+                <dt>
+                    <div class="secTime">
+                        <b class="seckillEnd">惊爆价，敬请期待</b>
+                        <span id="dsk6" b="2014-11-29 16:00:00" e="2014-11-29 17:59:59" bj="1417248000" class="seckillhide" style="display: none;">
+                            <b class="t1">0</b>
+                            <b class="t2">00</b>
+                            <b class="t3">00</b>
+                            <b class="t4">04</b>
+                        </span>
+                        <i></i>
+                    </div>
+                    <div class="secText">
+                        <a href="http://seckill.lefeng.com/static_html/1472644.html?biid=MS01_0_7" target="_blank">
+                            <b>??折/</b> 丝塔芙洁面乳473ml！PCLady新晋殿堂级大奖！响当当的明星产品呀！弱酸配方 ，无刺激，无香味，无色素！可水洗或可干洗 ，容易清洗，并留有 薄薄一层保护层 ！安全呵护无刺激，高人气、高口碑！ 
+                        </a>
+                    </div>
+                    <div class="secPrice">
+                        <a href="http://seckill.lefeng.com/static_html/1472644.html?biid=MS01_0_7" target="_blank" class="end">未开始</a>
+                        <span>??</span>
+                        <b>158</b>
+                    </div>
+                    <div class="secNow">
+                        <i>3812人正在查看</i>
+                    </div>
+                </dt>
+            </dl>-->
+        </div>
+	</div>
+	<!-- 限时秒杀  结束 -->
+
+	<!-- pp s -->
+	<div class="productTitle" id="tabnews">
+		<h1 class="title1">
+			&nbsp;
+		</h1>
+		<h4><!-- 这里是公告内容 -->
+            <i></i>
+            <dd class="on" style="height: 15px; top: -4px;">
+                <a target="_blank" href="http://www.lefeng.com/zhuanti_djxf.html">点击消费 乐蜂玩转特卖</a>|
+                <a target="_blank" href="http://www.lefeng.com/zhuanti/fpgg.html">乐蜂网防骗提示公告</a>
+            </dd>
+        </h4>
+	</div>
+	<!-- pp e -->
+	
+    <!-- 品牌特卖  开始   adv list s -->
+    <div class="first-ad clearfloat">
+    	<!-- <div class="ad-right"></div> -->
+    	<div class="ad-left" id="ad-list">
+            <a href="#" target="_blank">
+                <img src="" alt="">
+                <div class="ad-tips">
+                    <h1>珀莱雅化妆品特卖专场</h1>
+                    <h2>创造更美的你</h2>
+                    <h3>2.3折起 满179减30</h3>
+                    <div class="d1417399199" b="1417140000">
+                        <i></i>
+                        <b>1</b>天
+                        <b>23</b>小时
+                        <b>25</b>分钟
+                        <b>33</b>秒
+                    </div>
+                </div>
+            </a>
+            <a href="" target="_blank">
+                <img src="" alt="">
+                <div class="ad-tips">
+                    <h1>欧珀莱化妆品特卖专场</h1>
+                    <h2>逆转时光 恒久美丽</h2>
+                    <h3>4.8折起 满299赠299</h3>
+                    <div class="d1417399199" b="1417140000">
+                        <i></i>
+                        <b>1</b>天
+                        <b>23</b>小时
+                        <b>25</b>分钟
+                        <b>33</b>秒
+                    </div>
+                </div>
+            </a>
+            <a href="" target="_blank">
+                <img src="" alt="">
+                <div class="ad-tips">
+                    <h1>科颜氏化妆品特卖专场</h1>
+                    <h2>众多好莱坞明星推崇的护肤品牌</h2>
+                    <h3>8.8折封顶</h3>
+                    <div class="d1417399199" b="1417140000">
+                        <i></i>
+                        <b>1</b>天
+                        <b>23</b>小时
+                        <b>25</b>分钟
+                        <b>33</b>秒
+                    </div>
+                </div>
+            </a>
+            <a href="" target="_blank">
+                <img src="" alt="">
+                <div class="ad-tips">
+                    <h1>韩束化妆品特卖专场</h1>
+                    <h2>成就肌肤无限可能</h2>
+                    <h3>3.5折起 满299减50</h3>
+                    <div class="d1417399199" b="1417140000">
+                        <i></i>
+                        <b>1</b>天
+                        <b>23</b>小时
+                        <b>25</b>分钟
+                        <b>33</b>秒
+                    </div>
+                </div>
+            </a>
+            
+            <a href="" target="_blank">   <img src="" alt="">
+                <div class="ad-tips">
+                    <h1>丝塔芙化妆品特卖专场</h1>
+                    <h2>源自科学 承诺美丽</h2>
+                    <h3>同款商品第二件5折</h3>
+                    <div class="d1417399199" b="1417140000">
+                        <i></i>
+                        <b>1</b>天
+                        <b>23</b>小时
+                        <b>25</b>分钟
+                        <b>33</b>秒
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <!-- 品牌特卖 结束  adv list e -->
+    
+    <!-- 最新爆款  开始 s -->
+    <div class="productTitle" id="smallnav">
+        <h1 class="title2">&nbsp;</h1>
+<!--         <ul>
+            这里追加分类内容
+        </ul> -->
+    </div>
+    <div class="bigimg-box clearfloat" id="commodity-list">
+        <dl class="p1" id="i184023" num="0">
+            <div class="new_added">
+            <a data-productid="184023" data-skuid="181186" data-id="" num="1" href="#" title="加入购物车" data-img="">加入购物车
+            </a>
+            </div>
+            <dt>
+                <a href="" class="commodity-img" target="_blank"><img src="" width="310" height="310" alt="">
+                </a>
+            </dt>
+            <dd>
+                <h4><a target=""><b>7.5折/</b> 蝶翠诗(DHC)橄榄卸妆油200ml，最好用的卸妆油，没有之一！平均每8秒售出一瓶！</a>
+                </h4>
+                <div class="t_price_box_L">
+                    <div class="t_price_L">
+                        <span>163.0</span>
+                        <b>218</b>
+                    </div>
+                </div>
+                <div class="c-info d1417399199" o="">
+                    <strong></strong><b>1</b>天<b>23</b>小时<b>54</b>分钟<b>20</b>秒
+                </div>
+                <div class="t_buy_pople">
+                    <b>1095</b>人已购买
+                </div>
+            </dd>
+            <div class="d1_tips"></div>
+        </dl>
+        <dl class="p1" id="i212001" num="1">
+            <div class="new_added">
+                <a data-productid="212001" data-skuid="214463" data-id="" num="1" href="#" title="加入购物车" data-img="">加入购物车</a>
+            </div>
+            <dt>
+                <a href="" class="commodity-img" target="_blank"><img src="" width="310" height="310" alt=""></a>
+            </dt>
+            <dd>
+                <h4>
+                    <a target="_blank" href=""><b>4.3折/</b> Jcare天使爱美丽保湿嫩白润透无暇面膜礼包（30片）！使肌肤更加白嫩清透！</a>
+                </h4>
+                <div class="t_price_box_L">
+                    <div class="t_price_L"><span>99.0</span><b>234</b>
+                    </div>
+                </div>
+                <div class="c-info d1417399199" o="">
+                    <strong></strong><b>1</b>天<b>23</b>小时<b>54</b>分钟<b>20</b>秒
+                </div>
+                <div class="t_buy_pople"><b>3607</b>人已购买
+                </div>
+            </dd>
+            <div class="d1_tips"></div>
+        </dl>
+        <dl class="p492" id="i182867" num="2">
+            <div class="new_added">
+                <a data-productid="182867" data-skuid="179584" data-id="http://img3.imglefeng.com/images/product/000/000/000/182/867/182867_bg_0_z.jpg|182867|179584|1" num="1" href="#" title="加入购物车" data-img="http://img3.imglefeng.com/images/product/000/000/000/182/867/182867_bg_0_z.jpg">加入购物车</a>
+            </div>
+            <dt>
+                <a href="" class="commodity-img" target="_blank"><img src="" width="310" height="310" alt="">
+                </a>
+            </dt>
+            <dd>
+                <h4><a target="_blank" href=""><b>6折/</b> 相宜本草百合高保湿三件套，即刻拥有如百合花瓣一样的凝脂肌肤！</a>
+                </h4>
+            <div class="t_price_box_L">
+                <div class="t_price_L">
+                    <span>148.0</span><b>248</b></div>
+                </div>
+                <div class="c-info d1417399199" o=""><strong></strong><b>1</b>天<b>23</b>小时<b>54</b>分钟<b>20</b>秒
+                </div>
+                <div class="t_buy_pople"><b>512</b>人已购买
+                </div>
+            </dd>
+            <div class="d1_tips"></div>
+        </dl>
+        <dl class="p1" id="i6108465" num="3">
+            <div class="new_added"><a data-productid="6108465" data-skuid="6402907" data-id="http://img9.imglefeng.com/images/product/000/000/006/108/465/6108465_bg_0_z.jpg|6108465|6402907|1" num="1" href="#" title="加入购物车" data-img="http://img9.imglefeng.com/images/product/000/000/006/108/465/6108465_bg_0_z.jpg">加入购物车</a>
+            </div>
+            <dt>
+                <a href="" class="commodity-img" target="_blank"><img src="" width="310" height="310" alt="">
+                </a>
+            </dt>
+            <dd>
+                <h4><a target="_blank" href=""><b>8.7折/</b> 欧莱雅清润葡萄籽晚安膜力晶露50ml，整夜畅饮面膜级水润，翌日肌肤水润鲜活！</a>
+                </h4>
+                <div class="t_price_box_L">
+                    <div class="t_price_L"><span>139.0</span><b>160</b>
+                    </div>
+                </div>
+                <div class="c-info d1417399199" o=""><strong></strong><b>1</b>天<b>23</b>小时<b>54</b>分钟<b>20</b>秒
+                </div>
+                <div class="t_buy_pople"><b>155</b>人已购买</div>
+            </dd>
+            <div class="d1_tips"><b class="s2"></b><b class="s6"></b>
+            </div>
+        </dl>
+        <dl class="p492" id="i1462461" num="4">
+                <div class="new_added">
+                    <a data-productid="1462461" data-skuid="1520903" data-id="http://img6.imglefeng.com/images/product/000/000/001/462/461/1462461_bg_0_z.jpg|1462461|1520903|1" num="1" href="#" title="加入购物车" data-img="http://img6.imglefeng.com/images/product/000/000/001/462/461/1462461_bg_0_z.jpg">加入购物车
+                    </a>
+                </div>
+                <dt>
+                    <a href="" class="commodity-img" target="_blank"><img src="" width="310" height="310" alt=""></a>
+                </dt>
+                <dd>
+                    <h4><a target="_blank" href=""><b>8.1折/</b> 纳益其尔芦荟三件套，全面提升水润度、亮白度、光滑度，肌肤时刻呈现自然健康状态！</a>
+                    </h4>
+                    <div class="t_price_box_L"><div class="t_price_L"><span>169.0</span><b>209</b></div></div><div class="c-info d1417399199" o=""><strong></strong><b>1</b>天<b>23</b>小时<b>54</b>分钟<b>20</b>秒</div><div class="t_buy_pople"><b>1582</b>人已购买</div></dd><div class="d1_tips"></div>
+        </dl>        
+    </div>
+    <!-- 最新爆款  结束 e -->
+    
+    <!-- 最后疯抢  开始 s -->
+    <div class="productTitle">
+        <h1 class="title3">&nbsp;</h1>
+    </div>
+    <div class="bigimg-box clearfloat" id="commodity-list-end">
+        <dl class="p7" id="i33501" num="0">
+            <div class="new_added">
+                <a data-productid="33501" data-skuid="36161" data-id="http://img9.imglefeng.com/images/product/000/000/000/033/501/33501_bg_0_z.jpg|33501|36161|1" num="1" href="#" title="加入购物车" data-img="http://img9.imglefeng.com/images/product/000/000/000/033/501/33501_bg_0_z.jpg">加入购物车
+                </a>
+            </div>
+            <dt>
+                <a href="" class="commodity-img" target="_blank"><img src="" width="310" height="310" alt=""></a>
+            </dt>
+            <dd>
+                <h4><a target="_blank" href=""><b>8.2折/</b> 丝塔芙保湿润肤乳237ml！温和零刺激，带给你公主般轻柔呵护！</a>
+                </h4>
+                <div class="t_price_box_L"><div class="t_price_L"><span>105.0</span><b>128</b>
+                </div>
+            </div>
+            <div class="c-info d1417312799" o=""><strong></strong><b>23</b>小时<b>54</b>分钟<b>21</b>秒</div><div class="t_buy_pople"><b>1129</b>人已购买</div></dd><div class="d1_tips"><b class="s7"></b>
+            </div>
+        </dl>
+        <dl class="p7" id="i1568469" num="1">
+            <div class="new_added">
+                <a data-productid="1568469" data-skuid="1644910" data-id="http://img9.imglefeng.com/images/product/000/000/001/568/469/1568469_bg_0_z.jpg|1568469|1644910|1" num="1" href="#" title="加入购物车" data-img="http://img9.imglefeng.com/images/product/000/000/001/568/469/1568469_bg_0_z.jpg">加入购物车</a>
+            </div>
+            <dt>
+                <a href="" class="commodity-img" target="_blank"><img src="" width="310" height="310" alt="">
+                </a>
+            </dt>
+            <dd>
+                <h4><a target="_blank" href=""><b>3.9折/</b> 被誉为“至尊面霜”！伊丽莎白雅顿显效复合活肤霜70g！肌肤改变是如此的惊人与快速！</a></h4>
+                <div class="t_price_box_L">
+                    <div class="t_price_L"><span>139.0</span><b>360</b>
+                    </div>
+                </div>
+                <div class="c-info d1417312799" o=""><strong></strong><b>23</b>小时<b>54</b>分钟<b>21</b>秒</div><div class="t_buy_pople"><b>841</b>人已购买
+                </div>
+            </dd>
+            <div class="d1_tips">
+            </div>
+        </dl>
+        <dl class="p492" id="i207228" num="2">
+            <div class="new_added">
+                <a data-productid="207228" data-skuid="209534" data-id="" num="1" href="#" title="加入购物车" data-img="http://img5.imglefeng.com/images/product/000/000/000/207/228/207228_bg_0_z.jpg">加入购物车</a>
+            </div>
+            <dt>
+                <a href="" class="commodity-img" target="_blank">
+                    <img src="" width="310" height="310" alt="">
+                </a>
+            </dt>
+            <dd>
+                <h4>
+                    <a target="_blank" href="">
+                        <b>6.5折/</b> 百雀羚水嫩倍现套装，天然本草精华，补水保湿，少了些科技，多了些健康！
+                    </a>
+                </h4>
+                <div class="t_price_box_L">
+                    <div class="t_price_L">
+                        <span>109.0</span>
+                        <b>168</b>
+                    </div>
+                </div>
+                <div class="c-info d1417312799" o="">
+                    <strong></strong>
+                    <b>23</b>小时<b>54</b>分钟<b>21</b>秒
+                </div>
+                <div class="t_buy_pople">
+                    <b>1485</b>人已购买
+                </div>
+            </dd>
+            <div class="d1_tips"></div>
+        </dl>
+        <dl class="p7" id="i578460" num="3">
+            <dt>
+                <a href="" class="commodity-img" target="_blank">
+                    <img src="" width="310" height="310" alt="">
+                </a>
+                <b class="end"></b>
+            </dt>
+            <dd>
+                <h4>
+                    <a target="_blank" href="">
+                        <b>7.8折/</b> Kevin亲研，H8H8肌润八次方保湿记忆霜，瞬间记住肌肤水润状态，焕回Baby肌！
+                    </a>
+                </h4>
+                <div class="t_price_box_L">
+                    <div class="t_price_L">
+                        <span>68.0</span>
+                        <b>88</b>
+                    </div>
+                </div>
+                <div class="c-info" o="抢光于2014-11-29 00:30:37">
+                    <strong></strong> 抢光于2014-11-29 00:30:37
+                </div>
+                <div class="t_buy_pople">
+                    <b>1015</b>人已购买
+                </div>
+            </dd>
+            <div class="d1_tips"></div>
+        </dl>
+        <dl class="p492" id="i127230" num="4">
+            <div class="new_added">
+                <a data-productid="127230" data-skuid="129150" data-id="http://img1.imglefeng.com/images/product/000/000/000/127/230/127230_bg_0_z.jpg|127230|129150|1" num="1" href="http://tuan.lefeng.com/###" title="加入购物车" data-img="http://img1.imglefeng.com/images/product/000/000/000/127/230/127230_bg_0_z.jpg">加入购物车</a>
+            </div>
+            <dt>
+                <a href="http://tuan.lefeng.com/bjsy/307/20141127127230_306356.html?biid=dp01_492_306356" class="commodity-img" target="_blank">
+                    <img src="" width="310" height="310" alt="">
+                </a>
+            </dt>
+            <dd>
+                <h4>
+                    <a target="_blank" href="http://tuan.lefeng.com/bjsy/307/20141127127230_306356.html?biid=dp01_492_306356">
+                        <b>4折/</b> 美丽加芬蜗牛新生特惠礼包！蕴含蜗牛护肤精华，风靡韩国美容界的软黄金！
+                    </a>
+                </h4>
+                <div class="t_price_box_L">
+                    <div class="t_price_L">
+                        <span>146.0</span>
+                        <b>369</b>
+                    </div>
+                </div>
+                <div class="c-info d1417312799" o="">
+                    <strong></strong>
+                    <b>23</b>小时<b>54</b>分钟<b>21</b>秒
+                </div>
+                <div class="t_buy_pople">
+                    <b>1647</b>人已购买
+                </div>
+            </dd>
+            <div class="d1_tips"></div>
+        </dl>
+        <!-- 开始遍历所有商品 -->
+        <foreach name="list" item="vo">
+        <dl class="p492" id="i127230" num="4">
+            <div class="new_added">
+                <a goods_sn="{$vo.goods_sn}" num="1" href="javascript:void(0)" title="加入购物车" data-img="{$vo.goods_img}" buy="{$vo.id}">加入购物车</a>
+            </div>
+            <dt>
+                <a href="__MODULE__/Product/index/id/{$vo.id}" class="commodity-img" target="_blank">
+                    <img src="__PUBLIC__/{$vo.goods_img}" width="310" height="310" alt="">
+                </a>
+            </dt>
+            <dd>
+                <h4>
+                    <a target="_blank" href="__MODULE__/Product/index/id/{$vo.id}">
+                        <b>{$vo.goods_sale}折/</b> {$vo.goods_name}
+                    </a>
+                </h4>
+                <div class="t_price_box_L">
+                    <div class="t_price_L">
+                        <span>{$vo.goods_price}</span>
+                        <b>{$vo[goods_price] / $vo[goods_sale] | round=###,2}</b>
+                    </div>
+                </div>
+                <div class="c-info d1417312799" o="">
+                    <strong></strong>
+                    <b>23</b>小时<b>54</b>分钟<b>21</b>秒
+                </div>
+                <div class="t_buy_pople">
+                    <b>1647</b>人已购买
+                </div>
+            </dd>
+            <div class="d1_tips"></div>
+        </dl>
+    
+        </foreach>
+        <!-- 开始遍历所有商品 -->
+        
+    </div>
+    <!-- 最后疯抢结束 e -->
+	<div class="productTitle">
+		<h1 class="title4">&nbsp;</h1>
+	</div>
+
+	<!-- 蜂向标开始 s -->
+	<div class="fxb-box">
+		<div class="module1">
+            </div>
+		<div class="module2">
+            
+        </div>
+	</div>
+	<!-- 蜂向标结束 e-->
+</div>
+ <!-- 底部的搜索框 -->
+    <div class="Cfooter-search">
+     	<h1>更多心仪商品快速搜索:</h1>
+		<div id="Chead_search" class="Chead-search">
+            <div class="search-input">
+                <strong id="search-submit" class="search-submit">搜索</strong>
+                <input id="search" autocomplete="off" name="search" value="补水" type="text">
+            </div>
+            <p>热门：
+                <a id="searchKey1" href="#">面膜</a> 
+                <a id="searchKey2" href="#">BB霜</a> 
+                <a id="searchKey3" href="#">山羊奶</a>&nbsp; 
+                <a id="searchKey4" href="#">百雀羚</a> 
+                <a id="searchKey5" href="#">御泥坊</a>
+                <a id="searchKey6" href="#">金镶玉</a>
+            </p>
+        </div>
+    </div>
+    <!-- 搜索框结束 -->
+<!-- 主体部分结束 -->
+<!-- <div id="dsk2">asd</div> -->
+<!-- 首页轮播图片 -->
+<script>
+    $(function(){
+        //点击购买按钮
+        $('a[buy]').each(function(){
+            var $this = $(this);
+            $this.click(function(){
+                // 此时没有登录的话跳转到登录
+                if({$user['id']?1:0}){
+                    var id = $this.attr('buy');
+                    $.get('__MODULE__/Cart/add','id='+id,function(data){
+                        if(data.status == 1){
+                            layer.msg(data.content,1,function(){
+                                location.reload();
+                            })
+                        }else{
+                            layer.msg(data.content,1,3);
+                        }
+                    })
+                }else{
+                    layer.msg('请先登录！',2,function(){
+                        location.href = '__MODULE__/User/Login';
+                    })
+                }
+            })
+        })
+        // 鼠标移上出先购买图标
+        $('#commodity-list dl,#commodity-list-end dl').each(function(){
+            var $this = $(this);
+            $(this).hover(function(){
+                $this.addClass('hov');
+            },function(){
+                $this.removeClass('hov');
+            })
+        })
+        // 轮播
+        /*$('#bq li').each(function(index){
+            var i = index;
+            var $this = $(this);
+            $(this).mouseover(function(){
+                $this.addClass('on').siblings().removeClass('on');
+                $('.first-show div:eq('+i+')').show().siblings().not('ul').hide();
+            })
+        })*/
+        //轮播定时
+        //有空再做
+
+        //抢购
+        $('#dsk2').yomi();
+        //改的新banner轮播
+        $('.banner').unslider({
+            speed: 800,  //滚动速度
+            delay: 7000,    //切换时间
+            keys: true,     //键盘控制
+            dots: true,     //显示点导航
+            fluid: false    //支持响应式布局
+        });
+    })
+</script>
+</block>

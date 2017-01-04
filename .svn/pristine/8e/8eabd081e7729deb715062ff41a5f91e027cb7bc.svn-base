@@ -1,0 +1,286 @@
+<extend name="Public:layout" />
+<block name="cssjs">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/personal.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/home_v2.css"></block>
+<block name="main">
+    <div class="mainBg">
+        <div class="main clearfix">
+
+            <div class="side_bar">
+                <h1>
+                    <a title="我的蜂巢" href="#">
+                        <img src="__PUBLIC__/home/images/icon1.gif">我的蜂巢</a>
+                </h1>
+                <dl>
+                    <dt>订单中心</dt>
+                    <dd>
+                        <a href="__CONTROLLER__/order">我的订单</a>
+                        <a href="__CONTROLLER__/">我的收藏</a>
+                        <a href="__CONTROLLER__/myBonus">我的红包</a>
+                        <a href="__CONTROLLER__/myCoin">我的花粉</a>
+                        <a href="__CONTROLLER__/">我的评价</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>账户管理</dt>
+                    <dd>
+                        <a href="__CONTROLLER__/inform">个人资料设置</a>
+                        <a href="__CONTROLLER__/safe">账户安全设置</a>
+                        <a href="__CONTROLLER__/address">收货地址管理</a>
+                        <a href="#">邮件/短信订阅</a>
+                        <a href="#">站外分享绑定</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>服务中心</dt>
+                    <dd>
+                        <a href="#">申请退换货/投诉</a>
+                        <a href="#">退货管理</a>
+                        <a href="#">换货管理</a>
+                        <a href="#">店铺取消订单管理</a>
+                        <a href="__CONTROLLER__/reply">商品咨询/回复</a>
+                        <a href="__CONTROLLER__/complain">我的投诉</a>
+                    </dd>
+                </dl>
+            </div>
+            <div class="content">
+                <div class="huanhuo">
+                    <h1>订单详情</h1>
+                    <div class="dd_infor">
+
+                        <span>订单编号：6390547210004</span>
+                        <span>
+                            订单状态： <em>已取消</em>
+                        </span>
+
+                    </div>
+
+                    <div class="step hh_step dd_sp">
+                        <div class="step_pic">
+                            <img src="http://img1.imglefeng.com/images/fengchao/h2_step2.jpg"></div>
+                        <p>
+                            <span> <em>提交订单</em> <i>2014-12-01 18:35:56</i>
+                            </span>
+                            <span>
+                                <em>已取消</em> <i>2014-12-02 18:40:02</i>
+                            </span>
+                        </p>
+                    </div>
+
+                    <div class="wlgz" id="userInfo">
+                        <div class="tab_sty" id="clean_div">
+                            <h2>商品清单</h2>
+                            <table width="700" border="0" cellpadding="0" cellspacing="0">
+                                <tbody>
+                                    <tr>
+                                        <th width="16%">商品图片</th>
+                                        <th width="35%">商品名称</th>
+                                        <th width="13%">价格</th>
+                                        <th width="12%">商品数量</th>
+                                        <th width="12%">赠送花粉</th>
+                                        <th width="12%">操作</th>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <a href="http://product.lefeng.com/product/6784463.html?wt.ct=link&amp;wt.s_pg=fengchao&amp;wt.s_pf=myorders" target="_blank">
+                                                <img src="http://img3.imglefeng.com/images/product/000/000/006/784/463/6784463_0_s.jpg"></a>
+                                        </td>
+                                        <td class="tl">
+                                            [礼包]
+                                            <a href="http://product.lefeng.com/product/6784463.html?wt.ct=link&amp;wt.s_pg=fengchao&amp;wt.s_pf=myorders" target="_blank">Za 姬芮 恒润娇养 眼霜护肤套组</a>
+
+                                            <a target="_blank" href="http://product.lefeng.com/product/5928464.html?wt.ct=link&amp;wt.s_pg=fengchao&amp;wt.s_pf=myorders">Za 姬芮 恒润娇养 眼霜20g</a>
+
+                                            <a target="_blank" href="http://product.lefeng.com/product/4236466.html?wt.ct=link&amp;wt.s_pg=fengchao&amp;wt.s_pf=myorders">Za 环保礼品袋（GWP）</a>
+
+                                            <a target="_blank" href="http://product.lefeng.com/product/5932467.html?wt.ct=link&amp;wt.s_pg=fengchao&amp;wt.s_pf=myorders">姬芮 恒润娇养乳液 醇润型20ml</a>
+
+                                            <a target="_blank" href="http://product.lefeng.com/product/5934462.html?wt.ct=link&amp;wt.s_pg=fengchao&amp;wt.s_pf=myorders">姬芮 恒润娇养面霜 醇润型5g</a>
+
+                                            <a target="_blank" href="http://product.lefeng.com/product/5932464.html?wt.ct=link&amp;wt.s_pg=fengchao&amp;wt.s_pf=myorders">姬芮 恒润娇养化妆水 醇润型30ml</a>
+
+                                            <a target="_blank" href="http://product.lefeng.com/product/5932461.html?wt.ct=link&amp;wt.s_pg=fengchao&amp;wt.s_pf=myorders">姬芮 恒润娇养洁面膏30g</a>
+
+                                            <a target="_blank" href="http://product.lefeng.com/product/5932468.html?wt.ct=link&amp;wt.s_pg=fengchao&amp;wt.s_pf=myorders">姬芮 恒润娇养眼霜5g</a>
+
+                                        </td>
+                                        <td>￥173.0</td>
+                                        <td>2</td>
+                                        <td>0</td>
+                                        <td>
+                                            <a target="_blank" href="http://product.lefeng.com/product/6784463.html?wt.ct=link&amp;wt.s_pg=fengchao&amp;wt.s_pf=myorders" class="yellow">查看</a>
+                                            <br>
+                                            <form id="6390547210004" name="6390547210004" action="http://shopping.lefeng.com/cart/cart.jsp" method="post">
+                                                <input name="process" value="batch" type="hidden">
+                                                <input name="items" value="7126905%24%246212914%264376908%266220909%266222904%266220906%266220903%266220910%26%24%242%24%23" type="hidden">
+                                                <span class="orderbtn">
+                                                    <a class="yellow" onclick="_tag.dcsMultiTrack('wt.ct','button','wt.s_pg','cart_rebuy','wt.pid','7126905|');$(this).closest('form').submit();" href="###">再次购买</a>
+                                                </span>
+                                            </form>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <a href="http://product.lefeng.com/product/84840.html?wt.ct=link&amp;wt.s_pg=fengchao&amp;wt.s_pf=myorders" target="_blank">
+                                                <img src="http://img2.imglefeng.com/images/product/000/000/000/084/840/84840_0_s.jpg"></a>
+                                        </td>
+                                        <td class="tl">
+
+                                            <a href="http://product.lefeng.com/product/84840.html?wt.ct=link&amp;wt.s_pg=fengchao&amp;wt.s_pf=myorders" target="_blank">AA Skincare（英国AA网）海藻芦荟眼胶60ml</a>
+
+                                        </td>
+                                        <td>￥49.0</td>
+                                        <td>1</td>
+                                        <td>0</td>
+                                        <td>
+                                            <a target="_blank" href="http://product.lefeng.com/product/84840.html?wt.ct=link&amp;wt.s_pg=fengchao&amp;wt.s_pf=myorders" class="yellow">查看</a>
+                                            <br>
+                                            <form id="6390547210004" name="6390547210004" action="http://shopping.lefeng.com/cart/cart.jsp" method="post">
+                                                <input name="process" value="batch" type="hidden">
+                                                <input name="items" value="90100%24%24%24%241%24%23" type="hidden">
+                                                <span class="orderbtn">
+                                                    <a class="yellow" onclick="_tag.dcsMultiTrack('wt.ct','button','wt.s_pg','cart_rebuy','wt.pid','90100|');$(this).closest('form').submit();" href="###">再次购买</a>
+                                                </span>
+                                            </form>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <h2>收货人信息</h2>
+                        <p>
+                            <em>收货人:</em>
+                            <i>王雪</i>
+                        </p>
+                        <p>
+                            <em>地&nbsp;&nbsp;&nbsp;址:</em>
+                            <i style="width:650px;">北京市 市辖区-昌平区 回龙观文化西路兄弟连楼</i>
+                        </p>
+
+                        <p>
+                            <em>邮&nbsp;&nbsp;&nbsp;编:</em>
+                            <i>102200</i>
+                        </p>
+                        <p>
+                            <em>电&nbsp;&nbsp;&nbsp;话:</em>
+                            <i>13241291060,</i>
+                        </p>
+                        <p>
+                            <em>邮&nbsp;&nbsp;&nbsp;箱:</em>
+                            <i></i>
+                        </p>
+                    </div>
+                    <div class="wlgz">
+                        <h2>支付及配送信息</h2>
+
+                        <div class="amend-pay">
+                            <p>
+                                <em>支付方式:</em>
+                                <i id="payTypeCN">支付宝</i>
+                            </p>
+                            <p>
+                                <em>送货时间:</em>
+
+                                <i id="time_info">不限时间</i>
+                            </p>
+                            <div id="remit_info" style="display:none">
+                                <style type="text/css">.out_border { border:#dddddd solid 1px; padding:10px; background:#fcfbf9; width:230px;margin:10px 0 0 60px;}.out_border p { font:normal 12px/18px '宋体'; color:#333333; margin:0;}.out_border p b { color:#f52648; font-weight:bold;}</style>
+                                <div class="out_border">
+                                    <p>户&nbsp;&nbsp;名：&nbsp;乐蜂（上海）信息技术有限公司</p>
+                                    <p>开户行：&nbsp;招商银行上海天钥桥支行</p>
+                                    <p>
+                                        账&nbsp;&nbsp;号：&nbsp; <b>1219 1193 9510 105</b>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wlgz invoice">
+                        <h2>
+                            支付及配送信息
+                            <a href="javascript:;" class="wlgz-abolish">取消</a>
+                        </h2>
+
+                        <dl class="way" id="edit_pay">
+                            <dt>支付方式：</dt>
+                            <dd>
+                                <label class="lf-radio">
+                                    <input type="radio"> <dfn value="33"></dfn>
+                                    <span class="W154">在线支付</span>
+                                    （支持绝大数银行卡在线支付）
+                                </label>
+                            </dd>
+
+                            <dd class="way-Ml">
+                                <label class="lf-radio">
+                                    <input type="radio"> <dfn value="1_0"></dfn>
+                                    <span>货到付款（现金）</span>
+                                    快递人员将在送货上门时收款，请您准备好现金
+                                </label>
+                            </dd>
+
+                            <dd class="way-Ml">
+                                <label class="lf-radio">
+                                    <input type="radio">
+                                    <dfn value="1_1"></dfn>
+                                    <span>货到付款（POS刷卡）</span>
+                                    快递人员将在送货上门时收款，仅支持带银联标志的银行卡、信用卡和借记卡
+                                </label>
+                            </dd>
+
+                            <dd class="way-Ml">
+                                <label class="lf-radio">
+                                    <input type="radio">
+                                    <dfn value="6"></dfn>
+                                    <span class="W154">汇款</span>
+                                    （收款时间一般为汇款出后的3-5个工作日内）
+                                </label>
+                            </dd>
+                            <div id="show_remit_info_edit" style="display:none">
+                                <style type="text/css">.float_border { border:#dddddd solid 1px; padding:20px 30px; background:#fff; width:360px;margin-left:260px;}.float_border p { font:normal 12px/30px '宋体'; color:#666666; margin:0;}.float_border p b { color:#333333; font:bold 28px/30px '微软雅黑';}.float_border span { padding-top:20px; display:block;}.float_border span p { line-height:18px;}.float_border span p b { color:#f52648; font:normal 12px/18px '宋体';}</style>
+                                <div class="float_border">
+                                    <p>户&nbsp;&nbsp;名：&nbsp;乐蜂（上海）信息技术有限公司</p>
+                                    <p>开户行：&nbsp;招商银行上海天钥桥支行</p>
+                                    <p>
+                                        账&nbsp;&nbsp;号：&nbsp; <b>1219 1193 9510 105</b>
+                                    </p>
+                                    <span style="width: auto; display: block; padding-top: 20px">
+                                        <p>
+                                            <b>请在汇款人简短留言中注明您的订单号/用户名（非常重要！）</b>
+                                        </p>
+                                        <p>收款时间一般为汇款出后的3-5个工作日内</p>
+                                    </span>
+                                </div>
+                            </div>
+
+                        </dl>
+                        <dl class="time">
+                            <dt>送货时间:</dt>
+                            <dd value="0" remark="不限时间" class="on">
+                                不限时间
+                                <div class="clicks"></div>
+                            </dd>
+                            <dd value="1" remark="周一至周五">
+                                周一至周五
+                                <div></div>
+                            </dd>
+                            <dd value="2" remark="周六日/节假日">
+                                周六日/节假日
+                                <div></div>
+                            </dd>
+                        </dl>
+                        <p>
+                            <a href="javascript:;" class="wlgz-btn" id="savePayType">保存</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</block>

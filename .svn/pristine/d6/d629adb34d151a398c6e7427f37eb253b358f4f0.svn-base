@@ -1,0 +1,423 @@
+<extend name="Public:layout" />
+<block name="cssjs">
+<link rel="stylesheet" href="__PUBLIC__/home/css/list.css">
+</block>
+<block name="main">
+<!-- 主体部分开始 -->
+<div class="mainBg">
+<input id="newList" type="hidden">
+<div class="main" style="width: 1200px;">
+<!-- 导航 -->
+<div class="path"> 
+    <span>相关商品<b class="pri">84</b>件</span> 
+    <a title="" href="#" title="护肤彩妆">护肤彩妆</a> /
+    <h1>护肤用品</h1>
+</div>
+
+<!-- 左边的导航 开始-->
+<div class="sidebar" id="sidebar">
+    <div class="sub-nav" id="categorySearch">
+        <h3>护肤彩妆</h3>
+        <p class="show"> <b></b> 
+            <a rel="nofollow" href="http://s.lefeng.com/directory/26000_26008.html" id="26008" class="pri">护肤用品</a> 
+        </p>
+        <ul class="ClearFix show">
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26008_26054.html" id="26054">面部卸妆</a> </li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26008_26055.html" id="26055">面部清洁</a> </li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26008_26056.html" id="26056">面部保养</a> </li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26008_26057.html" id="26057">面膜面贴</a> </li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26008_26058.html" id="26058">眼部护理</a> </li>
+            <li><a rel="nofollow" href="http://s.lefeng.com/directory/26008_26059.html" id="26059">颈部护理</a></li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26008_26060.html" id="26060">唇部护理</a> </li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26008_26061.html" id="26061">身体保养</a> </li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26008_26062.html" id="26062">手部护理</a> </li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26008_26063.html" id="26063">足部护理 </a> </li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26008_26860.html" id="26860">护肤套装 </a> </li>
+        </ul>
+        <p> <b></b> <a rel="nofollow" href="http://s.lefeng.com/directory/26000_26009.html" id="26009">彩妆用品</a> </p>
+        <ul class="ClearFix">
+            <li> <a rel="nofollow" href="#" id="26064">面部 </a> </li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26009_26065.html" id="26065">眉部 </a> </li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26009_26066.html" id="26066">睫毛 </a> </li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26009_26067.html" id="26067">眼部 </a> </li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26009_26068.html" id="26068">唇部 </a> </li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26009_26070.html" id="26070">身体 </a> </li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26009_26069.html" id="26069">美甲 </a> </li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26009_26893.html" id="26893">套装组合 </a> </li>
+        </ul>
+        
+        <p> <b></b> <a rel="nofollow" href="http://s.lefeng.com/directory/26000_26011.html" id="26011">精油芳疗</a> </p>
+        <ul class="ClearFix">
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26011_26074.html" id="26074">基础油 </a> </li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26011_26075.html" id="26075">单方精油 </a> </li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26011_26076.html" id="26076">复方精油 </a> </li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26011_26077.html" id="26077">芳疗工具 </a> </li>
+        </ul>
+        <p> <b></b> <a rel="nofollow" href="http://s.lefeng.com/directory/26000_26012.html" id="26012">个人护理</a> </p>
+        <ul class="ClearFix">
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26012_26078.html" id="26078">头发护理 </a> </li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26012_26079.html" id="26079">眼部护理 </a> </li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26012_26081.html" id="26081">身体清洁 </a> </li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26012_26080.html" id="26080">口腔护理 </a> </li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26012_26883.html" id="26883">护理套装 </a> </li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26012_26082.html" id="26082">私密护理 </a> </li>
+        </ul>
+        <p> <b></b> <a rel="nofollow" href="http://s.lefeng.com/directory/26000_26016.html" id="26016">美容工具</a> </p>
+        <ul class="ClearFix">
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26016_26098.html" id="26098">化妆工具 </a> </li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26016_26099.html" id="26099">护肤工具 </a> </li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26016_26104.html" id="26104">美容杂货 </a> </li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26016_26100.html" id="26100">美发工具 </a> </li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26016_26101.html" id="26101">手足工具 </a> </li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26016_26102.html" id="26102">睫毛假发 </a> </li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26016_26103.html" id="26103">美容电器 </a> </li>
+        </ul>
+        <p> <b></b> <a rel="nofollow" href="http://s.lefeng.com/directory/26000_26013.html" id="26013">男士护理</a> </p>
+        <ul class="ClearFix">
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26013_26084.html" id="26084">面部护肤 </a> </li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26013_26086.html" id="26086">身体清洁 </a> </li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26013_26083.html" id="26083">洗发护发 </a> </li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26013_26085.html" id="26085">剃须刀具 </a> </li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26013_26087.html" id="26087">私密护理 </a> </li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26013_26885.html" id="26885">洗护套组 </a> </li>
+        </ul>
+        <p> <b></b> <a rel="nofollow" href="http://s.lefeng.com/directory/26000_26014.html" id="26014">婴幼护理</a> </p>
+        <ul class="ClearFix">
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26014_26090.html" id="26090">爽身 </a> </li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26014_26089.html" id="26089">护肤 </a> </li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26014_26091.html" id="26091">用品 </a> </li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26014_26093.html" id="26093">防蚊 </a> </li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26014_26092.html" id="26092">卫生 </a> </li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26014_26088.html" id="26088">清洁 </a> </li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26014_26887.html" id="26887">护理套装 </a> </li>
+        </ul>
+        <p> <b></b> <a rel="nofollow" href="http://s.lefeng.com/directory/26000_26015.html" id="26015">孕妇护理</a> </p>
+        <ul class="ClearFix">
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26015_26094.html" id="26094">头发护理 </a> </li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26015_26095.html" id="26095">面部护理 </a> </li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26015_26096.html" id="26096">身体护理 </a> </li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26015_26097.html" id="26097">产后护理 </a> </li>
+            <li> <a rel="nofollow" href="http://s.lefeng.com/directory/26015_26889.html" id="26889">护理套装 </a> </li>
+        </ul>
+    </div>
+    <div class="skimbuy" id="seen_and_buy" style="" tname="护肤用品">
+        <h3>浏览<em>护肤用品</em>最终买了</h3>
+        <dl>
+            <dt> <a target="_blank" href="http://product.lefeng.com/product/186152.html" title="百雀羚水嫩倍现至尚套装（洁面乳95g+精华水100ml+精华霜50g）" tjurl="http://rfu.lefeng.com/1_0_005_0009_01/product/186152.html"> <img src="./images/186152_0_l.jpg" alt="百雀羚水嫩倍现至尚套装（洁面乳95g+精华水100ml+精华霜50g）"> </a> </dt>
+            <dd class="nam"> <a target="_blank" href="http://product.lefeng.com/product/186152.html" title="百雀羚水嫩倍现至尚套装（洁面乳95g+精华水100ml+精华霜50g）" tjurl="http://rfu.lefeng.com/1_0_005_0009_01/product/186152.html">百雀羚水嫩倍现至尚套装（洁面乳95g+精华水100ml+精华霜50g） </a> </dd>
+            <dd class="pri"> <img src="./images/186152_73_40.png"> <span><i>14.2%</i>购买</span> </dd>
+        </dl>
+        <dl>
+            <dt> <a target="_blank" href="http://product.lefeng.com/product/81421.html" title="百雀羚草本水嫩倍现保湿精华乳液100ml" tjurl="http://rfu.lefeng.com/1_0_005_0009_02/product/81421.html"> <img src="./images/81421_0_l.jpg" alt="百雀羚草本水嫩倍现保湿精华乳液100ml"> </a> </dt>
+            <dd class="nam"> <a target="_blank" href="http://product.lefeng.com/product/81421.html" title="百雀羚草本水嫩倍现保湿精华乳液100ml" tjurl="http://rfu.lefeng.com/1_0_005_0009_02/product/81421.html">百雀羚草本水嫩倍现保湿精华乳液100ml </a> </dd>
+            <dd class="pri"> <img src="./images/81421_73_13.png"> <span><i>12.2%</i>购买</span> </dd>
+        </dl>
+        <dl>
+            <dt> <a target="_blank" href="http://product.lefeng.com/product/207228.html" title="百雀羚水嫩倍现套装(精华水100ml+乳液100ml)赠品随机" tjurl="http://rfu.lefeng.com/1_0_005_0009_03/product/207228.html"> <img src="./images/207228_0_l.jpg" alt="百雀羚水嫩倍现套装(精华水100ml+乳液100ml)赠品随机"> </a> </dt>
+            <dd class="nam"> <a target="_blank" href="http://product.lefeng.com/product/207228.html" title="百雀羚水嫩倍现套装(精华水100ml+乳液100ml)赠品随机" tjurl="http://rfu.lefeng.com/1_0_005_0009_03/product/207228.html">百雀羚水嫩倍现套装(精华水100ml+乳液100ml)赠品随机 </a> </dd>
+            <dd class="pri"> <img src="./images/207228_73_60.png"> <span><i>12.2%</i>购买</span> </dd>
+        </dl>
+        <dl>
+            <dt> <a target="_blank" href="http://product.lefeng.com/product/81420.html" title="百雀羚草本水嫩倍现盈透精华水100ml" tjurl="http://rfu.lefeng.com/1_0_005_0009_04/product/81420.html"> <img src="./images/81420_0_l.jpg" alt="百雀羚草本水嫩倍现盈透精华水100ml"> </a> </dt>
+            <dd class="nam"> <a target="_blank" href="http://product.lefeng.com/product/81420.html" title="百雀羚草本水嫩倍现盈透精华水100ml" tjurl="http://rfu.lefeng.com/1_0_005_0009_04/product/81420.html">百雀羚草本水嫩倍现盈透精华水100ml </a> </dd>
+            <dd class="pri"> <img src="./images/81420_73_12.png"> <span><i>12.2%</i>购买</span> </dd>
+        </dl>
+        <dl class="noborder">
+            <dt> <a target="_blank" href="http://product.lefeng.com/product/147280.html" title="百雀羚草本水嫩倍现臻美套装150ml泡沫+100ml水+100ml乳液" tjurl="http://rfu.lefeng.com/1_0_005_0009_05/product/147280.html"> <img src="./images/147280_0_l.jpg" alt="百雀羚草本水嫩倍现臻美套装150ml泡沫+100ml水+100ml乳液"> </a> </dt>
+            <dd class="nam"> <a target="_blank" href="http://product.lefeng.com/product/147280.html" title="百雀羚草本水嫩倍现臻美套装150ml泡沫+100ml水+100ml乳液" tjurl="http://rfu.lefeng.com/1_0_005_0009_05/product/147280.html">百雀羚草本水嫩倍现臻美套装150ml泡沫+100ml水+100ml乳液 </a> </dd>
+            <dd class="pri"> <img src="./images/147280_73_16.png"> <span><i>11.4%</i>购买</span> </dd>
+        </dl>
+    </div>
+    <div class="pankhis" id="history">
+        <h3>最近浏览过的商品</h3>
+        <dl class="noborder">
+            <dt><a target="_blank" title="完美 芦荟胶40gx2支" href="http://product.lefeng.com/product/122200.html" tjurl="http://rfu.lefeng.com/0_0_005_0031_01/product/122200.html"><img src="./images/122200_bg_0_s.jpg"></a></dt>
+            <dd class="nam"><a target="_blank" title="完美 芦荟胶40gx2支" href="http://product.lefeng.com/product/122200.html" tjurl="http://rfu.lefeng.com/0_0_005_0031_01/product/122200.html">完美 芦荟胶40gx2支</a><img src="./images/122200_72_24.png"></dd>
+        </dl>
+    </div>
+</div>
+<!-- 左边的导航 结束 -->
+
+<div class="cont"> <a name="nav"></a>
+    <div id="cont-nav-show" class="nav ClearFix">
+        <div class="sel"> <span class="pathattr">已选：</span>
+            <div class="selArea"><span class="selList"><a href="#"><em>品牌:百雀羚</em><b>&nbsp;</b></a></span></div>
+            <span class="cancelCheck"><a href="#">清除条件</a></span> </div>
+        <ul id="ul-nav-show">
+            <li id="xmod" class="show xmod">
+                <b>系列：</b>
+                <span style="display: none;" class="more"><i></i>更多</span>
+                <span style="display: none;" class="hide"><i></i>收起</span>
+                <div class="mod">
+                    <span><a href="#" rel="nofollow">草本精粹系列<i>(20)</i></a></span>
+                    <span><a href="#" rel="nofollow">水嫩精纯系列<i>(13)</i></a></span>
+                    <span><a href="#" rel="nofollow">水嫩保湿系列<i>(7)</i></a></span>
+                </div>
+            </li>
+            <li class="show"><b>部位：</b>
+                <span style="display: none;" class="more"><i></i>更多</span>
+                <span style="display: none;" class="hide"><i></i>收起</span>
+                <div class="mod">
+                    <span><a href="#" title="面部(75)" rel="nofollow">面部<i>(75)</i></a></span>
+                    <span><a href="#" title="眼部(7)" rel="nofollow">眼部<i>(7)</i></a></span>
+                    <span><a href="#" title="身体(1)" rel="nofollow">身体<i>(1)</i></a></span>
+                    <span><a href="#" title="手部(1)" rel="nofollow">手部<i>(1)</i></a></span>
+                </div>
+            </li>
+            <li class="show"><b>功效：</b>
+                <span style="display: block;" class="more"><i></i>更多</span>
+                <span style="display: none;" class="hide"><i></i>收起</span>
+                <div class="mod">
+                    <span><a href="#" title="保湿(55)" rel="nofollow">保湿<i>(55)</i></a></span>
+                    <span><a href="#" title="补水(43)" rel="nofollow">补水<i>(43)</i></a></span>
+                    <span><a href="#" title="滋润(33)" rel="nofollow">滋润<i>(33)</i></a></span>
+                    <span><a href="#" title="深层清洁(15)" rel="nofollow">深层清洁<i>(15)</i></a></span>
+                    <span><a href="#" title="美白(14)" rel="nofollow">美白<i>(14)</i></a></span>
+                    <span><a href="#" title="去干纹(8)" rel="nofollow">去干纹<i>(8)</i></a></span>
+                    <span><a href="#" title="去眼袋(7)" rel="nofollow">去眼袋<i>(7)</i></a></span>
+                    <span><a href="#" title="亮肤(7)" rel="nofollow">亮肤<i>(7)</i></a></span>
+                    <span><a href="#" title="提拉紧致(6)" rel="nofollow">提拉紧致<i>(6)</i></a></span>
+                    <span><a href="#" title="去黑眼圈(6)" rel="nofollow">去黑眼圈<i>(6)</i></a></span>
+                    <span><a href="#" title="防晒(5)" rel="nofollow">防晒<i>(5)</i></a></span>
+                    <span><a href="#" title="收缩毛孔(5)" rel="nofollow">收缩毛孔<i>(5)</i></a></span>
+                    <span><a href="#" title="抗皱(5)" rel="nofollow">抗皱<i>(5)</i></a></span>
+                    <span><a href="#" title="控油(4)" rel="nofollow">控油<i>(4)</i></a></span>
+                    <span><a href="#" title="嫩肤(4)" rel="nofollow">嫩肤<i>(4)</i></a></span>
+                    <span><a href="#" title="修复(3)" rel="nofollow">修复<i>(3)</i></a></span>
+                    <span><a href="#" title="祛痘(2)" rel="nofollow">祛痘<i>(2)</i></a></span>
+                    <span><a href="#" title="清洁(1)" rel="nofollow">清洁<i>(1)</i></a></span>
+                    <span><a href="#" title="抗氧化(1)" rel="nofollow">抗氧化<i>(1)</i></a></span>
+                    <span><a href="#" title="去黑头(1)" rel="nofollow">去黑头<i>(1)</i></a></span>
+                    <span><a href="#" title="去角质(1)" rel="nofollow">去角质<i>(1)</i></a></span>
+                </div>
+            </li>
+            <li class="show"><b>价格：</b>
+                <div class="mod">
+                    <span><a href="#" title="0-39元" rel="nofollow">0-39元<i>(18)</i></a></span>
+                    <span><a href="#" title="40-79元" rel="nofollow">40-79元<i>(18)</i></a></span>
+                    <span><a href="#" title="80-129元" rel="nofollow">80-129元<i>(18)</i></a></span>
+                    <span><a href="#" title="130-259元" rel="nofollow">130-259元<i>(18)</i></a></span>
+                    <span><a href="#" title="260以上" rel="nofollow">260以上<i>(7)</i></a></span>
+                </div>
+            </li>
+        </ul>
+        <div class="more_nav ClearFix"> <b>更多选项：</b>
+            <div class="more_mod">
+                <dl>
+                    <dt><a href="#">形态</a><i></i></dt>
+                    <dd style="display: none;">
+                        <a href="#" title="乳" rel="nofollow">乳</a>
+                        <a href="#" title="水" rel="nofollow">水</a>
+                        <a href="#" title="霜" rel="nofollow">霜</a>
+                        <a href="#" title="贴膜" rel="nofollow">贴膜</a>
+                        <a href="#" title="精华" rel="nofollow">精华</a>
+                        <a href="#" title="膏" rel="nofollow">膏</a>
+                        <a href="#" title="泡沫" rel="nofollow">泡沫</a>
+                        <a href="#" title="啫喱" rel="nofollow">啫喱</a>
+                        <a href="#" title="泥" rel="nofollow">泥</a>
+                        <a href="#" title="油" rel="nofollow">油</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>
+                        <a href="#">肤质</a><i></i>
+                    </dt>
+                    <dd style="display: none;">
+                        <a href="#" title="不限" rel="nofollow">不限</a>
+                        <a href="#" title="干性" rel="nofollow">干性</a>
+                        <a href="#" title="油性" rel="nofollow">油性</a>
+                        <a href="#" title="痘性" rel="nofollow">痘性</a>
+                        <a href="#" title="混合偏油" rel="nofollow">混合偏油</a>
+                        <a href="#" title="混合偏干" rel="nofollow">混合偏干</a>
+                        <a href="#" title="中性" rel="nofollow">中性</a>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+
+    <a name="list"></a>
+    <div class="list" id="" style="padding-top: 40px;">
+        <div class="sm-nav abs" id="sm-nav"> 
+            <span class="order"> 
+                <a rel="nofollow" title="按相似度排序" class="biht-none down" href="#">默认</a> 
+                <a rel="nofollow" title="近期销量由高到低" class="biht-none" href="#"><b></b>热销</a> 
+                <a rel="nofollow" title="人气由高到低" class="biht-none" href="#"><b></b>人气</a> 
+                <a rel="nofollow" title="点击按价格由低到高" href="#" class="biht-none pristate "><b></b>价格</a> 
+                <a rel="nofollow" title="上架时间" class="biht-none" href="#"><b></b>最新</a> 
+            </span> 
+            <span class="check">
+                <label class="c_off" for="pruStatus1">
+                    <input type="checkbox" name="onlyshow" value="9" url="#" page="1" show="0">促销
+                </label>
+                <label class="c_off" for="pruStatus2">
+                    <input type="checkbox" name="onlyshow" value="2" url="#" page="1" show="0">礼包
+                </label>
+            </span> 
+            <span class="tpages"> 
+                <span class="tpageNum"><em><i>1</i>/2</em></span> 
+                <span class="prev"></span> 
+                <a href="#" class="next"></a> 
+            </span> 
+        </div>
+        <div class="smPruArea">
+            <div class="makeup ClearFix">
+                <div class="pruwrap" id="81406" inv="0">
+                    <dl skuids="86746" class="">
+                        <dt> 
+                            <a href="#" title="百雀羚草本8杯水保湿水嫩面膜22g*5" target="_blank"><img alt="百雀羚草本8杯水保湿水嫩面膜22g*5" src="./images/81406_0_b.jpg"></a> 
+                            <span class="poppruL"></span>
+                            <span class="poppruR"></span> 
+                            <i>
+                                <a href="#" sid="86746" pid="81406" class="save">收藏</a>
+                            </i> 
+                        </dt>
+                        <dd class="nam">
+                            <a href="#" target="_blank" title="百雀羚草本8杯水保湿水嫩面膜22g*5百雀羚满168送199，赠完为止，不累计">百雀羚草本8杯水保湿水嫩面膜22g*5<i>百雀羚满168送199，赠完为止，不累计</i>
+                            </a>
+                        </dd>
+                        <dd class="pri"> 
+                            <img src="./images/81406_73_62.png"> 
+                            <del class="spri">¥25.5</del> 
+                            <a class="to push" pid="81406" sid="86746" href="#">加入购物车</a> 
+                        </dd>
+                        <dd class="mess"> 
+                            <a href="#" class="buynum">最近3084人购买</a> <a href="#" target="_blank" rel="nofollow" class="comnum">867条评论</a> 
+                        </dd>
+                        <dd class="cxmsg">
+                            <ul>
+                                <li>
+                                    <i title="百雀羚满168送199，赠完为止，不累计" class="sale_sicon_2"></i> 
+                                    <span title="百雀羚满168送199，赠完为止，不累计">百雀羚满168送199，赠<br>
+                                    </span>
+                                </li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="pruwrap" id="202025" inv="0">
+                    <dl skuids="203509">
+                        <dt> <a href="http://product.lefeng.com/product/202025.html" title="百雀羚水嫩倍现保湿三部曲（水100ml+乳液100ml+霜50g）套装" target="_blank"><img alt="百雀羚水嫩倍现保湿三部曲（水100ml+乳液100ml+霜50g）套装" src="./images/202025_0_b.jpg"></a> <span class="poppruL"></span><span class="poppruR"></span> <i><a href="http://s.lefeng.com/directory/26000_26008_685959_0_0_b685959_0_0_1.html###" sid="203509" pid="202025" class="save">收藏</a></i> </dt>
+                        <dd class="nam"><a href="http://product.lefeng.com/product/202025.html" target="_blank" title="百雀羚水嫩倍现保湿三部曲（水100ml+乳液100ml+霜50g）套装百雀羚满168送199，赠完为止，不累计">百雀羚水嫩倍现保湿三部曲（水100ml+乳液100ml+霜50g）套装<i>百雀羚满168送199，赠完为止，不累计</i></a></dd>
+                        <dd class="pri"> <img src="./images/202025_73_41.png"> <del class="spri">¥217.0</del> <a class="to push" pid="202025" sid="203509" href="http://s.lefeng.com/directory/26000_26008_685959_0_0_b685959_0_0_1.html###">加入购物车</a> </dd>
+                        <dd class="mess"> <a href="http://s.lefeng.com/directory/26000_26008_685959_0_0_b685959_0_0_1.html###" rel="nofollow" class="buynum">最近2087人购买</a> <a href="http://review.lefeng.com/review/202025-0-0-a-1.html" target="_blank" rel="nofollow" class="comnum">7392条评论</a> </dd>
+                        <dd class="cxmsg">
+                            <ul>
+                                <li><i title="百雀羚满168送199，赠完为止，不累计" class="sale_sicon_2"></i> <span title="百雀羚满168送199，赠完为止，不累计">百雀羚满168送199，赠<br>
+                                    </span></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="pruwrap" id="81420" inv="0">
+                    <dl skuids="86760" class="">
+                        <dt> <a href="http://product.lefeng.com/product/81420.html" title="百雀羚草本水嫩倍现盈透精华水100ml" target="_blank"><img alt="百雀羚草本水嫩倍现盈透精华水100ml" src="./images/81420_0_b.jpg"></a> <span class="poppruL"></span><span class="poppruR"></span> <i><a href="http://s.lefeng.com/directory/26000_26008_685959_0_0_b685959_0_0_1.html###" sid="86760" pid="81420" class="save">收藏</a></i> <b title="己优惠¥3.1元" class="sale_icon_4"></b></dt>
+                        <dd class="nam"><a href="http://product.lefeng.com/product/81420.html" target="_blank" title="百雀羚草本水嫩倍现盈透精华水100ml百雀羚满168送199，赠完为止，不累计">百雀羚草本水嫩倍现盈透精华水100ml<i>百雀羚满168送199，赠完为止，不累计</i></a></dd>
+                        <dd class="pri"> <img src="./images/81420_73_12.png"> <del class="spri">¥59.0</del> <a class="to push" pid="81420" sid="86760" href="http://s.lefeng.com/directory/26000_26008_685959_0_0_b685959_0_0_1.html###">加入购物车</a> </dd>
+                        <dd class="mess"> <a href="http://s.lefeng.com/directory/26000_26008_685959_0_0_b685959_0_0_1.html###" rel="nofollow" class="buynum">最近1644人购买</a> <a href="http://review.lefeng.com/review/81420-0-0-a-1.html" target="_blank" rel="nofollow" class="comnum">3106条评论</a> </dd>
+                        <dd class="cxmsg">
+                            <ul>
+                                <li><i title="百雀羚满168送199，赠完为止，不累计" class="sale_sicon_2"></i> <span title="百雀羚满168送199，赠完为止，不累计">百雀羚满168送199，赠<br>
+                                    </span></li>
+                                <li><i title="己优惠¥3.1元" class="sale_sicon_4"></i> <span title="己优惠¥3.1元">己优惠¥3.1元</span></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="pruwrap" id="207228" inv="0">
+                    <dl skuids="209534" class="">
+                        <dt> <a href="http://product.lefeng.com/product/207228.html" title="百雀羚水嫩倍现套装(精华水100ml+乳液100ml)赠品随机" target="_blank"><img alt="百雀羚水嫩倍现套装(精华水100ml+乳液100ml)赠品随机" src="./images/207228_0_b.jpg"></a> <span class="poppruL"></span><span class="poppruR"></span> <i><a href="http://s.lefeng.com/directory/26000_26008_685959_0_0_b685959_0_0_1.html###" sid="209534" pid="207228" class="save">收藏</a></i> <b title="己优惠¥15.0元" class="sale_icon_4"></b></dt>
+                        <dd class="nam"><a href="http://product.lefeng.com/product/207228.html" target="_blank" title="百雀羚水嫩倍现套装(精华水100ml+乳液100ml)赠品随机百雀羚满168送199，赠完为止，不累计">百雀羚水嫩倍现套装(精华水100ml+乳液100ml)赠品随机<i>百雀羚满168送199，赠完为止，不累计</i></a></dd>
+                        <dd class="pri"> <img src="./images/207228_73_60.png"> <del class="spri">¥168.0</del> <a class="to push" pid="207228" sid="209534" href="http://s.lefeng.com/directory/26000_26008_685959_0_0_b685959_0_0_1.html###">加入购物车</a> </dd>
+                        <dd class="mess"> <a href="http://s.lefeng.com/directory/26000_26008_685959_0_0_b685959_0_0_1.html###" rel="nofollow" class="buynum">最近2097人购买</a> <a href="http://review.lefeng.com/review/207228-0-0-a-1.html" target="_blank" rel="nofollow" class="comnum">1452条评论</a> </dd>
+                        <dd class="cxmsg">
+                            <ul>
+                                <li><i title="百雀羚满168送199，赠完为止，不累计" class="sale_sicon_2"></i> <span title="百雀羚满168送199，赠完为止，不累计">百雀羚满168送199，赠<br>
+                                    </span></li>
+                                <li><i title="己优惠¥15.0元" class="sale_sicon_4"></i> <span title="己优惠¥15.0元">己优惠¥15.0元</span></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="pruwrap" id="186152" inv="0">
+                    <dl skuids="183352">
+                        <dt> <a href="http://product.lefeng.com/product/186152.html" title="百雀羚水嫩倍现至尚套装（洁面乳95g+精华水100ml+精华霜50g）" target="_blank"><img alt="百雀羚水嫩倍现至尚套装（洁面乳95g+精华水100ml+精华霜50g）" src="./images/186152_0_b.jpg"></a> <span class="poppruL"></span><span class="poppruR"></span> <i><a href="http://s.lefeng.com/directory/26000_26008_685959_0_0_b685959_0_0_1.html###" sid="183352" pid="186152" class="save">收藏</a></i> </dt>
+                        <dd class="nam"><a href="http://product.lefeng.com/product/186152.html" target="_blank" title="百雀羚水嫩倍现至尚套装（洁面乳95g+精华水100ml+精华霜50g）百雀羚满168送199，赠完为止，不累计">百雀羚水嫩倍现至尚套装（洁面乳95g+精华水100ml+精华霜50g）<i>百雀羚满168送199，赠完为止，不累计</i></a></dd>
+                        <dd class="pri"> <img src="./images/186152_73_40(1).png"> <del class="spri">¥194.0</del> <a class="to push" pid="186152" sid="183352" href="http://s.lefeng.com/directory/26000_26008_685959_0_0_b685959_0_0_1.html###">加入购物车</a> </dd>
+                        <dd class="mess"> <a href="http://s.lefeng.com/directory/26000_26008_685959_0_0_b685959_0_0_1.html###" rel="nofollow" class="buynum">最近1471人购买</a> <a href="http://review.lefeng.com/review/186152-0-0-a-1.html" target="_blank" rel="nofollow" class="comnum">2154条评论</a> </dd>
+                        <dd class="cxmsg">
+                            <ul>
+                                <li><i title="百雀羚满168送199，赠完为止，不累计" class="sale_sicon_2"></i> <span title="百雀羚满168送199，赠完为止，不累计">百雀羚满168送199，赠<br>
+                                    </span></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="pruwrap" id="81413" inv="0">
+                    <dl skuids="86753" class="">
+                        <dt> <a href="http://product.lefeng.com/product/81413.html" title="百雀羚活力紧致眼部精华啫喱30g" target="_blank"><img alt="百雀羚活力紧致眼部精华啫喱30g" src="./images/81413_0_b.jpg"></a> <span class="poppruL"></span><span class="poppruR"></span> <i><a href="http://s.lefeng.com/directory/26000_26008_685959_0_0_b685959_0_0_1.html###" sid="86753" pid="81413" class="save">收藏</a></i> </dt>
+                        <dd class="nam"><a href="http://product.lefeng.com/product/81413.html" target="_blank" title="百雀羚活力紧致眼部精华啫喱30g百雀羚满168送199，赠完为止，不累计">百雀羚活力紧致眼部精华啫喱30g<i>百雀羚满168送199，赠完为止，不累计</i></a></dd>
+                        <dd class="pri"> <img src="./images/81413_73_5.png"> <del class="spri">¥54.0</del> <a class="to push" pid="81413" sid="86753" href="http://s.lefeng.com/directory/26000_26008_685959_0_0_b685959_0_0_1.html###">加入购物车</a> </dd>
+                        <dd class="mess"> <a href="http://s.lefeng.com/directory/26000_26008_685959_0_0_b685959_0_0_1.html###" rel="nofollow" class="buynum">最近1022人购买</a> <a href="http://review.lefeng.com/review/81413-0-0-a-1.html" target="_blank" rel="nofollow" class="comnum">1020条评论</a> </dd>
+                        <dd class="cxmsg">
+                            <ul>
+                                <li><i title="百雀羚满168送199，赠完为止，不累计" class="sale_sicon_2"></i> <span title="百雀羚满168送199，赠完为止，不累计">百雀羚满168送199，赠<br>
+                                    </span></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="pruwrap" id="81421" inv="0">
+                    <dl skuids="86761" class="">
+                        <dt> <a href="http://product.lefeng.com/product/81421.html" title="百雀羚草本水嫩倍现保湿精华乳液100ml" target="_blank"><img alt="百雀羚草本水嫩倍现保湿精华乳液100ml" src="./images/81421_0_b.jpg"></a> <span class="poppruL"></span><span class="poppruR"></span> <i><a href="http://s.lefeng.com/directory/26000_26008_685959_0_0_b685959_0_0_1.html###" sid="86761" pid="81421" class="save">收藏</a></i> <b title="己优惠¥2.0元" class="sale_icon_4"></b></dt>
+                        <dd class="nam"><a href="http://product.lefeng.com/product/81421.html" target="_blank" title="百雀羚草本水嫩倍现保湿精华乳液100ml百雀羚满168送199，赠完为止，不累计">百雀羚草本水嫩倍现保湿精华乳液100ml<i>百雀羚满168送199，赠完为止，不累计</i></a></dd>
+                        <dd class="pri"> <img src="./images/81421_73_13.png"> <del class="spri">¥79.0</del> <a class="to push" pid="81421" sid="86761" href="http://s.lefeng.com/directory/26000_26008_685959_0_0_b685959_0_0_1.html###">加入购物车</a> </dd>
+                        <dd class="mess"> <a href="http://s.lefeng.com/directory/26000_26008_685959_0_0_b685959_0_0_1.html###" rel="nofollow" class="buynum">最近658人购买</a> <a href="http://review.lefeng.com/review/81421-0-0-a-1.html" target="_blank" rel="nofollow" class="comnum">2506条评论</a> </dd>
+                        <dd class="cxmsg">
+                            <ul>
+                                <li><i title="百雀羚满168送199，赠完为止，不累计" class="sale_sicon_2"></i> <span title="百雀羚满168送199，赠完为止，不累计">百雀羚满168送199，赠<br>
+                                    </span></li>
+                                <li><i title="己优惠¥2.0元" class="sale_sicon_4"></i> <span title="己优惠¥2.0元">己优惠¥2.0元</span></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </div>
+                <!-- 这个家伙显示下一页 -->
+                <div class="nextPageClass"><a href="http://s.lefeng.com/directory/26000_26008_685959_0_0_b685959_0_0_2.html#list"></a><b>&nbsp;</b></div>
+                <!-- 这个家伙显示下一页  完 -->
+
+            </div>
+
+            <!-- 这是分页 -->
+            <div class="pages ClearFix"> <span><a class="uppage stop">&lt;上一页</a><a class="down">1</a><a href="http://s.lefeng.com/directory/26000_26008_685959_0_0_b685959_0_0_2.html#list">2</a><a class="downpage" href="http://s.lefeng.com/directory/26000_26008_685959_0_0_b685959_0_0_2.html#list">下一页&gt;</a></span> </div>
+            <!-- 这是分页   结束 -->
+
+        </div>
+    </div>
+    <span class="blank0"></span> </div>
+</div>
+<div class="fwordReSea">
+    <dl>
+        <dd>
+            <input type="text" class="text" id="research" name="search" onkeydown="if(event.keyCode==13) jumpToSearchProduct($(this));" val="补水">
+            <a id="btn-re-search" class="button" href="javascript:return false;" onclick="jumpToSearchProduct($(&#39;#research&#39;))"> </a> </dd>
+    </dl>
+    <div id="relatedQueryKeywords" class="rehotkey"></div>
+</div>
+</div>
+<script>
+    //list页面的固定导航栏
+    /*
+    *   先求出导航栏到页面顶部的距离  固定值  因为fixed以后他的距离会变的
+    */
+    var otop = $('#sm-nav').offset().top;
+    $(document).scroll(function(){
+        var abstop = $(document).scrollTop();
+        if(abstop >= otop){
+            $('#sm-nav').css({position:'fixed',top:'0px'})
+        }else{
+            $('#sm-nav').css({position:'relative',top:'none'})
+        }
+    })
+</script>
+</block>

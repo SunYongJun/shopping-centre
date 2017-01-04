@@ -1,0 +1,135 @@
+<extend name="Public:layout" />
+<block name="cssjs">
+    <!-- <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/fengchao.css"> -->
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/personal.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/home_v2.css">
+</block>
+<block name="main">
+<div class="mainBg">
+    <div class="main clearfix">
+
+        <div class="side_bar">
+            <h1>
+                <a title="我的蜂巢" href="#">我的蜂巢</a>
+            </h1>
+            <dl>
+                <dt>订单中心</dt>
+                <dd>
+                    <a href="__CONTROLLER__/order">我的订单</a>
+                    <a href="__CONTROLLER__/">我的收藏</a>
+                    <a href="__CONTROLLER__/myBonus">我的红包</a>
+                    <a href="__CONTROLLER__/myCoin">我的花粉</a>
+                    <a href="__CONTROLLER__/">我的评价</a>
+                </dd>
+            </dl>
+            <dl>
+                <dt>账户管理</dt>
+                <dd>
+                    <a href="__CONTROLLER__/inform">个人资料设置</a>
+                    <a href="__CONTROLLER__/safe">账户安全设置</a>
+                    <a href="__CONTROLLER__/address">收货地址管理</a>
+                    <a href="#">邮件/短信订阅</a>
+                    <a href="#">站外分享绑定</a>
+                </dd>
+            </dl>
+            <dl>
+                <dt>服务中心</dt>
+                <dd>
+                    <a href="#">申请退换货/投诉</a>
+                    <a href="#">退货管理</a>
+                    <a href="#">换货管理</a>
+                    <a href="#">店铺取消订单管理</a>
+                    <a href="__CONTROLLER__/reply">商品咨询/回复</a>
+                    <a href="__CONTROLLER__/complain">我的投诉</a>
+                </dd>
+            </dl>
+        </div>
+        <div class="content">
+            <div class="huanhuo">
+                <h1>
+                    <span class="fr" id="get_hf">
+                        <a href="javascript:;">红包使用说明</a>
+                    </span>
+                    我的红包
+                    <div class="how_get">
+                        <h3>红包使用说明</h3>
+                        <div class="sysm">
+                            <ul>
+                                <!-- <li>
+                                    <p>
+                                        <span>1</span>
+                                      每张订单最多可使用一张优惠券，代金券和兑换券不能同时使用，一旦使用优惠券并生成订单，优惠券即告失效 </p>
+                                </li> -->
+                                <li>
+                                    <p>
+                                        <span>2</span>
+                                        使用兑换券无需将所兑商品加入购物车，购买其他商品输入券号即可 </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        <span>3</span>
+                                        使用代金券后实际支付金额不满全场免运费标准，将收取您相应运费 </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        <span>4</span>
+                                        乐蜂网优惠券不适用于店铺商品、预售商品、特例品 </p>
+                                </li>
+                            </ul>
+                            <p>
+                            
+                            </p>
+                        </div>
+                    </div>
+                </h1>
+                <div></div>
+                <div class="huafen_box pn-top-nav">
+                    <div class="pn-top-btn pn-top-bord clearfix">
+
+                        <div class="pn-top-btnbox lf-fl">
+                            <a href="http://order.lefeng.com/myvouchers.jsp" class="on">可使用</a>
+                            <a href="http://order.lefeng.com/myvouchers.jsp?voucherStatus=2">已使用</a>
+                            <a href="http://order.lefeng.com/myvouchers.jsp?voucherStatus=3">已过期</a>
+                        </div>
+
+                    </div>
+                    <div class="huafen_tab tab_sty yhq clear">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <thead class="com_tbl_h" bgcolor="#e4dbca">
+                                <tr>
+                                    <th width="8%">类型</th>
+                                    <th width="29%">名称</th>
+                                    <th width="12%">红包号</th>
+                                    <th width="11%">密码</th>
+                                    <th width="21%">有效期</th>
+                                    <th width="19%">操作</th>
+                                </tr>
+                            </thead>
+
+                            <tbody class="com_tbl_b com_tb1_span">
+                                <tr>
+                                    <td colspan="6" height="185" align="center"> <b class="lp-smilicon"></b>
+                                        <span>您的账户还没有可使用的红包哦</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                </div>
+
+                <div class="com_page"></div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+    $('#get_hf').hover(function(){
+        $('.how_get').toggle();
+    })
+</script>
+
+</block>

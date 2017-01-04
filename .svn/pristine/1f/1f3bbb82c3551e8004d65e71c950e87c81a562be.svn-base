@@ -1,0 +1,244 @@
+<extend name="Public:cartlayout" />
+<block name="main">
+
+	<input id="quantity" name="quantity" value="1" type="hidden">
+	<input id="loginName" name="loginName" value="41**@qq.com" type="hidden">
+	<!-- 登陆名称 -->
+	<input id="islogin" name="islogin" value="true" type="hidden">
+	<!-- 是否登陆 -->
+	<input id="type" name="type" value="" type="hidden">
+	<!-- 登陆窗口跳转类型 -->
+	<input id="typeValue" name="typeValue" value="" type="hidden">
+	<!-- 登陆窗口跳转前后传递的值-->
+	<input id="parameters" name="parameters" value="" type="hidden">
+	<!-- 购物车 -->
+	<div id="MARK" style="display: none"></div>
+	<div class="inStock_box">
+		<div class="timeReminder"> <i class="t_bell"></i>
+			<span>
+				请在 <strong>18分01秒</strong>
+				内提交订单，下单后您另有2小时的支付时间
+			</span> <i class="t_tips" id="t_tips"></i>
+		</div>
+		<div class="inStock" id="inStock" style="display: none;">
+			<p>由于商品库存有限，我们只能暂为您保留20分钟</p>
+			<p>超时后可继续结算，有货的商品将自动放入购物车</p>
+		</div>
+	</div>
+
+	<div id="mainTip" class="tip" style="display:none"> <b class="red">抱歉，您购物车中的部分商品或者赠品暂时缺货，请结算其他商品.</b>
+	</div>
+	<dl id="mainCart" class="shopping-main">
+
+		<dt class="shopping-main-tit">
+			<i></i>
+			<span>运费每单10元，网上支付满69元免运费，货到付款满99元免运费</span>
+			乐蜂自营
+		</dt>
+		<dt> <b class="colspan1"><input name="vendorCheckbox" checked="checked" type="checkbox">
+				<i class="checkbox checked" onclick="cartJS.goChecked(this)"></i>
+				全选</b> 
+			<b class="colspan2">商品名称</b>
+			<b class="colspan3">单价</b>
+			<b class="colspan4">数量</b>
+			<b class="colspan5">赠送花粉</b>
+			<b class="colspan6"><a class="driver_info" href="###">
+					北京市
+					<i></i>
+				</a></b> 
+			<b class="colspan7">操作</b>
+		</dt>
+		<dd>
+			<div class="shop">
+				<table border="0" cellpadding="0" cellspacing="0">
+					<tbody>
+						<foreach name="Think.session.cart" item="vo">
+							<tr freepkgid="0" pkgitemids="pkgItemIds" limitbuyquantity="" quantity="1" itemkey="36164_0_0_0_0___0_0" skuextrapriceid="0" usepoints="0" jiagou="" skuid="36164" productid="33504">
+								<td class="p-check">
+									<input name="itemCheckbox" checked="checked" type="checkbox">
+									<i class="checkbox checked" onclick="cartJS.goChecked(this)"></i>
+								</td>
+								<td class="p-info">
+									<a target="_blank" href="__MODULE__/goods" class="p-img" title="{vo.goods_brief}">
+										<img src="__PUBLIC__{$vo.goods_img}"></a>
+									<div class="middle-div">
+										<a target="_blank" href="__MODULE__/goods" class="p-img" title="{vo.goods_brief}">
+											<span>{$vo.goods_name}</span>
+										</a>
+									</div>
+								</td>
+
+								<td class="p-price">¥<span class="gprice" pr="{$vo.id}">{$vo.goods_price}</span></td>
+
+								<td class="p-number">
+									<i go="{$vo.id}">
+										<b class="n-left" action="minus"></b>
+										<input name="num" value="{$vo.num}" size="2" action="goto" type="text">
+										<b class="n-right" action="add"></b>
+									</i> 
+
+								</td>
+
+								<td class="p-hf coin">{$vo.goods_coin}</td>
+
+								<td class="p-path">有货</td>
+								<td class="p-dlt">
+									<b class="del"><a href="__CONTROLLER__/delete/id/{$vo.id}">删除</a></b>
+									<b class="save" name="favorite">收藏</b>
+								</td>
+							</tr>
+						</foreach>
+
+					</tbody>
+				</table>
+			</div>
+		</dd>
+
+		<dd class="shop ddmj">
+			<table width="100%" border="0" cellpadding="0" cellspacing="0"></table>
+		</dd>
+
+		<dd>
+			<div class="goconfirm">
+				<p>
+					<input name="cartCheckbox" onclick="cartJS.goChecked(this)" checked="checked" type="checkbox">
+					<i class="checkbox checked" onclick="cartJS.goChecked(this)"></i>
+					<b>全选</b>
+					<b name="batchDelete" onclick="cartJS.confirmDel(this);_tag.dcsMultiTrack('wt.s_cart','delet')" onmouseover="$(this).toggleClass('h');" onmouseout="$(this).toggleClass('h');">删除</b>
+					<a href="javascript:window.history.go(-1);_tag.dcsMultiTrack('wt.s_cart','jxgw')">继续购物</a>
+				</p>
+				<div>
+					<b>
+						赠送花粉 :
+						<i id="coins">0</i>
+					</b>
+					<b>
+						总价（已免运费）: <em>¥
+							<i id="moneys">0.00</i></em> 
+					</b>
+					<a id="go-confirm" href="__MODULE__/Order/index">确认结算</a>
+				</div>
+			</div>
+		</dd>
+	</dl>
+
+	<div id="center_banner" class="center" style="display: none;"></div>
+	<div class="inStock_boxB">
+		<div class="inStockFloat">
+			<div class="timeReminder">
+				<i class="t_bell"></i>
+				<span>
+					请在 <strong>18分01秒</strong>
+					内提交订单
+				</span>
+				<i class="t_tips"></i>
+			</div>
+		</div>
+		<div class="inStockB" id="inStockB" style="display: none;">
+			<p>由于商品库存有限，我们只能暂为您保留20分钟</p>
+			<p>超时后可继续结算，有货的商品将自动放入购物车</p>
+		</div>
+	</div>
+
+	<div class="recommend" name="tuijian">
+		<h4>为您推荐</h4>
+		<div class="cont" style="display:block">
+			<b class="btn-l"></b>
+			<b class="btn-r"></b>
+			<p class="btn-d">
+				<i class="on"></i>
+				<i false=""></i>
+			</p>
+			<div>
+				<dl skuid="5520908">
+					<dt>
+						<a href="http://rfu.lefeng.com/1_0_001_0004_01/product/5296466.html" target="_blank">
+							<img src="__PUBLIC__/home/images/5296466_0_l.jpg" alt="欧珀莱"></a>
+					</dt>
+					<dd>
+						<a title="" target="_blank" href="">欧珀莱臻白抗斑赋弹系列基础护肤体验套装（洁面膏 50g+ 柔肤水 90mL+ 柔肤乳70mL+美肤棉28片）</a>
+					</dd>
+					<dd class="price">
+						¥
+						<b>195.0</b>
+					</dd>
+					<dd class="push" onclick="cartJS.addRecommendProduct('5520908','01',1)">加入购物车</dd>
+				</dl>
+				<dl skuid="208175">
+					<dt>
+						<a href="http://rfu.lefeng.com/1_0_001_0004_02/product/206013.html" target="_blank">
+							<img src="__PUBLIC__/home/images/206013_0_l.jpg" alt=""></a>
+					</dt>
+					<dd>
+						<a title="" target="_blank" href="http://rfu.lefeng.com/1_0_001_0004_02/product/206013.html">韩束魔力水珠保湿礼盒（保湿肌底液160ml+日间保湿霜50g+夜间修护霜50g ）</a>
+					</dd>
+					<dd class="price">
+						¥
+						<b>135.0</b> <del>¥199.0</del>
+					</dd>
+					<dd class="push" onclick="cartJS.addRecommendProduct('208175','02',1)">加入购物车</dd>
+				</dl>
+
+			</div>
+		</div>
+	</div>
+	<script>
+
+	$(function() {
+		coins();
+		prices();
+
+		//花粉
+		function coins() {
+			var coun = 0;
+			$.each($('.coin'), function(i, v) {
+				coun += parseInt(v.innerHTML);
+			})
+			$('#coins').html(coun);
+		}
+
+		//价格总计
+		function prices() {
+			var money = 0;
+			$.each($('.gprice'),function(i,v) {
+				var num = $(this).parent().next().children().children('input').val();				
+				money += parseFloat(v.innerHTML) * num;
+			})
+
+		    // var re = /([0-9]+.[0-9]{2})[0-9]*/;
+		    // money =money.replace(re, '$1');
+		    money = money.toFixed(2);
+			$('#moneys').html(money);
+		}
+
+		//数量减少
+		$('b[action="minus"]').bind('click',function() {
+			var id = $(this).parent().attr('go');
+			var th = $(this);
+			$.post('__CONTROLLER__/minus',{id:id},function(data) {
+				if(data){
+					th.next().val(data);
+					coins();
+					prices();
+				}
+			})			
+		})
+
+		//数量增加
+		$('b[action="add"]').bind('click',function() {
+			var id = $(this).parent().attr('go');
+			var th = $(this);
+			$.post('__CONTROLLER__/plur',{id:id},function(data) {
+				
+				if(data){
+					th.prev().val(data);
+					coins();
+					prices();
+				}
+			})
+		})
+
+	})
+		
+	</script>
+</block>

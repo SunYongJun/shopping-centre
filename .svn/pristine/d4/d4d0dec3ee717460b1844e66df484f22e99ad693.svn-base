@@ -1,0 +1,13 @@
+<?php
+// 前台首页
+namespace Home\Controller;
+
+class IndexController extends CommonController {
+    public function index(){
+    	$m = M('goods');
+    	if($goods = $m -> select()){
+    		$this -> assign('list',$goods);
+    	}
+    	$this -> display('index');
+    }
+}

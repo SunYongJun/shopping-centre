@@ -1,0 +1,459 @@
+<extend name="Public:layout" />
+<block name="cssjs">
+    <!-- <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/fengchao.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/personal.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/home_v2.css">
+    
+</block>
+<!--header-->
+<!--头部结束-->
+<block name="main">
+<div class="mainBg">
+<div class="main clearfix">
+    <div class="side_bar">
+        <h1>
+            <a title="我的蜂巢" href="#">我的蜂巢</a>
+        </h1>
+        <dl>
+            <dt>订单中心</dt>
+            <dd>
+                <a href="__CONTROLLER__/order">我的订单</a>
+                <a href="__CONTROLLER__/">我的收藏</a>
+                <a href="__CONTROLLER__/myBonus">我的红包</a>
+                <a href="__CONTROLLER__/myCoin">我的花粉</a>
+                <a href="__CONTROLLER__/">我的评价</a>
+            </dd>
+        </dl>
+        <dl>
+            <dt>账户管理</dt>
+            <dd>
+                <a href="__CONTROLLER__/inform">个人资料设置</a>
+                <a href="__CONTROLLER__/safe">账户安全设置</a>
+                <a href="__CONTROLLER__/address">收货地址管理</a>
+                <a href="#">邮件/短信订阅</a>
+                <a href="#">站外分享绑定</a>
+            </dd>
+        </dl>
+        <dl>
+            <dt>服务中心</dt>
+            <dd>
+                <a href="#">申请退换货/投诉</a>
+                <a href="#">退货管理</a>
+                <a href="#">换货管理</a>
+                <a href="#">店铺取消订单管理</a>
+                <a href="__CONTROLLER__/reply">商品咨询/回复</a>
+                <a href="__CONTROLLER__/complain">我的投诉</a>
+            </dd>
+        </dl>
+    </div>
+<!-- .firebugResetStyles {
+    z-index: 2147483646 !important;
+    top: 0 !important;
+    left: 0 !important;
+    display: block !important;
+    border: 0 none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    outline: 0 !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    position: fixed !important;
+    transform: rotate(0deg) !important;
+    transform-origin: 50% 50% !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: transparent none !important;
+    pointer-events: none !important;
+    white-space: normal !important;
+}
+style.firebugResetStyles {
+    display: none !important;
+}
+
+.firebugBlockBackgroundColor {
+    background-color: transparent !important;
+}
+
+.firebugResetStyles:before, .firebugResetStyles:after {
+    content: "" !important;
+}
+/**actual styling to be modified by firebug theme**/
+.firebugCanvas {
+    display: none !important;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+.firebugLayoutBox {
+    width: auto !important;
+    position: static !important;
+}
+
+.firebugLayoutBoxOffset {
+    opacity: 0.8 !important;
+    position: fixed !important;
+}
+
+.firebugLayoutLine {
+    opacity: 0.4 !important;
+    background-color: #000000 !important;
+}
+
+.firebugLayoutLineLeft, .firebugLayoutLineRight {
+    width: 1px !important;
+    height: 100% !important;
+}
+
+.firebugLayoutLineTop, .firebugLayoutLineBottom {
+    width: 100% !important;
+    height: 1px !important;
+}
+
+.firebugLayoutLineTop {
+    margin-top: -1px !important;
+    border-top: 1px solid #999999 !important;
+}
+
+.firebugLayoutLineRight {
+    border-right: 1px solid #999999 !important;
+}
+
+.firebugLayoutLineBottom {
+    border-bottom: 1px solid #999999 !important;
+}
+
+.firebugLayoutLineLeft {
+    margin-left: -1px !important;
+    border-left: 1px solid #999999 !important;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+.firebugLayoutBoxParent {
+    border-top: 0 none !important;
+    border-right: 1px dashed #E00 !important;
+    border-bottom: 1px dashed #E00 !important;
+    border-left: 0 none !important;
+    position: fixed !important;
+    width: auto !important;
+}
+
+.firebugRuler{
+    position: absolute !important;
+}
+
+.firebugRulerH {
+    top: -15px !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 14px !important;
+    background: url("data:image/png") repeat-x !important;
+    border-top: 1px solid #BBBBBB !important;
+    border-right: 1px dashed #BBBBBB !important;
+    border-bottom: 1px solid #000000 !important;
+}
+
+.firebugRulerV {
+    top: 0 !important;
+    left: -15px !important;
+    width: 14px !important;
+    height: 100% !important;
+    background: url("data:image/png") repeat-y !important;
+    border-left: 1px solid #BBBBBB !important;
+    border-right: 1px solid #000000 !important;
+    border-bottom: 1px dashed #BBBBBB !important;
+}
+
+.overflowRulerX > .firebugRulerV {
+    left: 0 !important;
+}
+
+.overflowRulerY > .firebugRulerH {
+    top: 0 !important;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+.fbProxyElement {
+    position: fixed !important;
+    pointer-events: auto !important;
+}
+</style>
+</head> -->
+
+		<div class="content">
+	        <div class="pn-top-nav">
+	            <h1 class="clearfix"><span>个人资料设置</span></h1>
+	            <div class="pn-top-btn clearfix">
+					<div class="pn-top-btnbox lf-fl">
+	                <a href="#" class="on">详细资料</a>
+					</div>
+	            </div>       
+	        </div>
+	        <div class="pn-article" id="pnArticle">
+	            <form action="#" method="post" name="user" id="useruser">
+	            
+	            <dl class="clearfix">
+	                <dt><cite>*</cite>邮箱地址：</dt>
+	                <dd>
+                        <input class="pn-input pn-input-auto pn-input-nobd" maxlength="35" value="{$user.user_email}"  type="text" name="useremail" disabled="disabled">
+                        <input maxlength="35" name="useremail" value="{$user.user_email}" type="hidden">
+                        <a href="">验证</a>
+	                	<span class="lf-showerr" style="opacity: 1;display : none;"></span>
+	                </dd>
+	            </dl>
+	            <dl class="clearfix">
+	                <dt><cite></cite>手机号码：</dt>
+	                <dd>
+	                    <input class="pn-input" name="user_phone" maxlength="11" id="mobile" type="text"  value="{$user.user_phone}">
+	                  <!--   <a href="#" id="checkThis">验证</a> -->
+	                
+	                <span style="opacity: 1;display : none;" class="lf-showerr"></span>
+	                <span class="lf-showerr" style="opacity: 1;display : none;"></span></dd>
+	            </dl>
+	            <dl class="clearfix">
+	                <dt>头像：</dt>
+	                <dd>
+	                </dd><dd class="clearfix"><div class="pn-header lf-fl"><img src="__PUBLIC__/{$user.user_pic}"></div><a href="#" class="pn-header-a lf-fl" target="_blank">修改</a></dd>
+	                
+	            </dl>
+	            <dl class="clearfix">
+	                <dt><cite></cite>昵称：</dt>
+	                <dd><input class="pn-input" name="user_alias" maxlength="14" type="text" value="{$user.user_alias}"><span style="opacity: 1;display : none;" class="lf-showerr"></span><span class="lf-showerr" style="opacity: 1;display : none;"></span></dd>
+	            </dl>
+	            <!-- dl class="clearfix">
+	                <dt>姓名：</dt>
+	                <dd>
+	                    <input class="pn-input" id="username" name="username" maxlength="12" type="text">
+	                <span class="lf-showerr" style="opacity: 1;display : none;"></span></dd>
+	            </dl> -->
+	            <dl class="clearfix">
+	                <dt>性别：</dt>
+	                <dd>&nbsp;&nbsp;&nbsp;
+	               <input name="user_sex" value="男" type="radio" <if condition="$user['user_sex'] eq 1">checked</if>>男&nbsp;&nbsp;&nbsp;
+	               <input name="user_sex" value="女" type="radio" <if condition="$user['user_sex'] neq 1">checked</if>>女</dd>
+	            </dl>
+	            <dl class="clearfix">
+	                <dt>生日：</dt>
+	                <dd class="clearfix">
+	                	<div class="btn-group">
+	                    <input name="user_birth" class="birthday" value="{$user.user_birth}" id="birthday" type="hidden">
+	                  <!--   <div style="position: static; z-index: 0;" class="lf-select">
+	                      <select >
+	                      <option selected="selected" value="0">请选择</option><option value="1954">1954年</option><option value="1955">1955年</option><option value="1956">1956年</option><option value="1957">1957年</option><option value="1958">1958年</option><option value="1959">1959年</option><option value="1960">1960年</option><option value="1961">1961年</option><option value="1962">1962年</option><option value="1963">1963年</option><option value="1964">1964年</option><option value="1965">1965年</option><option value="1966">1966年</option><option value="1967">1967年</option><option value="1968">1968年</option><option value="1969">1969年</option><option value="1970">1970年</option><option value="1971">1971年</option><option value="1972">1972年</option><option value="1973">1973年</option><option value="1974">1974年</option><option value="1975">1975年</option><option value="1976">1976年</option><option value="1977">1977年</option><option value="1978">1978年</option><option value="1979">1979年</option><option value="1980">1980年</option><option value="1981">1981年</option><option value="1982">1982年</option><option value="1983">1983年</option><option value="1984">1984年</option><option value="1985">1985年</option><option value="1986">1986年</option><option value="1987">1987年</option><option value="1988">1988年</option><option value="1989">1989年</option><option value="1990">1990年</option><option value="1991">1991年</option><option value="1992">1992年</option><option value="1993">1993年</option><option value="1994">1994年</option><option value="1995">1995年</option><option value="1996">1996年</option><option value="1997">1997年</option><option value="1998">1998年</option><option value="1999">1999年</option><option value="2000">2000年</option><option value="2001">2001年</option><option value="2002">2002年</option><option value="2003">2003年</option><option value="2004">2004年</option><option value="2005">2005年</option><option value="2006">2006年</option><option value="2007">2007年</option><option value="2008">2008年</option><option value="2009">2009年</option><option value="2010">2010年</option><option value="2011">2011年</option><option value="2012">2012年</option><option value="2013">2013年</option><option value="2014">2014年</option></select>
+	                      <input value="请选择" define="请选择" autocomplete="off" type="text">
+	                      <ul style="display: none; z-index: 0;"></ul>
+	                  </div>
+	                  <div style="position: static; z-index: 0;" class="lf-select">
+	                      <select id="month"><option selected="selected" value="0">请选择</option><option value="1">01月</option><option value="2">02月</option><option value="3">03月</option><option value="4">04月</option><option value="5">05月</option><option value="6">06月</option><option value="7">07月</option><option value="8">08月</option><option value="9">09月</option><option value="10">10月</option><option value="11">11月</option><option value="12">12月</option></select>
+	                      <input value="请选择" define="请选择" autocomplete="off" type="text">
+	                      <ul style="display: none; z-index: 0;"></ul>
+	                  </div>
+	                  <div style="position: static; z-index: 0;" class="lf-select">
+	                      <select id="day">
+	                      </select>
+	                      <input value="请选择" define="请选择" autocomplete="off" type="text">
+	                      <ul style="display: none; z-index: 0;"></ul>
+	                  </div> -->
+					<!-- div>
+	                  <ul class="dropdown-menu dropdown-success pull-left dropdown_ul">
+	                  	<for start="1960" end="2014" >
+	                  	<li>{$i}年</li>
+	                  </for>
+	                  </ul>
+	                  </div> -->
+			                 <div style="position:relative">
+			                  	<div style="height:100px;width:100px;position:absolute;top:-10px;left:0px">
+									<select class="form-control" id="form-field-select-1" style="display:block-line">
+									<option selected="selected" value="0">请选择</option><option value="1954">1954年</option><option value="1955">1955年</option><option value="1956">1956年</option><option value="1957">1957年</option><option value="1958">1958年</option><option value="1959">1959年</option><option value="1960">1960年</option><option value="1961">1961年</option><option value="1962">1962年</option><option value="1963">1963年</option><option value="1964">1964年</option><option value="1965">1965年</option><option value="1966">1966年</option><option value="1967">1967年</option><option value="1968">1968年</option><option value="1969">1969年</option><option value="1970">1970年</option><option value="1971">1971年</option><option value="1972">1972年</option><option value="1973">1973年</option><option value="1974">1974年</option><option value="1975">1975年</option><option value="1976">1976年</option><option value="1977">1977年</option><option value="1978">1978年</option><option value="1979">1979年</option><option value="1980">1980年</option><option value="1981">1981年</option><option value="1982">1982年</option><option value="1983">1983年</option><option value="1984">1984年</option><option value="1985">1985年</option><option value="1986">1986年</option><option value="1987">1987年</option><option value="1988">1988年</option><option value="1989">1989年</option><option value="1990">1990年</option><option value="1991">1991年</option><option value="1992">1992年</option><option value="1993">1993年</option><option value="1994">1994年</option><option value="1995">1995年</option><option value="1996">1996年</option><option value="1997">1997年</option><option value="1998">1998年</option><option value="1999">1999年</option><option value="2000">2000年</option><option value="2001">2001年</option><option value="2002">2002年</option><option value="2003">2003年</option><option value="2004">2004年</option><option value="2005">2005年</option><option value="2006">2006年</option><option value="2007">2007年</option><option value="2008">2008年</option><option value="2009">2009年</option><option value="2010">2010年</option><option value="2011">2011年</option><option value="2012">2012年</option><option value="2013">2013年</option><option value="2014">2014年</option>
+									</select>
+								</div>
+								<div style="height:200px;width:100px;position:absolute;left:120px;top:-10px;">
+									<select class="form-control" id="form-field-select-2" style="display:block-line"><option selected="selected" value="0">请选择</option><option value="1">01月</option><option value="2">02月</option><option value="3">03月</option><option value="4">04月</option><option value="5">05月</option><option value="6">06月</option><option value="7">07月</option><option value="8">08月</option><option value="9">09月</option><option value="10">10月</option><option value="11">11月</option><option value="12">12月</option>
+									</select>
+								</div>
+								<div style="height:200px;width:100px;position:absolute;left:240px;top:-10px">
+									<select class="form-control" id="form-field-select-2" style="display:block-line">
+										<option selected="selected" value="0">请选择</option><option value="1">01月</option><option value="2">02月</option><option value="3">03月</option><option value="4">04月</option><option value="5">05月</option><option value="6">06月</option><option value="7">07月</option><option value="8">08月</option><option value="9">09月</option><option value="10">10月</option><option value="11">11月</option><option value="12">12月</option>
+									</select>
+								</div>
+							</div>
+						</div>
+	                </dd>
+	            </dl>
+	            
+	            <dl class="clearfix">
+	                <dt>&nbsp;</dt>
+	                <dd><input id="fasong" value="保存" class="pn-submit" type="button" style="margin-top:100px"></dd>
+	            </dl>
+	            </form>
+	        </div>
+	    </div>
+	</div>
+</div>
+
+<script>
+	$(function(){
+		$('#fasong').bind('click',function(){
+			$.ajax({
+			url:'__CONTROLLER__/inform_doit',
+			type:'post',
+			data:$('#useruser').serialize(),
+			success:function(data){
+				if(data['status']==1){
+					// alert(data['content']);
+					// alert(data.url);
+					location.href=data.url;	
+				}else if(data['status']==0){
+					// alert(data['content']);
+					// $this->error(data['content'],data['url']);
+					location.reload(true);
+				}
+			}
+		})
+		})
+		
+	})
+</script>
+</block>
+
+
+<!-- <div style="display: none">
+</div>
+<script>
+
+	function topCcountDown(t,c,_self,fn){
+		function nd(d){return isNaN(d) ? (d ? new Date(d).getTime() : new Date().getTime()) : d * 1000;}
+		var e = [nd(t[0]),nd(t[1]),nd(t[2])],_s = _self,b;
+		if(!$(_s).length){return false;}
+		if(t[0] && e[0] > e[1]){
+			$(_s).html(c[1]);
+			return false;
+		}else if(e[1] > e[2]){
+			fn && fn($(_s));
+			$(_s).html(c[2]);
+			return false;
+		}
+		(b=function(l){
+			var l=l||(e[2]-e[1])/100,k={
+				D:l/36000/24,H:l/36000%24,M:l/600%60,S:l/10%60,s:l%10
+			};
+			$(_s).html(c[0].replace(/D|H|M|S|s/g,function(m){
+				var n = parseInt(k[m]) + ''
+				if (n.length == 1 && m != 'D' && m != 's'){
+					n = 0 + n;
+				}
+				return n
+			}));
+			setTimeout(function(){b(l-1)},100);
+		})()
+	}
+
+//topCcountDown([,,'2014/04/18 00:00:00'],['<b>D</b><b>H</b><b>M</b><b>S</b><b>s</b>','',''],'#top_countdown',function(){$('#advTop').remove()});
+
+</script>
+
+<script type="text/javascript">
+function emailVerify(){
+    var $oInput=$('#email'),
+        $oA=$('<a href="userInfoEmail.jsp" class="emailVInfo">验证</a>'),
+        a=$oInput.parent('dd').find('.emailVInfo').size(),
+        s=$oInput.parent('dd').find('span');;
+    if($oInput.val()!=''){
+        console.log($oA);
+        if(a==0){
+            $oInput.parent('dd').append($oA);
+        }else{
+            $oInput.parent('dd').find('a').remove();    
+        };
+    }
+}
+function emailRemove(){
+    var $oInput=$('#email');
+    $oInput.parent('dd').find('.emailVInfo').remove();  
+}
+</script>
+
+
+<script type="text/javascript">
+    lafaso.ready(function () {
+        var $ = lafaso;
+        var name = {
+            'box': $.getId('pnArticle'),
+            'raEl': $.getElements('label.lf-radio', this.box),
+            'seEl': $.getElements('div.lf-select', this.box),
+            'suEl': $.getElements('input.pn-submit', this.box)[0],
+            'fmEl': $.getElements('form', this.box)[0],
+			'year': $.getId('year'),
+            'month': $.getId('month'),
+            'day': $.getId('day'),
+			'birthday' : $.getId('birthday'),
+			'msg' : ""
+        };
+        var ra = $.fn.likeRadio({ 'els': name.raEl }).init();
+        ra = null;
+        var fm = $.fn.checkForm(name.fmEl, { 'regels': {
+            'mobile': {
+                'maxLength': '11',
+                'minLength': '11',
+                'reger': 1,
+                'defn' : '请填写手机号码'
+            },
+            'nickname': {
+                'maxLength': '14',
+                'minLength': '4',
+                'reger': 1,
+                'defn': '请填写昵称',
+                'test': /^[0-9a-zA-Z_-]{4,14}$/,
+                'sigin': '仅支持字母、数字、“_”和“-”, 可包含4-14个字符。'
+            },
+			'username' : {
+				'maxLength': '12',
+                'minLength': '4',
+				'defn': '请输入真实姓名，可以是2-7个汉字或2-14个字母',
+				'test' : /^([a-zA-Z]{2,14}|[\u4e00-\u9fa5]{2,7})$/,
+				'sigin' : '请输入真实姓名，可以是2-7个汉字或2-14个字母'
+			},
+            'email': {
+                'maxLength': '35',
+                'minLength': '5',
+                'reger': 1,
+                'defn' : '请填写邮箱地址'
+            }
+        },
+            'regbtn': name.suEl,
+            'other': {
+                'ok' : 'border:1px solid #ccc',
+                'sorry': 'border:1px solid #f52648' 
+            },
+            'err' : function(tag){
+                if(tag.name=='email'){
+                    emailRemove();
+                }
+            },
+            'callback' : function(tag){
+                
+                    if(tag.name=='email'){
+                        emailVerify();
+                    }
+                },            
+            'fn': function () {
+				name.birthday.value = name.year.value + '-' + name.month.value + '-' + name.day.value;
+                name.fmEl.submit();
+            }
+        }).init().checkForm();
+        fm = null;
+		var birthday = name.birthday.value.split('-');
+        var canl = $.fn.calendar({
+            'year': (name.year.dfn = birthday[0], name.year),
+            'month': (name.month.dfn = birthday[1], name.month),
+            'day': (name.day.dfn = birthday[2], name.day),
+            'def': new Date()
+        }).init();
+        canl = null;
+		var se = $.fn.likeSelect({ 'els': name.seEl, 'readOnly': 1, 'change': [1, 0, 0] }).init();
+        se = null;
+		name.msg != '' && $.sign.signBox(name.msg , 1);
+    });
+</script> -->

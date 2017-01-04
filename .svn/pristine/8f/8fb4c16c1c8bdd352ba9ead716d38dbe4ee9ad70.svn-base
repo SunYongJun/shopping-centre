@@ -1,0 +1,198 @@
+<?php
+
+/*
+*   前台用户登陆注册及验证，继承Controller类
+*	User/register          前台用户注册页面
+*   User/check_verify      检测验证码
+*   User/yzm               验证码正确与否
+*   User/checkEmail        检测用户账号是否已存在
+*	User/register_doit     执行用户注册验证
+*   User/vcode             生成验证码
+*   User/login             用户登录页面
+*   User/checkLogin        执行用户登录验证
+*   User/loginOut          执行用户登出
+*   User/suc               用户注册成功后跳转
+*   @author                王雪
+*/
+
+namespace Home\Controller;
+use Think\Controller;
+
+	class UserController extends Controller{
+
+		// 注册页面
+		public function register(){
+			$config = M('shop_config');
+			$configs = $config ->Field('is_reg')-> find(1);
+			if($configs['is_reg']==0){
+				$this -> error('网站已禁止用户注册，请稍后再次尝试');
+			}
+			$this-> display();
+		}
+
+		// 检测验证码
+		public function check_verify($code, $id = ''){
+		    $verify = new \Think\Verify();
+	        return $verify->check($code, $id);
+		}
+
+		// 检测验证码是否正确
+		public function yzm(){
+			if(IS_POST){
+				$ma = $_POST['yzm'];
+				if($this -> check_verify($ma)){
+					$this -> ajaxReturn(true);
+				}else{
+					
+					$this -> ajaxReturn(false);
+				};
+			}
+		}
+
+		// 检测用户账号是否已存在
+		public function checkEmail(){
+			if(IS_POST){
+				$user = M('user');
+				$user_email = $_POST['user_email'];
+				$where['user_email'] = $user_email;
+				$result = $user ->where($where)->find();
+				if($result){
+					$this->ajaxReturn(true);
+				}else{
+					$this->ajaxReturn(false);
+				}
+			}
+		} 
+
+		// 用户注册
+		public function register_doit(){
+			$config = M('shop_config');
+			$configs = $config ->Field('is_reg')-> find(1);
+			if($configs['is_reg']==0){
+				$this -> error('网站已禁止用户注册，请稍后再次尝试');
+			}
+			if(IS_AJAX){
+				$user = M('user');
+				$_POST['user_pwd'] = md5($_POST['user_pwd']);
+				$_POST['re_user_pwd'] = md5($_POST['re_user_pwd']);
+				$data = $_POST;
+				$data['user_lastlogin']=time();	
+				$data['user_regtime'] = time();
+				$data['user_coin']=100;	
+				if(!$user -> create($data)){
+					$user->getError();
+				}else{
+					if($user -> add()){
+						$data['status'] = 1;
+						$data['url'] = U('User/suc');
+						$user_email = $_POST['user_email'];
+						$user_pwd = $_POST['user_pwd'];
+
+						$where = array(
+							'user_email' => $user_email,
+							'user_pwd' => $user_pwd,
+							);
+
+							$mes = $user->where($where)->find();
+							if(!empty($mes)){
+								$userz = array(
+									'id' => $mes['id'],
+									'user_email'=> $mes['user_email'],
+									'user_pic' => $mes['user_pic'],
+									'user_alias' => $mes['user_alias'],
+									'user_sex' => $mes['user_sex'],
+									'user_coin' => $mes['user_coin'],
+									'user_level' => $mes['user_level'],
+									'user_phone' => $mes['user_phone'],
+									'user_birth' => $mes['user_birth'],
+									'user_lastlogin' => time(),
+
+								);	
+							$_SESSION['user'] = $userz;
+								}
+					}else{
+						$data['status'] = 0;
+						$data['content'] = '怎么回事，注册失败了！';
+					};
+				};
+				$this -> ajaxReturn($data);
+			}
+		}
+
+		// 生成验证码
+		public function vcode(){
+			$Verify = new \Think\Verify();
+			$Verify ->imageW = 85;
+			$Verify ->imageH = 40;
+			$Verify ->fontSize = 13;
+			$Verify ->useNoise = false;
+			$Verify ->length = 4;
+			$Verify->entry();
+		}
+
+		// 登录页面
+		public function login(){
+			$this -> display();
+		}
+
+		//检测登录
+		public function checkLogin(){
+			if(IS_AJAX){	
+				$user_email = $_POST['user_email'];
+				$user_pwd = $_POST['user_pwd'];
+
+				$where = array(
+					'user_email' => $user_email,
+					'user_pwd' => md5($user_pwd),
+					'is_delete' => 0
+					);
+				$user = D('user');
+				$user ->create();
+				$mes = $user -> where($where)->find();
+				if(!empty($mes)){
+					$user->where($where)->setInc('user_visitcount',1); 
+					$data= array(
+						'status' => '1',
+						'content' => '恭喜登陆成功！正在跳转...',
+						'url' => U('Index/index'),
+					);
+					$userz = array(
+						'id' => $mes['id'],
+						'user_email'=> $mes['user_email'],
+						'user_pic' => $mes['user_pic'],
+						'user_alias' => $mes['user_alias'],
+						'user_sex' => $mes['user_sex'],
+						'user_money' => $mes['user_money'],
+						'user_coin' => $mes['user_coin'],
+						'user_level' => $mes['user_level'],
+						'user_level' => $mes['user_level'],
+						'user_phone' => $mes['user_phone'],
+						'user_birth' => $mes['user_birth'],
+						'user_lastlogin' => time(),
+					);
+					$_SESSION['user'] = $userz;
+				}else{
+					$data = array(
+						'status' => '0',
+						'content' => '账户或密码错误，请重新尝试...',
+					);
+				};
+				$this -> ajaxReturn($data);
+			}
+		}
+
+		// 用户登出
+		public function loginOut(){
+			session('user',null);
+			$this->ajaxReturn(true);
+		}
+
+		// 注册成功页面
+		public function suc(){
+			$user = M('user');
+			$email = $_SESSION['user']['user_email'];
+			$this->assign('user',$email);
+			$this->display();
+		}
+	}
+ ?>

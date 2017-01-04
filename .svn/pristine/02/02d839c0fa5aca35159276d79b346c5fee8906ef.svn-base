@@ -1,0 +1,23 @@
+<?php
+namespace Home\Controller;
+
+class ListController extends CommonController{
+	public function index(){
+		$m = M('shop_type');
+		// 查询当前所在的子类
+		$path = $m -> field('id,type_name') -> where() -> select();
+		//查询侧边栏分类
+		// 查询父类
+		$smap['is_show'] = 1;
+		$smap['pid'] = 0;
+		$sp = $m -> field('id,type_name') -> where($smap) -> order('type_order asc') -> select();
+		$this -> assign('sp',$sp);
+		//查询子分类
+		$pmap['is_show'] = 1;
+		$pmap['pid'] = array('gt',0);
+		$pp = $m -> field('id,type_name,pid') -> where($pmap) -> order('type_order asc') -> select();
+		$this -> assign('pp',$pp);
+		
+		$this -> display();
+	}
+}

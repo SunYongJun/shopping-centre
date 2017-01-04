@@ -1,0 +1,104 @@
+<?php
+
+/*
+*	商品的分类页面，实现了按品牌、分类、价格进行区分
+*	List/index 	list页面的侧边栏查询
+*	List/gsearch	list页面的按条件查询输出，返回Ajax
+*	$author 蒋永忠
+*/
+
+namespace Home\Controller;
+class ListController extends CommonController{
+	public function index(){
+		$b = M('brand');  //实例化品牌类
+		$m = M('shop_type'); //实例化分类类
+		$g = M('goods'); //实例化商品类
+		$field = "id,goods_name,goods_img,goods_price,goods_sale,goods_click,sales_volume,goods_time"; //声明商品表中要取得的字段
+		// 查询当前所在的子类
+		$path = $m -> field('id,type_name') -> where() -> select();
+		//查询侧边栏分类
+		// 查询父类
+		$smap['is_show'] = 1;
+		$smap['pid'] = 0;
+		$sp = $m -> field('id,type_name') -> where($smap) -> order('type_order asc') -> select();
+		$this -> assign('sp',$sp);
+		//查询子分类
+		$pmap['is_show'] = 1;
+		$pmap['pid'] = array('gt',0);
+		$pp = $m -> field('id,type_name,pid') -> where($pmap) -> order('type_order asc') -> select();
+		$this -> assign('pp',$pp);
+		
+		//遍历品牌
+		$brand = $b -> field('id,brand_name') -> select();
+		if($brand){
+			$this -> assign('brand',$brand);
+		}
+
+		//直接查询出二级分类
+		$type = $m -> where('pid > 0') -> field('id,type_name') -> select();
+		if($type){	
+			$this -> assign('type',$type);
+		}
+
+		//查询当前的条件过来的分类或者品牌
+		if($_GET['type']){
+			$where['id'] = array('eq',$_GET['type']);
+			$path = $m -> field('id,type_name name') -> where($where) -> find();
+		}elseif($_GET['brand']){
+			$where['id'] = array('eq',$_GET['brand']);
+			$path = $b -> field('id,brand_name name') -> where($where) -> find();
+		}
+		$this -> assign('path',$path);
+		//热销商品Top5
+		$top = $g -> where('is_on_sale = 1 AND is_delete=0') -> field('id,goods_name,goods_price,sales_volume,goods_img') -> order('sales_volume desc') -> limit(5) -> select();
+		$this -> assign('top',$top);
+		//显示
+		$this -> display();
+	}
+
+	//点列表条件时，使用此法返回商品数据
+	public function gsearch(){
+		$g = M('goods'); //实例化商品类
+		$field = "id,goods_name,goods_img,goods_price,goods_sale,goods_click,sales_volume,goods_time"; //声明商品表中要取得的字段
+		//post接收所有的条件
+		if($_POST['brand']){
+			$map['brand_id'] = array('eq',$_POST['brand']);
+		}
+		if($_POST['type']){
+			$map['type_id'] = array('eq',$_POST['type']);
+		}
+		if($_POST['price']){
+			$map['goods_price'] = price($_POST['price']);
+		}
+		if($_POST['order']){
+			$order = $_POST['order'];
+		}
+		if($_GET['limit']){
+			$limit = $_GET['limit'];
+		}else{
+			$limit = 5;
+		}
+		if($_POST['search']){
+			$map['goods_name'] = array('like','%'.$_POST['search'].'%');
+		}
+		//是否开始销售条件
+		$map['is_on_sale'] = array('eq',1);
+		$map['is_delete'] = array('eq',0);
+		//查询符合条件的商品
+		$goods = $g -> where($map) -> field($field) -> order($order) -> limit($limit) -> select();
+		
+		//总的商品数量
+		$total = $g -> where($map) -> count('id');
+		$out = '';//输出商品
+		
+		//goods里面的获取总的商品数量
+		$sum = count($goods);
+		$data = array(
+			'total'=>$total,
+			'sum'=>$sum,
+			'goods'=>$goods
+		);
+		//查询到的数据返回
+		$this -> ajaxReturn($data);
+	}
+}

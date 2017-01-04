@@ -1,0 +1,169 @@
+<extend name="Public:layout" />
+<block name="toptitle">
+<li class="active"><a href="__MODULE__/Order/index">订单管理</a></li>
+</block>
+<block name="main">
+<div class="page-content">
+	<div class="page-header">
+		<h1 id="dianji">
+			订单列表
+		</h1>
+	</div><!-- /.page-header -->
+	<!-- 搜索条 -->
+	<div class="col-xs-4 col-sm-7"></div>
+	<form action="">
+	<div class="col-xs-4 col-sm-5 text-right" style="margin-bottom:10px">
+		<div class="input-group">
+			<input type="text" class="form-control search-query" placeholder="输入关键字" name="keywords">
+			<span class="input-group-btn">
+			<button type="submit" class="btn btn-purple btn-sm">
+				搜索
+				<i class="icon-search icon-on-right bigger-110"></i>
+			</button>
+			</span>
+		</div>
+	</div>
+	</form>
+	<!-- 搜索条结束 -->
+	<div class="row">
+		<div class="col-xs-12">
+			<!-- PAGE CONTENT BEGINS -->
+
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="table-responsive">
+						<table id="sample-table-1" class="table table-striped table-bordered table-hover">
+							<thead>
+								<tr>
+									<th class="center">
+										<label>
+											<input type="checkbox" class="ace" id="setall">
+											<span class="lbl"></span>
+										</label>
+									</th>
+									<th>序号</th>
+									<th>订单号</th>
+									<th>下单人/时间</th>
+									<th>收货人/电话</th>
+									<th>总金额</th>
+									<th>订单状态</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<form id="allform">
+							<tbody>
+							<foreach name="list" item="vo">
+								<tr>
+									<td class="center">
+										<label>
+											<input type="checkbox" class="ace" set="id[]" name="id[]" value="{$vo.id}">
+											<span class="lbl"></span>
+										</label>
+									</td>
+									<td>{$vo.id}</td>
+									<td>{$vo.acti}</td>
+									<td>{$vo.username}/{$vo.order_time|date='Y-m-d',###}</td>
+									<td>{$vo.name}/{$vo.phone}</td>
+									<td>{$vo.action_count}</td>
+									<td class="hidden-480">
+									{$vo.status}
+									</td>
+									<td>
+										<div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
+											{// 当订单状态为1时，出现确认收货按钮}
+											<if condition="$vo.action_status eq 1">
+											<a class="btn btn-xs btn-success" title="点击确认发货" ordersn="{$vo.acti}">
+												<i class="icon-ok bigger-120"></i>
+											</a>
+											</if>
+											{// 删除订单，订单状态为4}
+											<if condition="$vo.action_status eq 4">
+											<a class="btn btn-xs btn-danger" title="删除订单" del="{$vo.id}">
+												<i class="icon-trash bigger-120"></i>
+											</a>
+											</if>
+											<a class="btn btn-xs btn-warning" title="查看订单详细信息" href="__CONTROLLER__/info/acti/{$vo.acti}">
+												<i class="icon-flag bigger-120"></i>
+											</a>				
+										</div>
+
+									</td>
+								</tr>
+								</foreach>
+								<tr>
+									<td class="center" colspan="8">
+										<div class="col-xs-4 text-left">
+											<input type="button" class="btn btn-xs btn-inverse" id="delall" value="删除">
+										</div>
+										<!-- 显示分页 -->
+										<div class="col-xs-8 text-right">{$page}</div>
+									</td>	
+								</tr>
+							</tbody>
+						</form>
+						</table>
+					</div><!-- /.table-responsive -->
+				</div><!-- /span -->
+			</div><!-- /row -->
+		</div><!-- /.col -->
+	</div><!-- /.row -->
+</div>
+<script src="__PUBLIC__/admin/js/jquery-2.0.3.min.js"></script>
+<script>
+	$(function(){
+		//确认发货
+		$('a[ordersn]').click(function(){
+			var $this = $(this);
+			var sn = $(this).attr('ordersn');
+			layer.confirm('是否确认发货！',function(index){
+				var data = {acti:sn};
+				layer.close(index);
+				$.post('__CONTROLLER__/shipping',data,function(data){
+					if(data.status == 1){
+						$this.parent().parent().prev().html("<span class='text-primary'>已发货，待发货</span>");
+					}else{
+						layer.msg(data.content,1,3);
+					}
+				})
+			})
+		})
+		// 单个删除按钮删除数据
+		$('a[del]').click(function(){
+			var id = 'id='+$(this).attr('del');
+			layer.confirm('确定删除吗？',function(index){
+				layer.close(index);
+				$.post('__CONTROLLER__/del',id,function(data){
+					if(data == 1){
+						layer.msg('删除成功！',1,function(){
+							// location.reload(); //自动关闭后可做一些刷新页面等操作
+						});
+					}else{
+						layer.msg('删除失败！',2,3);
+					}
+				});
+			});
+		})
+		// 全选
+		var bool = true;
+		$('#setall').click(function(){
+			$(':checkbox[set]').each(function(){
+				$(this).prop('checked',bool);
+			})
+			bool = !bool;
+		})
+		// 批量删除
+		$('#delall').click(function(){
+			var data = $('#allform').serialize();
+			$.post('__CONTROLLER__/delall',data,function(data){
+				if(data == 1){
+					layer.msg('批量删除成功！',1,function(){
+						location.reload(); //自动关闭后可做一些刷新页面等操作
+					});
+				}else{
+					layer.msg('批量删除失败！',2,3);
+				}
+			})
+		})
+	})
+</script>
+</block>

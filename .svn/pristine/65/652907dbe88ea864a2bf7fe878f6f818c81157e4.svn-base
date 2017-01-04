@@ -1,0 +1,95 @@
+<extend name="Public:layout" />
+<block name="main">
+
+	<div class="page-content">
+		<div class="page-header">
+			<h1>
+				秒杀管理
+				<small> <i class="icon-double-angle-right"></i>
+					秒杀商品
+				</small>
+			</h1>
+		</div>
+		<!-- /.page-header -->
+
+		<div class="row">
+			<div class="col-xs-12">
+				<!-- PAGE CONTENT BEGINS -->
+
+				<form class="form-horizontal" role="form" action="__CONTROLLER__/doit" method="post" enctype="multipart/form-data">
+				<input type="hidden" name="goods_id" value="{$sale.goods_id}">
+				<div class="form-group">
+					<label class="col-sm-3 control-label no-padding-right" for="form-field-1">商品名称</label>
+
+					<div class="col-sm-9">
+						<input type="text" id="form-field-1"  class="col-xs-10 col-sm-5" name="goods_name" value="{$sale.name}" disabled/>
+					</div>
+				</div>
+
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label no-padding-right" for="form-field-5" required>秒杀价格</label>
+
+					<div class="col-sm-9">
+						<input type="text"  class="col-xs-10 col-sm-5" name="sale" id="form-field-5" value="{$sale.sale}"/>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label no-padding-right" for="form-field-8">秒杀时间</label>
+
+					<div class="col-sm-9">
+						<input type="text" class="col-xs-10 col-sm-5" name="sale_start" id="form-field-8" value="<if condition='$sale.sale_start neq 0'>{$sale.sale_start|date='Y-m-d H:i:s',###}<else /></if>"/>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label no-padding-right" for="form-field-9">截止时间</label>
+
+					<div class="col-sm-9">
+						<input type="text" class="col-xs-10 col-sm-5" name="sale_end" id="form-field-9" value="<if condition='$sale.sale_end neq 0'>{$sale.sale_end|date='Y-m-d H:i:s',###}<else /></if>"/>
+					</div>
+				</div>
+
+
+				<div class="space-4"></div>
+
+				<div class="form-group">
+					<label class="col-sm-3 control-label no-padding-right">是否可用</label>
+
+					<div class="col-sm-9">
+						<div class="col-xs-12 col-sm-6">
+							<div class="control-group">
+
+								<label>
+									<input name="is_delete" type="radio" class="ace" value="1" checked/>
+									<span class="lbl">是</span>
+								</label>
+
+								<label>
+									<input name="is_delete" type="radio" class="ace" value="0" />
+									<span class="lbl">否</span>
+								</label>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+	
+
+				<div class="clearfix form-actions">
+					<div class="col-md-offset-3 col-md-9">
+						<button class="btn btn-info" type="submit">
+							<i class="icon-ok bigger-110"></i>
+							Submit
+						</button>
+						
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+</block>

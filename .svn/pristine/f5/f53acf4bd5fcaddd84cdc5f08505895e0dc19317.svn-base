@@ -1,0 +1,65 @@
+<?php 
+namespace Home\Controller;
+
+	class CenterController extends CommonController{
+		public function index(){
+			// var_dump($_SESSION['user']);
+			$users = $_SESSION['user'];
+			$this -> assign('user',$users);
+			$this -> display();
+		}
+
+		// 
+		public function myBonus(){
+			$this -> display();
+		}
+		// 我的订单
+		public function order(){
+			$this -> display();
+		}
+
+		// 我的花粉
+		public function myCoin(){
+			$user = $_SESSION['user'];
+			$this -> assign('user',$user);
+			$this -> display();
+		}
+		// 账户安全设置
+		public function safe(){
+			$user = $_SESSION['user'];
+			$this -> assign('user',$user);
+			$this -> display();
+		}
+		// 地址管理
+		public function address(){
+			$this -> display();
+		}
+
+		// 我的投诉
+		public function complain(){
+			$this -> display();
+		}
+		// 我的咨询 回复
+		public function reply(){
+			$this -> display();
+		}
+
+		public function inform(){
+			$user = $_SESSION['user'];
+			$this -> assign('user',$user);
+			$this -> display();
+		}
+		public function basic(){
+			$user = $_SESSION['user'];
+			$this -> assign('user',$user);
+			$this -> display();
+		}
+
+
+
+
+
+
+
+	}
+ ?>

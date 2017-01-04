@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>查看图片</title>
+	<style>
+	.main{width: 950px;overflow: hidden;margin: 0 auto;}
+	.wp{width:100%;}
+	#wp_productviewpic{padding:20px 0;background:url(__PUBLIC__/home/images/v3_product_viewpicbg1.jpg) 0 0 repeat-x;}
+	.middleBox_viewpic_left{width:300px;text-align:center;}
+	.middleBox_viewpic_right{text-align:left;overflow:hidden;}
+	.middleBox_viewpic_right li{float:left;padding:0 10px;}
+	.middleBox_viewpic_right li img{border:1px solid #f0f0f0;}
+	.middleBox_viewpic_bigpic{text-align:center;padding-top:40px;width:100%;}
+	.fl{float: left}
+	ul{list-style: none;padding: 0px;margin: 0px;}
+	ul li{font-size: 12px;line-height: 180%;color: #666;width: 92px;height: 92px;	display: block;cursor: pointer;}
+	ul li img{margin: 0;padding: 0;border: 0;width: 90px;height: 90px;vertical-align: middle;border: 1px solid #f0f0f0;}
+	#middleBoxbigpic{max-height: 500px;max-width: 1000px}
+	</style>
+</head>
+<body>
+	<div class="wp" id="wp_productviewpic">
+		<div class="main">
+	    	<div class="middleBox_viewpic_left fl"><img src="__PUBLIC__/home/images/logo.gif" /></div>
+	        <div class="middleBox_viewpic_right fl">
+		        <ul>
+		        <neq name="pic" value="0">
+		 		<foreach name="pic" item="vo"> 
+		 			<li><img src="__PUBLIC__/{$vo.img_url}" alt="" onmouseover="javascript:bigpic('__PUBLIC__/{$vo.img_url}');"/></li>
+		 		</foreach>
+		 		<else/>
+		 		<p style="font-size:12px;color:#333;">暂未上传图片</p>
+		 		</neq>
+		        </ul>
+	    	</div>
+		</div>
+		<neq name="pic1" value="0">
+		<div class="middleBox_viewpic_bigpic fl"><img src="__PUBLIC__/{$pic1.img_url}" id="middleBoxbigpic" /></div>
+		</neq>
+	</div>
+	<script type="text/javascript">
+	function bigpic(url){
+		document.getElementById("middleBoxbigpic").src=url;
+	}
+	</script>
+
+</body>
+</html>

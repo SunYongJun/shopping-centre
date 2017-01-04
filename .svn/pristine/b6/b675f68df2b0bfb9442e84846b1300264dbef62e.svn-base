@@ -1,0 +1,7 @@
+<!-- 遍历出导航栏搜索框里面的所有品牌及商品数 -->
+<foreach name="brand" item="vb">
+<ul id="searchLi0" class="">
+    <li class="r"><b>{$vb.count}</b>件商品</li>
+    <li class="l"><a href="__MODULE__/List/index/brand/{$vb.id}">{$vb.brand_name}</a></li>
+</ul>
+</foreach>

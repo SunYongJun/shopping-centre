@@ -1,0 +1,27 @@
+<?php
+
+namespace Home\Controller;
+
+class ArticleController extends CommonController{
+	public function index(){
+		// 通过id查询到文章内容
+		$a = M('article');
+		if(!$id = $_GET['id']){
+			$this -> error('非法参数，请重试！');
+		}
+		$art = $a -> where('id='.$id) -> find();
+		if($art){
+			// 查询分类信息
+			$type = M('article_type') -> field('article_type_name') -> where('id='.$art['article_type']) -> find();
+			$art['type_name'] = $type['article_type_name'];
+			//查询作者信息
+			$author = M('admin_user') -> field('admin_name') -> where('id='.$art['article_author']) -> find();
+			$art['admin_name'] = $author['admin_name'];
+			
+			$this -> assign('art',$art);
+		}else{
+			$this -> error('暂无此内容，请重试！');
+		}
+		$this -> display();
+	}
+}

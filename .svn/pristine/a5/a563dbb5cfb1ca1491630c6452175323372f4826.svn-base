@@ -1,0 +1,62 @@
+<?php
+namespace Admin\Controller;
+
+class GiftController extends CommonController{
+	public function index() {
+		$gift = M('gift');
+		$data = $gift->select();
+		$this->assign('gift',$data);
+		$this->display();
+	}
+
+	public function add() {
+		$this->display();
+	}
+
+	public function insert() {
+		if($_POST){
+			$model = M('gift');
+			$model->create();
+			if($model->add()){
+				$this->success('添加成功','index');
+			}else{
+				$this->error('添加失败');
+			}
+		}else{
+			$this->error('非法操作');
+		}
+	}
+
+	public function edit() {
+		$model = M('gift');
+		$map['id'] = array('eq',$_GET['id']);
+		$gift = $model->where($map)->find();
+		$this->assign('gift',$gift);
+		$this->display();
+	}
+
+	public function save() {
+		if($_POST){
+			$model = M('gift');
+			$model->create();
+			if($model->save()){
+				$this->success('修改成功','index');
+			}else{
+				$this->error('修改失败');
+			}
+		}else{
+			$this->error('非法操作');
+		}
+	}
+
+	public function delete() {
+		$model = M('gift');
+		$map['id'] = array('eq',$_GET['id']);
+		if($model->where($map)->delete()) {
+		$this->success('删除成功','index');	
+		}else{
+			$this->error('删除失败');
+		}
+	}
+
+}

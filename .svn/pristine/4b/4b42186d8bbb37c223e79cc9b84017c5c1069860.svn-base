@@ -1,0 +1,94 @@
+<?php
+namespace Admin\Controller;
+
+class IndexController extends CommonController {
+    public function index(){
+    	//查出最新注册的十个用户
+    	$user = M('user');
+    	$u = $user -> field('user_email,user_pic,user_regtime') -> order('user_regtime desc') -> limit(10) -> select();
+    	if($u){
+    		$this -> assign('user',$u);
+    	}
+    	//查出最新的5条评论
+    	$c = M('comment');
+    	$com = $c -> field('user_id,comment_content,comment_time') -> order('comment_time desc') -> limit(5) -> select();
+    	if($com){
+			foreach($com as &$v){
+				$cu = $user -> field('user_email,user_pic') -> where('id='.$v['user_id']) -> find();
+				$v['pic'] = $cu['user_pic'];
+				$v['email'] = $cu['user_email'];
+    		}
+    		$this -> assign('com',$com);
+    	}
+    	//查询管理员会话
+    	$d = M('dialog');
+    	$list = $d -> order('id asc') -> select();
+    	//查询管理员的信息
+    	foreach($list as &$n){
+    		$admin = M('admin_user') -> where('id='.$n['uid']) -> field('admin_name,img') -> find();
+    		$n['name'] = $admin['admin_name'];
+    		$n['img'] = $admin['img'];
+    	}
+
+    	$this -> assign('list',$list);
+    	//display
+    	$this -> display();
+    }
+
+    /*
+    *	管理员会话
+    */
+    Public function insert(){
+    	$d = M('dialog');
+    	$admin = M('admin_user');
+    	$_POST['uid'] = $_SESSION['admin']['id'];
+    	$_POST['time'] = time();
+    	if($d -> create()){
+    		if($id = $d -> add()){
+    			//查询刚刚插入的读取出来插入到对话框内
+    			$dd = $d -> find($id);
+    			$admin = M('admin_user') -> where('id='.$dd['uid']) -> field('admin_name,img') -> find();
+
+    			echo '<div class="itemdiv dialogdiv">
+					<div class="user">
+						<img alt="" src="'.__ROOT__.'/public/'.$admin["img"].'" />
+					</div>
+
+					<div class="body">
+						<div class="time">
+							<i class="icon-time"></i>
+							<span class="grey">'.timeNow($dd["time"]).'</span>
+						</div>
+
+						<div class="name">
+							<a href="">'.$admin["admin_name"].'</a>
+						</div>
+						<div class="text">'.$dd["content"].'</div>
+
+						<div class="tools">
+							<a href="javascript:void(0)" class="btn btn-minier btn-info" del="'.$dd["id"].'">
+								<i class="icon-only icon-share-alt"></i>
+							</a>
+						</div>
+					</div>
+				</div>';
+    		}else{
+    			echo 0;
+    		}
+    	}else{
+    		echo 0;
+    	}
+    }
+    /*
+    *	删除对话
+    */
+    Public function del(){
+    	$id = $_GET['id'];
+    	$bool = M('dialog') -> delete($id);
+    	if($bool){
+    		echo 1;
+    	}else{
+    		echo 0;
+    	}
+    }
+}

@@ -1,0 +1,68 @@
+<extend name="Public:layout" />
+<block name="main">
+	<div class="page-content">
+		<div class="page-header">
+			<h1>
+				商品管理
+				<small>
+					<i class="icon-double-angle-right"></i>
+					商品列表
+				</small>
+			</h1>
+		</div>
+		<div class="table-responsive">
+			<table id="sample-table-1" class="table table-striped table-bordered table-hover">
+				<thead>
+					<tr>
+						<th class="center">
+							<label>
+								<input type="checkbox" class="ace" />
+								<span class="lbl"></span>
+							</label>
+						</th>
+						<th>品牌</th>
+						<th>所属分类</th>
+						<th>商品名称</th>
+						<th class="hidden-480">货号</th>
+						<th>
+							本店售价
+						</th>
+						<th class="hidden-480">抢购日期</th>
+
+						<th>操作</th>
+					</tr>
+				</thead>
+
+				<tbody>
+				<foreach name="type" item="vo">
+					<tr>
+						<td class="center">
+							<label>
+								<input type="checkbox" class="ace" />
+								<span class="lbl"></span>
+							</label>
+						</td>
+
+						<td>
+							<span class="lbl">{$vo.id}</span>
+							
+						</td>
+						<td><span class="lbl">{$vo.pname}</span></td>
+						<td><span class="lbl">{$vo.goods_name}</span></td>
+						<td class="hidden-480">{$vo.goods_sn}</td>
+						<td class="hidden-480">
+							<span>{$vo.goods_price}</span>
+						</td>
+
+						<td>
+							<span class="">{$vo.goods_start_date}{$vo.goods_end_date}</span>
+						</td>
+						<td>
+							<a href="__CONTROLLER__/edit/id/{$vo.id}">修改</a> | <a href="__MODULE__/GoodsGallery/index/id/{$vo.id}">查看相册</a> | <a href="__MODULE__/Sale/index/id/{$vo.id}">秒杀</a> | <a href="__CONTROLLER__/delete/id/{$vo.id}">删除</a>
+						</td>
+					</tr>													
+				</foreach>
+				</tbody>
+			</table>
+		</div>
+</block>

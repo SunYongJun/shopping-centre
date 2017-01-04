@@ -1,0 +1,185 @@
+<extend name="Public:layout" />
+<block name="cssjs">
+    <!-- <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/fengchao.css"> -->
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/personal.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/home_v2.css">
+</block>
+<block name="main">
+<div class="mainBg">
+    <div class="main clearfix">
+
+        <div class="side_bar">
+            <h1>
+                <a title="我的蜂巢" href="#">我的蜂巢</a>
+            </h1>
+            <dl>
+                <dt>订单中心</dt>
+                <dd>
+                    <a href="__CONTROLLER__/order">我的订单</a>
+                    <a href="__CONTROLLER__/">我的收藏</a>
+                    <a href="__CONTROLLER__/myBonus">我的红包</a>
+                    <a href="__CONTROLLER__/myCoin">我的花粉</a>
+                    <a href="__CONTROLLER__/">我的评价</a>
+                </dd>
+            </dl>
+            <dl>
+                <dt>账户管理</dt>
+                <dd>
+                    <a href="__CONTROLLER__/inform">个人资料设置</a>
+                    <a href="__CONTROLLER__/safe">账户安全设置</a>
+                    <a href="__CONTROLLER__/address">收货地址管理</a>
+                    <a href="#">邮件/短信订阅</a>
+                    <a href="#">站外分享绑定</a>
+                </dd>
+            </dl>
+            <dl>
+                <dt>服务中心</dt>
+                <dd>
+                    <a href="#">申请退换货/投诉</a>
+                    <a href="#">退货管理</a>
+                    <a href="#">换货管理</a>
+                    <a href="#">店铺取消订单管理</a>
+                    <a href="__CONTROLLER__/reply">商品咨询/回复</a>
+                    <a href="__CONTROLLER__/complain">我的投诉</a>
+                </dd>
+            </dl>
+        </div>
+        <div class="content">
+            <div class="huanhuo">
+                <h1>
+                    我的花粉
+                    <!-- <div style="display: none;" class="how_get">
+                        <h3>如何获得"花粉"？</h3>
+                        <div class="hf"> <i></i>
+                            <table width="100%" cellspacing="0" cellpadding="0" border="0" class="tab_sty">
+                                <tbody>
+                                    <tr>
+                                        <td> <b>获得花粉渠道</b>
+                                        </td>
+                                        <td> <b>获得花粉规则</b>
+                                        </td>
+                                        <td>
+                                            <b>获得花粉值</b>
+                                        </td>
+                                        <td>
+                                            <b>每日封顶</b>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>登录商城购物</td>
+                                        <td>在商城购物每消费1元，获得一个花粉</td>
+                                        <td>1花粉/消费1元</td>
+                                        <td>无封顶</td>
+                                    </tr>
+                                    <tr>
+                                        <td>对商品评论</td>
+                                        <td>
+                                            购物后给商品评论（需审核）成功后将获得10花粉，另外抢
+                                            <br>到商品的首次评价，用户将获得双倍花粉，即20花粉</td>
+                                        <td>10花粉/1条</td>
+                                        <td>无封顶</td>
+                                    </tr>
+                                    <tr>
+                                        <td>完善个人资料</td>
+                                        <td>
+                                            注册后，在"个人信息管理—修改个人资料"里填写完整的会
+                                            <br>员资料，即可获得50花粉</td>
+                                        <td>50花粉/1人</td>
+                                        <td>一次性</td>
+                                    </tr>
+                                    <tr>
+                                        <td>微博分享评价</td>
+                                        <td>
+                                            分享评价：一次获得20花粉；
+                                            <br>支持新浪微博、腾讯微博，需先绑定微博。</td>
+                                        <td>20花粉/条</td>
+                                        <td>无封顶</td>
+                                    </tr>
+                                    <tr>
+                                        <td>超时赔付</td>
+                                        <td>
+                                            全国40个城市范围内，订单自发出之日起，若因乐蜂网配送
+                                            <br>原因造成订单未能在承诺时效内送达，赔偿500花粉作为补偿</td>
+                                        <td>500花粉/订单</td>
+                                        <td>无封顶</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div> -->
+                </h1>
+                <div class="huafen clearfix">
+
+                    <div class="hua_l fl">
+                        <p>
+                            目前可用花粉：
+                            <b>{$user.user_coin}</b>
+                        </p>
+                        <p>
+                            未到账花粉：
+                            <b>0</b>
+                        </p>
+                    </div>
+                    <div class="hua_cen fl">
+                        <a href="#">
+                           <!--  <img src="__PUBLIC__/home/images/duihuan_bg.jpg"></a> -->
+                        <a href="#" class="lan">何时到账？</a>
+                    </div>
+
+                    <div class="hua_right fr">
+                        <a target="_blank" href="#">
+                            <img alt="" src="__PUBLIC__/home/images/20141120062804.jpg"></a>
+                    </div>
+                </div>
+                <form action="#" method="post" id="point_form">
+                    <input type="hidden" name="consume_detail" value="">    
+                    <div class="huafen_box pn-top-nav">
+                        <div class="pn-top-btn clearfix">
+                            <div class="pn-top-btnbox lf-fl">
+                                <a href="#" onclick="showPointConsumeDetail(0);" class="">花粉明细</a>
+                                <a href="#" onclick="showPointConsumeDetail(1);">收入明细</a>
+                                <a href="#" onclick="showPointConsumeDetail(2);">消耗明细</a>
+                            </div>
+                            <div class="lf-select lf-fr" style="position: static; z-index: 0; display: block;">
+                                <select id="date_select" name="date_range" onchange="showPointConsumeDetailByDate()">
+                                    <option value="0" selected="">请选择</option>
+
+                                    <option value="2014.07.01 00:00:00-2014.12.31 23:59:59">2014下半年</option>
+
+                                </select>
+                                <input type="text" define="请选择" autocomplete="off" value="请选择" id="date_input">    
+                                <ul style="display: none; z-index: 0;"></ul>
+                            </div>
+                        </div>
+                        <div class="huafen_tab tab_sty">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <thead class="com_tbl_h" bgcolor="#e4dbca">
+                                    <tr>
+                                        <th>时间</th>
+                                        <th>花粉值</th>
+                                        <th>花粉变更来源</th>
+                                        <th>涉及订单号</th>
+                                        <th>过期时间</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="com_tbl_b com_tb1_span">
+                                    <tr>
+                                        <td align="center" height="185" colspan="6"> <!-- <b class="lp-smilicon"></b> -->
+                                            <span></span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            
+                            </table>
+
+                        </div>
+                    </div>
+                </form>
+
+                <div class="pn-page cearfix"></div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</block>

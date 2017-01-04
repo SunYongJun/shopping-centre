@@ -1,0 +1,336 @@
+<extend name="Public:layout" />
+<block name="cssjs">
+    <!-- <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/fengchao.css"> -->
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/personal.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/home_v2.css">
+</block>
+<block name="main">
+<!--头部结束-->
+<div class="mainBg">
+<div class="main clearfix">
+
+    <div class="side_bar">
+        <h1>
+            <a title="我的蜂巢" href="#">我的蜂巢</a>
+        </h1>
+        <dl>
+            <dt>订单中心</dt>
+            <dd>
+                <a href="__CONTROLLER__/order">我的订单</a>
+                <a href="#">我的收藏</a>
+                <a href="__CONTROLLER__/myBonus">我的红包</a>
+                <a href="__CONTROLLER__/myCoin">我的花粉</a>
+                <a href="#">我的评价</a>
+            </dd>
+        </dl>
+        <dl>
+            <dt>账户管理</dt>
+            <dd>
+                <a href="#">个人资料设置</a>
+                <a href="__CONTROLLER__/safe">账户安全设置</a>
+                <a href="#">收货地址管理</a>
+                <a href="#">邮件/短信订阅</a>
+                <a href="#">站外分享绑定</a>
+            </dd>
+        </dl>
+        <dl>
+            <dt>服务中心</dt>
+            <dd>
+                <a href="#">申请退换货/投诉</a>
+                <a href="#">退货管理</a>
+                <a href="#">换货管理</a>
+                <a href="#">店铺取消订单管理</a>
+                <a href="#">商品咨询/回复</a>
+                <a href="#">我的投诉</a>
+            </dd>
+        </dl>
+    </div>
+    <!-- // <script type="text/javascript" src="__PUBLIC__/home/js/W960.js"></script> -->
+    <div class="content">
+        <div class="huanhuo">
+            <h1>
+                <span class="fr" id="get_hf">
+                    <a href="#">如何获得更多花粉？</a>
+                </span>
+                我的花粉
+                <div style="display: none;" class="how_get">
+                    <h3>如何获得"花粉"？</h3>
+                    <div class="hf">
+                        <i></i>
+                        <table width="100%" cellspacing="0" cellpadding="0" border="0" class="tab_sty">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <b>获得花粉渠道</b>
+                                    </td>
+                                    <td>
+                                        <b>获得花粉规则</b>
+                                    </td>
+                                    <td>
+                                        <b>获得花粉值</b>
+                                    </td>
+                                    <td>
+                                        <b>每日封顶</b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>登录商城购物</td>
+                                    <td>在商城购物每消费1元，获得一个花粉</td>
+                                    <td>1花粉/消费1元</td>
+                                    <td>无封顶</td>
+                                </tr>
+                                <tr>
+                                    <td>对商品评论</td>
+                                    <td>
+                                        购物后给商品评论（需审核）成功后将获得10花粉，另外抢
+                                        <br>到商品的首次评价，用户将获得双倍花粉，即20花粉</td>
+                                    <td>10花粉/1条</td>
+                                    <td>无封顶</td>
+                                </tr>
+                                <tr>
+                                    <td>完善个人资料</td>
+                                    <td>
+                                        注册后，在"个人信息管理—修改个人资料"里填写完整的会
+                                        <br>员资料，即可获得50花粉</td>
+                                    <td>50花粉/1人</td>
+                                    <td>一次性</td>
+                                </tr>
+                                <tr>
+                                    <td>微博分享评价</td>
+                                    <td>
+                                        分享评价：一次获得20花粉；
+                                        <br>支持新浪微博、腾讯微博，需先绑定微博。</td>
+                                    <td>20花粉/条</td>
+                                    <td>无封顶</td>
+                                </tr>
+                                <tr>
+                                    <td>超时赔付</td>
+                                    <td>
+                                        全国40个城市范围内，订单自发出之日起，若因乐蜂网配送
+                                        <br>原因造成订单未能在承诺时效内送达，赔偿500花粉作为补偿</td>
+                                    <td>500花粉/订单</td>
+                                    <td>无封顶</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </h1>
+            <div class="huafen clearfix">
+
+                <div class="hua_l fl">
+                    <p>
+                        目前可用花粉：
+                        <b>0</b>
+                    </p>
+                    <p>
+                        未到账花粉：
+                        <b>0</b>
+                    </p>
+                </div>
+                <div class="hua_cen fl">
+                    <a href="#">
+                        <img src="__PUBLIC__/home/images/duihuan_bg.jpg"></a>
+                    <a href="#" class="lan">何时到账？</a>
+                </div>
+
+                <div class="hua_right fr">
+                    <a target="_blank" href="#">
+                        <img alt="" src="__PUBLIC__/home/images/20141120062804.jpg"></a>
+                </div>
+            </div>
+            <form action="#" method="post" id="point_form">
+                <input type="hidden" name="consume_detail" value="">
+                <div class="huafen_box pn-top-nav">
+                    <div class="pn-top-btn clearfix">
+                        <div class="pn-top-btnbox lf-fl">
+                            <a href="#" onclick="showPointConsumeDetail(0);" class="on">花粉明细</a>
+                            <a href="#" onclick="showPointConsumeDetail(1);">收入明细</a>
+                            <a href="#" onclick="showPointConsumeDetail(2);">消耗明细</a>
+                        </div>
+                        <div class="lf-select lf-fr" style="position: static; z-index: 0; display: block;">
+                            <select id="date_select" name="date_range" onchange="showPointConsumeDetailByDate()">
+                                <option value="0" selected="">请选择</option>
+
+                                <option value="2014.07.01 00:00:00-2014.12.31 23:59:59">2014下半年</option>
+
+                            </select>
+                            <input type="text" define="请选择" autocomplete="off" value="请选择" id="date_input">
+                            <ul style="display: none; z-index: 0;"></ul>
+                        </div>
+                    </div>
+                    <div class="huafen_tab tab_sty">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tbody>
+                                <tr>
+                                    <th>时间</th>
+                                    <th>花粉值</th>
+                                    <th>花粉变更来源</th>
+                                    <th>涉及订单号</th>
+                                    <th>过期时间</th>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </form>
+
+            <div class="pn-page cearfix"></div>
+
+        </div>
+    </div>
+</div>
+
+</div>
+</block>
+<!-- <script type="text/javascript" src="__PUBLIC__/dist/js/lafaso.class.js"></script>
+<script type="text/javascript" src="__PUBLIC__/dist/js/home_v3.js"></script>
+
+<div style="display: none">
+<script type="text/javascript">
+setTimeout(function () {
+    //baidu
+    //document
+    (function (d) {
+        window.bd_cpro_rtid = "PWTYrjn";
+        var s = d.createElement("script");
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = location.protocol + "//cpro.baidu.com/cpro/ui/rt.js";
+        var s0 = d.getElementsByTagName("script")[0];
+        s0.parentNode.insertBefore(s, s0);
+
+        //ga
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-34801627-1']);
+        _gaq.push(['_setDomainName', 'lefeng.com']);
+        _gaq.push(['_setCampNameKey', 'utm_campaign']);
+        _gaq.push(['_trackPageview']);
+        (function () {
+            var ga = document.createElement('script')
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    })(document);
+}, 100)
+</script>
+
+<script type="text/javascript" src="__PUBLIC__/dist/js/lafaso_wt.js"></script>
+
+</div>
+<script>
+
+    function topCcountDown(t,c,_self,fn){
+        function nd(d){return isNaN(d) ? (d ? new Date(d).getTime() : new Date().getTime()) : d * 1000;}
+        var e = [nd(t[0]),nd(t[1]),nd(t[2])],_s = _self,b;
+        if(!$(_s).length){return false;}
+        if(t[0] && e[0] > e[1]){
+            $(_s).html(c[1]);
+            return false;
+        }else if(e[1] > e[2]){
+            fn && fn($(_s));
+            $(_s).html(c[2]);
+            return false;
+        }
+        (b=function(l){
+            var l=l||(e[2]-e[1])/100,k={
+                D:l/36000/24,H:l/36000%24,M:l/600%60,S:l/10%60,s:l%10
+            };
+            $(_s).html(c[0].replace(/D|H|M|S|s/g,function(m){
+                var n = parseInt(k[m]) + ''
+                if (n.length == 1 && m != 'D' && m != 's'){
+                    n = 0 + n;
+                }
+                return n
+            }));
+            setTimeout(function(){b(l-1)},100);
+        })()
+    }
+
+//topCcountDown([,,'2014/04/18 00:00:00'],['<b>D</b><b>H</b><b>M</b><b>S</b><b>s</b>','',''],'#top_countdown',function(){$('#advTop').remove()});
+
+</script>
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?69200f796b23f8fe027c39886c7298db";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<script type="text/javascript">
+var google_tag_params = {
+ 
+ecomm_pagetype : 'REPLACE_WITH_VALUE',
+ecomm_prodid : 'REPLACE_WITH_VALUE',
+ecomm_pcat : 'REPLACE_WITH_VALUE',
+ecomm_totalvalue : 'REPLACE_WITH_VALUE',
+ecomm_login : 'REPLACE_WITH_VALUE'
+ 
+};
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1049985484;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]>*/</script>
+<script type="text/javascript" src="__PUBLIC__/dist/js/conversion.js"></script>
+<iframe name="google_conversion_frame" title="Google conversion frame" width="300" height="13" src="./我的花粉_我的乐蜂_files/saved_resource.htm" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no">
+&lt;img height="1" width="1" border="0" alt="" src="http://googleads.g.doubleclick.net/pagead/viewthroughconversion/1049985484/?frame=0&amp;random=1417519171059&amp;cv=7&amp;fst=1417519171059&amp;num=1&amp;fmt=1&amp;guid=ON&amp;u_h=768&amp;u_w=1024&amp;u_ah=738&amp;u_aw=1024&amp;u_cd=24&amp;u_his=46&amp;u_tz=480&amp;u_java=true&amp;u_nplug=16&amp;u_nmime=30&amp;data=ecomm_pagetype%3DREPLACE_WITH_VALUE%3Becomm_prodid%3DREPLACE_WITH_VALUE%3Becomm_pcat%3DREPLACE_WITH_VALUE%3Becomm_totalvalue%3DREPLACE_WITH_VALUE%3Becomm_login%3DREPLACE_WITH_VALUE&amp;frm=0&amp;url=http%3A//active.lefeng.com/point/userJifen.jsp%3Fcur%3D7f&amp;ref=http%3A//order.lefeng.com/redbag/redbagList.jsp%3Fcur%3D32f%26p3c51ckp0ze2z0d&amp;vis=1" /&gt;
+</iframe>
+<noscript>
+&lt;div style="display:inline;"&gt;
+&lt;img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1049985484/?value=0&amp;guid=ON&amp;script=0"/&gt;
+&lt;/div&gt;
+</noscript>
+
+foot
+
+<script src="__PUBLIC__/dist/js/lf.base.js" type="text/javascript"></script>
+<script src="__PUBLIC__/dist/js/lf.plug.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function(){
+    $("#get_hf").hover(function(){
+            $(this).parents("h1").find(".how_get").show();
+            $(".lf-select").hide(); 
+        },function(){
+            $(this).parents("h1").find(".how_get").hide();  
+            $(".lf-select").show(); 
+    });
+    $(".how_get").hover(function(){
+            $(this).show(); 
+        },function(){
+            $(this).hide(); 
+    });
+});
+
+    function showPointConsumeDetailByDate(){
+        formSubmit();
+    }
+    
+    function showPointConsumeDetail(consum_detail){
+        $("input[name='consume_detail']").val(consum_detail);
+        formSubmit();
+    }
+    
+    function formSubmit(){
+        $("#point_form").submit();;
+    }
+    
+    lafaso.ready(function () {
+       var $ = lafaso;
+       var ste = $.getElements('div.lf-select');
+       var se = $.fn.likeSelect({ 'els': ste, 'readOnly': 1}).init();
+       se = null
+    });
+</script> -->

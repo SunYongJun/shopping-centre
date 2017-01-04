@@ -1,0 +1,22 @@
+<extend name="Public:layout" />
+<block name="cssjs">
+	<link rel="stylesheet" href="__PUBLIC__/home/css/article.css">
+</block>		
+<block name="main">
+	<div class="con">
+		<foreach name="type" item="vtype">
+		<div class="list">
+			<h1>{$vtype.article_type_name}</h1>
+			<ul>
+				<foreach name="vtype.article" item="va">
+				<li>
+					<b>[{$va.author}]</b>
+					<a href="__MODULE__/Article/index/id/{$va.id}">{$va.article_title}</a>
+					<span>{$va.article_time|date='Y-m-d',###}</span>
+				</li>
+				</foreach>
+			</ul>
+		</div>
+		</foreach>
+	</div>
+</block>

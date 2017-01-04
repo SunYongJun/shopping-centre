@@ -1,0 +1,29 @@
+<?php
+// 前台首页
+namespace Home\Controller;
+
+class IndexController extends CommonController {
+    public function index(){
+    	$g = M('goods'); //实例化商品
+        $t = M('shop_type'); //实例化分类
+        $b = M('brand');    //实例化品牌
+
+        //品牌特卖 
+        $brand = $b -> where('is_show = 1') -> order('brand_order,id desc') -> select();
+        $this -> assign('brand',$brand);
+
+    	// 查询商品
+    	if($goods = $g -> select()){
+    		// 查询商品的品牌
+    		foreach($goods as &$v){
+    			$bb = $b -> field('brand_name') -> where($v['brand_id']) -> find();
+    			$v['brand_name'] = $bb['brand_name'];
+    		}
+    		$this -> assign('list',$goods);
+    		
+    	}
+
+        //显示
+    	$this -> display('index');
+    }
+}

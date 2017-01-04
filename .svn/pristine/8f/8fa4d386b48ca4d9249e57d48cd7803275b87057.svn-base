@@ -1,0 +1,196 @@
+<extend name="Public:layout" />
+<block name="cssjs">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/home_v2.css">
+    <link href="__PUBLIC__/home/css/site_v5.css" rel="stylesheet" type="text/css">
+    <link href="__PUBLIC__/home/css/mylafasov5_v2.css" rel="stylesheet" type="text/css">
+  <!-- 
+  <style type="text/css">
+section,article,aside,header,footer,nav,dialog,figure {
+    display: block;
+}
+
+.mylafasoV2R table.has {
+    border-top: 1px solid #D8D8D8
+}
+
+.alt-succ dl .nam{margin:0px !important;}
+.alt-succ dl{overflow:none !important;}
+.alt-succ .more a{float:none !important;}
+.clearfix:after{
+content: ".";
+display: block;
+height: 0;
+clear: both;
+visibility: hidden;}
+</style> 
+-->
+
+
+</block>
+
+
+    <!--[if IE]>
+    <script src="http://a.tbcdn.cn/p/fp/2011a/html5.js" type="text/javascript"></script>
+    <![endif]-->
+
+<!--main开始-->
+<block name="main">
+
+<div class="myWrap">
+<aside class="fl mylafasoV2L">
+    <!--[if IE]>
+    <noscript>
+        <div class="fl mylafasoV2L"></noscript>
+        <![endif]-->
+        <!-- partial_1299568417898 -->
+        <div class="side_bar">
+            <h1>
+                <a title="我的蜂巢" href="#">我的蜂巢</a>
+            </h1>
+            <dl>
+                <dt>订单中心</dt>
+                <dd>
+                    <a href="__CONTROLLER__/order">我的订单</a>
+                    <a href="#">我的收藏</a>
+                    <a href="__CONTROLLER__/myBonus">我的红包</a>
+                    <a href="__CONTROLLER__/myCoin">我的花粉</a>
+                    <a href="#">我的评价</a>
+                </dd>
+            </dl>
+            <dl>
+                <dt>账户管理</dt>
+                <dd>
+                    <a href="#">个人资料设置</a>
+                    <a href="__CONTROLLER__/safe">账户安全设置</a>
+                    <a href="__CONTROLLER__/address">收货地址管理</a>
+                    <a href="#">邮件/短信订阅</a>
+                    <a href="#">站外分享绑定</a>
+                </dd>
+            </dl>
+            <dl>
+                <dt>服务中心</dt>
+                <dd>
+                    <a href="#">申请退换货/投诉</a>
+                    <a href="#">退货管理</a>
+                    <a href="#">换货管理</a>
+                    <a href="#">店铺取消订单管理</a>
+                    <a href="__CONTROLLER__/reply">商品咨询/回复</a>
+                    <a href="__CONTROLLER__/complain">我的投诉</a>
+                </dd>
+            </dl>
+        </div>
+        <!-- 左侧 -->
+        <!--[if IE]>
+        <noscript></div>
+    </noscript>
+    <![endif]-->
+</aside>
+<section class="fr mylafasoV2R">
+    <div class="rightBox fl">
+        <table border="0" cellpadding="0" cellspacing="0" class="basictable1">
+            <tbody>
+                <tr>
+                    <th colspan="2" class="table_td1">商品名称</th>
+                    <th colspan="2" class="table_td1">咨询/回复</th>
+                </tr>
+
+            </tbody>
+        </table>
+        <div class="manu"></div>
+    </div>
+    <p class="h20"></p>
+<!--  
+    <div class="reco">
+
+
+        <div>-->
+            <div class="tjright">
+                <div class="tjcon tjInterest wrap" count="4">
+                    <div class="tjInterHead content_tag">
+                        <dl class="tjInterTit cur" index="0">你可能感兴趣</dl>
+                        <dl cateid="26861" index="1">
+                            <dt>
+                                <img src="__PUBLIC__/home/images/4464460_0_m.jpg"></dt>
+                            <dd class="nam">护肤套装</dd>
+                        </dl>
+                        <dl cateid="26266" index="2">
+                            <dt>
+                                <img src="__PUBLIC__/home/images/185404_0_m.jpg"></dt>
+                            <dd class="nam">眼霜</dd>
+                        </dl>
+                        <dl cateid="26297" index="5">
+                            <dt>
+                                <img src="__PUBLIC__/home/images/75284_0_m.jpg"></dt>
+                            <dd class="nam">唇膏/口红</dd>
+                        </dl> <em class="morecommend"><a href="#" target="_blank">更多推荐&gt;&gt;</a></em> 
+                    </div>
+                    <div class="skimright" style="display: block;">
+                        <p class="skimpage page">
+                            <a href="javascript:;" class="cur">1</a>
+                            <a href="javascript:;">2</a>
+                            <a href="javascript:;">3</a>
+                        </p>
+                        <div class="skimWarp">
+                            <span class="comBtnL disabled btn"></span>
+                            <span class="comBtnR btn"></span>
+                            <div class="skimConlist">
+                                <div class="skimlist">
+                                    <ul>
+                                        <li>
+                                            <a tjurl="http://rfu.lefeng.com/1_0_011_0004_01/product/118380.html" href="http://product.lefeng.com/product/118380.html?wt.s_pg=Recommend&wt.s_pf=VAB_detail" target="_blank" title="井尚美玫瑰精华润手霜60g（护手霜）">
+                                                <img alt="井尚美玫瑰精华润手霜60g（护手霜）" src="__PUBLIC__/home/images/118380_0_l.jpg"></a>
+                                            <p class="nam">
+                                                <a tjurl="http://rfu.lefeng.com/1_0_011_0004_01/product/118380.html" target="_blank" href="http://product.lefeng.com/product/118380.html?wt.s_pg=Recommend&wt.s_pf=VAB_detail" title="井尚美玫瑰精华润手霜60g（护手霜）">井尚美玫瑰精华润手霜60g（护手霜）</a>
+                                            </p>
+                                            <p class="pri">
+                                                <img src="__PUBLIC__/home/images/118380_42_44.png">
+                                                <a target="_blank" href="http://shopping.lefeng.com/cart/cart.jsp?process=add&quantity=1&skuId=120720" onclick="_tag.dcsMultiTrack(&#39;wt.ct&#39;,&#39;button&#39;,&#39;wt.pid&#39;,&#39;120720&#39;,&#39;wt.nu&#39;,&#39;1&#39;)" class="to push" productid="118380" skuid="120720">加入购物车</a>
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <a tjurl="http://rfu.lefeng.com/1_0_011_0004_02/product/74461.html" href="http://product.lefeng.com/product/74461.html?wt.s_pg=Recommend&wt.s_pf=VAB_detail" target="_blank" title="BEELY手足霜100g">
+                                                <img alt="BEELY手足霜100g" src="./我的咨询回复_乐蜂网_files/74461_0_l.jpg"></a>
+                                            <p class="nam">
+                                                <a tjurl="http://rfu.lefeng.com/1_0_011_0004_02/product/74461.html" target="_blank" href="http://product.lefeng.com/product/74461.html?wt.s_pg=Recommend&wt.s_pf=VAB_detail" title="BEELY手足霜100g">BEELY手足霜100g</a>
+                                            </p>
+                                            <p class="pri">
+                                                <img src="__PUBLIC__/home/images/74461_42_29.png">
+                                                <a target="_blank" href="http://shopping.lefeng.com/cart/cart.jsp?process=add&quantity=1&skuId=81021" onclick="_tag.dcsMultiTrack(&#39;wt.ct&#39;,&#39;button&#39;,&#39;wt.pid&#39;,&#39;81021&#39;,&#39;wt.nu&#39;,&#39;1&#39;)" class="to push" productid="74461" skuid="81021">加入购物车</a>
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <a tjurl="http://rfu.lefeng.com/1_0_011_0004_03/product/189021.html" href="http://product.lefeng.com/product/189021.html?wt.s_pg=Recommend&wt.s_pf=VAB_detail" target="_blank" title="乐蔓棉花派嫩白手霜（滋润）60ml（护手霜）">
+                                                <img alt="乐蔓棉花派嫩白手霜（滋润）60ml（护手霜）" src="__PUBLIC__/home/images/189021_0_l.jpg"></a>
+                                            <p class="nam">
+                                                <a tjurl="http://rfu.lefeng.com/1_0_011_0004_03/product/189021.html" target="_blank" href="http://product.lefeng.com/product/189021.html?wt.s_pg=Recommend&wt.s_pf=VAB_detail" title="乐蔓棉花派嫩白手霜（滋润）60ml（护手霜）">乐蔓棉花派嫩白手霜（滋润）60ml（护手霜）</a>
+                                            </p>
+                                            <p class="pri">
+                                                <img src="__PUBLIC__/home/images/189021_42_29.png">
+                                                <a target="_blank" href="http://shopping.lefeng.com/cart/cart.jsp?process=add&quantity=1&skuId=186581" onclick="_tag.dcsMultiTrack(&#39;wt.ct&#39;,&#39;button&#39;,&#39;wt.pid&#39;,&#39;186581&#39;,&#39;wt.nu&#39;,&#39;1&#39;)" class="to push" productid="189021" skuid="186581">加入购物车</a>
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <a tjurl="http://rfu.lefeng.com/1_0_011_0004_04/product/180281.html" href="http://product.lefeng.com/product/180281.html?wt.s_pg=Recommend&wt.s_pf=VAB_detail" target="_blank" title="JCARE天使爱美丽玻尿酸温和保湿护甲手霜80g">
+                                                <img alt="JCARE天使爱美丽玻尿酸温和保湿护甲手霜80g" src="__PUBLIC__/home/images/180281_0_l.jpg"></a>
+                                            <p class="nam">
+                                                <a tjurl="http://rfu.lefeng.com/1_0_011_0004_04/product/180281.html" target="_blank" href="http://product.lefeng.com/product/180281.html?wt.s_pg=Recommend&wt.s_pf=VAB_detail" title="JCARE天使爱美丽玻尿酸温和保湿护甲手霜80g">JCARE天使爱美丽玻尿酸温和保湿护甲手霜80g</a>
+                                            </p>
+                                            <p class="pri">
+                                                <img src="__PUBLIC__/home/images/180281_42_57.png">
+                                                <a target="_blank" href="http://shopping.lefeng.com/cart/cart.jsp?process=add&quantity=1&skuId=176226" onclick="_tag.dcsMultiTrack(&#39;wt.ct&#39;,&#39;button&#39;,&#39;wt.pid&#39;,&#39;176226&#39;,&#39;wt.nu&#39;,&#39;1&#39;)" class="to push" productid="180281" skuid="176226">加入购物车</a>
+                                            </p>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+</block>
+

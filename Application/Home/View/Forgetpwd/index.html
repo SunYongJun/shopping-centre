@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)https://passport.lefeng.com/login.jsp -->
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<title>会员登录_乐蜂网</title>
+	<link href="__PUBLIC__/home/css/loginCenter.css" rel="stylesheet">
+	<script src="__PUBLIC__/home/js/jquery.min.js"></script>
+	<!-- 加载layer弹窗插件 -->
+	<script src="__PUBLIC__/layer/layer.min.js"></script>
+</head>
+<body class="bodyBk login" style="overflow-x: hidden;">
+
+	<!--  包含头部  -->
+
+	<include file="User/header" />
+
+	<div class="loginBk">
+		<div class="warp">
+			<div class="css3 loginContent">
+				<div class="loginTitle">
+					<span class="lc3"></span>
+				</div>
+				<form id="lpwd" name="lpwd" action="" method="post">
+					<!-- <input name="selfSubmit" value="selfSubmit" type="hidden">
+					-->
+					<ul id="onestep" class="loginInput">
+						<div class="mailtips getPass" id="mailtips" style="display:none;"></div>
+						<li class="stepwrap"> <b class="on">1</b> <b>2</b>
+							<b>3</b>
+						</li>
+						<li class="steptextwrap">
+							<b class="t1 on">输入账号信息</b>
+							<b class="t2 ">验证身份</b>
+							<b class="t3">重新设置密码</b>
+						</li>
+						<li class="mailwrap">
+							<h2>账号</h2>
+							<input name="user_email" tabindex="1" id="useremail" stu="1" autocomplete="off" type="text">
+							<div id="warnning">请使用邮箱账号！</div>
+						</li>
+						<li class="yzmwrap">
+							<h2>验证码</h2>
+							<input tabindex="2" maxlength="4" name="yzm" id="yzmcode" stu="4" autocomplete="off" type="text">
+							<span>
+								<a href="###">
+									<img id="vcode" src="__CONTROLLER__/vcode"></a>
+								<a href="javascript:;" onclick="changeVcode()" tabindex="3">
+									看不清?
+									<br>换一张</a>
+							</span>
+
+							<div id="yzm_pd"></div>
+						</li>
+						<li class="buttonwrap">
+							<a href="###" id="formSubmit" tabindex="4">下 一 步</a>
+						</li>
+						<li></li>
+					</ul>
+					<!-- 第二步 -->
+					<ul id="twostep" class="loginInput" style="display:none">
+						<li class="stepwrap step2">
+							<b class="on">1</b>
+							<b class="on">2</b>
+							<b>3</b>
+						</li>
+						<li class="steptextwrap">
+							<b class="t1 on">输入账号信息</b>
+							<b class="t2 on">验证身份</b>
+							<b class="t3">重新设置密码</b>
+						</li>
+
+						<li class="confirmation">
+							<h2>您设定的问题：</h2>
+							<div id="questions"></div>
+						</li>
+						<li class="mailwrap">
+							<h2>请回答：</h2>
+							<input name="user_answer" tabindex="1" id="answer" stu="1" autocomplete="off" type="text">
+							<div id="warnningtwo"></div>
+						</li>
+						<li class="buttonwrap">
+							<a id="sure" href="javascript:;">确定</a>
+						</li>
+
+						<li></li>
+					</ul>
+
+					<!-- 第三步 -->
+					<ul id="threestep" class="loginInput" style="display:none">
+						<li class="stepwrap step3">
+							<b class="on">1</b>
+							<b class="on">2</b>
+							<b class="on">3</b>
+						</li>
+						<li class="steptextwrap">
+							<b class="t1 on">输入账号信息</b>
+							<b class="t2  on">验证身份</b>
+							<b class="t3 on">重新设置密码</b>
+						</li>
+						<li class="pwwrap">
+							<h2>输入新密码</h2>
+							<input type="password" stu="2" maxlength="16" name="user_pwd" id="newpassword">
+							<!-- <div style="display:none;" class="level">
+							安全强度
+							<b class="cl1">弱</b>
+							<b class="cl2">中</b>
+							<b class="cl3">强</b>
+						</div>
+						-->
+					</li>
+					<li class="pwwrap1">
+						<h2>再次输入密码</h2>
+						<input type="password" stu="3" maxlength="16" name="newpwd" id="newpwdagain">
+						<p id="wrong"></p>
+					</li>
+					<li class="buttonwrap">
+						<a id="suresubmit" href="javascript:;">确 定</a>
+					</li>
+					<li></li>
+				</ul>
+			</form>
+		</div>
+	</div>
+</div>
+
+<!--  包含footer  -->
+
+<include file="User/footer" />
+</body>
+<script type="text/javascript">
+	  function changeVcode(){
+	    document.getElementById('vcode').src="__CONTROLLER__/vcode/"+Math.random();
+	  }
+	</script>
+<script>
+    $(function(){
+    	var user = false;
+    	var uservcode = false;
+
+    	// 验证用户账号
+    	$('#useremail').focus();
+  		$('#useremail').bind('blur',function(){
+			var $emails = $(this).val();
+  			// alert($(this).val());
+  			if($emails.length==0){
+  				$('#warnning').html('&nbsp;请输入邮箱账号!').css('color','red');
+  			}else{
+
+  				$.post('__CONTROLLER__/checkEmail',{emails:$emails},function(data){
+  					if(data){
+  						$('#warnning').html('账号输入成功').css('color','green');
+  						user = true;	
+  					}else{
+  						$('#warnning').html('账号不存在').css('color','red');
+  					}
+  				})
+  			}
+  		})
+
+  		// 验证验证码
+  		$('#yzmcode').bind('keyup',function(){
+  			var vcodes = $(this).val();
+  			if(vcodes.length==0){
+  				$('#yzm_pd').html('验证码不能为空');
+  			}else if(vcodes.length==4){
+  				
+  				$.post('__CONTROLLER__/checkVcode',{vcode:vcodes},function(data){
+  					if(data){
+  						$('#yzm_pd').html('')
+  						uservcode = true;
+  					}else{
+  						$('#yzm_pd').html('验证码错误').css('color','red');
+
+  					}
+  				})
+  			}
+
+  		})  	
+
+  		// 第一步发送表单
+    	$('#formSubmit').click(function(){
+    		// alert('');
+    		var datas = $('#lpwd').serialize();
+    		if(uservcode && user){
+    			$.post('__CONTROLLER__/checkpwd',datas,function(data){
+    				if(data){
+    					$('#onestep').hide();
+    					$('#twostep').show();
+    					$('#questions').html(data.question);
+    				}else{
+    					layer.msg('您的账号未设置问题',1,2,function(){
+    						window.location.href="__MODULE__/User/register";
+    					});
+    				}
+    			})
+    		}
+    	})
+
+
+    	// 第二步表单
+    	$('#sure').click(function(){
+    		var $answer = $('#answer').val();
+    		var $email = $('#useremail').val();
+    		$.post('__CONTROLLER__/checkTwice',{data:$answer,emails:$email},function(data){
+    			if(data){
+    				$('#twostep').hide();
+    				$('#threestep').show();
+    			}else{
+    				$('#warnningtwo').html('答案不正确喔！').css('color','red');
+    			}
+    		})
+    	})
+
+
+    	// 第三步提交表单
+    	$('#suresubmit').click(function(){
+    		var newpassword = $('#newpassword').val();
+    		var renewpassword = $('#newpwdagain').val();
+    		var $emails = $('#useremail').val();
+    		if(newpassword == renewpassword){
+    			$.post('__CONTROLLER__/checkThird',{password:newpassword,email:$emails},function(data){
+    				if(data){
+    					location.href="__MODULE__/index";
+    				}else{
+    					$('#wrong').html('修改失败，请重新尝试').css('color','red');
+    				}
+    			})
+    		}else{
+    			$('#wrong').html('两次密码不一致').css('color','red');
+    		}
+    	})
+    })
+    </script>
+
+</html>

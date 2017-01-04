@@ -1,0 +1,197 @@
+<?php 
+namespace Home\Controller;
+
+	class CenterController extends CommonController{
+		public function index(){
+			// var_dump($_SESSION['user']);
+			$users = $_SESSION['user'];
+			$this -> assign('user',$users);
+			$this -> display();
+		}
+
+		// 
+		public function myBonus(){
+			$this -> display();
+		}
+		// 我的订单
+		public function order(){
+
+			$oa= M('order_action');//订单表
+			$id = $_SESSION['user']['id'];//当前用户id
+			$ogs = M('order_goods');//订单表
+			$goos = M('goods');//商品表
+			$acc = M('user_account');//支付方式及状态
+			$true = M('user_address');//获取用户真实姓名
+
+
+			// var_dump($id);
+
+			/**
+				$id 指用户id     $id1 指该用户的订单id    $id2 指商品id
+				$map 指用户id等于order_action里的user_id条件
+				$map1 指订单id 等于order_goods里的action_id 
+				$map2 指goods表中的id 等于 order_goods里的goods_id
+				$goo 指所有的订单的商品信息（订单id 商品id 购买数量goods_number）
+
+
+			**/
+			if($id){
+
+
+				$map['user_id'] = $id;
+				$true_name = $true -> where($map) -> find();
+				// var_dump($true_name);
+				$name = $true_name['true_name'];
+
+				$ooa = $oa ->where($map) -> select();
+				foreach($ooa as $k=>$v){
+					// var_dump($v);continue;//$ooa 指所有该用户的订单
+					$data[$k] = $v;
+					
+					$id1 = $v['id'];
+					$map1['action_id'] = $id1;
+					$goo = $ogs -> where($map1) -> select();
+					// var_dump($goo);continue;
+
+					foreach($goo as $kk=>$vv){//提取每一个订单的信息
+						$id2 = $vv['goods_id'];
+						$map2['id']=$id2;
+						$shangpin = $goos -> where($map2) -> find();
+						// var_dump($shangpin);exit();
+						$data[$k]['g'][$kk]=$shangpin;
+						// var_dump($shangpin);continue;
+
+					}
+				}
+				// var_dump($data);
+			}
+			
+			$this -> assign('data',$data);
+			$this -> assign('name',$name);
+			$this -> display();
+		}
+
+		// 我的花粉
+		public function myCoin(){
+			$user = $_SESSION['user'];
+			$this -> assign('user',$user);
+			$this -> display();
+		}
+		// 账户安全设置
+		public function safe(){
+			$user = $_SESSION['user'];
+			$this -> assign('user',$user);
+			$this -> display();
+		}
+		// 地址管理
+		public function address(){
+			$this -> display();
+		}
+
+		// 我的投诉
+		public function complain(){
+			$this -> display();
+		}
+		// 我的咨询 回复
+		public function reply(){
+			$this -> display();
+		}
+
+		public function inform(){
+			$user = $_SESSION['user'];
+			$this -> assign('user',$user);
+			$this -> display();
+		}
+		public function inform_doit(){
+			// 
+			if(IS_AJAX){
+				// var_dump($_POST);
+				$id = $_SESSION['user']['id'];
+				$user = D('user');
+				$data = $_POST;
+				if(!$user->create($data)){
+					exit($user->getError());
+				}else{
+					$map = 'id='.$id;
+					$r = $user->where($map)->save();
+					if($r){
+						$datas['status']=1;
+						$datas['content']='修改成功';
+						$datas['url'] = U('Center/index');
+
+						// $_SESSION['user']=;
+						// var_dump($r);
+						$rr = $user->find($id);
+						
+						$_SESSION['user'] = $rr;
+					}else{
+						$datas['status']=0;
+						$datas['content']='修改失败';
+
+					}
+
+				}
+				$this -> ajaxReturn($datas);
+			}
+		}
+		public function changepwd(){
+			$this -> display();
+
+		}
+		public function checkpwd(){
+			if(IS_AJAX){
+				// $pwd = $_POST[]
+				// var_dump($_SESSION);				
+				// var_dump($_POST);exit();
+				$user = M('user');
+				$id = $_SESSION['user']['id'];
+				$r = $user -> find($id);
+				// var_dump($_POST);exit();
+				if($r['user_pwd'] == md5($_POST['user_pwd'])){
+					$data['status'] = 1;
+					$data['content'] = '旧密码一致';
+					
+				}else{
+					$data['status'] = 0;
+					$data['content'] = '旧密码不正确';
+				};
+				$this -> ajaxReturn($data);
+			}
+
+		}
+		public function checkrepwd(){
+			if(IS_POST){
+				if($_POST['new_pwd'] != $_POST['re_new_pwd']){
+					$data['status']=0;
+					$this->ajaxReturn($data);
+					return;
+				}
+
+
+				$user = M('user');
+					$id = $_SESSION['user']['id'];
+					$map = 'id='.$id;
+					$da['user_pwd'] =md5($_POST['new_pwd']);
+					$row = $user->where($map)->save($da);
+					// var_dump($row);exit();
+					if($row){
+						$data['status']=2;
+						$data['url'] = U('Center/index');
+					}else{
+						$data['status']=0;
+					}
+					$this->ajaxReturn($data);
+					
+			}
+
+		}
+
+		public function addre(){
+			var_dump($_POST);
+		}
+
+
+
+
+	}
+ ?>

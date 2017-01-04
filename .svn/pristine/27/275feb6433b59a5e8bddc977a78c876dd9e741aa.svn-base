@@ -1,0 +1,30 @@
+<!-- 导航条部分开始 -->
+
+        <div class="Chead">
+            <div class="Chead-main" id="Chead_main">
+                <div class="Chead-info">
+                    <!-- <a id="Chead_app" class="Chead-app" href="#" target="_blank" rel="nofollow">手机乐蜂</a> -->
+                    <div class="Chead-appDown" style="display: none;">
+                        <a href="#" target="_blank" rel="nofollow"></a>
+                    </div> 
+                    <span class="fast-f turl">|</span>   
+                    <span id="Chead_save" class="Chead-save">欢迎来到乐蜂！</span>
+
+                    <span class="fast-f turl">|</span> 
+                    <a class="turl" href="__MODULE__/index/index">乐蜂首页</a>
+                </div>
+            </div>
+        </div>
+
+<!-- 导航条部分结束 -->
+
+
+<!-- logo部分开始 -->
+
+        <div class="Logo-r">
+            <div class="Logo-info-r">
+                <a href="#"></a>
+            </div>
+        </div>
+
+<!-- logo部分结束 -->

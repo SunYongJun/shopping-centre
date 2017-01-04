@@ -1,0 +1,10 @@
+<?php
+// 前台首页
+namespace Home\Controller;
+
+class IndexController extends CommonController {
+    public function index(){
+    	$this -> display('index');
+    }
+
+}

@@ -1,0 +1,13 @@
+<extend name="Public:layout" />
+<block name="cssjs">
+	<link rel="stylesheet" href="__PUBLIC__/home/css/article.css">
+</block>		
+<block name="main">
+	<div class="amain">
+		<h1>这是标题</h1>
+		<span>分类：<b>乐风信息</b> 作者信息：<b>admin</b> 发表时间：<b>2012-12-12</b> </span>
+		<div class="con">
+			这里是征文信息deed分斯蒂芬斯蒂芬斯蒂芬斯蒂芬斯蒂芬斯蒂芬
+		</div>
+	</div>
+</block>

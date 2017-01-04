@@ -1,0 +1,39 @@
+<?php
+	header('Content-type:text/html;charset=utf-8');
+	// 连接数据库
+	try{
+		$dsn = 'mysql://host=localhost;dbname=leshop';
+		$root = 'root';
+		$pwd = '';
+		$pdo = new PDO($dsn, $root, $pwd);
+	}catch(PDOException $e) {
+		echo '连接数据库失败';
+	}
+	$controller = 'Admin/'; //模块
+	$dir = './Application/Admin/Controller';
+	$dir_resource = opendir($dir);
+		while($name = readdir($dir_resource)) {
+			if($name == '.' || $name=='..' || !strpos($name,'.class.php')) {
+				continue;
+			}
+			$path = $dir.'/'.$name;
+			$contents = file_get_contents($path);
+
+			$preg = '/class\s+(.*)Controller/iU';
+			preg_match_all($preg, $contents, $class);
+			$class = ucfirst($class[1][0]);// 控制器
+
+			$preg = '/function\s+(.*)\(/iU';
+			preg_match_all($preg, $contents, $action);
+			$action = $action[1];
+			if(is_array($action)) {
+				foreach ($action as $key => $value) {
+					$rule = $class.'/'.ucfirst($value);
+					$sql = "insert into le_auth_rule(name) values('{$rule}')";
+					$pdo->exec($sql);
+				}
+			}
+
+		}
+	closedir($dir_resource);
+?>

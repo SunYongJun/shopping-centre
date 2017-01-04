@@ -1,0 +1,108 @@
+<extend name="Public:layout" />
+<block name="toptitle">
+<li class="active"><a href="__MODULE__/ArticleType/index">支付方式</a></li>
+</block>
+<block name="main">
+<div class="page-content">
+	<div class="page-header">
+		<h1 id="dianji">
+			支付方式列表
+		</h1>
+	</div><!-- /.page-header -->
+	<!-- 搜索条 -->
+	<div class="col-xs-4 col-sm-7"></div>
+	<form action="">
+	<div class="col-xs-4 col-sm-5 text-right" style="margin-bottom:10px">
+		<div class="input-group">
+			<input type="text" class="form-control search-query" placeholder="输入关键字" name="keywords">
+			<span class="input-group-btn">
+			<button type="submit" class="btn btn-purple btn-sm">
+				搜索
+				<i class="icon-search icon-on-right bigger-110"></i>
+			</button>
+			</span>
+		</div>
+	</div>
+	</form>
+	<!-- 搜索条结束 -->
+	<div class="row">
+		<div class="col-xs-12">
+			<!-- PAGE CONTENT BEGINS -->
+
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="table-responsive">
+						<table id="sample-table-1" class="table table-striped table-bordered table-hover">
+							<thead>
+								<tr>
+									<!-- <th class="center">
+										<label>
+											<input type="checkbox" class="ace" id="setall">
+											<span class="lbl"></span>
+										</label>
+									</th> -->
+									<th>序号</th>
+									<th>支付方式名称</th>
+									<th>支付方式描述</th>
+									<th>是否启用</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<form id="allform">
+							<tbody>
+							<foreach name="list" item="vo">
+								<tr>
+									<!-- <td class="center">
+										<label>
+											<input type="checkbox" class="ace" set="id[]" name="id[]" value="{$vo.id}">
+											<span class="lbl"></span>
+										</label>
+									</td> -->
+									<td>{$vo.id}</td>
+									<td>{$vo.pay_name}</td>
+									<td>{$vo.pay_desc}</td>
+									<td class="hidden-480">
+									<if condition="$vo.is_status eq 1">
+										<span class="label label-sm label-success">启用</span>
+									<else/>
+										<span class="label label-sm label-warning">禁用</span>
+									</if>
+									</td>
+
+									<td>
+										<div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
+											<a class="btn btn-xs btn-info" href="__CONTROLLER__/edit/id/{$vo.id}">
+												<i class="icon-edit bigger-120"></i>
+											</a>
+										
+											<neq name="vo.id" value="1">
+											<a class="btn btn-xs btn-danger" del="{$vo.id}">
+												<i class="icon-trash bigger-120"></i>
+											</a>
+											</neq>
+										</div>
+									</td>
+								</tr>
+								</foreach>
+								<tr>
+									<td class="center" colspan="9">
+										<div class="col-xs-4 text-left">
+											<!-- <input type="button" class="btn btn-xs btn-inverse" id="delall" value="批量删除"> -->
+										</div>
+										<!-- 显示分页 -->
+										<div class="col-xs-8 text-right">{$page}</div>
+									</td>	
+								</tr>
+							</tbody>
+						</form>
+						</table>
+					</div><!-- /.table-responsive -->
+				</div><!-- /span -->
+			</div><!-- /row -->
+
+			<div class="hr hr-18 dotted hr-double"></div>
+		</div><!-- /.col -->
+	</div><!-- /.row -->
+</div>
+<script src="__PUBLIC__/admin/js/jquery-2.0.3.min.js"></script>
+</block>

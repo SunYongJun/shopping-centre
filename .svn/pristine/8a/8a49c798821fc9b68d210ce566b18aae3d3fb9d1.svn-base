@@ -1,0 +1,13 @@
+<?php
+namespace Home\Controller;
+
+class IndexController extends CommonController {
+    public function index(){
+    	$a = M('article');
+
+    	$out = $a -> select();
+    	// var_dump($out);
+    	$this -> assign('article',$out);
+        $this -> display();
+    }
+}

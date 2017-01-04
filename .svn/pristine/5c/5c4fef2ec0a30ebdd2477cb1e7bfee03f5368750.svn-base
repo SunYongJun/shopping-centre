@@ -1,0 +1,143 @@
+<extend name="Public:layout" />
+<block name="cssjs">
+    <!-- <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/fengchao.css"> -->
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/personal.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/home_v2.css">
+</block>
+<block name="main">
+<div class="mainBg">
+    <div class="main clearfix">
+
+        <div class="side_bar">
+            <h1>
+                <a title="我的蜂巢" href="#">我的蜂巢</a>
+            </h1>
+            <dl>
+                <dt>订单中心</dt>
+                <dd>
+                    <a href="__CONTROLLER__/order">我的订单</a>
+                    <a href="__CONTROLLER__/like">我的收藏</a>
+                    <a href="__CONTROLLER__/myBonus">我的红包</a>
+                    <!-- <a href="__CONTROLLER__/myCoin">我的花粉</a> -->
+                    <a href="__CONTROLLER__/">我的评价</a>
+                </dd>
+            </dl>
+            <dl>
+                <dt>账户管理</dt>
+                <dd>
+                    <a href="__CONTROLLER__/inform">个人资料设置</a>
+                    <a href="__CONTROLLER__/safe">账户安全设置</a>
+                    <a href="__CONTROLLER__/address">收货地址管理</a>
+                    <a href="#">邮件/短信订阅</a>
+                    <a href="#">站外分享绑定</a>
+                </dd>
+            </dl>
+            <dl>
+                <dt>服务中心</dt>
+                <dd>
+                    <a href="#">申请退换货/投诉</a>
+                    <a href="#">退货管理</a>
+                    <a href="#">换货管理</a>
+                    <a href="#">店铺取消订单管理</a>
+                    <a href="__CONTROLLER__/reply">商品咨询/回复</a>
+                    <a href="__CONTROLLER__/complain">我的投诉</a>
+                </dd>
+            </dl>
+        </div>
+        <div class="content" id="order">
+        <div class="pn-top-nav">
+            <h1 class="clearfix"><span>我的收藏</span></h1>
+       
+        </div>
+        <div class="pn-order">
+           <table>
+                <tbody><tr>
+                    <th class="itemwd360">
+                        商品信息
+                    </th>
+                    <th>
+                        价格
+                    </th>
+                    <th>
+                        收藏时间
+                    </th>
+                    <th class="itemwd90">
+                        操作
+                    </th>
+                </tr>
+                <!--产品列表层 start-->
+                <foreach name="coll" item="v" >
+                    <tr pid="191523" skuid="189632">
+                    
+                        <td>
+                            <div class="pn-collect-db clearfix">
+                            
+                                <a href="" class="lf-fl" target="_blank" title="{$v.shoucang.goods_brief}"><img src="__PUBLIC__/{$v.shoucang.goods_img}" alt="{$v.shoucang.goods_brief}"></a>
+                            
+                                <div class="lf-fl">
+                                    <span>
+                                        <a href="" target="_blank" title="{$v.shoucang.goods_brief}">{$v.shoucang.goods_desc}</a>
+                                    </span>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="itemcenter">
+                            <span class="pn-price"><cite>¥</cite>{$v.shoucang.goods_price}</span>
+                        </td>
+                        <td class="itemcenter">
+                        <span>{$v['add_time']|date="Y-m-d",###}<br />{$v['add_time']|date="H:i:s",###}</span>
+                        </td>
+                        <td class="itemcenter">
+                            <div class="pn-order-handle">
+                                
+                                <a href="__MODULE__/cart/index/id/{$v.shoucang.id}" class="pn-order-judge" pid="191523" sid="189632">加入购物车</a>
+                                
+                                <a href="__MODULE__/Product/index/id/{$v.shoucang.id}" target="_blank" class="pn-order-cancel">查看详情</a>
+                                <a href="javascript:;" class="pn-order-merge" del="{$v.goods_id}">取消收藏</a>
+                                
+                                <div style="left: 656px; top: 99px;" class="pn-odbox" name="judge">
+                                    <s class="pn-odbox-nice"></s>
+                                    <div class="pn-odbox-tit clearfix"><cite href="#" class="lf-fr"></cite></div>
+                                    <div class="pn-odbox-con">
+                                        
+                                        <div class="pn-addminishop"></div>
+                                        
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </td> 
+                       
+                    </tr>
+                
+                </foreach>
+                
+           </tbody></table>
+           
+        </div>
+    </div>
+    </div>
+</div>
+<script>
+    $(function(){
+
+        //取消收藏事件
+        $('a[del]').bind('click',function(){
+            var $gid = $(this).attr('del');
+             layer.confirm('你确定取消收藏吗？',function(index){
+                layer.close('index');
+                $.post('__CONTROLLER__/cancel',{gid:$gid},function(data){
+                    if(data){
+                           layer.msg('取消成功'); 
+                           window.location.reload();
+                        
+                    }else{
+                         layer.msg('取消收藏失败',1,2);
+                    }
+                });        
+            })
+            // alert($(this).attr('del'));
+        })
+    })
+</script>
+</block>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title><block name="title">乐蜂网</block></title> 
+    <link href="__PUBLIC__/home/css/common.css" rel="stylesheet" type="text/css">
+    <link href="__PUBLIC__/home/css/cart.css" rel="stylesheet" type="text/css">
+    <link href="__PUBLIC__/home/css/bus.css" rel="stylesheet" type="text/css" class="lefeng-lazy" charset="utf-8">
+    <script src="__PUBLIC__/home/js/jquery-1.6.4.min.js"></script>
+    <block name="cssjs"></block>
+</head>
+<body class="Wmin new">
+    <block name="head">
+        <!-- header 开始 -->
+<div class="Chead">
+    <div class="Chead-main" id="Chead-main">
+        <div class="Chead-logo"><a href="http://www.lefeng.com"></a></div>
+        
+        <div class="Chead-info">
+            <a id="Chead_app" class="Chead-app" href="" target="_blank" rel="nofollow">手机乐蜂</a>
+            <div class="Chead-appDown"><a href="" target="_blank" rel="nofollow"></a></div>
+            
+            <span id="Chead_save" class="Chead-save">收藏乐蜂</span>
+            <span id="Chead_fastnav" class="fast-nav turl">快速导航<i></i></span>
+            <div class="Chead-floatmenu">
+                <a href="" rel="nofollow">礼品卡</a>
+                <a href="" rel="nofollow">帮助中心</a>
+                <a href="" rel="nofollow">乐蜂校园</a>
+                <a href="" rel="nofollow">推荐好友</a>
+                <a href="" rel="nofollow">猜你喜欢</a>
+                <a href="" rel="nofollow">合作专区</a>
+            </div>
+            <a class="turl" href="" id="Chuafen">花粉商城</a>
+            <a class="turl" id="Chead_myhome_btn" ">我的蜂巢<i></i></a>
+            <div style="display: none;" class="Chead-myhome">
+                <i>#&amp;160;</i>
+                <a href="" rel="nofollow">我的优惠券</a>
+                <a href="" rel="nofollow">我的花粉</a>
+                <a href="" rel="nofollow">我的收藏</a>
+                <a href="" rel="nofollow">我的评价</a>
+                <!--<a href="" rel="nofollow">我的空间</a>-->
+            </div>
+            
+            <a class="turl" href="" rel="nofollow">我的订单</a>
+            <span class="Chead-welcome" id="Cheadlogin">嗡，欢迎来乐蜂，<a href="">41**@qq.com</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="###" onclick="logout();return false;">退出</a></span>
+        </div>
+        
+        <p class="jd1"><b class="d">我的购物车</b><b>确认订单信息</b><b>成功提交订单</b></p>
+    </div>
+</div>
+    <!-- header 结束 -->
+</block>
+<block name="main"></block>
+
+<block name="foot">
+    <!-- footer -->
+    <div id="Cfooter" class="Cfooter">
+        <div class="Cfooter">
+            <div class="Cfooter-copyright">
+                <a rel="nofollow" target="_blank" href="">关于lefeng　</a>
+                <a rel="nofollow" target="_blank" href="">免责声明　</a>
+                <a rel="nofollow" target="_blank" href="">隐私声明　</a>
+                <a rel="nofollow" target="_blank" href="">版权声明　</a>
+                <a rel="nofollow" target="_blank" href="">招聘信息　</a>
+                <!--<a rel="nofollow" target="_blank" href="">网站地图</a>
+            -->
+            <a rel="nofollow" target="_blank" href="">联系我们　</a>
+            <a rel="nofollow" target="_blank" href="">帮助中心　</a>
+            <a rel="nofollow" target="_blank" href="">网站联盟　</a>
+            <a target="_blank" href="">友情链接　</a>
+            <a href="" target="_blank" rel="nofollow">商务合作　</a>
+            <br>
+            <span class="carial">
+                Copyright　
+                <b>©</b>
+                2008-2014 Lefeng.com All Rights Reserved.　
+            </span>
+            <a rel="nofollow" target="_blank" href="">京ICP证080382号　</a>
+            <a rel="nofollow" target="_blank" href="">京ICP备10006831号-1　</a>
+            <span>京公网安备11010502014183　</span>
+            <a rel="nofollow" target="_blank" href="">营业执照　</a>
+        </div>
+
+    </div>
+</block>
+
+<!-- 滚到顶部按钮 -->
+<div class="topdown" id="top_down" title="回到顶部">&nbsp;</div>
+</body>
+<script></script>
+</html>

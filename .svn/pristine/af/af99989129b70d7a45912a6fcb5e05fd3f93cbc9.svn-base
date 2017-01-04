@@ -1,0 +1,112 @@
+<?php
+namespace Admin\Controller;
+
+class ArticleController extends CommonController{
+	public function index(){
+
+        // 搜索条件
+        if(I('get.keywords')){
+            $keyword = I('get.keywords');
+            // $keyword = "article_title like '%".$keyword."%'";
+        }else{
+            $keyword = '';
+        }
+        $map['article.article_title'] = array('like',"%".$keyword."%");
+
+        $model = M('article');
+        // 查询满足要求的总记录数
+        $count = $model -> table('le_article_type type, le_article article') 
+        -> where('type.id = article.article_type') 
+        -> where($map)
+        -> count();
+        
+        // 调用自定义的分页
+        $mypage = $this -> mypage($count,8);
+
+        $list = $model -> table('le_article_type type, le_article article') 
+        -> where('type.id = article.article_type') 
+        -> where($map)
+        -> field('type.article_type_name,article.*')
+        -> limit($mypage->firstRow.','.$mypage->listRows)
+        ->select();
+
+        $show = $mypage->show();// 分页显示输出
+        $this->assign('list',$list);// 赋值数据集
+        $this->assign('page',$show);// 赋值分页输出
+        $this -> display();
+	}
+
+	public function add(){
+		$type = M('article_type');
+		$type = $type -> field('id,article_type_name') -> select();
+		$this -> assign('type',$type);
+		$this -> display();
+	}
+
+	public function insert(){
+        if($_FILES['article_pic']['error'] == 0){
+            $_POST['article_pic'] = $this -> myupload();
+        }
+        // 文章添加时间
+        $_POST['article_time'] = time();
+        // 文章作者id，当前登录用户的id
+        $_POST['article_author'] = session('user.username');
+
+        $m = M(CONTROLLER_NAME);
+        $m -> create();
+        if($m->add()){
+            $this -> success('添加成功！','index',1);
+        }else{
+            $this -> error('添加失败！',1);
+        }
+	}
+
+    public function del(){
+        $m = M(CONTROLLER_NAME);
+        if($m -> where('id='.I('post.id')) -> delete()){
+            echo 1;
+        }else{
+            echo 0;
+        }
+    } 
+
+    public function edit(){
+        $id = 'id='.I('get.id');
+        $m = M(CONTROLLER_NAME);
+        $article = $m -> where($id) -> find();
+
+        $type = M('article_type');
+        $type = $type -> field('id,article_type_name') -> select();
+
+        $this -> assign('type',$type);
+        $this -> assign('show',$article); 
+        $this -> display();
+    }
+
+    public function save(){
+        if($_FILES['article_pic']['error'] == 0){
+            $_POST['article_pic'] = $this -> myupload();
+        }
+
+        $m = M(CONTROLLER_NAME);
+        $m -> create();
+        if($m->add()){
+            $this -> success('修改成功！','index',1);
+        }else{
+            $this -> error('修改失败！',1);
+        }
+    }
+
+    public function delall(){
+        if(IS_AJAX){
+            $ids = I('post.id');
+            $ids = implode(',', $ids);
+            $m = M(CONTROLLER_NAME);
+            if($m -> delete($ids)){
+                echo 1;
+            }else{
+                echo 0;
+            }
+        }
+    }
+}

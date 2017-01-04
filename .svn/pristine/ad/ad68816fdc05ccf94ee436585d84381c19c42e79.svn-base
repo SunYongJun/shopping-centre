@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0092)https://passport.lefeng.com/register.jsp?returnback=http%3A%2F%2Ftuan.lefeng.com%2F%23%23%23 -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>免费注册_乐蜂网</title >
+<link href="__PUBLIC__/home/css/loginCenter.css" rel="stylesheet">
+<!--[if (IE 7)|(IE 8)]>
+<link href="css/css3.css" rel="stylesheet" />
+<![endif]--> 
+<!-- <script type="text/javascript" async="" src="__PUBLIC__/dist/js/rt.js"></script> -->
+<!-- <script type="text/javascript" async="" src="__PUBLIC__/home/js/ga.js"></script> -->
+<script type="text/javascript" language="javascript" src="__PUBLIC__/home/js/jquery-1.6.4.min.js"></script>
+
+</head>
+<body class="bodyBk register" style="overflow-x: hidden;">
+
+<!--  包含头部  -->
+
+<include file="User/header" />
+
+<!-- 主体部分开始 -->
+
+    <div class="loginBk">
+        <div class="warp">
+          <form action="#" id="regform" name="regform" method="post">
+                    <!--  <input type="hidden" id="returnback" name="returnback" value="">
+                     <input type="hidden" id="shoppingId" name="shoppingId" value="">
+                     <input type="hidden" id="skuId" name="skuId" value="">
+                     <input type="hidden" id="checkcode" value="">		 -->  
+                     <!-- <input type="hidden" name="id" >          -->
+          		   <div class="css3 loginContent">
+                      <div class="loginTitle">
+                          <span class="lc1"></span>
+                          <span class="lcr">已有乐蜂账号 ? 
+                              <a id="reg_link" href="__CONTROLLER__/login">登录</a>
+                          </span>
+                      </div>
+          			      <ul class="loginInput">
+                        	<div class="mailtips" style="display:none;" id="mailtips"></div>
+                          <li class="mailwrap nobk regwarp">
+                              <h2>邮箱</h2>
+                              <input type="email" name="user_email" maxlength="40" stu="1" value="" autocomplete="off" tabindex="1"><span id="span1"></span>
+                              <div id="twospan" class="focus_text">请输入邮箱地址</div>
+                              <div class="bubbleTips" style="display:none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新注册用户即送10个花粉。</div>
+                          </li>
+          			          <li class="pwwrap">
+          			              <h2>密码</h2>
+          			              <input type="password" name="user_pwd" stu="2" value="" tabindex="2"><span id="span2"></span>
+                              <div class="level" style="display:none;">安全强度
+                                  <b class="cl1">弱</b>
+                                  <b class="cl2">中</b>
+                                  <b class="cl3">强</b>
+                              </div>
+                              <div id="onespan" class="focus_text">6-16位字符，推荐字母、数字和符号组合的密码</div>
+          		            </li>
+          		            
+          			          <li class="pwwrap">
+          			              <h2>确认密码</h2>
+          			              <input type="password" name="re_user_pwd" stu="3" value="" tabindex="3"><span id="span3"></span>
+                              <div id="threespan" class="focus_text">请再次输入密码</div>
+          		            </li>
+          			          <li class="yzmwrap">
+          			              <h2>验证码</h2>
+          			              <input name="yzm" type="text" stu="4" maxlength="4" value="" autocomplete="off" tabindex="4" id="vvcode">
+            			            <span mode="1">
+          			               <a href="#">
+                                  <img id="vcode" src="__CONTROLLER__/vcode">
+                               </a>
+                               <a href="javascript:void(0)" onclick="changeVcode()">看不清?<br>换一张</a>
+          		                </span>
+                            
+                          </li>
+                           <span id="vspan"></span>
+          			          <li class="buttonwrap">
+                            <a href="javascript:void(0)" id="formSubmit">同意协议并注册</a>
+                          </li>
+          			          <li class="msgwrap">
+                            <div>
+                                <a href="#" target="_blank">《乐蜂网用户协议》 <br> <br> <br> <br></a>
+                            </div>
+                          </li>
+          		     </ul>
+          			  
+          		   </div>
+          		 </form>
+        </div>    
+    </div>
+
+<!-- 主体部分结束 -->
+
+
+<!--  包含footer  -->
+
+<include file="User/footer" />
+
+<script type="text/javascript">
+  function changeVcode(){
+    document.getElementById('vcode').src="__CONTROLLER__/vcode/"+Math.random();
+  }
+</script>
+<script type="text/javascript">
+    $(function(){
+
+      $('#Cheadlogin').hide();
+      var useremail =false;
+      var userpwd =false;
+      var repwd =false;
+      var code = false;
+
+      $('input').bind('focus',function(){
+        $(this).nextAll('.focus_text').show();
+      })
+      $('input[stu="1"]').focus();
+      $('input[stu="1"]').bind('blur',function(){
+        var uemail= $(this).val();
+        if($(this).val().length==0){
+          $('#twospan').html('邮箱地址不能为空！').css('color','red');
+          return false;
+        }else{
+          var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-]+)+$/;
+          var result = reg.test(uemail);
+          if(!result){
+              $('#twospan').html('邮箱格式不正确！').css('color','red');
+          }else{
+             $.post('__CONTROLLER__/checkEmail',{user_email:uemail},function(data){
+              if(data){
+                  $('#twospan').html('用户已存在，请换一个新的邮箱进行注册！').css('color','red');
+              }else{
+                $('#span1').html('&nbsp;&nbsp;&nbsp;√').css({'color':'green',fontWeight:'800'});
+                $('#twospan').html(' ');
+                useremail = true;
+              }
+          })
+          }
+         
+        }
+      });
+
+
+
+        // 验证密码格式
+      $('input[stu="2"]').bind('blur',function(){
+        var pwd = $(this).val(); 
+        if($(this).val().length<6 || $(this).val().length>16){
+            $('#onespan').html('密码最小长度不得小于6，最大长度不得大于16').css('color','red');
+            return false;
+        }else{
+              var reg=/^[\w]{6,16}$/;
+              var result=reg.test(pwd);
+              if(!result){
+                  $('#onespan').html('密码格式不正确').css('color','red');
+               }else{
+                 $('#span2').html('&nbsp;&nbsp;&nbsp;√').css({'color':'green',fontWeight:'800'});
+                 $('#onespan').html(' ');
+                userpwd = true;
+               }
+                
+        }
+        // alert($(this).val());
+        // $(this).val();
+      })
+
+
+      // 验证两次密码是否一致
+      $('input[stu="3"]').bind('blur',function(){
+        var re = $(this).val();
+        if($('input[stu="2"]').val() != re){
+            $('#threespan').html('两次密码不一致！').css('color','red');
+            return false;
+        }else{
+            $('#span3').html('&nbsp;&nbsp;&nbsp;√').css({'color':'green',fontWeight:'800'});
+            $('#threespan').html(' ');
+            repwd = true;
+        };
+      })
+
+
+
+      $('#vvcode').bind('blur',function(){
+        var yzms = $(this).val();
+        if($(this).val().length ==0){
+          $('#vspan').html('验证码不能为空！').css('color','red');
+          return false;
+        }else{
+          $.post('__CONTROLLER__/yzm',{yzm:yzms},function(data){
+            if(data){
+              $('#vspan').html(' ');
+
+                code = true;
+            }else{
+               $('#vspan').html('验证码不正确！').css('color','red'); 
+            }
+          })
+        }
+
+
+      })
+
+      $('#formSubmit').click(function(){
+        if(useremail && userpwd && repwd && code ){
+             $.ajax({
+            url:'__CONTROLLER__/register_doit',
+            type:'post',
+            data:$('#regform').serialize(),
+            success:function(data){
+              location.href = data.url;
+            }
+          }) 
+        }else{
+          return;
+        }
+       
+      })
+
+        $(document).keyup(function(event){
+          if(event.keyCode ==13){
+            $("#formSubmit").trigger("click");
+          }
+        });
+
+
+
+
+
+
+    })
+
+</script>
+
+  </body>
+</html>

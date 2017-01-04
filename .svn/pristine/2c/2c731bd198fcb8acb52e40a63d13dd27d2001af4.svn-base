@@ -1,0 +1,62 @@
+<?php
+namespace Home\Controller;
+use Think\Area;
+
+class OrderController extends CommonController{
+	public function index(){
+		//用户地址
+		$addr = M('user_address');
+		$map['user_id'] = array('eq',$_SESSION['user']['id']);
+		$address = Area::city(array('请选择','请选择','请选择'));
+		if($addrs = $addr->where($map)->select()){
+			foreach($addrs as $k=> $v){
+				$addrs[$k]['pcc'] = \Think\Area::city(array($v['address_province'],$v['address_city'],$v['address_county']));
+			}
+		}
+		
+		// var_dump($address);
+		// var_dump($addrs);
+
+		$this->assign('addr',$addrs);		
+		$this->assign('address',$address);
+
+		//修改地址展示
+		if($_POST['id']){
+			$map['id'] = array('eq',$_POST['id']);
+			$ad = $addr -> where($map) ->find();
+			$this->assign('ad',$ad);
+			$this->ajaxReturn(json_encode($ad));
+		}
+		$this -> display();
+	}
+
+	//添加或修改订单地址
+	public function address() {
+		$addr = M('user_address');
+		if($_POST['id']){
+			$map['id'] = array('eq',$_POST['id']);
+			if($addr->create()){
+				$addr-> where() ->save();
+			}
+		}else{
+			$_POST['user_id'] = $_SESSION['user']['id'];
+			$addr->create();
+			$addr->add();
+		}
+		$this->ajaxReturn(json_encode($_POST));
+	}
+
+	//删除订单地址
+	public function delete() {
+		if($_POST['id']){
+			$addr = M('user_address');
+			$map['id'] = array('eq',$_POST['id']);
+			if($addr->where($map)->delete()){
+				$this->ajaxReturn(1);
+			}
+
+		}
+
+	}
+
+}

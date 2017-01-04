@@ -1,0 +1,10 @@
+<?php if (!defined('THINK_PATH')) exit();?><!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<?php if(is_array($article)): foreach($article as $key=>$vo): ?><div><?php echo ($vo["article_content"]); ?></div> <br><?php endforeach; endif; ?>
+</body>
+</html>

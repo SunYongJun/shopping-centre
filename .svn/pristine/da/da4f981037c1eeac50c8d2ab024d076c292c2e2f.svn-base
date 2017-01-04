@@ -1,0 +1,246 @@
+<extend name="Public:layout" />
+<block name="cssjs">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/personal.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/home_v2.css"></block>
+<block name="main">
+    <div class="mainBg">
+        <div class="main clearfix">
+            {:W('Menu/Centers')}
+            <div class="content">
+                <div class="huanhuo">
+                    <h1>订单详情</h1>
+                    <div class="dd_infor">
+                        <span>订单编号：{$order.acti}</span>
+                        <span>
+                            订单状态： <em><if condition="$order.action_status eq 0">
+                                    未付款
+                                    <elseif condition="$order.action_status eq 1" />    
+                                    待卖家发货
+                                    <elseif condition="$order.action_status eq 2" />    
+                                    已发货
+                                    <elseif condition="$order.action_status eq 3" />    
+                                    已完成
+                                    <elseif condition="$order.action_status eq 4" />    
+                                    已取消
+                                </if></em> 
+                        </span>
+
+                    </div>
+
+                    <div class="step hh_step dd_sp">
+                        <div class="step_pic">
+                            <if condition="$order.action_status eq 0">
+                                <div style="margin:0px auto;width:460px;height:34px;background:url(__PUBLIC__/home/images/btn111.jpg)"></div>
+                                <elseif condition="$order.action_status eq 1" />    
+                                <div style="margin:0px auto;width:460px;height:34px;background:url(__PUBLIC__/home/images/btn11.jpg)"></div>
+                                <elseif condition="$order.action_status eq 2" />    
+                                <div style="margin:0px auto;width:460px;height:34px;background:url(__PUBLIC__/home/images/btn11.jpg);background-position:0 -1700px"></div>
+                                <elseif condition="$order.action_status eq 3" />    
+                                <div style="margin:0px auto;width:460px;height:34px;background:url(__PUBLIC__/home/images/btn11.jpg);background-position:0 -3200px"></div>
+                                <elseif condition="$order.action_status eq 4" />    
+                                <div style="margin:0px auto;width:245px;height:34px;background:url(__PUBLIC__/home/images/btn11.jpg);background-position:0 -3200px"></div>
+                            </if>
+                        </div>
+                        <p>
+                            <span> <em>提交订单</em> <i>{$order.order_time|date="Y-m-d H:i:s",###}</i>
+                            </span>
+                            <span>
+                                <em><if condition="$order.action_status eq 0">
+                                        未付款
+                                        <elseif condition="$order.action_status eq 1" />    
+                                        待卖家发货
+                                        <elseif condition="$order.action_status eq 2" />    
+                                        待买家收货
+                                        <elseif condition="$order.action_status eq 3" />    
+                                        已完成
+                                        <elseif condition="$order.action_status eq 4" />    
+                                        已取消
+                                    </if></em>  <i><if condition="($order.action_status eq 3) OR ($order.action_status eq 4)" >{$order.action_time|date="Y-m-d H:i:s",###}</if></i> 
+                            </span>
+                        </p>
+                    </div>
+
+                    <div class="wlgz" id="userInfo">
+                        <div class="tab_sty" id="clean_div">
+                            <h2>商品清单</h2>
+                            <table width="700" border="0" cellpadding="0" cellspacing="0">
+                                <tbody>
+                                    <tr>
+                                        <th width="16%">商品图片</th>
+                                        <th width="35%">商品名称</th>
+                                        <th width="13%">价格</th>
+                                        <th width="12%">商品数量</th>
+                                        <th width="12%">赠送花粉</th>
+                                        <th width="12%">操作</th>
+                                    </tr>
+                                    <foreach name="goods" item="v">
+                                        <tr>
+                                            <td>
+                                                <a href="" target="_blank">
+                                                    <img src="__PUBLIC__{$v.goods_img}" width="150px" height="70px"></a>
+                                            </td>
+                                            <td class="tl">
+                                                <a href="" target="_blank">{$v.goods_brief}</a>
+                                            </td>
+                                            <td>￥{$v.total}</td>
+                                            <td>{$v.num}</td>
+                                            <td>{$v.goods_coin}</td>
+                                            <td>
+                                                <a target="_blank" href="__MODULE__/Product/index/id/{$v.id}" class="yellow">查看</a>
+                                                <br>    
+                                                <form id="6390547210004" name="6390547210004" action="" method="post">
+                                                    <input name="process" value="batch" type="hidden">    
+                                                    <input name="items" value="" type="hidden">    
+                                                    <span class="orderbtn">
+                                                        <a class="yellow" href="">再次购买</a>
+                                                    </span>
+                                                </form>
+                                            </td>
+
+                                        </tr>
+                                    </foreach>
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <h2>收货人信息</h2>
+                        <p>
+                            <em>收货人:</em>
+                            <i>{$address.true_name}</i>
+                        </p>
+                        <p>
+                            <em>地&nbsp;&nbsp;&nbsp;址:</em>
+                            <i style="width:650px;">{$address.address_province}{$address.address_city}{$address.address_county}{$address.address_info}</i> 
+                        </p>
+
+                        <p>
+                            <em>邮&nbsp;&nbsp;&nbsp;编:</em>
+                            <i>{$address.address_zip}</i>
+                        </p>
+                        <p>
+                            <em>电&nbsp;&nbsp;&nbsp;话:</em>
+                            <i>{$address.address_phone}</i>
+                        </p>
+                        <p>
+                            <em>邮&nbsp;&nbsp;&nbsp;箱:</em>
+                            <i>{$address.address_email}</i>
+                        </p>
+                    </div>
+                    <div class="wlgz">
+                        <h2>支付及配送信息</h2>
+
+                        <div class="amend-pay">
+                            <p>
+                                <em>支付方式:</em>
+                                <i id="payTypeCN">{$pay.pay_name}</i>
+                            </p>
+                            <p>
+                                <em>送货时间:</em>
+
+                                <i id="time_info">
+                                    <if condition="$order.delivery eq 1">
+                                        不限时间
+                                        <elseif condition="$order.delivery eq 2" />    
+                                        周一至周五
+                                        <else />    
+                                        周末及节假日
+                                    </if>
+                                </i>
+                            </p>
+                            <div id="remit_info" style="display:none">
+                                <style type="text/css">.out_border { border:#dddddd solid 1px; padding:10px; background:#fcfbf9; width:230px;margin:10px 0 0 60px;}.out_border p { font:normal 12px/18px '宋体'; color:#333333; margin:0;}.out_border p b { color:#f52648; font-weight:bold;}</style>
+                                <div class="out_border">
+                                    <p>户&nbsp;&nbsp;名：&nbsp;乐蜂（上海）信息技术有限公司</p>
+                                    <p>开户行：&nbsp;招商银行上海天钥桥支行</p>
+                                    <p>
+                                        账&nbsp;&nbsp;号：&nbsp; <b>1219 1193 9510 105</b>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wlgz invoice">
+                        <h2>
+                            支付及配送信息
+                            <a href="javascript:;" class="wlgz-abolish">取消</a>
+                        </h2>
+
+                        <dl class="way" id="edit_pay">
+                            <dt>支付方式：</dt>
+                            <dd>
+                                <label class="lf-radio">
+                                    <input type="radio"> <dfn value="33"></dfn>
+                                    <span class="W154">在线支付</span>
+                                    （支持绝大数银行卡在线支付）
+                                </label>
+                            </dd>
+
+                            <dd class="way-Ml">
+                                <label class="lf-radio">
+                                    <input type="radio"> <dfn value="1_0"></dfn>
+                                    <span>货到付款（现金）</span>
+                                    快递人员将在送货上门时收款，请您准备好现金
+                                </label>
+                            </dd>
+
+                            <dd class="way-Ml">
+                                <label class="lf-radio">
+                                    <input type="radio">    
+                                    <dfn value="1_1"></dfn>
+                                    <span>货到付款（POS刷卡）</span>
+                                    快递人员将在送货上门时收款，仅支持带银联标志的银行卡、信用卡和借记卡
+                                </label>
+                            </dd>
+
+                            <dd class="way-Ml">
+                                <label class="lf-radio">
+                                    <input type="radio">    
+                                    <dfn value="6"></dfn>
+                                    <span class="W154">汇款</span>
+                                    （收款时间一般为汇款出后的3-5个工作日内）
+                                </label>
+                            </dd>
+                            <div id="show_remit_info_edit" style="display:none">
+                                <style type="text/css">.float_border { border:#dddddd solid 1px; padding:20px 30px; background:#fff; width:360px;margin-left:260px;}.float_border p { font:normal 12px/30px '宋体'; color:#666666; margin:0;}.float_border p b { color:#333333; font:bold 28px/30px '微软雅黑';}.float_border span { padding-top:20px; display:block;}.float_border span p { line-height:18px;}.float_border span p b { color:#f52648; font:normal 12px/18px '宋体';}</style>
+                                <div class="float_border">
+                                    <p>户&nbsp;&nbsp;名：&nbsp;乐蜂（上海）信息技术有限公司</p>
+                                    <p>开户行：&nbsp;招商银行上海天钥桥支行</p>
+                                    <p>
+                                        账&nbsp;&nbsp;号：&nbsp; <b>1219 1193 9510 105</b>
+                                    </p>
+                                    <span style="width: auto; display: block; padding-top: 20px">
+                                        <p>
+                                            <b>请在汇款人简短留言中注明您的订单号/用户名（非常重要！）</b>
+                                        </p>
+                                        <p>收款时间一般为汇款出后的3-5个工作日内</p>
+                                    </span>
+                                </div>
+                            </div>
+
+                        </dl>
+                        <dl class="time">
+                            <dt>送货时间:</dt>
+                            <dd value="0" remark="不限时间" class="on">
+                                不限时间
+                                <div class="clicks"></div>
+                            </dd>
+                            <dd value="1" remark="周一至周五">
+                                周一至周五
+                                <div></div>
+                            </dd>
+                            <dd value="2" remark="周六日/节假日">
+                                周六日/节假日
+                                <div></div>
+                            </dd>
+                        </dl>
+                        <p>
+                            <a href="javascript:;" class="wlgz-btn" id="savePayType">保存</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</block>

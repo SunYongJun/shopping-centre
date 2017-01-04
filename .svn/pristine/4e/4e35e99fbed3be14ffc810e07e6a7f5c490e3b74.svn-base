@@ -1,0 +1,122 @@
+<?php
+namespace Admin\Controller;
+
+class GoodsController extends CommonController{
+	public function index(){
+		$type =  M('goods');
+		$data = $type->select();
+
+		$ptype = M('shop_type');
+
+		//查询所属分类并赋予变量
+		foreach($data as $k=>$v) {
+			$map['id'] = array('eq',$data[$k]['type_id']);
+			$result = $ptype ->where($map) -> find();
+			$data[$k]['pname'] = $result['type_name'];
+		}		
+		$this->assign('type',$data);
+		
+		$this -> display();
+	}
+
+	public function add() {
+
+		//查询分类
+		$gtype =  M('shop_type');
+		$type = $gtype->select();
+		$this->assign('type',$type);
+
+		//查询品牌
+		$gbrand =  M('brand');
+		$brand = $gbrand->select();
+		$this->assign('brand',$brand);
+
+
+		$this -> display();
+	}
+
+	public function edit() {
+
+		if(!empty($_GET['id'])) {
+
+			//查询该ID信息
+			$shop = M('goods');
+			$map['id'] = array('eq',$_GET['id']);
+			$iddata = $shop->where($map)->select();
+			$this->assign('iddata',$iddata[0]);		
+			
+			//查询分类
+			$gtype =  M('shop_type');
+			$type = $gtype->select();
+			$this->assign('type',$type);
+
+			//查询品牌
+			$gbrand =  M('brand');
+			$brand = $gbrand->select();
+			$this->assign('brand',$brand);
+
+			$this->display();
+		}else{
+			$this->error('非法操作');
+		}
+	}
+
+	public function insert() {	
+
+		if(IS_POST) {	
+			$type =  M('goods');
+			$data = $_POST;
+
+			//处理图片
+			$this->myupload();
+
+			//促销日期
+			$data['goods_start_date'] = strtotime($_POST['goods_start_date']);
+			$data['goods_end_date'] = strtotime($_POST['goods_end_date']);
+
+			// 添加日期
+			$data['goods_time'] = time();
+
+			//货号
+			$data['goods_sn'] = date('YmdHis').mt_rand(10000,99999);
+
+			$type -> create($data);
+
+			if($result = $type->add()){
+				
+				$this->success('添加成功');
+			}else{
+				$this->error('添加失败');
+			}
+		}	
+	}
+
+	public function delete() {
+		if(IS_GET) {
+			$map['id'] = array('eq',$_GET['id']);
+			$user = M('goods');
+			if($user-> where($map) -> delete()){
+				$this->success('删除成功');
+			}else{
+				$this->error('删除失败');
+			}
+		}
+	}
+
+	public function save() {
+		if(IS_POST){
+			$data = M(CONTROLLER_NAME);
+			if($data->create()){
+				if($data->save()) {
+					$this->success('修改成功','index');
+				}else{
+					$this->error('修改失败');
+				}
+			}
+			
+		}
+	}
+
+
+
+}

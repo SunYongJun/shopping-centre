@@ -1,0 +1,86 @@
+<extend name="Public:cartlayout" />
+<block name="main">
+
+	<link rel="stylesheet" href="__PUBLIC__/home/css/shop-order.css">
+	<!--头部结束-->
+	<div class="content-wrap">
+
+		<div class="pay-wrap gwrap gheader">
+
+			<p class="text"> <b></b>
+				订单提交成功，请您尽快付款！
+			</p>
+			<div class="info">
+				<p class="order-mes pay bank-type">
+					<!-- 在线支付区域开始 -->
+					<span>
+						订单号：{$confirm.acti} <b class="pay-money">应付金额： <em><i>￥</i>
+								{$confirm.action_count}</em></b> 
+					</span>
+
+					<!-- 在线支付区域结束 -->
+				</p>
+			</div>
+
+		</div>
+
+		<p class="notice">&nbsp;&nbsp;&nbsp;&nbsp;为及时处理您的订单，请尽快完成付款</p>
+
+		<div class="bank-wrap gwrap gheader">
+
+			<p class="text">
+
+
+				<b></b>
+				只差一步，请尽快支付！
+			</p>
+
+			<div class="info">
+
+				<div class="bank-list" id="ptpay">
+					<h3>支付平台</h3>
+
+					<ul class="clearfix">
+
+						<li class="chked" name="bank"> <i></i>
+							<b></b>
+							<a href="javascript:void(0);" platformid="0" ptype="2" bankvalue="alipayAccount">
+								<img src="__PUBLIC__/home/images/zfb.jpg" alt="支付宝"></a>
+						</li>
+
+						<li name="bank">
+							<i></i>
+							<b></b>
+							<a href="javascript:void(0);">
+								<img src="__PUBLIC__/home/images/cft.jpg" alt="财付通"></a>
+						</li>
+
+						<li name="bank">
+							<i></i>
+							<b></b>
+							<a href="javascript:void(0);" platformid="0" >
+								<img src="__PUBLIC__/home/images/" alt="余额支付"></a>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+
+			<div class="pay-for">
+				<a class="" id="goPay" href="__CONTROLLER__/pay/id/{$confirm.id}" ></a>
+				<span> <em id="gopayMoney"><i>￥</i>
+						{$confirm.action_count}</em> 
+					待支付总额：
+				</span>
+			</div>
+			<script>
+			$(function() {
+				$('li[name="bank"]').bind('click',function() {
+					$('li[name="bank"]').removeClass('chked');
+					$(this).addClass('chked');
+				})
+			})
+
+			</script>
+
+		</block>

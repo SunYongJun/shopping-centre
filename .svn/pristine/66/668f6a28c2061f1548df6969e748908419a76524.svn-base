@@ -1,0 +1,262 @@
+<extend name="Public:layout" />
+<block name="main">
+	<div class="page-content">
+		<div class="row">
+			<div class="col-xs-12">
+				<!-- PAGE CONTENT BEGINS -->
+				<div class="alert alert-block alert-success">
+					<button type="button" class="close" data-dismiss="alert">
+						<i class="icon-remove"></i>
+					</button>
+					<i class="icon-ok green"></i>
+					{$Think.session.admin.admin_name}，欢迎登录
+					<strong class="green">
+						乐蜂网后台管理系统
+						<small>(v2.0)</small>
+					</strong>
+					，请在左侧选择您的操作！	
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="widget-box transparent" id="recent-box">
+							<div class="widget-header">
+								<h4 class="lighter smaller">
+									<i class="icon-rss orange"></i>
+									商城信息
+								</h4>
+
+								<div class="widget-toolbar no-border">
+									<ul class="nav nav-tabs" id="recent-tab">
+										<li class="active">
+											<a data-toggle="tab" href="#task-tab">系统信息</a>
+										</li>
+
+										<li>
+											<a data-toggle="tab" href="#member-tab">新加入会员</a>
+										</li>
+
+										<li>
+											<a data-toggle="tab" href="#comment-tab">最新评论</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+
+						<div class="widget-body">
+							<div class="widget-main padding-4">
+								<div class="tab-content padding-8 overflow-visible">
+									<!-- 系统信息 -->
+									<div id="task-tab" class="tab-pane active">
+										<ul id="tasks" class="item-list">
+											<li class="item-orange clearfix">
+												<b>订单信息：</b>&nbsp;&nbsp;<span class="text-danger">总订单：<b class="text-success">{$orderCount}</b>&nbsp;待发货订单：<b class="text-success">{$orderPay}</b></span>
+											</li>
+
+											<li class="item-red clearfix">
+												<b>商品信息：</b>&nbsp;&nbsp;<span class="text-danger">总商品数：<b class="text-success">{$goodsCount}</b>&nbsp;总销量：<b class="text-success">{$goodsVolume}</b>&nbsp;正在秒杀商品数：<b class="text-success">{$saleCount}</b></span>
+											</li>
+
+											<li class="item-default clearfix">
+												<b>访问统计：</b>&nbsp;&nbsp;<span class="text-danger">总点击数：<b class="text-success">{$clickCount}</b>&nbsp;评论数：<b class="text-success">{$commentCount}</b></span>
+											</li>
+
+											<li class="item-blue clearfix">
+												<b>服务器信息：</b>&nbsp;&nbsp;<span class="text-danger">操作系统：<b class="text-success">{$info.apache}</b>&nbsp;PHP运行方式：<b class="text-success">{$info.php}</b>&nbsp;MySql版本：<b class="text-success">{$info.mysql}</b>&nbsp;ThinkPHP版本：<b class="text-success">{$info.tp}</b>&nbsp;服务器域名/IP：<b class="text-success">{$info.ip}</b>&nbsp;系统当前时间：<b class="text-success">{$info.time}</b></span>
+											</li>
+
+											<li class="item-grey clearfix">
+												<b>数据库信息：</b>&nbsp;&nbsp;<span class="text-danger">数据库名：<b class="text-success">{$dbname}</b>&nbsp;数据表前缀：<b class="text-success">{$prefix}</b>&nbsp;数据库编码方式：<b class="text-success">{$charset}</b></span>
+											</li>
+
+											<li class="item-green clearfix">
+												<b>开发及测试：</b>&nbsp;&nbsp;<span class="text-danger">项目名称：<b class="text-success">乐蜂商城</b>&nbsp;开发成员：<b class="text-success">蒋永忠、孙永军、王雪</b>&nbsp;前台技术：<b class="text-success">jQuery、Ajax</b>&nbsp;后台布局框架：<b class="text-success">Bootstrap-3.3.0</b>&nbsp;项目开始时间<b class="text-success">2014.12.04</b>&nbsp;审核时间：<b class="text-success">2014.12.22</b></span>
+											</li>
+
+											<li class="item-pink clearfix">
+												<b>这里真的不知道放啥...</b>&nbsp;&nbsp;<span class="text-danger"><b class="text-success"></b>&nbsp;<b class="text-success"></b></span>
+											</li>
+										</ul>
+									</div>
+									<!-- 最新会员信息 -->
+									<div id="member-tab" class="tab-pane">
+										<div class="clearfix">
+											<foreach name="user" item="vuser">
+											<div class="itemdiv memberdiv">
+												<div class="user">
+													<img alt="Bob Doe's avatar" src="__PUBLIC__/{$vuser.user_pic}" />
+												</div>
+												<div class="body">
+													<div class="name">
+														<a href="#">{$vuser.user_email}</a>
+													</div>
+													<div class="time">
+														<i class="icon-time"></i>
+														<span class="green">{$vuser.user_regtime|timeNow}</span>
+													</div>
+
+													
+												</div>
+											</div>
+											</foreach>
+										</div>
+
+										<div class="center">
+											<i class="icon-group icon-2x green"></i>
+
+											&nbsp;
+											<a href="__MODULE__/User/index">
+												查看所有会员 &nbsp;
+												<i class="icon-arrow-right"></i>
+											</a>
+										</div>
+
+										<div class="hr hr-double hr8"></div>
+									</div><!-- member-tab -->
+									<!-- 最新评论 -->
+									<div id="comment-tab" class="tab-pane">
+										<div class="comments">
+											<foreach name="com" item="vcom"> 
+											<div class="itemdiv commentdiv">
+												<div class="user">
+													<img alt="Bob Doe's Avatar" src="__PUBLIC__/{$vcom.pic}" />
+												</div>
+
+												<div class="body">
+													<div class="name">
+														<a href="#">{$vcom.email}</a>
+													</div>
+
+													<div class="time">
+														<i class="icon-time"></i>
+														<span class="green">{$vcom.comment_time|timeNow}</span>
+													</div>
+
+													<div class="text">
+														<i class="icon-quote-left"></i>
+														{$vcom.comment_content} &hellip;
+													</div>
+												</div>
+
+												
+											</div>
+											</foreach>
+										</div>
+
+										<div class="hr hr8"></div>
+
+										<div class="center">
+											<i class="icon-comments-alt icon-2x green"></i>
+
+											&nbsp;
+											<a href="__MODULE__/Comment/index">
+												查看全部评论 &nbsp;
+												<i class="icon-arrow-right"></i>
+											</a>
+										</div>
+
+										<div class="hr hr-double hr8"></div>
+									</div>
+								</div>
+							</div><!-- /widget-main -->
+						</div><!-- /widget-body -->
+						</div><!-- /widget-box -->
+					</div><!-- /span -->
+
+					<div class="col-sm-6">
+						<div class="widget-box ">
+							<div class="widget-header">
+								<h4 class="lighter smaller">
+									<i class="icon-comment blue"></i>
+									管理员会话
+								</h4>
+							</div>
+
+							<div class="widget-body">
+								<div class="widget-main no-padding">
+									<div class="dialogs" style="height:380px;overflow:scroll">
+										<foreach name="list" item="vd"> 
+										<div class="itemdiv dialogdiv">
+											<div class="user" rel="{$vd.id}">
+												<img alt="Alexa's Avatar" src="__PUBLIC__/{$vd.img}" />
+											</div>
+
+											<div class="body">
+												<div class="time">
+													<i class="icon-time"></i>
+													<span class="green">{$vd.time|timeNow}</span>
+												</div>
+
+												<div class="name">
+													<a href="#">{$vd.name}</a>
+												</div>
+												<div class="text">{$vd.content}</div>
+
+												<div class="tools">
+													<a href="javascript:void(0)" class="btn btn-minier btn-info" del="{$vd.id}">
+														<i class="icon-only icon-share-alt"></i>
+													</a>
+												</div>
+											</div>
+										</div>
+										</foreach>
+									</div>
+
+									<form>
+										<div class="form-actions">
+											<div class="input-group">
+												<input placeholder="Type your message here ..." type="text" class="form-control" id="content" />
+												<span class="input-group-btn">
+													<button class="btn btn-sm btn-info no-radius" type="button" id="sub">
+														<i class="icon-share-alt"></i>
+														发送
+													</button>
+												</span>
+											</div>
+										</div>
+									</form>
+								</div><!-- /widget-main -->
+							</div><!-- /widget-body -->
+						</div><!-- /widget-box -->
+					</div><!-- /span -->
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script>
+		$(function(){
+			//删除
+			$('.dialogs').delegate('a[del]','click',function(){
+				$this = $(this);
+				var id = $this.attr('del');
+				$.get('__CONTROLLER__/del','id='+id,function(data){
+					if(data == 1){
+						$this.parent().parent().parent().fadeOut();
+					}else{
+						alert('删除错误！');
+					}
+				})
+			})
+			
+			//让会话框的滚动条始终保持在底部
+			// $('.dialogs').scrollTop($('.dialogs')[0].scrollHeight);
+			$('#sub').click(function(){
+				if(!$('#content').val()){
+					return false;
+				}
+				var id = $('.user:last').attr('rel');
+				
+				var data = 'content='+$('#content').val();
+				$.post('__CONTROLLER__/insert/pid/'+id,data,function(data){
+					if(data == 0){
+						alert('发送失败！');
+					}else{
+						$('#content').val('');
+						$('.dialogs').append(data);
+						$('.dialogs').scrollTop($('.dialogs')[0].scrollHeight);
+					}
+				})
+			})
+		})
+	</script>
+</block>

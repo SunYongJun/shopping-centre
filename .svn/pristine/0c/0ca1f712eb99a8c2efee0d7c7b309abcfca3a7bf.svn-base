@@ -1,0 +1,21 @@
+<?php
+
+namespace Admin\Controller;
+
+class FlinkController extends CommonController{
+	public function index(){
+		$this -> display();
+	}
+
+	public function add(){
+		$this -> display();
+	}
+
+	public function insert(){
+
+	}
+
+	public function save(){
+
+	}
+}

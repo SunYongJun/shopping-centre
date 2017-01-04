@@ -1,0 +1,97 @@
+<?php
+
+/*
+*   前台首页 遍历品牌、秒杀、商品分类、广告、友情链接等
+*   $author 蒋永忠
+*/
+
+namespace Home\Controller;
+class IndexController extends CommonController {
+    public function index(){
+    	$g = M('goods'); //实例化商品
+        $t = M('shop_type'); //实例化分类
+        $b = M('brand');    //实例化品牌
+
+        //品牌特卖 
+        $brand = $b -> where('is_show = 1') -> order('brand_order,id desc') -> select();
+        $this -> assign('brand',$brand);
+
+        //开始遍历商品
+        $field = "id,brand_id,goods_name,goods_img,goods_price,goods_sale,goods_click,sales_volume,goods_time"; //声明商品表中要取得的字段
+        
+        //最新爆款
+        $time = time() - (60*60*24*2);  //以两天作为临界值,小于两天作为最新，大于作为最后疯抢
+        $nwhere['goods_time'] = array('gt',$time);
+        $nwhere['is_on_sale'] = array('eq',1);
+        $nwhere['is_delete'] = array('eq',0);
+        $new = $g -> where($nwhere) -> field($field) -> order('sales_volume desc,goods_click desc') -> select();
+        if($new){
+            foreach($new as &$nv){
+                $nb = $b -> field('brand_name') -> where('id='.$nv['brand_id']) -> find();
+                $nv['brand_name'] = $nb['brand_name'];
+            }
+        }
+        $this -> assign('new',$new);
+    	
+        // 最后疯抢
+        $ewhere['goods_time'] = array('lt',$time);
+        $ewhere['is_on_sale'] = array('eq',1);
+        $ewhere['is_delete'] = array('eq',0);
+        $end = $g -> where($ewhere) -> field($field) -> order('sales_volume desc,goods_click desc') -> select();
+        
+    	if($end){
+    		// 查询商品的品牌
+    		foreach($end as &$ev){
+    			$eb = $b -> field('brand_name') -> where($ev['brand_id']) -> find();
+    			$ev['brand_name'] = $eb['brand_name'];
+    		}
+    		$this -> assign('end',$end);
+    	}
+        //限时抢购
+        $s = M('sale');
+        // $smap['sale_end'] = array('gt',time()); //测试遍历三个
+        $smap['is_delete'] = array('eq',1);
+        $sale = $s -> where($smap) -> limit(3) -> select();
+        foreach($sale as &$vs){
+            $sgood = $g -> where('id='.$vs['goods_id']) -> where('is_delete=0') -> field('id,brand_id,goods_name,goods_price,goods_img,sales_volume') -> find();
+            $sb = $b -> where('id='.$sgood['brand_id']) -> field('brand_name') -> find();
+            $vs['gid'] = $sgood['id'];
+            $vs['goods_name'] = $sgood['goods_name'];
+            $vs['goods_price'] = $sgood['goods_price'];
+            $vs['goods_img'] = $sgood['goods_img'];
+            $vs['sales_volume'] = $sgood['sales_volume'];
+            $vs['brand_name'] = $sb['brand_name'];
+            $vs['now'] = time();
+        }
+        // var_dump($sale);
+        $this -> assign('sale',$sale);
+        //乐风公告  确定以后添加上公告的id
+        $a = M('article');
+        $news = $a -> field('id,article_title')  -> limit(2) -> order('article_time desc') -> select();
+        $this -> assign('news',$news);
+        //友情链接 link_type 1.文字链接  2.图片链接
+        $l = M('flink');
+        $fwhere['is_show'] = array('eq',1);
+        $fwhere['link_type'] = array('eq',1);
+        $text = $l -> where($fwhere) -> field('link_name,link_url') -> order("'order' desc,'id' desc") -> select();
+        if($text){
+            $this -> assign('text',$text);
+        }
+        // 图片链接
+        $fwhere['link_type'] = array('eq',2);
+        $fimg = $l -> where($fwhere) -> field('link_name,link_url,link_logo') -> order("'order' desc,'id' desc") -> select();
+        if($fimg){
+            $this -> assign('fimg',$fimg);
+        }
+
+        //首页的广告
+        //顶部的广告
+        $ad = M('ad') -> where('ad_position=1 AND is_show=1') -> field('ad_picture,ad_desc') ->limit(1) -> find();
+        $this -> assign('ad',$ad);
+        //底部的广告
+        $fad = M('ad') -> where('ad_position=3 AND is_show=1') -> field('ad_picture,ad_desc') ->limit(1) -> find();
+        $this -> assign('fad',$fad);
+        //显示
+    	$this -> display('index');
+    }
+}

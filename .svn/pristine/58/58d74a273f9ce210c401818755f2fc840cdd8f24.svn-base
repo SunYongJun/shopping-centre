@@ -1,0 +1,124 @@
+<extend name="Public:layout" />
+<block name="cssjs">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/personal.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/home_v2.css">
+</block>
+<block name="main">
+    <div class="mainBg">
+        <div class="main clearfix">
+            {:W('Menu/Centers')}
+            <div class="content">
+                <div class="huanhuo">
+                    <h1>修改密码</h1>
+                    <div></div>
+                    <div class="huafen_box pn-top-nav">
+
+                        <div class="huafen_tab tab_sty yhq clear">
+                            <form action="#" method="post" name="pwdpwd" id="pwds">
+                                <div class="pn-article" id="pnArticle">
+
+                                    <dl class="clearfix">
+                                        <dt>
+                                            <cite>*</cite>
+                                            旧密码：
+                                        </dt>
+                                        <dd>
+                                            <input id="oldpwd" class="pn-input" name="user_pwd" maxlength="14" type="password" value="">
+                                            <span id="warning1"></span>
+                                            <span style="opacity: 1;display : none;" class="lf-showerr"></span>
+                                            <span class="lf-showerr" style="opacity: 1;display : none;"></span>
+                                        </dd>
+                                    </dl>
+                                    <dl class="clearfix">
+                                        <dt>
+                                            <cite>*</cite>
+                                            新密码：
+                                        </dt>
+                                        <dd>
+                                            <input id="pn1" class="pn-input" name="new_pwd" maxlength="14" type="password" value="" disabled="disabled">
+                                            <span style="opacity: 1;display : none;" class="lf-showerr"></span>
+                                            <span class="lf-showerr" style="opacity: 1;display : none;"></span>
+                                        </dd>
+                                    </dl>
+                                    <dl class="clearfix">
+                                        <dt>
+                                            <cite>*</cite>
+                                            再次输入新密码：
+                                        </dt>
+                                        <dd>
+                                            <input id="pn2" class="pn-input" name="re_new_pwd" maxlength="14" type="password" value="" disabled="disabled">
+                                            <span id="warning2"></span>
+                                            <span style="opacity: 1;display : none;" class="lf-showerr"></span>
+                                            <span class="lf-showerr" style="opacity: 1;display : none;"></span>
+                                        </dd>
+                                    </dl>
+                                    <dl class="clearfix">
+                                        <dt>&nbsp;</dt>
+                                        <dd>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <input id="fasong" value="保存" class="pn-submit" type="button" >
+                                            <h2 id="tiao"></h2>
+                                        </dd>
+
+                                    </dl>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="com_page"></div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script>
+    $(function(){
+        $('#oldpwd').focus();
+        $('#oldpwd').blur(function(){
+            $.ajax({
+                type:'post',
+                url:'__CONTROLLER__/checkpwd',
+                data:$('#pwds').serialize(),
+                success:function(data){
+                    if(data.status==1){
+                        // alert('asd');
+                        $('.pn-input').each(function(){
+                            $(this).prop('disabled',false);
+                        });
+                        $('#warning1').html('&nbsp;&nbsp;&nbsp;√').css('color','green');
+                        $('#fasong').bind('click',function(){
+                        //判断两次密码
+                        var a = $('#pn1').val();
+                        var b = $('#pn2').val();
+                        if(a!=b){
+                            $('#warning2').html('两次密码不一致！').css('color','red');
+                           return false;
+                        }
+
+                        // 再次判断两次新密码
+                        $.post('__CONTROLLER__/checkrepwd',{'new_pwd':a,'re_new_pwd':b},function(data){
+                            if(data['status']==2){
+                                layer.msg('修改成功，正在跳转...',1,function(){
+                                    location.href=data.url;
+                                });
+                                
+                            }
+                        })
+                        })
+                    }else if(data.status==0){
+                        // alert(data['content']);
+                        $('#warning1').html('您输入的密码不正确！').css('color','red');
+                    }
+                }
+            })
+
+        });
+
+       
+    })
+</script>
+
+</block>

@@ -1,0 +1,40 @@
+/*前台跳转的样式*/
+.smain{
+	width: 1000px;
+	height: 120px;
+	line-height: 120px;
+	margin: 30px auto;
+	background: #fff;
+	border: 1px solid #f2f2f2;
+	border-radius: 4px;
+}
+.smain .img{
+	width: 64px;
+	height: 64px;
+	margin:28px 30px 0px 150px;
+	vertical-align: middle;
+	float: left; 
+}
+.smain .con{
+	float: left;
+	font-weight: bold;
+	font-size: 18px;
+	font-family: 'microsoft yahei';
+}
+.smain .con h1{
+	font-weight: bold;
+	float: left;
+}
+.smain .con span{
+	margin-left: 20px;
+}
+.smain .con span b{
+	margin: 0px 5px;
+	color: #999;
+	font-weight: bold;
+	font-family: arial;
+}
+.smain .con span a{
+	color: #f90;
+	margin: 10px;
+}

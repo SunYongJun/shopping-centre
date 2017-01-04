@@ -1,0 +1,55 @@
+<?php
+// 判断订单状态
+function order_action($action){
+	switch($action){
+		case 0:
+			return '未确认';
+			break;
+		case 1:
+			return '已确认';
+			break;
+		case 2:
+			return '已取消';
+			break;
+		default:
+			return '无效';
+			break;
+	}
+} 
+// 判断付款状态
+function order_pay($action){
+	switch($action){
+		case 0:
+			return '未付款';
+			break;
+		case 1:
+			return '已付款';
+			break;
+		case 2:
+			return '已退款';
+			break;
+		default:
+			return '无效';
+			break;
+	}
+} 
+// 判断发货状态
+function order_shipping($action){
+	switch($action){
+		case 0:
+			return '未发货';
+			break;
+		case 1:
+			return '已发货';
+			break;
+		case 2:
+			return '已收货';
+			break;
+		case 3:
+			return '已退货';
+			break;
+		default:
+			return '无效';
+			break;
+	}
+} 

@@ -1,0 +1,44 @@
+<!-- 导航条部分开始 -->
+
+        <div class="Chead">
+            <div class="Chead-main" id="Chead_main">
+                <div class="Chead-info">
+                    <a id="Chead_app" class="Chead-app" href="#" target="_blank" rel="nofollow">手机乐蜂</a>
+                    <div class="Chead-appDown" style="display: none;">
+                        <a href="#" target="_blank" rel="nofollow"></a>
+                    </div> 
+                    <span class="fast-f turl">|</span>   
+                    <span id="Chead_save" class="Chead-save">收藏乐蜂</span>
+                    <span class="fast-f turl">|</span> 
+                    <span id="Chead_fastnav" class="fast-nav turl">快速导航
+                        <i></i>
+                    </span> 
+                    <div class="Chead-floatmenu">
+                        <a href="#" rel="nofollow">推荐好友</a>
+                        <a href="#" rel="nofollow">为我推荐</a>
+                        <a href="#" rel="nofollow">帮助中心</a>
+                        <a href="#" rel="nofollow">专享活动</a>
+                        <a href="#" rel="nofollow">乐蜂校园</a>
+                        <a href="#" rel="nofollow">礼品卡</a>
+                    </div>
+                    <span class="fast-f turl">|</span> 
+                    <a class="turl" href="__MODULE__/index/index">乐蜂首页</a>
+                    <span class="Chead-welcome" id="Cheadlogin">
+                            欢迎来乐蜂，请&nbsp;<a href="__MODULE__/User/login">登录</a>&nbsp;<a href="__MODULE__/User/register" onclick="loginreg('reg')">注册</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+<!-- 导航条部分结束 -->
+
+
+<!-- logo部分开始 -->
+
+        <div class="Logo-r">
+            <div class="Logo-info-r">
+                <a href="#"></a>
+            </div>
+        </div>
+
+<!-- logo部分结束 -->

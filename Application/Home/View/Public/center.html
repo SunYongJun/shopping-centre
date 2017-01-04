@@ -1,0 +1,63 @@
+<extend name="Public:layout" />
+    <block name="cssjs">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/home_v2.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/personal.css">
+    </block>
+
+<block name="main">
+<!-- main开始 -->
+<div class="mainBg">
+<div class="main clearfix">
+<block name="leftmain">
+    <!--[if IE]>
+    <noscript>
+        <div class="fl mylafasoV2L"></noscript>
+        <![endif]-->
+        <!-- partial_1299568417898 -->
+        <div class="side_bar">
+            <h1>
+                <a title="我的蜂巢" href="#">我的蜂巢</a>
+            </h1>
+            <dl>
+                <dt>订单中心</dt>
+                <dd>
+                    <a href="__CONTROLLER__/order">我的订单</a>
+                    <a href="#">我的收藏</a>
+                    <a href="__CONTROLLER__/myBonus">我的红包</a>
+                    <a href="__CONTROLLER__/myCoin">我的花粉</a>
+                    <a href="#">我的评价</a>
+                </dd>
+            </dl>
+            <dl>
+                <dt>账户管理</dt>
+                <dd>
+                    <a href="__CONTROLLER__/">个人资料设置</a>
+                    <a href="__CONTROLLER__/safe">账户安全设置</a>
+                    <a href="__CONTROLLER__/address">收货地址管理</a>
+                    <a href="#">邮件/短信订阅</a>
+                    <a href="#">站外分享绑定</a>
+                </dd>
+            </dl>
+            <dl>
+                <dt>服务中心</dt>
+                <dd>
+                    <a href="#">申请退换货/投诉</a>
+                    <a href="#">退货管理</a>
+                    <a href="#">换货管理</a>
+                    <a href="#">店铺取消订单管理</a>
+                    <a href="__CONTROLLER__/reply">商品咨询/回复</a>
+                    <a href="__CONTROLLER__/complain">我的投诉</a>
+                </dd>
+            </dl>
+        </div>
+       <!-- <script type="text/javascript" src="__PUBLIC__/home/js/W960.js"></script> -->
+        <!-- 左侧 -->
+        <!--[if IE]>
+        <noscript></div>
+    </noscript>
+    <![endif]-->
+    </block>
+    <block name="rightmain"></block>
+</div>
+</div>
+</block>

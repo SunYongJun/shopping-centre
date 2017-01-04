@@ -1,0 +1,105 @@
+<?php
+namespace Admin\Controller;
+
+class SaleController extends CommonController{
+
+	public function _initialize() {
+		$this->assign('menuList',CONTROLLER_NAME.'-'.ACTION_NAME);
+		$this->assign('menu','sale');
+	}
+
+	public function index() {
+		if($_GET['id']){
+			$goodm = M('goods');
+			$map['id'] = array('eq',$_GET['id']);
+			$goods = $goodm -> where($map) ->find();
+			$this->assign('good',$goods);
+
+			if($goods['id']){
+				$salem = M('sale');
+				$maps['goods_id'] = array('eq',$_GET['id']);
+				$sale = $salem -> where($maps) ->find();
+				$this->assign('sale',$sale);
+			}
+			$this -> display();
+
+		}else{
+			$this->error('非法操作');
+		}
+	}
+
+	public function doit() {
+		//查询是否存在该商品的秒杀数据
+		$salem = M('sale');
+		$map['goods_id'] = array('eq',$_POST['goods_id']);
+
+		$_POST['sale_start'] = strtotime($_POST['sale_start']);
+		$_POST['sale_end'] = strtotime($_POST['sale_end']);
+		
+		if(!$salem-> where($map) -> find()){
+			var_dump($salem->create());
+			if($salem->add()){
+				$this->success('添加秒杀成功','salelist');
+			}else{
+				$this->error('添加失败');
+			}
+		}else{
+			$salem->create($_POST);
+			if($salem->where($map) ->save()){
+				$this->success('修改成功','salelist');
+			}else{
+			
+				$this->error('修改失败');
+			}
+		}
+	
+	}
+
+	public function salelist() {
+		$salem = M('sale');
+		$goodsm = M('goods');
+		$sale = $salem -> select();
+
+		foreach($sale as &$v) {
+			$goods = $goodsm->find($v['goods_id']);
+			$v['goods_name'] = $goods['goods_name'];	
+			$v['goods_price'] = $goods['goods_price'];		
+		}
+
+		$this->assign('sale',$sale);
+		$this->display();
+	}
+
+
+	public function delete() {
+		if($_GET){
+			$salem = M(sale);
+			$_GET['is_delete'] = 0;
+			$salem -> create($_GET);
+			if($salem ->save()){
+				$this->success('删除成功');
+			}else{
+				$this->error('删除失败');
+			}
+		}
+	}
+
+	public function edit() {
+		if($_GET['id']){
+			$goodm = M('goods');
+			$salem = M('sale');
+			$maps['goods_id'] = array('eq',$_GET['id']);
+			$sale = $salem -> where($maps) ->find();
+			$goods = $goodm->find($sale['goods_id']);
+			$sale['name'] = $goods['goods_name'];
+			$sale['goods_id'] = $goods['id'];
+			$this->assign('sale',$sale);
+
+			$this -> display();
+
+		}else{
+			$this->error('非法操作');
+		}
+	}
+
+}
